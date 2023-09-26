@@ -5,3 +5,28 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
+more_student = [
+  {:first_name => 'Harsh', :last_name => 'Surolia', :email_id => 'harshsurolia@tamu.edu', :password => '12345', :UIN => 2609}
+]
+
+more_student.each do |student|
+    Student.create!(student)
+  end
+
+more_faculty = [
+  {:first_name => 'Prof', :last_name => 'Example', :email_id => 'profexample@tamu.edu', :password => '12345'}
+]
+
+more_faculty.each do |faculty|
+    Faculty.create!(faculty)
+  end
+  
+    more_admin = [
+      {:first_name => 'Admin', :last_name => 'Example', :email_id => 'adminexample@tamu.edu', :password => '12345'}
+    ]
+    
+    more_admin.each do |admin|
+        Admin.create!(admin)
+      end
+
