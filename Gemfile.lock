@@ -68,6 +68,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
+    bcrypt (3.1.19)
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
@@ -127,6 +128,11 @@ GEM
       reline (>= 0.3.1)
     diff-lcs (1.5.0)
     erubi (1.12.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     ffi (1.16.1)
     globalid (1.2.1)
       activesupport (>= 6.1)
@@ -200,6 +206,10 @@ GEM
       activesupport (= 7.0.8)
       bundler (>= 1.15.0)
       railties (= 7.0.8)
+    rails-controller-testing (1.0.5)
+      actionpack (>= 5.0.1.rc1)
+      actionview (>= 5.0.1.rc1)
+      activesupport (>= 5.0.1.rc1)
     rails-dom-testing (2.2.0)
       activesupport (>= 5.0.0)
       minitest
@@ -282,16 +292,19 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bcrypt (~> 3.1.7)
   bootsnap
   capybara
   cucumber-rails
   database_cleaner
   debug
+  factory_bot_rails
   importmap-rails
   jbuilder
   pg
   puma (~> 5.0)
   rails (~> 7.0.8)
+  rails-controller-testing
   rspec-rails
   selenium-webdriver
   sprockets-rails

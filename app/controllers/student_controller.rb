@@ -1,9 +1,11 @@
 class StudentController < ApplicationController
   
     def login
+      @student = Student.new
     end
     
     def authenticate
+      flash.clear
       @student = Student.find_by(email_id: params[:student][:email_id])
       if @student && @student.authenticate(params[:student][:password])
         # Authentication successful. Store user information in the session.
@@ -12,7 +14,7 @@ class StudentController < ApplicationController
         redirect_to student_dashboard_path # Redirect to the student's dashboard.
       else
         # Authentication failed. Show an error message and render the login form again.
-        flash[:alert] = 'Invalid Username or Password'
+        flash.now[:error] = 'Invalid Email or password.'
         render :login
       end
     end
@@ -32,6 +34,12 @@ class StudentController < ApplicationController
         # Registration failed. Show an error message and render the signup form again.
         render :new_signup
       end
+    end
+
+    def logout
+      session[:email] = nil  # Clear the student's session
+      session[:name] = nil
+      redirect_to student_login_path  # Redirect to the root page or login page
     end
 
   

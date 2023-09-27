@@ -78,9 +78,12 @@
     <div class="signup-link">
       Don't have an account? <%= link_to "Sign Up", student_signup_path %>
     </div>
-    
 
-  </div>
+    <% flash.each do |key, message| %>
+      <div class="flash-<%= key %>">
+        <%= message %>
+      </div>
+    <% end %>
 
 </body>
 </html>
