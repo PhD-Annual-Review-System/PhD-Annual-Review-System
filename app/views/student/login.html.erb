@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= stylesheet_link_tag 'application' %>
+  <title>Welcome to PHD Annual Review Process</title>
+  <style>
+    .field {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .actions {
+      text-align: center;
+    }
+
+    .btn {
+      background-color: #500000;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #732F2F;
+    }
+
+    .signup-link {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .signup-link a {
+      color: #500000;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Student Login</h1>
+  </div>
+
+  <div class="container">
+    <h2>Student Login</h2>
+    <%= form_for(:student, url: student_login_path, method: :post, id: 'login-form') do |f| %>
+      <div class="field">
+        <%= f.label :"Email Id" %>
+        <%= f.text_field :email_id, required: true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <%= f.password_field :password, required: true %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit 'Log In', class: 'btn' %>
+      </div>
+    <% end %>
+
+    <div class="signup-link">
+      Don't have an account? <%= link_to "Sign Up", student_signup_path %>
+    </div>
+    
+
+  </div>
+
+</body>
+</html>
+
+
+<script>
+  document.getElementById('login-form').addEventListener('submit', function (event) {
+    var emailField = document.querySelector('input[name="email_id"]');
+    var passwordField = document.querySelector('input[name="password"]');
+
+    if (emailField.value.trim() === '' || passwordField.value.trim() === '') {
+      alert('Please fill in both email and password fields.');
+      event.preventDefault(); // Prevent form submission
+    }
+  });
+</script>

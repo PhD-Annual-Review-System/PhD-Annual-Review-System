@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= stylesheet_link_tag 'application' %>
+  <title>Welcome to PHD Annual Review Process</title>
+  
+  <style>
+    
+  .role-buttons {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+  
+  .role-button {
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: #500000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .role-button:hover {
+    background-color: #732F2F;
+  }
+  </style>
+
+</head>
+
+<body>
+  <div class="header">
+    <h1>Welcome to PHD Annual Review Process</h1>
+  </div>
+
+  <div class="container">
+    <h2>Choose your role:</h2>
+    <div class="role-buttons">
+      <%= button_to "Student Login", student_login_path, method: :get, class: "role-button" %>
+      <%= button_to "Admin Login", admin_login_path, method: :get, class: "role-button" %>
+      <%= button_to "Faculty Login", faculty_login_path, method: :get, class: "role-button" %>
+    </div>
+  </div>
+</body>
+</html>
