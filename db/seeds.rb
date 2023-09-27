@@ -22,11 +22,11 @@ more_faculty.each do |faculty|
     Faculty.create!(faculty)
   end
   
-    more_admin = [
-      {:first_name => 'Admin', :last_name => 'Example', :email_id => 'adminexample@tamu.edu', :password => '12345'}
-    ]
-    
-    more_admin.each do |admin|
-        Admin.create!(admin)
-      end
+more_admin = [
+  {:first_name => 'Admin', :last_name => 'Example', :email_id => 'adminexample@tamu.edu', :password => '12345'}
+]
+
+more_admin.each do |admin|
+    Admin.create!(admin)
+  end
 

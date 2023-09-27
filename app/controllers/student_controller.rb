@@ -12,7 +12,7 @@ class StudentController < ApplicationController
         redirect_to student_dashboard_path # Redirect to the student's dashboard.
       else
         # Authentication failed. Show an error message and render the login form again.
-        flash.now[:error] = 'Invalid Email or password.'
+        flash[:alert] = 'Invalid Username or Password'
         render :login
       end
     end

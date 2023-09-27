@@ -1,47 +1,150 @@
-<%= form_for(@student, url: student_signup_path) do |f| %>
-    <div class="field">
-      <%= f.label :FirstName %>
-      <%= f.text_field :first_name %>
-    </div>
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome to PHD Annual Review Process</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+    }
 
-    <div class="field">
-      <%= f.label :LastName %>
-      <%= f.text_field :last_name %>
-    </div>
+    .header {
+      background-color: #500000;
+      color: #fff;
+      text-align: center;
+      padding: 20px;
+    }
 
-    <div class="field">
-      <%= f.label :UIN %>
-      <%= f.text_field :UIN %>
-    </div>
+    .container {
+      max-width: 400px; /* Adjust the container width as needed */
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
 
-    <div class="field">
-      <%= f.label :emailID %>
-      <%= f.text_field :email_id %>
-    </div>
-  
-    <div class="field">
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-    </div>
+    h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
 
-    <div class="field">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
+    .field {
+      margin-bottom: 15px;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+
+    .actions {
+      text-align: center;
+    }
+
+    .btn {
+      background-color: #500000;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #732F2F;
+    }
+
+    #error_explanation {
+      background-color: #f2dede;
+      color: #a94442;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    #error_explanation h2 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+
+    #error_explanation ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    #error_explanation li {
+      margin-left: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>New Student Sign-Up</h1>
   </div>
-  
-  
-    <div class="actions">
-      <%= f.submit 'Sign Up' %>
-    </div>
 
-    <% if @student.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
-      <ul>
-        <% @student.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <% end %>
+  <div class="container">
+    <h2>Student Sign Up</h2>
+    <%= form_for(@student, url: student_signup_path) do |f| %>
+      <div class="field">
+        <%= f.label :"First Name" %>
+        <%= f.text_field :first_name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :"Last Name" %>
+        <%= f.text_field :last_name %>
+      </div>
+
+      <div class="field">
+        <%= f.label :UIN %>
+        <%= f.text_field :UIN %>
+      </div>
+
+      <div class="field">
+        <%= f.label :"Email ID" %>
+        <%= f.text_field :email_id %>
+      </div>
+
+      <div class="field">
+        <%= f.label :Password %>
+        <%= f.password_field :password %>
+      </div>
+
+      <div class="field">
+        <%= f.label :"Password Confirmation" %>
+        <%= f.password_field :password_confirmation %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit 'Sign Up', class: 'btn' %>
+      </div>
+
+      <% if @student.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@student.errors.count, "error") %> prohibited this student from being saved:</h2>
+          <ul>
+            <% @student.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</body>
+</html>

@@ -13,10 +13,10 @@ class Student < ApplicationRecord
         return true
         # Check if the submitted password matches the stored hashed password.
         # if BCrypt::Password.new(password_digest) == submitted_password
-         # return true
-        #else
+        #  return true
+        # else
         #  return false
-        #end
+        # end
     end
 
     def email_id_format
@@ -24,4 +24,5 @@ class Student < ApplicationRecord
           errors.add(:email_id, 'must end with @tamu.edu')
         end
       end
+
 end
