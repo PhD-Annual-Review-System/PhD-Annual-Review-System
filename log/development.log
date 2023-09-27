@@ -226,29 +226,30 @@ Processing by WelcomeController#index as HTML
 Completed 200 OK in 18ms (Views: 16.4ms | ActiveRecord: 0.0ms | Allocations: 23375)
 
 
-Started GET "/" for ::1 at 2023-09-25 12:10:54 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2023-09-26 19:53:35 -0500
   
-ActiveRecord::PendingMigrationError (
-
-Migrations are pending. To resolve this issue, run:
-
-        bin/rails db:migrate RAILS_ENV=development
-
-You have 3 pending migrations:
-
-20230925170052_create_students.rb
-20230925170109_create_faculties.rb
-20230925170115_create_admins.rb
-
-
+ActiveRecord::ConnectionNotEstablished (connection to server at "localhost" (::1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
+connection to server at "localhost" (127.0.0.1), port 5432 failed: Connection refused (0x0000274D/10061)
+	Is the server running on that host and accepting TCP/IP connections?
 ):
   
-activerecord (7.0.8) lib/active_record/migration.rb:662:in `check_pending!'
-activerecord (7.0.8) lib/active_record/migration.rb:627:in `block (2 levels) in call'
-activesupport (7.0.8) lib/active_support/file_update_checker.rb:83:in `execute'
-activerecord (7.0.8) lib/active_record/migration.rb:632:in `block in call'
+activerecord (7.0.8) lib/active_record/connection_adapters/postgresql_adapter.rb:87:in `rescue in new_client'
+activerecord (7.0.8) lib/active_record/connection_adapters/postgresql_adapter.rb:77:in `new_client'
+activerecord (7.0.8) lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `postgresql_connection'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:656:in `public_send'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:656:in `new_connection'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:700:in `checkout_new_connection'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:679:in `try_to_checkout_new_connection'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:640:in `acquire_connection'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:341:in `checkout'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:181:in `connection'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_handler.rb:211:in `retrieve_connection'
+activerecord (7.0.8) lib/active_record/connection_handling.rb:313:in `retrieve_connection'
+activerecord (7.0.8) lib/active_record/connection_handling.rb:280:in `connection'
+activerecord (7.0.8) lib/active_record/migration.rb:648:in `connection'
+activerecord (7.0.8) lib/active_record/migration.rb:643:in `build_watcher'
+activerecord (7.0.8) lib/active_record/migration.rb:625:in `block in call'
 activerecord (7.0.8) lib/active_record/migration.rb:624:in `synchronize'
 activerecord (7.0.8) lib/active_record/migration.rb:624:in `call'
 actionpack (7.0.8) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
@@ -288,29 +289,27 @@ puma (5.6.7) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
 puma (5.6.7) lib/puma/request.rb:76:in `handle_request'
 puma (5.6.7) lib/puma/server.rb:443:in `process_client'
 puma (5.6.7) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
-Started GET "/" for ::1 at 2023-09-25 12:10:55 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mCACHE ActiveRecord::SchemaMigration Pluck (0.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2023-09-26 20:41:40 -0500
   
-ActiveRecord::PendingMigrationError (
-
-Migrations are pending. To resolve this issue, run:
-
-        bin/rails db:migrate RAILS_ENV=development
-
-You have 3 pending migrations:
-
-20230925170052_create_students.rb
-20230925170109_create_faculties.rb
-20230925170115_create_admins.rb
-
-
+ActiveRecord::ConnectionNotEstablished (connection to server at "localhost" (::1), port 5432 failed: fe_sendauth: no password supplied
 ):
   
-activerecord (7.0.8) lib/active_record/migration.rb:662:in `check_pending!'
-activerecord (7.0.8) lib/active_record/migration.rb:627:in `block (2 levels) in call'
-activesupport (7.0.8) lib/active_support/file_update_checker.rb:83:in `execute'
-activerecord (7.0.8) lib/active_record/migration.rb:632:in `block in call'
+activerecord (7.0.8) lib/active_record/connection_adapters/postgresql_adapter.rb:87:in `rescue in new_client'
+activerecord (7.0.8) lib/active_record/connection_adapters/postgresql_adapter.rb:77:in `new_client'
+activerecord (7.0.8) lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `postgresql_connection'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:656:in `public_send'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:656:in `new_connection'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:700:in `checkout_new_connection'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:679:in `try_to_checkout_new_connection'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:640:in `acquire_connection'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:341:in `checkout'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:181:in `connection'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_handler.rb:211:in `retrieve_connection'
+activerecord (7.0.8) lib/active_record/connection_handling.rb:313:in `retrieve_connection'
+activerecord (7.0.8) lib/active_record/connection_handling.rb:280:in `connection'
+activerecord (7.0.8) lib/active_record/migration.rb:648:in `connection'
+activerecord (7.0.8) lib/active_record/migration.rb:643:in `build_watcher'
+activerecord (7.0.8) lib/active_record/migration.rb:625:in `block in call'
 activerecord (7.0.8) lib/active_record/migration.rb:624:in `synchronize'
 activerecord (7.0.8) lib/active_record/migration.rb:624:in `call'
 actionpack (7.0.8) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
@@ -350,1587 +349,344 @@ puma (5.6.7) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
 puma (5.6.7) lib/puma/request.rb:76:in `handle_request'
 puma (5.6.7) lib/puma/server.rb:443:in `process_client'
 puma (5.6.7) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+Started GET "/" for 127.0.0.1 at 2023-09-26 20:56:18 -0500
+  
+ActiveRecord::ConnectionNotEstablished (connection to server at "localhost" (::1), port 5432 failed: fe_sendauth: no password supplied
+):
+  
+activerecord (7.0.8) lib/active_record/connection_adapters/postgresql_adapter.rb:87:in `rescue in new_client'
+activerecord (7.0.8) lib/active_record/connection_adapters/postgresql_adapter.rb:77:in `new_client'
+activerecord (7.0.8) lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `postgresql_connection'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:656:in `public_send'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:656:in `new_connection'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:700:in `checkout_new_connection'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:679:in `try_to_checkout_new_connection'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:640:in `acquire_connection'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:341:in `checkout'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_pool.rb:181:in `connection'
+activerecord (7.0.8) lib/active_record/connection_adapters/abstract/connection_handler.rb:211:in `retrieve_connection'
+activerecord (7.0.8) lib/active_record/connection_handling.rb:313:in `retrieve_connection'
+activerecord (7.0.8) lib/active_record/connection_handling.rb:280:in `connection'
+activerecord (7.0.8) lib/active_record/migration.rb:648:in `connection'
+activerecord (7.0.8) lib/active_record/migration.rb:643:in `build_watcher'
+activerecord (7.0.8) lib/active_record/migration.rb:625:in `block in call'
+activerecord (7.0.8) lib/active_record/migration.rb:624:in `synchronize'
+activerecord (7.0.8) lib/active_record/migration.rb:624:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
+activesupport (7.0.8) lib/active_support/callbacks.rb:99:in `run_callbacks'
+actionpack (7.0.8) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
+web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
+railties (7.0.8) lib/rails/rack/logger.rb:40:in `call_app'
+railties (7.0.8) lib/rails/rack/logger.rb:25:in `block in call'
+activesupport (7.0.8) lib/active_support/tagged_logging.rb:99:in `block in tagged'
+activesupport (7.0.8) lib/active_support/tagged_logging.rb:37:in `tagged'
+activesupport (7.0.8) lib/active_support/tagged_logging.rb:99:in `tagged'
+railties (7.0.8) lib/rails/rack/logger.rb:25:in `call'
+sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/request_id.rb:26:in `call'
+rack (2.2.8) lib/rack/method_override.rb:24:in `call'
+rack (2.2.8) lib/rack/runtime.rb:22:in `call'
+activesupport (7.0.8) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
+actionpack (7.0.8) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
+actionpack (7.0.8) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/static.rb:23:in `call'
+rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
+actionpack (7.0.8) lib/action_dispatch/middleware/host_authorization.rb:138:in `call'
+railties (7.0.8) lib/rails/engine.rb:530:in `call'
+puma (5.6.7) lib/puma/configuration.rb:252:in `call'
+puma (5.6.7) lib/puma/request.rb:77:in `block in handle_request'
+puma (5.6.7) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
+puma (5.6.7) lib/puma/request.rb:76:in `handle_request'
+puma (5.6.7) lib/puma/server.rb:443:in `process_client'
+puma (5.6.7) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
+  [1m[35m (2026.7ms)[0m  [1m[35mCREATE DATABASE "phd_review_app_development" ENCODING = 'unicode'[0m
+  [1m[35m (256.2ms)[0m  [1m[35mCREATE DATABASE "phd_review_app_test" ENCODING = 'unicode'[0m
+  [1m[35m (43.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (47.0ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
   [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1657303558665808095)[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Migrating to CreateStudents (20230925170052)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (6.6ms)[0m  [1m[35mCREATE TABLE "students" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "UIN" integer, "email_id" character varying, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1657303558665808095)[0m
-  [1m[35m (7.4ms)[0m  [1m[35mDROP TABLE "students"[0m
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1657303558665808095)[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to CreateStudents (20230925170052)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (5.7ms)[0m  [1m[35mCREATE TABLE "students" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "UIN" integer, "email_id" character varying, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230925170052"]]
-  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (42.3ms)[0m  [1m[35mCREATE TABLE "students" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "UIN" integer, "email_id" character varying, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230925170052"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
 Migrating to CreateFaculties (20230925170109)
   [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (1.4ms)[0m  [1m[35mCREATE TABLE "faculties" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email_id" character varying, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
-  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK[0m
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_advisory_unlock(1657303558665808095)[0m
-  [1m[35m (4.8ms)[0m  [1m[35mDROP TABLE "faculties"[0m
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1657303558665808095)[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to CreateFaculties (20230925170109)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (6.0ms)[0m  [1m[35mCREATE TABLE "faculties" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email_id" character varying, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (56.9ms)[0m  [1m[35mCREATE TABLE "faculties" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email_id" character varying, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
   [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230925170109"]]
-  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
-Migrating to CreateAdmins (20230925170115)
-  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (1.9ms)[0m  [1m[35mCREATE TABLE "admins" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email_id" character varying, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1657303558665808095)[0m
-  [1m[35m (4.8ms)[0m  [1m[35mDROP TABLE "admins"[0m
-  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1657303558665808095)[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Migrating to CreateAdmins (20230925170115)
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[35m (5.9ms)[0m  [1m[35mCREATE TABLE "admins" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email_id" character varying, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
-  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230925170115"]]
-  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
-  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1657303558665808095)[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Started GET "/" for ::1 at 2023-09-25 12:14:53 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 805)
-  Rendered layout layouts/application.html.erb (Duration: 19.4ms | Allocations: 22193)
-Completed 200 OK in 22ms (Views: 20.9ms | ActiveRecord: 0.0ms | Allocations: 24651)
-
-
-Started GET "/student/login" for ::1 at 2023-09-25 12:14:59 -0500
-Processing by StudentController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 1.9ms | Allocations: 811)
-  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 1835)
-Completed 200 OK in 7ms (Views: 5.8ms | ActiveRecord: 0.0ms | Allocations: 2472)
-
-
-Started GET "/" for ::1 at 2023-09-25 12:26:06 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 805)
-  Rendered layout layouts/application.html.erb (Duration: 14.4ms | Allocations: 21589)
-Completed 200 OK in 17ms (Views: 15.8ms | ActiveRecord: 0.0ms | Allocations: 24046)
-
-
-Started GET "/student/login" for ::1 at 2023-09-25 12:26:08 -0500
-Processing by StudentController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 2.0ms | Allocations: 790)
-  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 1826)
-Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 0.0ms | Allocations: 2463)
-
-
-Started GET "/" for ::1 at 2023-09-25 12:29:03 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 805)
-  Rendered layout layouts/application.html.erb (Duration: 15.2ms | Allocations: 21572)
-Completed 200 OK in 18ms (Views: 16.6ms | ActiveRecord: 0.0ms | Allocations: 24029)
-
-
-Started GET "/student/login" for ::1 at 2023-09-25 12:29:05 -0500
-Processing by StudentController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 1.6ms | Allocations: 805)
-  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 1841)
-Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.0ms | Allocations: 2478)
-
-
-Started POST "/student/login" for ::1 at 2023-09-25 12:29:11 -0500
-Processing by StudentController#authenticate as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "username"=>"suroliaharsh26@gmail.com", "password"=>"[FILTERED]", "commit"=>"Login"}
-Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 1220)
-
-
-  
-NoMethodError (undefined method `[]' for nil:NilClass):
-  
-app/controllers/student_controller.rb:6:in `authenticate'
-Started GET "/" for ::1 at 2023-09-25 12:31:30 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 805)
-  Rendered layout layouts/application.html.erb (Duration: 17.5ms | Allocations: 21483)
-Completed 200 OK in 20ms (Views: 19.0ms | ActiveRecord: 0.0ms | Allocations: 23941)
-
-
-Started GET "/student/login" for ::1 at 2023-09-25 12:31:32 -0500
-Processing by StudentController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1524)
-  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 1614)
-Completed 500 Internal Server Error in 6ms (ActiveRecord: 0.0ms | Allocations: 2243)
-
-
-  
-ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%= form_for(:student, url: student_login_path, method: :post) do |f| %>
-  <div class="field">
-    <%= f.label :email_id %>
-    <%= f.text_field :Email Id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :Password %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit 'Log In' %>
-  </div>
-<% end %>
-):
-1:    <%= form_for(:student, url: student_login_path, method: :post) do |f| %>
-2:      <div class="field">
-3:        <%= f.label :email_id %>
-4:        <%= f.text_field :Email Id %>
-5:      </div>
-6:    
-7:      <div class="field">
-8:        <%= f.label :password %>
-9:        <%= f.password_field :Password %>
-10:      </div>
-11:    
-12:      <div class="actions">
-13:        <%= f.submit 'Log In' %>
-14:      </div>
-15:    <% end %>
-  
-app/views/student/login.html.erb:4: syntax error, unexpected constant, expecting ')'
-app/views/student/login.html.erb:4: syntax error, unexpected constant, expecting ')'
-app/views/student/login.html.erb:4: syntax error, unexpected constant, expecting ')'
-app/views/student/login.html.erb:4: syntax error, unexpected constant, expecting ')'
-Started GET "/" for ::1 at 2023-09-25 12:32:38 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 805)
-  Rendered layout layouts/application.html.erb (Duration: 13.5ms | Allocations: 21504)
-Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms | Allocations: 23961)
-
-
-Started GET "/student/login" for ::1 at 2023-09-25 12:32:39 -0500
-Processing by StudentController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1525)
-  Rendered layout layouts/application.html.erb (Duration: 2.5ms | Allocations: 1615)
-Completed 500 Internal Server Error in 5ms (ActiveRecord: 0.0ms | Allocations: 2244)
-
-
-  
-ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <%= form_for(:student, url: student_login_path, method: :post) do |f| %>
-  <div class="field">
-    <%= f.label :Email Id %>
-    <%= f.string_field :email_id %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit 'Log In' %>
-  </div>
-<% end %>
-):
-1:    <%= form_for(:student, url: student_login_path, method: :post) do |f| %>
-2:      <div class="field">
-3:        <%= f.label :Email Id %>
-4:        <%= f.string_field :email_id %>
-5:      </div>
-6:    
-7:      <div class="field">
-8:        <%= f.label :password %>
-9:        <%= f.password_field :password %>
-10:      </div>
-11:    
-12:      <div class="actions">
-13:        <%= f.submit 'Log In' %>
-14:      </div>
-15:    <% end %>
-  
-app/views/student/login.html.erb:3: syntax error, unexpected constant, expecting ')'
-app/views/student/login.html.erb:3: syntax error, unexpected constant, expecting ')'
-app/views/student/login.html.erb:3: syntax error, unexpected constant, expecting ')'
-app/views/student/login.html.erb:3: syntax error, unexpected constant, expecting ')'
-Started GET "/" for ::1 at 2023-09-25 12:33:23 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 805)
-  Rendered layout layouts/application.html.erb (Duration: 13.8ms | Allocations: 21465)
-Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.0ms | Allocations: 23923)
-
-
-Started GET "/student/login" for ::1 at 2023-09-25 12:33:25 -0500
-Processing by StudentController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 6.9ms | Allocations: 2423)
-  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 2512)
-Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms | Allocations: 3140)
-
-
-  
-ActionView::Template::Error (undefined method `string_field' for #<ActionView::Helpers::FormBuilder:0x0000000105ae42e0 @nested_child_index={}, @options={:allow_method_names_outside_object=>false, :skip_default_ids=>false, :method=>:post, :local=>true}, @template=#<ActionView::Base:0x0000000000b1d0>, @object=nil, @object_name=:student, @default_options={:skip_default_ids=>false, :allow_method_names_outside_object=>false}, @default_html_options={}, @multipart=nil, @index=nil>):
-    1: <%= form_for(:student, url: student_login_path, method: :post) do |f| %>
-    2:   <div class="field">
-    3:     <%= f.label :EmailId %>
-    4:     <%= f.string_field :email_id %>
-    5:   </div>
-    6: 
-    7:   <div class="field">
-  
-app/views/student/login.html.erb:4
-app/views/student/login.html.erb:1
-Started GET "/" for ::1 at 2023-09-25 12:33:57 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 805)
-  Rendered layout layouts/application.html.erb (Duration: 16.5ms | Allocations: 21416)
-Completed 200 OK in 19ms (Views: 17.5ms | ActiveRecord: 0.0ms | Allocations: 23873)
-
-
-Started GET "/student/login" for ::1 at 2023-09-25 12:33:58 -0500
-Processing by StudentController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 7.8ms | Allocations: 1819)
-  Rendered layout layouts/application.html.erb (Duration: 9.7ms | Allocations: 2855)
-Completed 200 OK in 13ms (Views: 11.5ms | ActiveRecord: 0.0ms | Allocations: 3492)
-
-
-Started POST "/student/login" for ::1 at 2023-09-25 12:34:11 -0500
-Processing by StudentController#authenticate as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"email_id"=>"suroliaharsh26@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
-Completed 500 Internal Server Error in 14ms (ActiveRecord: 5.0ms | Allocations: 3937)
-
-
-  
-ActiveRecord::StatementInvalid (PG::UndefinedColumn: ERROR:  column students.username does not exist
-LINE 1: SELECT "students".* FROM "students" WHERE "students"."userna...
-                                                  ^
-):
-  
-app/controllers/student_controller.rb:6:in `authenticate'
-Started GET "/" for ::1 at 2023-09-25 12:35:04 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 805)
-  Rendered layout layouts/application.html.erb (Duration: 14.2ms | Allocations: 21330)
-Completed 200 OK in 17ms (Views: 15.4ms | ActiveRecord: 0.0ms | Allocations: 23787)
-
-
-Started GET "/student/login" for ::1 at 2023-09-25 12:35:06 -0500
-Processing by StudentController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1622)
-  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 2658)
-Completed 200 OK in 7ms (Views: 6.1ms | ActiveRecord: 0.0ms | Allocations: 3295)
-
-
-Started POST "/student/login" for ::1 at 2023-09-25 12:35:12 -0500
-Processing by StudentController#authenticate as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"email_id"=>"suroliaharsh26@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
-  [1m[36mStudent Load (1.3ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "suroliaharsh26@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/student_controller.rb:6:in `authenticate'
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 1.4ms | Allocations: 518)
-  Rendered layout layouts/application.html.erb (Duration: 4.1ms | Allocations: 1484)
-Completed 200 OK in 18ms (Views: 4.7ms | ActiveRecord: 4.1ms | Allocations: 5361)
-
-
-Started POST "/student/login" for ::1 at 2023-09-25 12:35:22 -0500
-Processing by StudentController#authenticate as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"email_id"=>"suroliaharsh26@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
-  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "suroliaharsh26@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/student_controller.rb:6:in `authenticate'
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 1.2ms | Allocations: 517)
-  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 1482)
-Completed 200 OK in 8ms (Views: 4.3ms | ActiveRecord: 0.4ms | Allocations: 2481)
-
-
-Started GET "/" for ::1 at 2023-09-25 12:35:27 -0500
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 266)
-  Rendered layout layouts/application.html.erb (Duration: 2.1ms | Allocations: 1430)
-Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.0ms | Allocations: 1680)
-
-
-Started GET "/student/login" for ::1 at 2023-09-25 12:35:30 -0500
-Processing by StudentController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 2.2ms | Allocations: 682)
-  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 1661)
-Completed 200 OK in 6ms (Views: 5.3ms | ActiveRecord: 0.0ms | Allocations: 1911)
-
-
-Started POST "/student/login" for ::1 at 2023-09-25 12:35:36 -0500
-Processing by StudentController#authenticate as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"email_id"=>"suroliaharsh26@gmail.com", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
-  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "suroliaharsh26@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/student_controller.rb:6:in `authenticate'
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 1.3ms | Allocations: 517)
-  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 1481)
-Completed 200 OK in 8ms (Views: 4.2ms | ActiveRecord: 0.4ms | Allocations: 2478)
-
-
-Started GET "/" for ::1 at 2023-09-25 12:40:57 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 804)
-  Rendered layout layouts/application.html.erb (Duration: 14.1ms | Allocations: 21412)
-Completed 200 OK in 16ms (Views: 15.3ms | ActiveRecord: 0.0ms | Allocations: 23870)
-
-
-Started GET "/student/login" for ::1 at 2023-09-25 12:40:59 -0500
-  
-ActionController::RoutingError (No route matches [GET] "/student/login"):
-  
-Started GET "/student/login" for ::1 at 2023-09-25 12:41:10 -0500
-Processing by StudentController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1519)
-  Rendered layout layouts/application.html.erb (Duration: 2.5ms | Allocations: 2566)
-Completed 200 OK in 3ms (Views: 3.2ms | ActiveRecord: 0.0ms | Allocations: 3210)
-
-
-Started GET "/student/login" for ::1 at 2023-09-25 12:41:10 -0500
-Processing by StudentController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 1.9ms | Allocations: 694)
-  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 1672)
-Completed 200 OK in 6ms (Views: 5.1ms | ActiveRecord: 0.0ms | Allocations: 1920)
-
-
-Started GET "/" for ::1 at 2023-09-25 12:42:15 -0500
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 1101)
-  Rendered layout layouts/application.html.erb (Duration: 0.9ms | Allocations: 1189)
-Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1873)
-
-
-  
-ActionView::Template::Error (undefined local variable or method `student_login_new_path' for #<ActionView::Base:0x0000000000f118>):
-    25:   <p>Please select your role:</p>
-    26:   
-    27:   <div class="role-buttons">
-    28:     <%= button_to "Student Login", student_login_new_path, method: :get, class: "role-button" %>
-    29:     <%= button_to "Admin Login", admin_login_path, method: :get, class: "role-button" %>
-    30:     <%= button_to "Faculty Login", faculty_login_path, method: :get, class: "role-button" %>
-    31:   </div>
-  
-app/views/home/index.html.erb:28
-Started GET "/" for ::1 at 2023-09-25 12:42:15 -0500
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 936)
-  Rendered layout layouts/application.html.erb (Duration: 0.6ms | Allocations: 1023)
-Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1248)
-
-
-  
-ActionView::Template::Error (undefined local variable or method `student_login_new_path' for #<ActionView::Base:0x0000000000f410>):
-    25:   <p>Please select your role:</p>
-    26:   
-    27:   <div class="role-buttons">
-    28:     <%= button_to "Student Login", student_login_new_path, method: :get, class: "role-button" %>
-    29:     <%= button_to "Admin Login", admin_login_path, method: :get, class: "role-button" %>
-    30:     <%= button_to "Faculty Login", faculty_login_path, method: :get, class: "role-button" %>
-    31:   </div>
-  
-app/views/home/index.html.erb:28
-Started GET "/" for ::1 at 2023-09-25 12:42:35 -0500
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 1.1ms | Allocations: 1134)
-  Rendered layout layouts/application.html.erb (Duration: 1.3ms | Allocations: 1223)
-Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 1818)
-
-
-  
-ActionView::Template::Error (undefined local variable or method `student_login_new_path' for #<ActionView::Base:0x0000000000f758>):
-    25:   <p>Please select your role:</p>
-    26:   
-    27:   <div class="role-buttons">
-    28:     <%= button_to "Student Login", student_login_new_path, method: :get, class: "role-button" %>
-    29:     <%= button_to "Admin Login", admin_login_path, method: :get, class: "role-button" %>
-    30:     <%= button_to "Faculty Login", faculty_login_path, method: :get, class: "role-button" %>
-    31:   </div>
-  
-app/views/home/index.html.erb:28
-Started GET "/" for ::1 at 2023-09-25 12:42:40 -0500
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 938)
-  Rendered layout layouts/application.html.erb (Duration: 0.5ms | Allocations: 1025)
-Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1251)
-
-
-  
-ActionView::Template::Error (undefined local variable or method `student_login_new_path' for #<ActionView::Base:0x0000000000fa28>):
-    25:   <p>Please select your role:</p>
-    26:   
-    27:   <div class="role-buttons">
-    28:     <%= button_to "Student Login", student_login_new_path, method: :get, class: "role-button" %>
-    29:     <%= button_to "Admin Login", admin_login_path, method: :get, class: "role-button" %>
-    30:     <%= button_to "Faculty Login", faculty_login_path, method: :get, class: "role-button" %>
-    31:   </div>
-  
-app/views/home/index.html.erb:28
-Started GET "/" for ::1 at 2023-09-25 12:42:41 -0500
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 939)
-  Rendered layout layouts/application.html.erb (Duration: 0.9ms | Allocations: 1026)
-Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms | Allocations: 1251)
-
-
-  
-ActionView::Template::Error (undefined local variable or method `student_login_new_path' for #<ActionView::Base:0x0000000000fcf8>):
-    25:   <p>Please select your role:</p>
-    26:   
-    27:   <div class="role-buttons">
-    28:     <%= button_to "Student Login", student_login_new_path, method: :get, class: "role-button" %>
-    29:     <%= button_to "Admin Login", admin_login_path, method: :get, class: "role-button" %>
-    30:     <%= button_to "Faculty Login", faculty_login_path, method: :get, class: "role-button" %>
-    31:   </div>
-  
-app/views/home/index.html.erb:28
-Started GET "/" for ::1 at 2023-09-25 12:42:45 -0500
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.4ms | Allocations: 939)
-  Rendered layout layouts/application.html.erb (Duration: 0.6ms | Allocations: 1027)
-Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms | Allocations: 1252)
-
-
-  
-ActionView::Template::Error (undefined local variable or method `student_login_new_path' for #<ActionView::Base:0x0000000000fff0>):
-    25:   <p>Please select your role:</p>
-    26:   
-    27:   <div class="role-buttons">
-    28:     <%= button_to "Student Login", student_login_new_path, method: :get, class: "role-button" %>
-    29:     <%= button_to "Admin Login", admin_login_path, method: :get, class: "role-button" %>
-    30:     <%= button_to "Faculty Login", faculty_login_path, method: :get, class: "role-button" %>
-    31:   </div>
-  
-app/views/home/index.html.erb:28
-Started GET "/" for ::1 at 2023-09-25 12:43:07 -0500
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 1.4ms | Allocations: 1133)
-  Rendered layout layouts/application.html.erb (Duration: 1.6ms | Allocations: 1221)
-Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms | Allocations: 1816)
-
-
-  
-ActionView::Template::Error (undefined local variable or method `student_login_new_path' for #<ActionView::Base:0x00000000010338>):
-    25:   <p>Please select your role:</p>
-    26:   
-    27:   <div class="role-buttons">
-    28:     <%= button_to "Student Login", student_login_new_path, method: :get, class: "role-button" %>
-    29:     <%= button_to "Admin Login", admin_login_path, method: :get, class: "role-button" %>
-    30:     <%= button_to "Faculty Login", faculty_login_path, method: :get, class: "role-button" %>
-    31:   </div>
-  
-app/views/home/index.html.erb:28
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[36mStudent Create (1.9ms)[0m  [1m[32mINSERT INTO "students" ("first_name", "last_name", "UIN", "email_id", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Harsh"], ["last_name", "Surolia"], ["UIN", 1234], ["email_id", "suroliaharsh@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-09-25 17:49:06.723187"], ["updated_at", "2023-09-25 17:49:06.723187"]]
-  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
-  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" ORDER BY "students"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
-Started GET "/" for ::1 at 2023-09-25 12:50:12 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 804)
-  Rendered layout layouts/application.html.erb (Duration: 14.9ms | Allocations: 21576)
-Completed 200 OK in 18ms (Views: 16.2ms | ActiveRecord: 0.0ms | Allocations: 24033)
-
-
-Started GET "/student/login" for ::1 at 2023-09-25 12:50:13 -0500
-Processing by StudentController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1629)
-  Rendered layout layouts/application.html.erb (Duration: 7.8ms | Allocations: 2665)
-Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.0ms | Allocations: 3302)
-
-
-Started POST "/student/login" for ::1 at 2023-09-25 12:50:37 -0500
-Processing by StudentController#authenticate as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"email_id"=>"suroliaharsh@tamu.edu", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
-  [1m[36mStudent Load (0.5ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "suroliaharsh@tamu.edu"], ["LIMIT", 1]]
-  ↳ app/controllers/student_controller.rb:6:in `authenticate'
-Completed 500 Internal Server Error in 21ms (ActiveRecord: 8.9ms | Allocations: 9285)
-
-
-  
-NoMethodError (undefined method `authenticate' for #<Student id: 1, first_name: "Harsh", last_name: "Surolia", UIN: 1234, email_id: "suroliaharsh@tamu.edu", password: [FILTERED], created_at: "2023-09-25 17:49:06.723187000 +0000", updated_at: "2023-09-25 17:49:06.723187000 +0000">):
-  
-app/controllers/student_controller.rb:7:in `authenticate'
-Started POST "/student/login" for ::1 at 2023-09-25 12:55:01 -0500
-Processing by StudentController#authenticate as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"email_id"=>"suroliaharsh@tamu.edu", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
-  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "suroliaharsh@tamu.edu"], ["LIMIT", 1]]
-  ↳ app/controllers/student_controller.rb:6:in `authenticate'
-Completed 500 Internal Server Error in 8ms (ActiveRecord: 5.0ms | Allocations: 4164)
-
-
-  
-NameError (undefined local variable or method `student_dashboard_path' for #<StudentController:0x0000000000f618>):
-  
-app/controllers/student_controller.rb:11:in `authenticate'
-Started POST "/student/login" for ::1 at 2023-09-25 12:56:57 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by StudentController#authenticate as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"email_id"=>"suroliaharsh@tamu.edu", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
-  [1m[36mStudent Load (0.6ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "suroliaharsh@tamu.edu"], ["LIMIT", 1]]
-  ↳ app/controllers/student_controller.rb:6:in `authenticate'
-Redirected to http://localhost:3000/student/dashboard
-Completed 302 Found in 15ms (ActiveRecord: 7.3ms | Allocations: 10420)
-
-
-Started GET "/student/dashboard" for ::1 at 2023-09-25 12:56:57 -0500
-Processing by StudentController#dashboard as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/dashboard.html.erb within layouts/application
-  Rendered student/dashboard.html.erb within layouts/application (Duration: 0.5ms | Allocations: 293)
-  Rendered layout layouts/application.html.erb (Duration: 10.9ms | Allocations: 20585)
-Completed 200 OK in 12ms (Views: 12.2ms | ActiveRecord: 0.0ms | Allocations: 21785)
-
-
-Started GET "/" for ::1 at 2023-09-25 17:02:48 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (1.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 804)
-  Rendered layout layouts/application.html.erb (Duration: 14.6ms | Allocations: 21198)
-Completed 200 OK in 18ms (Views: 16.0ms | ActiveRecord: 0.0ms | Allocations: 23655)
-
-
-Started GET "/student/login" for ::1 at 2023-09-25 17:02:51 -0500
-  
-NoMethodError (undefined method `validates' for StudentController:Class):
-  
-app/controllers/student_controller.rb:2:in `<class:StudentController>'
-app/controllers/student_controller.rb:1:in `<main>'
-Started GET "/" for ::1 at 2023-09-25 17:03:57 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.5ms | Allocations: 804)
-  Rendered layout layouts/application.html.erb (Duration: 13.4ms | Allocations: 21419)
-Completed 200 OK in 16ms (Views: 14.4ms | ActiveRecord: 0.0ms | Allocations: 23876)
-
-
-Started GET "/student/login" for ::1 at 2023-09-25 17:03:58 -0500
-Processing by StudentController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 5.7ms | Allocations: 1721)
-  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 2757)
-Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.0ms | Allocations: 3394)
-
-
-Started GET "/student/signup" for ::1 at 2023-09-25 17:04:02 -0500
-Processing by StudentController#new_signup as HTML
-Completed 406 Not Acceptable in 25ms (ActiveRecord: 7.0ms | Allocations: 7457)
-
-
-  
-ActionController::MissingExactTemplate (StudentController#new_signup is missing a template for request formats: text/html):
-  
-actionpack (7.0.8) lib/action_controller/metal/implicit_render.rb:45:in `default_render'
-actionpack (7.0.8) lib/action_controller/metal/basic_implicit_render.rb:7:in `send_action'
-actionpack (7.0.8) lib/abstract_controller/base.rb:215:in `process_action'
-actionpack (7.0.8) lib/action_controller/metal/rendering.rb:165:in `process_action'
-actionpack (7.0.8) lib/abstract_controller/callbacks.rb:234:in `block in process_action'
-activesupport (7.0.8) lib/active_support/callbacks.rb:118:in `block in run_callbacks'
-actiontext (7.0.8) lib/action_text/rendering.rb:20:in `with_renderer'
-actiontext (7.0.8) lib/action_text/engine.rb:69:in `block (4 levels) in <class:Engine>'
-activesupport (7.0.8) lib/active_support/callbacks.rb:127:in `instance_exec'
-activesupport (7.0.8) lib/active_support/callbacks.rb:127:in `block in run_callbacks'
-activesupport (7.0.8) lib/active_support/callbacks.rb:138:in `run_callbacks'
-actionpack (7.0.8) lib/abstract_controller/callbacks.rb:233:in `process_action'
-actionpack (7.0.8) lib/action_controller/metal/rescue.rb:23:in `process_action'
-actionpack (7.0.8) lib/action_controller/metal/instrumentation.rb:67:in `block in process_action'
-activesupport (7.0.8) lib/active_support/notifications.rb:206:in `block in instrument'
-activesupport (7.0.8) lib/active_support/notifications/instrumenter.rb:24:in `instrument'
-activesupport (7.0.8) lib/active_support/notifications.rb:206:in `instrument'
-actionpack (7.0.8) lib/action_controller/metal/instrumentation.rb:66:in `process_action'
-actionpack (7.0.8) lib/action_controller/metal/params_wrapper.rb:259:in `process_action'
-activerecord (7.0.8) lib/active_record/railties/controller_runtime.rb:27:in `process_action'
-actionpack (7.0.8) lib/abstract_controller/base.rb:151:in `process'
-actionview (7.0.8) lib/action_view/rendering.rb:39:in `process'
-actionpack (7.0.8) lib/action_controller/metal.rb:188:in `dispatch'
-actionpack (7.0.8) lib/action_controller/metal.rb:251:in `dispatch'
-actionpack (7.0.8) lib/action_dispatch/routing/route_set.rb:49:in `dispatch'
-actionpack (7.0.8) lib/action_dispatch/routing/route_set.rb:32:in `serve'
-actionpack (7.0.8) lib/action_dispatch/journey/router.rb:50:in `block in serve'
-actionpack (7.0.8) lib/action_dispatch/journey/router.rb:32:in `each'
-actionpack (7.0.8) lib/action_dispatch/journey/router.rb:32:in `serve'
-actionpack (7.0.8) lib/action_dispatch/routing/route_set.rb:852:in `call'
-rack (2.2.8) lib/rack/tempfile_reaper.rb:15:in `call'
-rack (2.2.8) lib/rack/etag.rb:27:in `call'
-rack (2.2.8) lib/rack/conditional_get.rb:27:in `call'
-rack (2.2.8) lib/rack/head.rb:12:in `call'
-actionpack (7.0.8) lib/action_dispatch/http/permissions_policy.rb:38:in `call'
-actionpack (7.0.8) lib/action_dispatch/http/content_security_policy.rb:36:in `call'
-rack (2.2.8) lib/rack/session/abstract/id.rb:266:in `context'
-rack (2.2.8) lib/rack/session/abstract/id.rb:260:in `call'
-actionpack (7.0.8) lib/action_dispatch/middleware/cookies.rb:704:in `call'
-activerecord (7.0.8) lib/active_record/migration.rb:638:in `call'
-actionpack (7.0.8) lib/action_dispatch/middleware/callbacks.rb:27:in `block in call'
-activesupport (7.0.8) lib/active_support/callbacks.rb:99:in `run_callbacks'
-actionpack (7.0.8) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
-actionpack (7.0.8) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (7.0.8) lib/action_dispatch/middleware/actionable_exceptions.rb:17:in `call'
-actionpack (7.0.8) lib/action_dispatch/middleware/debug_exceptions.rb:28:in `call'
-web-console (4.2.1) lib/web_console/middleware.rb:132:in `call_app'
-web-console (4.2.1) lib/web_console/middleware.rb:28:in `block in call'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `catch'
-web-console (4.2.1) lib/web_console/middleware.rb:17:in `call'
-actionpack (7.0.8) lib/action_dispatch/middleware/show_exceptions.rb:29:in `call'
-railties (7.0.8) lib/rails/rack/logger.rb:40:in `call_app'
-railties (7.0.8) lib/rails/rack/logger.rb:25:in `block in call'
-activesupport (7.0.8) lib/active_support/tagged_logging.rb:99:in `block in tagged'
-activesupport (7.0.8) lib/active_support/tagged_logging.rb:37:in `tagged'
-activesupport (7.0.8) lib/active_support/tagged_logging.rb:99:in `tagged'
-railties (7.0.8) lib/rails/rack/logger.rb:25:in `call'
-sprockets-rails (3.4.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
-actionpack (7.0.8) lib/action_dispatch/middleware/remote_ip.rb:93:in `call'
-actionpack (7.0.8) lib/action_dispatch/middleware/request_id.rb:26:in `call'
-rack (2.2.8) lib/rack/method_override.rb:24:in `call'
-rack (2.2.8) lib/rack/runtime.rb:22:in `call'
-activesupport (7.0.8) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
-actionpack (7.0.8) lib/action_dispatch/middleware/server_timing.rb:61:in `block in call'
-actionpack (7.0.8) lib/action_dispatch/middleware/server_timing.rb:26:in `collect_events'
-actionpack (7.0.8) lib/action_dispatch/middleware/server_timing.rb:60:in `call'
-actionpack (7.0.8) lib/action_dispatch/middleware/executor.rb:14:in `call'
-actionpack (7.0.8) lib/action_dispatch/middleware/static.rb:23:in `call'
-rack (2.2.8) lib/rack/sendfile.rb:110:in `call'
-actionpack (7.0.8) lib/action_dispatch/middleware/host_authorization.rb:138:in `call'
-railties (7.0.8) lib/rails/engine.rb:530:in `call'
-puma (5.6.7) lib/puma/configuration.rb:252:in `call'
-puma (5.6.7) lib/puma/request.rb:77:in `block in handle_request'
-puma (5.6.7) lib/puma/thread_pool.rb:340:in `with_force_shutdown'
-puma (5.6.7) lib/puma/request.rb:76:in `handle_request'
-puma (5.6.7) lib/puma/server.rb:443:in `process_client'
-puma (5.6.7) lib/puma/thread_pool.rb:147:in `block in spawn_thread'
-Started GET "/" for ::1 at 2023-09-25 17:06:05 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 804)
-  Rendered layout layouts/application.html.erb (Duration: 12.9ms | Allocations: 21591)
-Completed 200 OK in 16ms (Views: 14.3ms | ActiveRecord: 0.0ms | Allocations: 24049)
-
-
-Started GET "/student/login" for ::1 at 2023-09-25 17:06:06 -0500
-Processing by StudentController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 5.6ms | Allocations: 1685)
-  Rendered layout layouts/application.html.erb (Duration: 7.3ms | Allocations: 2721)
-Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.0ms | Allocations: 3358)
-
-
-Started GET "/student/signup" for ::1 at 2023-09-25 17:06:08 -0500
-Processing by StudentController#new_signup as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/new_signup.html.erb within layouts/application
-  Rendered student/new_signup.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2812)
-  Rendered layout layouts/application.html.erb (Duration: 7.4ms | Allocations: 3792)
-Completed 200 OK in 30ms (Views: 8.1ms | ActiveRecord: 7.5ms | Allocations: 10715)
-
-
-Started GET "/student/signup" for ::1 at 2023-09-25 17:06:19 -0500
-Processing by StudentController#new_signup as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/new_signup.html.erb within layouts/application
-  Rendered student/new_signup.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1931)
-  Rendered layout layouts/application.html.erb (Duration: 4.7ms | Allocations: 2910)
-Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.0ms | Allocations: 3181)
-
-
-Started GET "/" for ::1 at 2023-09-25 17:07:07 -0500
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 1.2ms | Allocations: 483)
-  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 1953)
-Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.0ms | Allocations: 2572)
-
-
-Started GET "/" for ::1 at 2023-09-25 17:07:26 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 804)
-  Rendered layout layouts/application.html.erb (Duration: 14.0ms | Allocations: 21582)
-Completed 200 OK in 17ms (Views: 15.5ms | ActiveRecord: 0.0ms | Allocations: 24039)
-
-
-Started GET "/student/login" for ::1 at 2023-09-25 17:07:31 -0500
-Processing by StudentController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 7.0ms | Allocations: 1706)
-  Rendered layout layouts/application.html.erb (Duration: 9.4ms | Allocations: 2742)
-Completed 200 OK in 13ms (Views: 11.7ms | ActiveRecord: 0.0ms | Allocations: 3379)
-
-
-Started GET "/student/signup" for ::1 at 2023-09-25 17:07:34 -0500
-Processing by StudentController#new_signup as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/new_signup.html.erb within layouts/application
-  Rendered student/new_signup.html.erb within layouts/application (Duration: 3.5ms | Allocations: 2563)
-  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 3543)
-Completed 200 OK in 28ms (Views: 5.9ms | ActiveRecord: 7.0ms | Allocations: 10471)
-
-
-Started POST "/student/signup" for ::1 at 2023-09-25 17:07:53 -0500
-Processing by StudentController#create_signup as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"first_name"=>"Harsh", "last_name"=>"Vardhan", "UIN"=>"", "email_id"=>"harsh@tamu.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
-  Rendering layout layouts/application.html.erb
-  Rendering student/new_signup.html.erb within layouts/application
-  Rendered student/new_signup.html.erb within layouts/application (Duration: 2.2ms | Allocations: 2537)
-  Rendered layout layouts/application.html.erb (Duration: 3.7ms | Allocations: 3508)
-Completed 200 OK in 6ms (Views: 4.1ms | ActiveRecord: 0.0ms | Allocations: 4956)
-
-
-Started POST "/student/signup" for ::1 at 2023-09-25 17:08:15 -0500
-Processing by StudentController#create_signup as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"first_name"=>"Harsh", "last_name"=>"Vardhan", "UIN"=>"1234", "email_id"=>"harsh@tamu.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
-  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
-  ↳ app/controllers/student_controller.rb:26:in `create_signup'
-  [1m[36mStudent Create (1.1ms)[0m  [1m[32mINSERT INTO "students" ("first_name", "last_name", "UIN", "email_id", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Harsh"], ["last_name", "Vardhan"], ["UIN", 1234], ["email_id", "harsh@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-09-25 22:08:15.472349"], ["updated_at", "2023-09-25 22:08:15.472349"]]
-  ↳ app/controllers/student_controller.rb:26:in `create_signup'
-  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
-  ↳ app/controllers/student_controller.rb:26:in `create_signup'
-Redirected to http://localhost:3000/student/dashboard
-Completed 302 Found in 9ms (ActiveRecord: 2.4ms | Allocations: 3492)
-
-
-Started GET "/student/dashboard" for ::1 at 2023-09-25 17:08:15 -0500
-Processing by StudentController#dashboard as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/dashboard.html.erb within layouts/application
-  Rendered student/dashboard.html.erb within layouts/application (Duration: 0.9ms | Allocations: 104)
-  Rendered layout layouts/application.html.erb (Duration: 2.8ms | Allocations: 1259)
-Completed 200 OK in 3ms (Views: 3.2ms | ActiveRecord: 0.0ms | Allocations: 1508)
-
-
-Started GET "/" for ::1 at 2023-09-25 17:08:55 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.6ms | Allocations: 804)
-  Rendered layout layouts/application.html.erb (Duration: 14.5ms | Allocations: 21413)
-Completed 200 OK in 17ms (Views: 15.8ms | ActiveRecord: 0.0ms | Allocations: 23871)
-
-
-Started GET "/student/login" for ::1 at 2023-09-25 17:08:57 -0500
-Processing by StudentController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1697)
-  Rendered layout layouts/application.html.erb (Duration: 7.5ms | Allocations: 2733)
-Completed 200 OK in 10ms (Views: 9.5ms | ActiveRecord: 0.0ms | Allocations: 3370)
-
-
-Started GET "/student/signup" for ::1 at 2023-09-25 17:08:58 -0500
-Processing by StudentController#new_signup as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/new_signup.html.erb within layouts/application
-  Rendered student/new_signup.html.erb within layouts/application (Duration: 4.2ms | Allocations: 2560)
-  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 3540)
-Completed 200 OK in 27ms (Views: 7.1ms | ActiveRecord: 6.5ms | Allocations: 10463)
-
-
-Started POST "/student/login" for ::1 at 2023-09-25 17:09:07 -0500
-Processing by StudentController#authenticate as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"email_id"=>"harsh@tamu.edu", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
-  [1m[36mStudent Load (1.5ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "harsh@tamu.edu"], ["LIMIT", 1]]
-  ↳ app/controllers/student_controller.rb:7:in `authenticate'
-Redirected to http://localhost:3000/student/dashboard
-Completed 302 Found in 10ms (ActiveRecord: 1.7ms | Allocations: 2653)
-
-
-Started GET "/student/dashboard" for ::1 at 2023-09-25 17:09:07 -0500
-Processing by StudentController#dashboard as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/dashboard.html.erb within layouts/application
-  Rendered student/dashboard.html.erb within layouts/application (Duration: 0.5ms | Allocations: 104)
-  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 1254)
-Completed 200 OK in 3ms (Views: 3.0ms | ActiveRecord: 0.0ms | Allocations: 1505)
-
-
-Started GET "/student/signup" for ::1 at 2023-09-25 17:09:11 -0500
-Processing by StudentController#new_signup as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/new_signup.html.erb within layouts/application
-  Rendered student/new_signup.html.erb within layouts/application (Duration: 3.2ms | Allocations: 1723)
-  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 2702)
-Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.0ms | Allocations: 2973)
-
-
-Started POST "/student/signup" for ::1 at 2023-09-25 17:09:32 -0500
-Processing by StudentController#create_signup as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"first_name"=>"harsh1", "last_name"=>"surolia", "UIN"=>"1234", "email_id"=>"suroliaharsh26@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
-  Rendering layout layouts/application.html.erb
-  Rendering student/new_signup.html.erb within layouts/application
-  Rendered student/new_signup.html.erb within layouts/application (Duration: 3.1ms | Allocations: 2579)
-  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 3549)
-Completed 200 OK in 10ms (Views: 5.9ms | ActiveRecord: 0.0ms | Allocations: 5008)
-
-
-Started POST "/student/signup" for ::1 at 2023-09-25 17:09:41 -0500
-Processing by StudentController#create_signup as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"first_name"=>"harsh1", "last_name"=>"surolia", "UIN"=>"1234", "email_id"=>"suroliaharsh26@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
-  Rendering layout layouts/application.html.erb
-  Rendering student/new_signup.html.erb within layouts/application
-  Rendered student/new_signup.html.erb within layouts/application (Duration: 2.7ms | Allocations: 2459)
-  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 3429)
-Completed 200 OK in 8ms (Views: 5.8ms | ActiveRecord: 0.0ms | Allocations: 4581)
-
-
-Started POST "/student/signup" for ::1 at 2023-09-25 17:10:20 -0500
-Processing by StudentController#create_signup as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"first_name"=>"", "last_name"=>"", "UIN"=>"", "email_id"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
-  Rendering layout layouts/application.html.erb
-  Rendering student/new_signup.html.erb within layouts/application
-  Rendered student/new_signup.html.erb within layouts/application (Duration: 4.9ms | Allocations: 5268)
-  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 6238)
-Completed 200 OK in 11ms (Views: 7.4ms | ActiveRecord: 0.0ms | Allocations: 7337)
-
-
-Started GET "/" for ::1 at 2023-09-25 19:47:14 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 804)
-  Rendered layout layouts/application.html.erb (Duration: 15.1ms | Allocations: 21498)
-Completed 200 OK in 18ms (Views: 16.6ms | ActiveRecord: 0.0ms | Allocations: 23955)
-
-
-Started GET "/student/login" for ::1 at 2023-09-25 19:47:20 -0500
-Processing by StudentController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 6.5ms | Allocations: 1712)
-  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 2748)
-Completed 200 OK in 11ms (Views: 9.9ms | ActiveRecord: 0.0ms | Allocations: 3385)
-
-
-Started GET "/student/signup" for ::1 at 2023-09-25 19:47:27 -0500
-Processing by StudentController#new_signup as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/new_signup.html.erb within layouts/application
-  Rendered student/new_signup.html.erb within layouts/application (Duration: 3.7ms | Allocations: 2554)
-  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 3534)
-Completed 200 OK in 29ms (Views: 6.5ms | ActiveRecord: 8.3ms | Allocations: 10456)
-
-
-Started POST "/student/signup" for ::1 at 2023-09-25 19:47:31 -0500
-Processing by StudentController#create_signup as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"first_name"=>"Harsh", "last_name"=>"Vardhan", "UIN"=>"", "email_id"=>"", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
-  Rendering layout layouts/application.html.erb
-  Rendering student/new_signup.html.erb within layouts/application
-  Rendered student/new_signup.html.erb within layouts/application (Duration: 4.4ms | Allocations: 4043)
-  Rendered layout layouts/application.html.erb (Duration: 6.5ms | Allocations: 5014)
-Completed 200 OK in 11ms (Views: 7.2ms | ActiveRecord: 0.0ms | Allocations: 6494)
-
-
-Started GET "/student/signup" for ::1 at 2023-09-25 19:47:51 -0500
-Processing by StudentController#new_signup as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/new_signup.html.erb within layouts/application
-  Rendered student/new_signup.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1705)
-  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 2683)
-Completed 200 OK in 6ms (Views: 5.6ms | ActiveRecord: 0.0ms | Allocations: 2948)
-
-
-Started GET "/" for ::1 at 2023-09-26 12:51:33 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 804)
-  Rendered layout layouts/application.html.erb (Duration: 19.3ms | Allocations: 21567)
-Completed 200 OK in 22ms (Views: 20.7ms | ActiveRecord: 0.0ms | Allocations: 24024)
-
-
-Started GET "/faculty/login" for ::1 at 2023-09-26 12:51:36 -0500
-Processing by FacultyController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering faculty/login.html.erb within layouts/application
-  Rendered faculty/login.html.erb within layouts/application (Duration: 5.5ms | Allocations: 1680)
-  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 2716)
-Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.0ms | Allocations: 3353)
-
-
-Started GET "/" for ::1 at 2023-09-26 12:53:29 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 804)
-  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 21575)
-Completed 200 OK in 15ms (Views: 14.0ms | ActiveRecord: 0.0ms | Allocations: 24032)
-
-
-Started GET "/faculty/login" for ::1 at 2023-09-26 12:53:31 -0500
-Processing by FacultyController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering faculty/login.html.erb within layouts/application
-  Rendered faculty/login.html.erb within layouts/application (Duration: 5.5ms | Allocations: 1642)
-  Rendered layout layouts/application.html.erb (Duration: 7.2ms | Allocations: 2678)
-Completed 200 OK in 10ms (Views: 9.2ms | ActiveRecord: 0.0ms | Allocations: 3315)
-
-
-Started POST "/faculty/login" for ::1 at 2023-09-26 12:53:33 -0500
-Processing by FacultyController#authenticate as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "faculty"=>{"email_id"=>"", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
-  [1m[36mFaculty Load (1.4ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."email_id" = $1 LIMIT $2[0m  [["email_id", ""], ["LIMIT", 1]]
-  ↳ app/controllers/faculty_controller.rb:6:in `authenticate'
-  Rendering layout layouts/application.html.erb
-  Rendering faculty/login.html.erb within layouts/application
-  Rendered faculty/login.html.erb within layouts/application (Duration: 0.9ms | Allocations: 522)
-  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 1488)
-Completed 200 OK in 18ms (Views: 3.5ms | ActiveRecord: 4.2ms | Allocations: 5321)
-
-
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mActiveRecord::InternalMetadata Pluck (0.4ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
-  [1m[35m (30.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "phd_review_app_test"[0m
-  [1m[35m (56.2ms)[0m  [1m[35mCREATE DATABASE "phd_review_app_test" ENCODING = 'unicode'[0m
-Started GET "/" for ::1 at 2023-09-26 13:06:29 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 804)
-  Rendered layout layouts/application.html.erb (Duration: 14.1ms | Allocations: 21518)
-Completed 200 OK in 17ms (Views: 15.5ms | ActiveRecord: 0.0ms | Allocations: 23975)
-
-
-Started GET "/faculty/login" for ::1 at 2023-09-26 13:06:31 -0500
-Processing by FacultyController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering faculty/login.html.erb within layouts/application
-  Rendered faculty/login.html.erb within layouts/application (Duration: 5.8ms | Allocations: 1627)
-  Rendered layout layouts/application.html.erb (Duration: 7.8ms | Allocations: 2663)
-Completed 200 OK in 10ms (Views: 9.5ms | ActiveRecord: 0.0ms | Allocations: 3300)
-
-
-Started POST "/faculty/login" for ::1 at 2023-09-26 13:06:44 -0500
-Processing by FacultyController#authenticate as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "faculty"=>{"email_id"=>"", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
-  [1m[36mFaculty Load (0.7ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."email_id" = $1 LIMIT $2[0m  [["email_id", ""], ["LIMIT", 1]]
-  ↳ app/controllers/faculty_controller.rb:6:in `authenticate'
-  Rendering layout layouts/application.html.erb
-  Rendering faculty/login.html.erb within layouts/application
-  Rendered faculty/login.html.erb within layouts/application (Duration: 1.2ms | Allocations: 522)
-  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 1488)
-Completed 200 OK in 19ms (Views: 4.5ms | ActiveRecord: 4.2ms | Allocations: 5280)
-
-
-Started GET "/" for ::1 at 2023-09-26 13:16:08 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 804)
-  Rendered layout layouts/application.html.erb (Duration: 16.5ms | Allocations: 21405)
-Completed 200 OK in 20ms (Views: 18.1ms | ActiveRecord: 0.0ms | Allocations: 23862)
-
-
-Started GET "/student/login" for ::1 at 2023-09-26 13:16:10 -0500
-Processing by StudentController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 6.0ms | Allocations: 1679)
-  Rendered layout layouts/application.html.erb (Duration: 8.0ms | Allocations: 2715)
-Completed 200 OK in 11ms (Views: 9.7ms | ActiveRecord: 0.0ms | Allocations: 3352)
-
-
-Started GET "/student/signup" for ::1 at 2023-09-26 13:16:12 -0500
-Processing by StudentController#new_signup as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/new_signup.html.erb within layouts/application
-  Rendered student/new_signup.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2554)
-  Rendered layout layouts/application.html.erb (Duration: 6.4ms | Allocations: 3534)
-Completed 200 OK in 32ms (Views: 7.2ms | ActiveRecord: 7.9ms | Allocations: 10616)
-
-
-Started POST "/student/signup" for ::1 at 2023-09-26 13:16:25 -0500
-Processing by StudentController#create_signup as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"first_name"=>"Harsh", "last_name"=>"surolia", "UIN"=>"1234", "email_id"=>"suroliaharsh26@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
-  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
-  ↳ app/controllers/student_controller.rb:26:in `create_signup'
-  [1m[36mStudent Exists? (2.2ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "suroliaharsh26@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/student_controller.rb:26:in `create_signup'
-  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
-  ↳ app/controllers/student_controller.rb:26:in `create_signup'
-  Rendering layout layouts/application.html.erb
-  Rendering student/new_signup.html.erb within layouts/application
-  Rendered student/new_signup.html.erb within layouts/application (Duration: 2.1ms | Allocations: 1769)
-  Rendered layout layouts/application.html.erb (Duration: 4.0ms | Allocations: 2740)
-Completed 200 OK in 15ms (Views: 4.5ms | ActiveRecord: 2.5ms | Allocations: 7851)
-
-
-Started POST "/student/signup" for ::1 at 2023-09-26 13:16:49 -0500
-Processing by StudentController#create_signup as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"first_name"=>"Harsh", "last_name"=>"surolia", "UIN"=>"1234", "email_id"=>"suroliaharsh26@tamu.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  ↳ app/controllers/student_controller.rb:26:in `create_signup'
-  [1m[36mStudent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "suroliaharsh26@tamu.edu"], ["LIMIT", 1]]
-  ↳ app/controllers/student_controller.rb:26:in `create_signup'
-  [1m[36mStudent Create (0.9ms)[0m  [1m[32mINSERT INTO "students" ("first_name", "last_name", "UIN", "email_id", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Harsh"], ["last_name", "surolia"], ["UIN", 1234], ["email_id", "suroliaharsh26@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-09-26 18:16:49.725765"], ["updated_at", "2023-09-26 18:16:49.725765"]]
-  ↳ app/controllers/student_controller.rb:26:in `create_signup'
-  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
-  ↳ app/controllers/student_controller.rb:26:in `create_signup'
-Redirected to http://localhost:3000/student/dashboard
-Completed 302 Found in 10ms (ActiveRecord: 2.2ms | Allocations: 4272)
-
-
-Started GET "/student/dashboard" for ::1 at 2023-09-26 13:16:49 -0500
-Processing by StudentController#dashboard as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/dashboard.html.erb within layouts/application
-  Rendered student/dashboard.html.erb within layouts/application (Duration: 0.9ms | Allocations: 104)
-  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 1272)
-Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 1521)
-
-
-  [1m[36mStudent Load (0.7ms)[0m  [1m[34mSELECT "students".* FROM "students" ORDER BY "students"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
-Started GET "/" for ::1 at 2023-09-26 13:33:54 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (1.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 804)
-  Rendered layout layouts/application.html.erb (Duration: 16.2ms | Allocations: 21477)
-Completed 200 OK in 19ms (Views: 17.7ms | ActiveRecord: 0.0ms | Allocations: 23934)
-
-
-Started GET "/student/login" for ::1 at 2023-09-26 13:33:56 -0500
-Processing by StudentController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 6.3ms | Allocations: 1703)
-  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 2739)
-Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.0ms | Allocations: 3376)
-
-
-Started GET "/student/signup" for ::1 at 2023-09-26 13:33:57 -0500
-Processing by StudentController#new_signup as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/new_signup.html.erb within layouts/application
-  Rendered student/new_signup.html.erb within layouts/application (Duration: 3.7ms | Allocations: 2554)
-  Rendered layout layouts/application.html.erb (Duration: 5.6ms | Allocations: 3534)
-Completed 200 OK in 28ms (Views: 6.5ms | ActiveRecord: 7.0ms | Allocations: 10529)
-
-
-Started POST "/student/signup" for ::1 at 2023-09-26 13:34:14 -0500
-Processing by StudentController#create_signup as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"first_name"=>"Harsh1", "last_name"=>"surolia1", "UIN"=>"1234", "email_id"=>"suroliaharsh@tamu.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  ↳ app/controllers/student_controller.rb:26:in `create_signup'
-  [1m[36mStudent Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "suroliaharsh@tamu.edu"], ["LIMIT", 1]]
-  ↳ app/controllers/student_controller.rb:26:in `create_signup'
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
-  ↳ app/controllers/student_controller.rb:26:in `create_signup'
-  Rendering layout layouts/application.html.erb
-  Rendering student/new_signup.html.erb within layouts/application
-  Rendered student/new_signup.html.erb within layouts/application (Duration: 2.1ms | Allocations: 2304)
-  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 3275)
-Completed 200 OK in 11ms (Views: 3.9ms | ActiveRecord: 0.8ms | Allocations: 8397)
-
-
-Started POST "/student/signup" for ::1 at 2023-09-26 13:34:24 -0500
-Processing by StudentController#create_signup as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"first_name"=>"Harsh1", "last_name"=>"surolia1", "UIN"=>"1234", "email_id"=>"suroliaharsh@tamu.edu", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
-  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
-  ↳ app/controllers/student_controller.rb:26:in `create_signup'
-  [1m[36mStudent Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "suroliaharsh@tamu.edu"], ["LIMIT", 1]]
-  ↳ app/controllers/student_controller.rb:26:in `create_signup'
-  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
-  ↳ app/controllers/student_controller.rb:26:in `create_signup'
-  Rendering layout layouts/application.html.erb
-  Rendering student/new_signup.html.erb within layouts/application
-  Rendered student/new_signup.html.erb within layouts/application (Duration: 2.6ms | Allocations: 2165)
-  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 3135)
-Completed 200 OK in 13ms (Views: 5.6ms | ActiveRecord: 0.8ms | Allocations: 6257)
-
-
-Started GET "/" for ::1 at 2023-09-26 13:34:27 -0500
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 266)
-  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 1427)
-Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.0ms | Allocations: 1677)
-
-
-Started GET "/" for ::1 at 2023-09-26 15:46:01 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 802)
-  Rendered layout layouts/application.html.erb (Duration: 23.8ms | Allocations: 21349)
-Completed 200 OK in 28ms (Views: 25.7ms | ActiveRecord: 0.0ms | Allocations: 23806)
-
-
-Started GET "/student/login" for ::1 at 2023-09-26 15:46:05 -0500
-Processing by StudentController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 5.0ms | Allocations: 1691)
-  Rendered layout layouts/application.html.erb (Duration: 6.6ms | Allocations: 2727)
-Completed 200 OK in 9ms (Views: 8.0ms | ActiveRecord: 0.0ms | Allocations: 3364)
-
-
-Started POST "/student/login" for ::1 at 2023-09-26 15:46:07 -0500
-Processing by StudentController#authenticate as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"email_id"=>"", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
-  [1m[36mStudent Load (0.9ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", ""], ["LIMIT", 1]]
-  ↳ app/controllers/student_controller.rb:7:in `authenticate'
-  Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 1.5ms | Allocations: 545)
-  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 1511)
-Completed 200 OK in 21ms (Views: 4.6ms | ActiveRecord: 4.6ms | Allocations: 5824)
-
-
-Started GET "/student/signup" for ::1 at 2023-09-26 15:46:09 -0500
-Processing by StudentController#new_signup as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/new_signup.html.erb within layouts/application
-  Rendered student/new_signup.html.erb within layouts/application (Duration: 4.6ms | Allocations: 2577)
-  Rendered layout layouts/application.html.erb (Duration: 7.0ms | Allocations: 3555)
-Completed 200 OK in 28ms (Views: 8.0ms | ActiveRecord: 6.6ms | Allocations: 8903)
-
-
-Started POST "/student/signup" for ::1 at 2023-09-26 15:46:28 -0500
-Processing by StudentController#create_signup as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"first_name"=>"Harsh", "last_name"=>"surolia", "UIN"=>"1234", "email_id"=>"suroliaharsh26@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]"}, "commit"=>"Sign Up"}
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  ↳ app/controllers/student_controller.rb:26:in `create_signup'
-  [1m[36mStudent Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "suroliaharsh26@gmail.com"], ["LIMIT", 1]]
-  ↳ app/controllers/student_controller.rb:26:in `create_signup'
-  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mROLLBACK[0m
-  ↳ app/controllers/student_controller.rb:26:in `create_signup'
-  Rendering layout layouts/application.html.erb
-  Rendering student/new_signup.html.erb within layouts/application
-  Rendered student/new_signup.html.erb within layouts/application (Duration: 2.0ms | Allocations: 1768)
-  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 2739)
-Completed 200 OK in 12ms (Views: 4.4ms | ActiveRecord: 0.9ms | Allocations: 6379)
-
-
-Started GET "/" for ::1 at 2023-09-26 15:46:52 -0500
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 266)
-  Rendered layout layouts/application.html.erb (Duration: 2.2ms | Allocations: 1442)
-Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.0ms | Allocations: 1692)
-
-
-Started GET "/admin/login" for ::1 at 2023-09-26 15:46:57 -0500
-Processing by AdminController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering admin/login.html.erb within layouts/application
-  Rendered admin/login.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1006)
-  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 2041)
-Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.0ms | Allocations: 2675)
-
-
-Started POST "/admin/login" for ::1 at 2023-09-26 15:47:06 -0500
-Processing by AdminController#authenticate as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "admin"=>{"email_id"=>"admin@tamu.edu", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
-  [1m[36mAdmin Load (1.7ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."email_id" = $1 LIMIT $2[0m  [["email_id", "admin@tamu.edu"], ["LIMIT", 1]]
-  ↳ app/controllers/admin_controller.rb:6:in `authenticate'
-  Rendering layout layouts/application.html.erb
-  Rendering admin/login.html.erb within layouts/application
-  Rendered admin/login.html.erb within layouts/application (Duration: 1.4ms | Allocations: 520)
-  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 1484)
-Completed 200 OK in 18ms (Views: 5.0ms | ActiveRecord: 4.9ms | Allocations: 3411)
-
-
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[36mStudent Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "suroliaharsh@tamu.edu"], ["LIMIT", 1]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[36mStudent Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "suroliaharsh@tamu.edu"], ["LIMIT", 1]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[36mStudent Exists? (1.1ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "suroliaharsh@tamu.edu"], ["LIMIT", 1]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
-  [1m[36mStudent Load (0.5ms)[0m  [1m[34mSELECT "students".* FROM "students" ORDER BY "students"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[36mStudent Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
-  [1m[36mStudent Create (1.3ms)[0m  [1m[32mINSERT INTO "students" ("first_name", "last_name", "UIN", "email_id", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Harsh"], ["last_name", "Surolia"], ["UIN", 2609], ["email_id", "harshsurolia@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-09-26 20:53:16.698322"], ["updated_at", "2023-09-26 20:53:16.698322"]]
-  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[36mFaculty Create (1.0ms)[0m  [1m[32mINSERT INTO "faculties" ("first_name", "last_name", "email_id", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Prof"], ["last_name", "Example"], ["email_id", "profexample@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-09-26 20:53:16.707705"], ["updated_at", "2023-09-26 20:53:16.707705"]]
-  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[36mStudent Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
-  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" ORDER BY "students"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
-  [1m[36mAdmin Load (0.6ms)[0m  [1m[34mSELECT "admins".* FROM "admins" ORDER BY "admins"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
-  [1m[36mAdmin Load (0.4ms)[0m  [1m[34mSELECT "admins".* FROM "admins" ORDER BY "admins"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
-  [1m[36mAdmin Load (0.6ms)[0m  [1m[34mSELECT "admins".* FROM "admins" ORDER BY "admins"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
-  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" ORDER BY "students"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
-  [1m[36mFaculty Load (0.9ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" ORDER BY "faculties"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
-  [1m[36mAdmin Create (1.4ms)[0m  [1m[32mINSERT INTO "admins" ("first_name", "last_name", "email_id", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Admin"], ["last_name", "Example"], ["email_id", "adminexample@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-09-26 20:55:03.269022"], ["updated_at", "2023-09-26 20:55:03.269022"]]
   [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
-Started GET "/" for ::1 at 2023-09-26 15:55:28 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateAdmins (20230925170115)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (54.6ms)[0m  [1m[35mCREATE TABLE "admins" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email_id" character varying, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230925170115"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-09-27 03:22:45.045472"], ["updated_at", "2023-09-27 03:22:45.045472"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1657303558665808095)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
+  [1m[36mStudent Create (0.4ms)[0m  [1m[32mINSERT INTO "students" ("first_name", "last_name", "UIN", "email_id", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Harsh"], ["last_name", "Surolia"], ["UIN", 2609], ["email_id", "harshsurolia@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-09-27 03:22:56.145143"], ["updated_at", "2023-09-27 03:22:56.145143"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFaculty Create (0.6ms)[0m  [1m[32mINSERT INTO "faculties" ("first_name", "last_name", "email_id", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Prof"], ["last_name", "Example"], ["email_id", "profexample@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-09-27 03:22:56.151801"], ["updated_at", "2023-09-27 03:22:56.151801"]]
+  [1m[36mTRANSACTION (12.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAdmin Create (0.6ms)[0m  [1m[32mINSERT INTO "admins" ("first_name", "last_name", "email_id", "password", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["first_name", "Admin"], ["last_name", "Example"], ["email_id", "adminexample@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-09-27 03:22:56.170359"], ["updated_at", "2023-09-27 03:22:56.170359"]]
+  [1m[36mTRANSACTION (1.9ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for 127.0.0.1 at 2023-09-26 22:25:48 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Processing by HomeController#index as HTML
   Rendering layout layouts/application.html.erb
   Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 802)
-  Rendered layout layouts/application.html.erb (Duration: 17.1ms | Allocations: 21434)
-Completed 200 OK in 20ms (Views: 18.3ms | ActiveRecord: 0.0ms | Allocations: 23891)
+  Rendered home/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 848)
+  Rendered layout layouts/application.html.erb (Duration: 343.1ms | Allocations: 78141)
+Completed 200 OK in 386ms (Views: 350.9ms | ActiveRecord: 0.0ms | Allocations: 81477)
 
 
-Started GET "/admin/login" for ::1 at 2023-09-26 15:55:30 -0500
+Started GET "/student/login" for 127.0.0.1 at 2023-09-26 22:27:46 -0500
+Processing by StudentController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/login.html.erb within layouts/application
+  Rendered student/login.html.erb within layouts/application (Duration: 31.6ms | Allocations: 2623)
+  Rendered layout layouts/application.html.erb (Duration: 34.6ms | Allocations: 3695)
+Completed 200 OK in 40ms (Views: 37.8ms | ActiveRecord: 0.0ms | Allocations: 4351)
+
+
+Started GET "/admin/login" for 127.0.0.1 at 2023-09-26 22:27:50 -0500
 Processing by AdminController#login as HTML
   Rendering layout layouts/application.html.erb
   Rendering admin/login.html.erb within layouts/application
-  Rendered admin/login.html.erb within layouts/application (Duration: 6.4ms | Allocations: 1627)
-  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 2663)
-Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.0ms | Allocations: 3300)
+  Rendered admin/login.html.erb within layouts/application (Duration: 10.1ms | Allocations: 1109)
+  Rendered layout layouts/application.html.erb (Duration: 32.4ms | Allocations: 2181)
+Completed 200 OK in 43ms (Views: 40.3ms | ActiveRecord: 0.0ms | Allocations: 2836)
 
 
-Started POST "/admin/login" for ::1 at 2023-09-26 15:55:42 -0500
-Processing by AdminController#authenticate as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "admin"=>{"email_id"=>"adminexample@tamu.edu", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
-  [1m[36mAdmin Load (0.6ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."email_id" = $1 LIMIT $2[0m  [["email_id", "adminexample@tamu.edu"], ["LIMIT", 1]]
-  ↳ app/controllers/admin_controller.rb:6:in `authenticate'
-Completed 500 Internal Server Error in 27ms (ActiveRecord: 7.7ms | Allocations: 8784)
-
-
-  
-NoMethodError (undefined method `authenticate' for #<Admin id: 1, first_name: "Admin", last_name: "Example", email_id: "adminexample@tamu.edu", password: [FILTERED], created_at: "2023-09-26 20:55:03.269022000 +0000", updated_at: "2023-09-26 20:55:03.269022000 +0000">):
-  
-app/controllers/admin_controller.rb:7:in `authenticate'
-Started GET "/" for ::1 at 2023-09-26 15:56:29 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (1.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 802)
-  Rendered layout layouts/application.html.erb (Duration: 12.3ms | Allocations: 21538)
-Completed 200 OK in 15ms (Views: 13.7ms | ActiveRecord: 0.0ms | Allocations: 23995)
-
-
-Started GET "/admin/login" for ::1 at 2023-09-26 15:56:30 -0500
-Processing by AdminController#login as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering admin/login.html.erb within layouts/application
-  Rendered admin/login.html.erb within layouts/application (Duration: 5.1ms | Allocations: 1633)
-  Rendered layout layouts/application.html.erb (Duration: 6.9ms | Allocations: 2669)
-Completed 200 OK in 10ms (Views: 9.0ms | ActiveRecord: 0.0ms | Allocations: 3306)
-
-
-Started POST "/admin/login" for ::1 at 2023-09-26 15:56:35 -0500
-Processing by AdminController#authenticate as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "admin"=>{"email_id"=>"adminexample@tamu.edu", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
-  [1m[36mAdmin Load (0.5ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."email_id" = $1 LIMIT $2[0m  [["email_id", "adminexample@tamu.edu"], ["LIMIT", 1]]
-  ↳ app/controllers/admin_controller.rb:6:in `authenticate'
-Redirected to http://localhost:3000/admin/dashboard
-Completed 302 Found in 29ms (ActiveRecord: 8.7ms | Allocations: 8388)
-
-
-Started GET "/admin/dashboard" for ::1 at 2023-09-26 15:56:35 -0500
-Processing by AdminController#dashboard as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering admin/dashboard.html.erb within layouts/application
-  Rendered admin/dashboard.html.erb within layouts/application (Duration: 0.9ms | Allocations: 104)
-  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 1281)
-Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 1532)
-
-
-Started GET "/" for ::1 at 2023-09-26 15:56:41 -0500
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 266)
-  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 1409)
-Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms | Allocations: 1659)
-
-
-Started GET "/faculty/login" for ::1 at 2023-09-26 15:56:50 -0500
+Started GET "/faculty/login" for 127.0.0.1 at 2023-09-26 22:27:51 -0500
 Processing by FacultyController#login as HTML
   Rendering layout layouts/application.html.erb
   Rendering faculty/login.html.erb within layouts/application
-  Rendered faculty/login.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1021)
-  Rendered layout layouts/application.html.erb (Duration: 5.4ms | Allocations: 2056)
-Completed 200 OK in 8ms (Views: 7.2ms | ActiveRecord: 0.0ms | Allocations: 2690)
+  Rendered faculty/login.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1102)
+  Rendered layout layouts/application.html.erb (Duration: 5.2ms | Allocations: 2175)
+Completed 200 OK in 10ms (Views: 8.6ms | ActiveRecord: 0.0ms | Allocations: 2830)
 
 
-Started POST "/faculty/login" for ::1 at 2023-09-26 15:57:11 -0500
-Processing by FacultyController#authenticate as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "faculty"=>{"email_id"=>"profexample@tamu.edu", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
-  [1m[36mFaculty Load (0.6ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."email_id" = $1 LIMIT $2[0m  [["email_id", "profexample@tamu.edu"], ["LIMIT", 1]]
-  ↳ app/controllers/faculty_controller.rb:6:in `authenticate'
-Redirected to http://localhost:3000/faculty/dashboard
-Completed 302 Found in 28ms (ActiveRecord: 6.0ms | Allocations: 9056)
-
-
-Started GET "/faculty/dashboard" for ::1 at 2023-09-26 15:57:11 -0500
-Processing by FacultyController#dashboard as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering faculty/dashboard.html.erb within layouts/application
-  Rendered faculty/dashboard.html.erb within layouts/application (Duration: 0.5ms | Allocations: 103)
-  Rendered layout layouts/application.html.erb (Duration: 2.0ms | Allocations: 1276)
-Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.0ms | Allocations: 1525)
-
-
-Started GET "/" for ::1 at 2023-09-26 15:59:00 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
-Processing by HomeController#index as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.8ms | Allocations: 802)
-  Rendered layout layouts/application.html.erb (Duration: 14.7ms | Allocations: 21527)
-Completed 200 OK in 18ms (Views: 16.2ms | ActiveRecord: 0.0ms | Allocations: 23984)
-
-
-Started GET "/student/login" for ::1 at 2023-09-26 15:59:02 -0500
+Started GET "/student/login" for 127.0.0.1 at 2023-09-26 22:27:52 -0500
 Processing by StudentController#login as HTML
   Rendering layout layouts/application.html.erb
   Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 5.9ms | Allocations: 1773)
-  Rendered layout layouts/application.html.erb (Duration: 7.8ms | Allocations: 2809)
-Completed 200 OK in 10ms (Views: 9.4ms | ActiveRecord: 0.0ms | Allocations: 3446)
+  Rendered student/login.html.erb within layouts/application (Duration: 0.9ms | Allocations: 722)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 1737)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms | Allocations: 2007)
 
 
-Started POST "/student/login" for ::1 at 2023-09-26 15:59:03 -0500
-Processing by StudentController#authenticate as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"email_id"=>"", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
-  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", ""], ["LIMIT", 1]]
-  ↳ app/controllers/student_controller.rb:7:in `authenticate'
+Started GET "/admin/login" for 127.0.0.1 at 2023-09-26 22:27:54 -0500
+Processing by AdminController#login as HTML
   Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 1.6ms | Allocations: 545)
-  Rendered layout layouts/application.html.erb (Duration: 4.4ms | Allocations: 1511)
-Completed 200 OK in 20ms (Views: 5.2ms | ActiveRecord: 4.2ms | Allocations: 5805)
+  Rendering admin/login.html.erb within layouts/application
+  Rendered admin/login.html.erb within layouts/application (Duration: 0.7ms | Allocations: 678)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 1691)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms | Allocations: 1959)
 
 
-Started POST "/student/login" for ::1 at 2023-09-26 15:59:04 -0500
-Processing by StudentController#authenticate as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"email_id"=>"", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
-  [1m[36mStudent Load (0.5ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", ""], ["LIMIT", 1]]
-  ↳ app/controllers/student_controller.rb:7:in `authenticate'
+Started GET "/faculty/login" for 127.0.0.1 at 2023-09-26 22:27:55 -0500
+Processing by FacultyController#login as HTML
   Rendering layout layouts/application.html.erb
-  Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 1.4ms | Allocations: 544)
-  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 1509)
-Completed 200 OK in 8ms (Views: 4.5ms | ActiveRecord: 0.5ms | Allocations: 2519)
+  Rendering faculty/login.html.erb within layouts/application
+  Rendered faculty/login.html.erb within layouts/application (Duration: 0.8ms | Allocations: 699)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 1712)
+Completed 200 OK in 5ms (Views: 4.4ms | ActiveRecord: 0.0ms | Allocations: 1979)
 
 
-Started GET "/" for ::1 at 2023-09-26 16:00:33 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/" for 127.0.0.1 at 2023-09-26 23:23:32 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Processing by HomeController#index as HTML
   Rendering layout layouts/application.html.erb
   Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 802)
-  Rendered layout layouts/application.html.erb (Duration: 12.9ms | Allocations: 21553)
-Completed 200 OK in 16ms (Views: 14.4ms | ActiveRecord: 0.0ms | Allocations: 24010)
+  Rendered home/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 848)
+  Rendered layout layouts/application.html.erb (Duration: 55.3ms | Allocations: 23201)
+Completed 200 OK in 68ms (Views: 61.8ms | ActiveRecord: 0.0ms | Allocations: 25860)
 
 
-Started GET "/student/login" for ::1 at 2023-09-26 16:00:36 -0500
+Started GET "/student/login" for 127.0.0.1 at 2023-09-26 23:23:33 -0500
 Processing by StudentController#login as HTML
   Rendering layout layouts/application.html.erb
   Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 4.4ms | Allocations: 2139)
-  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 2228)
-Completed 500 Internal Server Error in 7ms (ActiveRecord: 0.0ms | Allocations: 2856)
+  Rendered student/login.html.erb within layouts/application (Duration: 5.5ms | Allocations: 1988)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 3060)
+Completed 200 OK in 13ms (Views: 11.3ms | ActiveRecord: 0.0ms | Allocations: 3716)
 
 
+Started GET "/auth/google_oauth2" for 127.0.0.1 at 2023-09-26 23:23:35 -0500
   
-ActionView::Template::Error (wrong number of arguments (given 3, expected 1..2)):
-    1: <%= form_for(:student, url: student_login_path, method: :post, id: 'login-form') do |f| %>
-    2:   <div class="field">
-    3:     <%= f.label :EmailId %>
-    4:     <%= f.text_field :email_id , nil, required: true %>
-    5:   </div>
-    6: 
-    7:   <div class="field">
+ActionController::RoutingError (No route matches [GET] "/auth/google_oauth2"):
   
-app/views/student/login.html.erb:4
-app/views/student/login.html.erb:1
-Started GET "/" for ::1 at 2023-09-26 16:02:15 -0500
+Started GET "/" for 127.0.0.1 at 2023-09-26 23:30:23 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.4ms | Allocations: 848)
+  Rendered layout layouts/application.html.erb (Duration: 65.4ms | Allocations: 23120)
+Completed 200 OK in 81ms (Views: 73.7ms | ActiveRecord: 0.0ms | Allocations: 25779)
+
+
+Started GET "/student/login" for 127.0.0.1 at 2023-09-26 23:31:07 -0500
+Processing by StudentController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/login.html.erb within layouts/application
+  Rendered student/login.html.erb within layouts/application (Duration: 5.6ms | Allocations: 1988)
+  Rendered layout layouts/application.html.erb (Duration: 8.6ms | Allocations: 3063)
+Completed 200 OK in 13ms (Views: 11.7ms | ActiveRecord: 0.0ms | Allocations: 3719)
+
+
+Started GET "/auth/google_oauth2" for 127.0.0.1 at 2023-09-26 23:31:08 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/auth/google_oauth2"):
+  
+Started GET "/" for 127.0.0.1 at 2023-09-26 23:31:34 -0500
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 0.2ms | Allocations: 304)
+  Rendered layout layouts/application.html.erb (Duration: 2.7ms | Allocations: 1552)
+Completed 200 OK in 4ms (Views: 3.5ms | ActiveRecord: 0.0ms | Allocations: 2088)
+
+
+Started GET "/student/login" for 127.0.0.1 at 2023-09-26 23:31:36 -0500
+Processing by StudentController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/login.html.erb within layouts/application
+  Rendered student/login.html.erb within layouts/application (Duration: 0.8ms | Allocations: 819)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 1889)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.0ms | Allocations: 2417)
+
+
+Started GET "/auth/google_oauth2" for 127.0.0.1 at 2023-09-26 23:31:37 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/auth/google_oauth2"):
+  
+Started GET "/" for 127.0.0.1 at 2023-09-26 23:34:03 -0500
   [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Processing by HomeController#index as HTML
   Rendering layout layouts/application.html.erb
   Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.9ms | Allocations: 802)
-  Rendered layout layouts/application.html.erb (Duration: 16.3ms | Allocations: 21570)
-Completed 200 OK in 19ms (Views: 17.7ms | ActiveRecord: 0.0ms | Allocations: 24028)
+  Rendered home/index.html.erb within layouts/application (Duration: 2.6ms | Allocations: 848)
+  Rendered layout layouts/application.html.erb (Duration: 43.8ms | Allocations: 23076)
+Completed 200 OK in 57ms (Views: 50.7ms | ActiveRecord: 0.0ms | Allocations: 25735)
 
 
-Started GET "/student/login" for ::1 at 2023-09-26 16:02:16 -0500
+Started GET "/student/login" for 127.0.0.1 at 2023-09-26 23:34:05 -0500
 Processing by StudentController#login as HTML
   Rendering layout layouts/application.html.erb
   Rendering student/login.html.erb within layouts/application
-  Rendered student/login.html.erb within layouts/application (Duration: 5.8ms | Allocations: 1781)
-  Rendered layout layouts/application.html.erb (Duration: 7.6ms | Allocations: 2817)
-Completed 200 OK in 11ms (Views: 9.6ms | ActiveRecord: 0.0ms | Allocations: 3454)
+  Rendered student/login.html.erb within layouts/application (Duration: 5.7ms | Allocations: 2006)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 3078)
+Completed 200 OK in 14ms (Views: 11.9ms | ActiveRecord: 0.0ms | Allocations: 3733)
 
 
-Started POST "/student/login" for ::1 at 2023-09-26 16:02:38 -0500
-Processing by StudentController#authenticate as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"email_id"=>"suroliaharsh@tamu.edu", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
-  [1m[36mStudent Load (1.2ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "suroliaharsh@tamu.edu"], ["LIMIT", 1]]
-  ↳ app/controllers/student_controller.rb:7:in `authenticate'
-Redirected to http://localhost:3000/student/dashboard
-Completed 302 Found in 29ms (ActiveRecord: 10.7ms | Allocations: 9293)
-
-
-Started GET "/student/dashboard" for ::1 at 2023-09-26 16:02:38 -0500
-Processing by StudentController#dashboard as HTML
-  Rendering layout layouts/application.html.erb
-  Rendering student/dashboard.html.erb within layouts/application
-  Rendered student/dashboard.html.erb within layouts/application (Duration: 0.6ms | Allocations: 104)
-  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 1263)
-Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.0ms | Allocations: 1514)
-
-
-Started GET "/" for ::1 at 2023-09-26 16:04:20 -0500
-  [1m[36mActiveRecord::SchemaMigration Pluck (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/auth/google_oauth2" for 127.0.0.1 at 2023-09-26 23:34:06 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/auth/google_oauth2"):
+  
+Started GET "/" for 127.0.0.1 at 2023-09-26 23:51:49 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Processing by HomeController#index as HTML
   Rendering layout layouts/application.html.erb
   Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.7ms | Allocations: 802)
-  Rendered layout layouts/application.html.erb (Duration: 12.6ms | Allocations: 21570)
-Completed 200 OK in 16ms (Views: 14.0ms | ActiveRecord: 0.0ms | Allocations: 24027)
+  Rendered home/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 848)
+  Rendered layout layouts/application.html.erb (Duration: 51.6ms | Allocations: 23096)
+Completed 200 OK in 86ms (Views: 68.9ms | ActiveRecord: 0.0ms | Allocations: 25755)
 
 
-Started GET "/admin/login" for ::1 at 2023-09-26 16:04:22 -0500
-Processing by AdminController#login as HTML
+Started GET "/student/login" for 127.0.0.1 at 2023-09-26 23:51:50 -0500
+Processing by StudentController#login as HTML
   Rendering layout layouts/application.html.erb
-  Rendering admin/login.html.erb within layouts/application
-  Rendered admin/login.html.erb within layouts/application (Duration: 6.1ms | Allocations: 1725)
-  Rendered layout layouts/application.html.erb (Duration: 8.0ms | Allocations: 2761)
-Completed 200 OK in 11ms (Views: 10.0ms | ActiveRecord: 0.0ms | Allocations: 3398)
+  Rendering student/login.html.erb within layouts/application
+  Rendered student/login.html.erb within layouts/application (Duration: 24.1ms | Allocations: 1991)
+  Rendered layout layouts/application.html.erb (Duration: 27.7ms | Allocations: 3063)
+Completed 200 OK in 34ms (Views: 31.6ms | ActiveRecord: 0.0ms | Allocations: 3719)
 
 
-Started POST "/admin/login" for ::1 at 2023-09-26 16:04:29 -0500
-Processing by AdminController#authenticate as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "admin"=>{"email_id"=>"g", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
-  [1m[36mAdmin Load (0.7ms)[0m  [1m[34mSELECT "admins".* FROM "admins" WHERE "admins"."email_id" = $1 LIMIT $2[0m  [["email_id", "g"], ["LIMIT", 1]]
-  ↳ app/controllers/admin_controller.rb:6:in `authenticate'
-  Rendering layout layouts/application.html.erb
-  Rendering admin/login.html.erb within layouts/application
-  Rendered admin/login.html.erb within layouts/application (Duration: 1.3ms | Allocations: 534)
-  Rendered layout layouts/application.html.erb (Duration: 3.6ms | Allocations: 1500)
-Completed 200 OK in 18ms (Views: 4.4ms | ActiveRecord: 2.9ms | Allocations: 5300)
-
-
-Started GET "/admin" for ::1 at 2023-09-26 16:04:36 -0500
+Started GET "/auth/google_oauth2" for 127.0.0.1 at 2023-09-26 23:51:52 -0500
   
-ActionController::RoutingError (No route matches [GET] "/admin"):
+ActionController::RoutingError (No route matches [GET] "/auth/google_oauth2"):
   
-Started GET "/" for ::1 at 2023-09-26 16:04:38 -0500
+Started GET "/rails/info/routes?path=auth" for 127.0.0.1 at 2023-09-26 23:57:58 -0500
+Processing by Rails::InfoController#routes as */*
+  Parameters: {"path"=>"auth"}
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 2159)
+
+
+Started GET "/rails/info/routes?path=auth" for 127.0.0.1 at 2023-09-26 23:57:59 -0500
+Processing by Rails::InfoController#routes as */*
+  Parameters: {"path"=>"auth"}
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 775)
+
+
+Started GET "/rails/info/routes?path=auth" for 127.0.0.1 at 2023-09-26 23:58:01 -0500
+Processing by Rails::InfoController#routes as */*
+  Parameters: {"path"=>"auth"}
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.0ms | Allocations: 775)
+
+
+Started GET "/" for 127.0.0.1 at 2023-09-26 23:59:13 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
 Processing by HomeController#index as HTML
   Rendering layout layouts/application.html.erb
   Rendering home/index.html.erb within layouts/application
-  Rendered home/index.html.erb within layouts/application (Duration: 0.3ms | Allocations: 266)
-  Rendered layout layouts/application.html.erb (Duration: 2.3ms | Allocations: 1434)
-Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.0ms | Allocations: 1685)
+  Rendered home/index.html.erb within layouts/application (Duration: 1.9ms | Allocations: 848)
+  Rendered layout layouts/application.html.erb (Duration: 55.3ms | Allocations: 23229)
+Completed 200 OK in 68ms (Views: 62.3ms | ActiveRecord: 0.0ms | Allocations: 25893)
 
 
-Started GET "/faculty/login" for ::1 at 2023-09-26 16:04:41 -0500
-Processing by FacultyController#login as HTML
+Started GET "/student/login" for 127.0.0.1 at 2023-09-26 23:59:14 -0500
+Processing by StudentController#login as HTML
   Rendering layout layouts/application.html.erb
-  Rendering faculty/login.html.erb within layouts/application
-  Rendered faculty/login.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1089)
-  Rendered layout layouts/application.html.erb (Duration: 4.6ms | Allocations: 2126)
-Completed 200 OK in 7ms (Views: 6.6ms | ActiveRecord: 0.0ms | Allocations: 2761)
+  Rendering student/login.html.erb within layouts/application
+  Rendered student/login.html.erb within layouts/application (Duration: 6.9ms | Allocations: 1988)
+  Rendered layout layouts/application.html.erb (Duration: 9.8ms | Allocations: 3060)
+Completed 200 OK in 15ms (Views: 13.5ms | ActiveRecord: 0.0ms | Allocations: 3716)
 
 
-Started POST "/faculty/login" for ::1 at 2023-09-26 16:04:46 -0500
-Processing by FacultyController#authenticate as HTML
-  Parameters: {"authenticity_token"=>"[FILTERED]", "faculty"=>{"email_id"=>"d", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
-  [1m[36mFaculty Load (0.6ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."email_id" = $1 LIMIT $2[0m  [["email_id", "d"], ["LIMIT", 1]]
-  ↳ app/controllers/faculty_controller.rb:6:in `authenticate'
+Started GET "/auth/google_oauth2" for 127.0.0.1 at 2023-09-26 23:59:16 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/auth/google_oauth2"):
+  
+[ActionDispatch::HostAuthorization::DefaultResponseApp] Blocked hosts: www.example.com
+Started GET "/" for 127.0.0.1 at 2023-09-27 00:21:24 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
   Rendering layout layouts/application.html.erb
-  Rendering faculty/login.html.erb within layouts/application
-  Rendered faculty/login.html.erb within layouts/application (Duration: 1.4ms | Allocations: 536)
-  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 1500)
-Completed 200 OK in 16ms (Views: 5.0ms | ActiveRecord: 3.3ms | Allocations: 3442)
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.5ms | Allocations: 848)
+  Rendered layout layouts/application.html.erb (Duration: 44.7ms | Allocations: 23056)
+Completed 200 OK in 56ms (Views: 50.6ms | ActiveRecord: 0.0ms | Allocations: 25715)
 
 
+Started GET "/student/login" for 127.0.0.1 at 2023-09-27 00:21:25 -0500
+Processing by StudentController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/login.html.erb within layouts/application
+  Rendered student/login.html.erb within layouts/application (Duration: 5.2ms | Allocations: 2006)
+  Rendered layout layouts/application.html.erb (Duration: 8.3ms | Allocations: 3081)
+Completed 200 OK in 13ms (Views: 11.6ms | ActiveRecord: 0.0ms | Allocations: 3737)
+
+
+Started GET "/auth/google_oauth2" for 127.0.0.1 at 2023-09-27 00:21:27 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/auth/google_oauth2"):
+  

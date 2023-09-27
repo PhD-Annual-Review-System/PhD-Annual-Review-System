@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 	root 'home#index'
 
+  get 'auth/:provider/callback', to: 'sessions#create'
+  get 'auth/failure', to: redirect('/')
+  get 'signout', to: 'sessions#destroy', as: 'signout'
+
   get 'student/login', to: 'student#login'
   post 'student/login', to: 'student#authenticate'
   get 'student/dashboard', to: 'student#dashboard', as: 'student_dashboard'
@@ -14,6 +18,7 @@ Rails.application.routes.draw do
   get 'faculty/login', to: 'faculty#login'
   post 'faculty/login', to: 'faculty#authenticate'
   get 'faculty/dashboard', to: 'faculty#dashboard', as: 'faculty_dashboard'
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

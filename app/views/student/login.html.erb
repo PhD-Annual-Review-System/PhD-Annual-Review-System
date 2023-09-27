@@ -12,6 +12,11 @@
   <div class="actions">
     <%= f.submit 'Log In' %>
   </div>
+
+  <div class="oauth">
+    <%= link_to "Sign in with Google", "/auth/google_oauth2" %>
+  </div>
+
 <% end %>
 
 Don't have an account? <%= link_to "Sign Up", student_signup_path %>
