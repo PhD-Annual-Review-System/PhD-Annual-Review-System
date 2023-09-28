@@ -38,6 +38,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_170115) do
     t.integer "UIN"
     t.string "email_id"
     t.string "password"
+  end
+  
+  create_table "documents", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "file_path"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
