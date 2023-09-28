@@ -7,7 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 more_student = [
-  {:first_name => 'Harsh', :last_name => 'Surolia', :email_id => 'harshsurolia@tamu.edu', :password => '12345', :UIN => 2609}
+  {:first_name => 'Harsh', :last_name => 'Surolia', :email_id => 'harshsurolia@tamu.edu', :password => '12345678', :UIN => 2609}
 ]
 
 more_student.each do |student|
@@ -15,7 +15,7 @@ more_student.each do |student|
   end
 
 more_faculty = [
-  {:first_name => 'Prof', :last_name => 'Example', :email_id => 'profexample@tamu.edu', :password => '12345'}
+  {:first_name => 'Prof', :last_name => 'Example', :email_id => 'profexample@tamu.edu', :password => '12345678'}
 ]
 
 more_faculty.each do |faculty|
@@ -23,7 +23,7 @@ more_faculty.each do |faculty|
   end
   
 more_admin = [
-  {:first_name => 'Admin', :last_name => 'Example', :email_id => 'adminexample@tamu.edu', :password => '12345'}
+  {:first_name => 'Admin', :last_name => 'Example', :email_id => 'adminexample@tamu.edu', :password => '12345678'}
 ]
 
 more_admin.each do |admin|
