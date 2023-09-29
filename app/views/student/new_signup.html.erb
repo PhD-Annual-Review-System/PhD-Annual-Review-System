@@ -14,36 +14,36 @@
     <%= form_for(@student, url: student_signup_path) do |f| %>
       <div class="field">
         <%= f.label :"First Name" %>
-        <%= f.text_field :first_name %>
+        <%= f.text_field :first_name, id: "first_name" %>
       </div>
 
       <div class="field">
         <%= f.label :"Last Name" %>
-        <%= f.text_field :last_name %>
+        <%= f.text_field :last_name, id: "last_name" %>
       </div>
 
       <div class="field">
         <%= f.label :UIN %>
-        <%= f.text_field :UIN %>
+        <%= f.text_field :UIN, id: "UIN" %>
       </div>
 
       <div class="field">
         <%= f.label :"Email ID" %>
-        <%= f.text_field :email_id %>
+        <%= f.text_field :email_id, id: "email_id" %>
       </div>
 
       <div class="field">
         <%= f.label :Password %>
-        <%= f.password_field :password %>
+        <%= f.password_field :password, id: "password" %>
       </div>
 
       <div class="field">
         <%= f.label :"Password Confirmation" %>
-        <%= f.password_field :password_confirmation %>
+        <%= f.password_field :password_confirmation, id: "confirm_password" %>
       </div>
 
       <div class="actions">
-        <%= f.submit 'Sign Up', class: 'btn' %>
+        <%= f.submit 'Sign Up', class: 'btn', id: "submit" %>
       </div>
 
       <% if @student.errors.any? %>

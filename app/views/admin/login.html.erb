@@ -62,16 +62,22 @@
     <%= form_for(:admin, url: admin_login_path, method: :post, id: 'login-form') do |f| %>
       <div class="field">
         <%= f.label :"Email Id" %>
-        <%= f.text_field :email_id, required: true %>
+        <%= f.text_field :email_id, required: true, id: "email_id" %>
       </div>
 
       <div class="field">
         <%= f.label :password %>
-        <%= f.password_field :password, required: true %>
+        <%= f.password_field :password, required: true, id: "password" %>
       </div>
 
       <div class="actions">
-        <%= f.submit 'Log In', class: 'btn' %>
+        <%= f.submit 'Log In', class: 'btn', id: "login" %>
+      </div>
+    <% end %>
+
+    <% flash.each do |key, message| %>
+      <div class="flash-<%= key %>">
+        <%= message %>
       </div>
     <% end %>
     
