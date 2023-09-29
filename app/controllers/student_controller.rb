@@ -1,7 +1,6 @@
 class StudentController < ApplicationController
   
     def login
-      @student = Student.new
     end
     
     def authenticate

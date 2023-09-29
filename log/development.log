@@ -7379,3 +7379,58 @@ Processing by StudentController#login as HTML
 Completed 200 OK in 5ms (Views: 5.0ms | ActiveRecord: 0.0ms | Allocations: 2675)
 
 
+Started GET "/" for ::1 at 2023-09-28 19:39:17 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 14.8ms | Allocations: 24007)
+  Rendered layout layouts/application.html.erb (Duration: 16.8ms | Allocations: 25314)
+Completed 200 OK in 20ms (Views: 18.4ms | ActiveRecord: 0.0ms | Allocations: 27771)
+
+
+Started GET "/" for ::1 at 2023-09-28 19:40:03 -0500
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.7ms | Allocations: 978)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 1838)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 2088)
+
+
+Started GET "/student/login" for ::1 at 2023-09-28 19:40:17 -0500
+Processing by StudentController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/login.html.erb within layouts/application
+  Rendered student/login.html.erb within layouts/application (Duration: 6.0ms | Allocations: 3094)
+  Rendered layout layouts/application.html.erb (Duration: 7.0ms | Allocations: 3894)
+Completed 200 OK in 30ms (Views: 8.4ms | ActiveRecord: 9.7ms | Allocations: 11891)
+
+
+Started GET "/student/signup" for ::1 at 2023-09-28 19:40:25 -0500
+Processing by StudentController#new_signup as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/new_signup.html.erb within layouts/application
+  Rendered student/new_signup.html.erb within layouts/application (Duration: 7.9ms | Allocations: 3249)
+  Rendered layout layouts/application.html.erb (Duration: 9.7ms | Allocations: 4036)
+Completed 200 OK in 11ms (Views: 10.3ms | ActiveRecord: 0.0ms | Allocations: 4366)
+
+
+Started GET "/admin/login" for ::1 at 2023-09-28 19:40:40 -0500
+Processing by AdminController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering admin/login.html.erb within layouts/application
+  Rendered admin/login.html.erb within layouts/application (Duration: 5.4ms | Allocations: 2049)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 2848)
+Completed 200 OK in 10ms (Views: 8.8ms | ActiveRecord: 0.0ms | Allocations: 3482)
+
+
+Started GET "/faculty/login" for ::1 at 2023-09-28 19:40:50 -0500
+Processing by FacultyController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering faculty/login.html.erb within layouts/application
+  Rendered faculty/login.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1990)
+  Rendered layout layouts/application.html.erb (Duration: 10.4ms | Allocations: 2792)
+Completed 200 OK in 13ms (Views: 11.8ms | ActiveRecord: 0.0ms | Allocations: 3427)
+
+
