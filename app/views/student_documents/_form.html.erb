@@ -12,19 +12,55 @@
   <% end %>
 
   <div>
-    <%= form.label :resume_file, style: "display: block" %>
-    <%= form.text_field :resume_file %>
-  </div>
-
-  <div>
-    <%= form.label :resume_link, style: "display: block" %>
-    <%= form.text_field :resume_link %>
-  </div>
-
-  <div>
     <%= form.label :email_id, style: "display: block" %>
     <%= form.text_field :email_id %>
   </div>
+
+  <div>
+    <%= form.label :UIN, style: "display: block" %>
+    <%= form.text_field :UIN %>
+  </div>
+
+  <div>
+    <%= form.label :phd_start_date, style: "display: block" %>
+    <%= form.text_field :phd_start_date %>
+  </div>
+
+  <div>
+    <%= form.label :milestones_passed, style: "display: block" %>
+    <%= form.text_area :milestones_passed %>
+  </div>
+
+  <div>
+    <%= form.label :improvement_plan_present, style: "display: block" %>
+    <%= form.text_field :improvement_plan_present %>
+  </div>
+
+  <div>
+    <%= form.label :improvement_plan_summary, style: "display: block" %>
+    <%= form.text_area :improvement_plan_summary %>
+  </div>
+
+  <div>
+    <%= form.label :gpa, style: "display: block" %>
+    <%= form.text_field :gpa %>
+  </div>
+
+  <div>
+    <%= form.label :support_in_last_sem, style: "display: block" %>
+    <%= form.text_area :support_in_last_sem %>
+  </div>
+
+  <div>
+    <%= form.label :number_of_paper_submissions, style: "display: block" %>
+    <%= form.number_field :number_of_paper_submissions %>
+  </div>
+
+  <div>
+    <%= form.label :number_of_papers_published, style: "display: block" %>
+    <%= form.number_field :number_of_papers_published %>
+  </div>
+
 
   <div>
     <%= form.submit %>

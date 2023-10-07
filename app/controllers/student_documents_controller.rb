@@ -25,9 +25,21 @@ class StudentDocumentsController < ApplicationController
   end
 
   # POST /student_documents or /student_documents.json
+
   def create
-  
+   # @student_document = StudentDocument.new(student_document_params)
+    @student_document = StudentDocument.find_or_initialize_by(email_id: session[:email]) 
+    respond_to do |format|
+      if @student_document.save
+        format.html { redirect_to student_document_url(@student_document), notice: "Student document was successfully created." }
+        format.json { render :show, status: :created, location: @student_document }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @student_document.errors, status: :unprocessable_entity }
+      end
+    end
   end
+
 
   # PATCH/PUT /student_documents/1 or /student_documents/1.json
   def update
@@ -61,6 +73,17 @@ class StudentDocumentsController < ApplicationController
       #update the resume_link column with link to the resume file
       @student_document.update(resume_link: presigned_url)
       
+      @student_document.update(phd_start_date: params[:student_document][:phd_start_date])
+      @student_document.update(milestones_passed: params[:student_document][:milestones_passed])
+      @student_document.update(improvement_plan_present: params[:student_document][:improvement_plan_present])
+      @student_document.update(improvement_plan_summary: params[:student_document][:improvement_plan_summary])
+      @student_document.update(gpa: params[:student_document][:gpa])
+      @student_document.update(support_in_last_sem: params[:student_document][:support_in_last_sem])
+      @student_document.update(number_of_paper_submissions: params[:student_document][:number_of_paper_submissions])
+      @student_document.update(number_of_papers_published: params[:student_document][:number_of_papers_published])
+
+
+
       #render show to when resume is updloaded
       render :show
     else
@@ -87,6 +110,6 @@ class StudentDocumentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def student_document_params
-      params.require(:student_document).permit(:resume_file, :resume_link, session[:email])
+      params.require(:student_document).permit(:resume_file, :resume_link, session[:email], :phd_start_date, :milestones_passed, :improvement_plan_present, :improvement_plan_summary, :gpa, :support_in_last_sem, :number_of_paper_submissions, :number_of_papers_published)
     end
 end
