@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_27_204000) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_05_203534) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -34,6 +34,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_27_204000) do
     t.string "password_digest"
   end
 
+  create_table "student_documents", force: :cascade do |t|
+    t.binary "resume_file"
+    t.string "resume_link"
+    t.string "email_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "students", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
@@ -43,6 +51,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_27_204000) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+    t.index ["email_id"], name: "index_students_on_email_id", unique: true
   end
 
+  add_foreign_key "student_documents", "students", column: "email_id", primary_key: "email_id"
 end

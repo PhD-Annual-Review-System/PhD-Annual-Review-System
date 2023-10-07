@@ -1,0 +1,27 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Student documents</h1>
+
+<div id="student_documents">
+  <p> First name: <%=  @student_data.first_name %> </p>
+  <p> Last name: <%=  @student_data.last_name %> </p>
+  <p> Email Id: <%=  @student_document.email_id %> </p>
+  <p> UIN: <%=  @student_data.UIN %> </p>
+ </div> 
+
+ <%= form_for(@student_document, url: student_documents_path, method: :patch) do |f| %>   
+   <div class="field">
+     <%= f.label :"Resume" %>
+     <%= f.file_field :resume_file,  id: "resume_file" %>
+   </div>
+
+   <div class="actions">
+     <%= f.submit 'Upload', class: 'btn',id: "submit" %>
+   </div>
+
+ <% end %>
+
+
+
+
+

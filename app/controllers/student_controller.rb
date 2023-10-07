@@ -10,7 +10,7 @@ class StudentController < ApplicationController
         # Authentication successful. Store user information in the session.
         session[:email] = @student.email_id
         session[:name] = @student.first_name
-        redirect_to student_dashboard_path # Redirect to the student's dashboard.
+        redirect_to student_documents_path # Redirect to the student's dashboard.
       else
         # Authentication failed. Show an error message and render the login form again.
         flash.now[:error] = 'Invalid Email or password.'
@@ -28,7 +28,7 @@ class StudentController < ApplicationController
         # Registration successful. Redirect to the student's dashboard or login page.
         session[:email] = @student.email_id
         session[:name] = @student.first_name
-        redirect_to student_dashboard_path
+        redirect_to student_documents_path
       else
         # Registration failed. Show an error message and render the signup form again.
         render :new_signup
@@ -46,4 +46,5 @@ class StudentController < ApplicationController
     def student_params
       params.require(:student).permit(:first_name, :last_name, :UIN, :email_id, :password, :password_confirmation)
     end
+
 end
