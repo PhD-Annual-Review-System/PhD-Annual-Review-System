@@ -43,51 +43,56 @@ class StudentDocumentsController < ApplicationController
 
   # PATCH/PUT /student_documents/1 or /student_documents/1.json
   def update
-    if @student_document.save
+    if @student_document.save 
+      puts "hello"
+      puts params[:student_document][:resume_file]
+      if params[:student_document][:resume_file]
+        #set the content type of the file uploaded
+        @content_type = params[:student_document][:resume_file].content_type
+       
+        #store the resume file name in database
+        @student_document.update(resume_file: params[:student_document][:resume_file].original_filename)
+        puts "Resume updated successfully."
+        
+        #save the resume in s3 bucket in the name of email id. This will be file key
+        @current_email = session[:email]
+        @input_string = @current_email
+        @replacement_string = "_resume"
+        @input_string.gsub!(/@tamu\.edu/, @replacement_string)
       
-      #set the content type of the file uploaded
-      @content_type = params[:student_document][:resume_file].content_type
-     
-      #store the resume file name in database
-      @student_document.update(resume_file: params[:student_document][:resume_file].original_filename)
-      puts "Resume updated successfully."
-      
-      #save the resume in s3 bucket in the name of email id. This will be file key
-      @input_string = session[:email]
-      @replacement_string = "_resume"
-      @input_string.gsub!(/@tamu\.edu/, @replacement_string)
-      
-      #upload resume in s3 bucket
-      s3 = Aws::S3::Resource.new(region: 'us-east-2')
-      obj = s3.bucket('phd-annual-review-sys-docs')
-      File.open( params[:student_document][:resume_file].tempfile, 'rb') do |file|
-        obj.put_object(body: file,  content_type: 'application/pdf', key:@input_string )
+        #upload resume in s3 bucket
+        s3 = Aws::S3::Resource.new(region: 'us-east-2')
+        obj = s3.bucket('phd-annual-review-sys-docs')
+        File.open( params[:student_document][:resume_file].tempfile, 'rb') do |file|
+          obj.put_object(body: file,  content_type: 'application/pdf', key:@input_string )
+        end
+        
+        #get the url of uploaded resume from s3 bucket
+        resp = Aws::S3::Client.new
+        bucket_name = 'phd-annual-review-sys-docs'
+        presigner = Aws::S3::Presigner.new(client: resp)
+        presigned_url = presigner.presigned_url(:get_object,bucket: bucket_name, key: @input_string)
+       
+        #update the resume_link column with link to the resume file
+        @student_document.update(resume_link: presigned_url)
+        
+        @student_document.update(phd_start_date: params[:student_document][:phd_start_date])
+        @student_document.update(milestones_passed: params[:student_document][:milestones_passed])
+        @student_document.update(improvement_plan_present: params[:student_document][:improvement_plan_present])
+        @student_document.update(improvement_plan_summary: params[:student_document][:improvement_plan_summary])
+        @student_document.update(gpa: params[:student_document][:gpa])
+        @student_document.update(support_in_last_sem: params[:student_document][:support_in_last_sem])
+        @student_document.update(number_of_paper_submissions: params[:student_document][:number_of_paper_submissions])
+        @student_document.update(number_of_papers_published: params[:student_document][:number_of_papers_published])
+
+        #render show to when resume is updloaded
+        render :show
+      else
+
+        #flsh error when resume is not submitted
+        flash.now[:error] =  "Resume was not be updated."
+        redirect_to student_documents_path,  notice:"Error: Please select a file to upload!"
       end
-      
-      #get the url of uploaded resume from s3 bucket
-      resp = Aws::S3::Client.new
-      bucket_name = 'phd-annual-review-sys-docs'
-      presigner = Aws::S3::Presigner.new(client: resp)
-      presigned_url = presigner.presigned_url(:get_object,bucket: bucket_name, key: @input_string)
-     
-      #update the resume_link column with link to the resume file
-      @student_document.update(resume_link: presigned_url)
-      
-      @student_document.update(phd_start_date: params[:student_document][:phd_start_date])
-      @student_document.update(milestones_passed: params[:student_document][:milestones_passed])
-      @student_document.update(improvement_plan_present: params[:student_document][:improvement_plan_present])
-      @student_document.update(improvement_plan_summary: params[:student_document][:improvement_plan_summary])
-      @student_document.update(gpa: params[:student_document][:gpa])
-      @student_document.update(support_in_last_sem: params[:student_document][:support_in_last_sem])
-      @student_document.update(number_of_paper_submissions: params[:student_document][:number_of_paper_submissions])
-      @student_document.update(number_of_papers_published: params[:student_document][:number_of_papers_published])
-
-
-
-      #render show to when resume is updloaded
-      render :show
-    else
-      flash.now[:error] =  "Resume was not be updated."
     end
   end
 

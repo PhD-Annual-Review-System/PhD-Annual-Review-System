@@ -2,16 +2,17 @@
 
 <h1>Student documents</h1>
 
-<div id="student_documents">
+<%= form_for(@student_document, url: student_documents_path, method: :get) do |f| %>   
+
+<div>
   <p> First name: <%=  @student_data.first_name %> </p>
   <p> Last name: <%=  @student_data.last_name %> </p>
   <p> Email Id: <%=  @student_document.email_id %> </p>
   <p> UIN: <%=  @student_data.UIN %> </p>
  </div> 
+ <% end %>
 
  <%= form_for(@student_document, url: student_documents_path, method: :patch) do |f| %>   
-
-
   <div>
     <%= f.label :phd_start_date, style: "display: block" %>
     <%= f.text_field :phd_start_date %>
@@ -61,11 +62,5 @@
    <div class="actions">
      <%= f.submit 'Submit', class: 'btn',id: "submit" %>
    </div>
-
-
+   
  <% end %>
-
-
-
-
-
