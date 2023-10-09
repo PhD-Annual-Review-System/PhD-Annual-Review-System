@@ -44,8 +44,6 @@ class StudentDocumentsController < ApplicationController
   # PATCH/PUT /student_documents/1 or /student_documents/1.json
   def update
     if @student_document.save 
-      puts "hello"
-      puts params[:student_document][:resume_file]
       if params[:student_document][:resume_file]
         #set the content type of the file uploaded
         @content_type = params[:student_document][:resume_file].content_type
@@ -90,7 +88,6 @@ class StudentDocumentsController < ApplicationController
       else
 
         #flsh error when resume is not submitted
-        flash.now[:error] =  "Resume was not be updated."
         redirect_to student_documents_path,  notice:"Error: Please select a file to upload!"
       end
     end
