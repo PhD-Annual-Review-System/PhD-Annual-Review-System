@@ -15,4 +15,10 @@ class AdminController < ApplicationController
         render :login
       end
     end
+
+    def logout
+      session[:email] = nil  # Clear the student's session
+      session[:name] = nil
+      redirect_to admin_login_path  # Redirect to the root page or login page
+    end
 end

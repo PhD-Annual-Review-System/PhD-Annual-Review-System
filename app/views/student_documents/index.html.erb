@@ -1,0 +1,66 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Student documents</h1>
+
+<%= form_for(@student_document, url: student_documents_path, method: :get) do |f| %>   
+
+<div>
+  <p> First name: <%=  @student_data.first_name %> </p>
+  <p> Last name: <%=  @student_data.last_name %> </p>
+  <p> Email Id: <%=  @student_document.email_id %> </p>
+  <p> UIN: <%=  @student_data.UIN %> </p>
+ </div> 
+ <% end %>
+
+ <%= form_for(@student_document, url: student_documents_path, method: :patch) do |f| %>   
+  <div>
+    <%= f.label :phd_start_date, style: "display: block" %>
+    <%= f.text_field :phd_start_date %>
+  </div>
+
+  <div>
+    <%= f.label :milestones_passed, style: "display: block" %>
+    <%= f.text_area :milestones_passed %>
+  </div>
+
+  <div>
+    <%= f.label :improvement_plan_present, style: "display: block" %>
+    <%= f.text_field :improvement_plan_present %>
+  </div>
+
+  <div>
+    <%= f.label :improvement_plan_summary, style: "display: block" %>
+    <%= f.text_area :improvement_plan_summary %>
+  </div>
+
+  <div>
+    <%= f.label :gpa, style: "display: block" %>
+    <%= f.text_field :gpa %>
+  </div>
+
+  <div>
+    <%= f.label :support_in_last_sem, style: "display: block" %>
+    <%= f.text_area :support_in_last_sem %>
+  </div>
+
+  <div>
+    <%= f.label :number_of_paper_submissions, style: "display: block" %>
+    <%= f.number_field :number_of_paper_submissions %>
+  </div>
+
+  <div>
+    <%= f.label :number_of_papers_published, style: "display: block" %>
+    <%= f.number_field :number_of_papers_published %>
+  </div>
+
+
+   <div class="field">
+     <%= f.label :"Resume" %>
+     <%= f.file_field :resume_file,  id: "resume_file" %>
+   </div>
+
+   <div class="actions">
+     <%= f.submit 'Submit', class: 'btn',id: "submit" %>
+   </div>
+   
+ <% end %>

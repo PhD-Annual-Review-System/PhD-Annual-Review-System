@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_25_170115) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_07_031831) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -21,6 +21,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_170115) do
     t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
   end
 
   create_table "faculties", force: :cascade do |t|
@@ -30,6 +31,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_170115) do
     t.string "password"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
+  end
+
+  create_table "student_documents", force: :cascade do |t|
+    t.binary "resume_file"
+    t.string "resume_link"
+    t.string "email_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "phd_start_date"
+    t.text "milestones_passed"
+    t.string "improvement_plan_present"
+    t.text "improvement_plan_summary"
+    t.float "gpa"
+    t.text "support_in_last_sem"
+    t.integer "number_of_paper_submissions"
+    t.integer "number_of_papers_published"
   end
 
   create_table "students", force: :cascade do |t|
@@ -46,6 +64,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_25_170115) do
     t.string "file_path"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.index ["email_id"], name: "index_students_on_email_id", unique: true
   end
 
+  add_foreign_key "student_documents", "students", column: "email_id", primary_key: "email_id"
 end
