@@ -1,6 +1,11 @@
 class Student < ApplicationRecord
     has_secure_password
     
+    # Associations
+    has_many :committees
+    has_many :faculties, through: :committees
+
+    # Validations
     validates :first_name, presence: true
     validates :last_name, presence: true
     validates :UIN, presence: true
