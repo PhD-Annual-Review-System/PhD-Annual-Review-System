@@ -11,7 +11,7 @@ end
 
 Given("a student with the email ID {string} already exists") do |email|
     Student.create(email_id: email, password: 'password', password_confirmation: 'password', first_name: 'john', last_name: 'doe', UIN: 1234)
-  end
+end
 
 When(/^I submit form with empty name$/) do
     find("#submit").click
@@ -31,4 +31,8 @@ end
 
 And(/^I submit login form$/) do
     find("#login").click
+end
+
+Then ('I should be redirected to student document path') do 
+    visit student_documents_path
 end

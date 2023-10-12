@@ -21,4 +21,4 @@ Feature: Student log in
     And I fill in "email_id" with "student@tamu.edu"
     And I fill in "password" with "password"
     And I submit login form
-    Then I should see "You have successfully logged in."
+    Then I should be redirected to student document path
