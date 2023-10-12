@@ -1,6 +1,11 @@
 class Faculty < ApplicationRecord
     has_secure_password
 
+    # Associations
+    has_many :committees
+    has_many :students, through: :committees
+
+    # Validations
     validates :password, length: { minimum: 8 }, allow_blank: true
     validate :email_id_format
 

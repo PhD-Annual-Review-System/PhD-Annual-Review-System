@@ -7855,3 +7855,188 @@ FOREIGN KEY ("faculty_id")
   [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1657303558665808095)[0m
   [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "john@tamu.edu"], ["LIMIT", 1]]
+  [1m[36mStudent Create (0.3ms)[0m  [1m[32mINSERT INTO "students" ("first_name", "last_name", "UIN", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "John"], ["last_name", "Doe"], ["UIN", 123456], ["email_id", "john@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-10-12 19:54:49.636608"], ["updated_at", "2023-10-12 19:54:49.636608"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFaculty Create (1.0ms)[0m  [1m[32mINSERT INTO "faculties" ("first_name", "last_name", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Dr. Smith"], ["last_name", nil], ["email_id", "smith@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-10-12 19:54:59.805692"], ["updated_at", "2023-10-12 19:54:59.805692"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCommittee Create (1.4ms)[0m  [1m[32mINSERT INTO "committees" ("student_id", "faculty_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["student_id", 3], ["faculty_id", 2], ["created_at", "2023-10-12 19:55:04.128492"], ["updated_at", "2023-10-12 19:55:04.128492"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mFaculty Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "faculties" INNER JOIN "committees" ON "faculties"."id" = "committees"."faculty_id" WHERE "committees"."student_id" = $1 AND "faculties"."id" = $2 LIMIT $3[0m  [["student_id", 3], ["id", 2], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Destroy (1.4ms)[0m  [1m[31mDELETE FROM "students" WHERE "students"."id" = $1[0m  [["id", 3]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFaculty Destroy (0.6ms)[0m  [1m[31mDELETE FROM "faculties" WHERE "faculties"."id" = $1[0m  [["id", 2]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "john@tamu.edu"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFaculty Create (0.7ms)[0m  [1m[32mINSERT INTO "faculties" ("first_name", "last_name", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Dr. Smith"], ["last_name", nil], ["email_id", "smith@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-10-12 19:58:51.880577"], ["updated_at", "2023-10-12 19:58:51.880577"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Exists? (0.1ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "john@tamu.edu"], ["LIMIT", 1]]
+  [1m[36mCommittee Create (0.6ms)[0m  [1m[32mINSERT INTO "committees" ("student_id", "faculty_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["student_id", nil], ["faculty_id", 3], ["created_at", "2023-10-12 19:58:55.711818"], ["updated_at", "2023-10-12 19:58:55.711818"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mCommittee Load (1.2ms)[0m  [1m[34mSELECT "committees".* FROM "committees" WHERE "committees"."student_id" IS NULL AND "committees"."faculty_id" = $1 LIMIT $2[0m  [["faculty_id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "john@tamu.edu"], ["LIMIT", 1]]
+  [1m[36mCommittee Create (0.4ms)[0m  [1m[32mINSERT INTO "committees" ("student_id", "faculty_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["student_id", nil], ["faculty_id", 3], ["created_at", "2023-10-12 20:02:17.236503"], ["updated_at", "2023-10-12 20:02:17.236503"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "john@tamu.edu"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFaculty Load (0.5ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "john@tamu.edu"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "john@tamu.edu"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Destroy (0.9ms)[0m  [1m[31mDELETE FROM "students" WHERE "students"."id" = $1[0m  [["id", 3]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mROLLBACK[0m
+  [1m[36mCommittee Load (0.2ms)[0m  [1m[34mSELECT "committees".* FROM "committees" WHERE "committees"."student_id" = $1[0m  [["student_id", 3]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCommittee Destroy (0.2ms)[0m  [1m[31mDELETE FROM "committees" WHERE "committees"."id" = $1[0m  [["id", 1]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "john@tamu.edu"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Destroy (0.3ms)[0m  [1m[31mDELETE FROM "students" WHERE "students"."id" = $1[0m  [["id", 3]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "john@tamu.edu"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "john@tamu.edu"], ["LIMIT", 1]]
+  [1m[36mStudent Create (0.3ms)[0m  [1m[32mINSERT INTO "students" ("first_name", "last_name", "UIN", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "John"], ["last_name", "Doe"], ["UIN", 123456], ["email_id", "john@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-10-12 20:11:53.143510"], ["updated_at", "2023-10-12 20:11:53.143510"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFaculty Create (0.2ms)[0m  [1m[32mINSERT INTO "faculties" ("first_name", "last_name", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Dr. Smith"], ["last_name", nil], ["email_id", "smith@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-10-12 20:11:58.417239"], ["updated_at", "2023-10-12 20:11:58.417239"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mFaculty Load (0.1ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  [1m[36mCommittee Create (0.3ms)[0m  [1m[32mINSERT INTO "committees" ("student_id", "faculty_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["student_id", 4], ["faculty_id", 4], ["created_at", "2023-10-12 20:12:02.111524"], ["updated_at", "2023-10-12 20:12:02.111524"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mFaculty Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "faculties" INNER JOIN "committees" ON "faculties"."id" = "committees"."faculty_id" WHERE "committees"."student_id" = $1 AND "faculties"."id" = $2 LIMIT $3[0m  [["student_id", 4], ["id", 4], ["LIMIT", 1]]
+  [1m[36mStudent Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "students" INNER JOIN "committees" ON "students"."id" = "committees"."student_id" WHERE "committees"."faculty_id" = $1 AND "students"."id" = $2 LIMIT $3[0m  [["faculty_id", 4], ["id", 4], ["LIMIT", 1]]
+  [1m[36mStudent Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "invalid_email@gmail.com"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCommittee Destroy (0.3ms)[0m  [1m[31mDELETE FROM "committees" WHERE "committees"."id" = $1[0m  [["id", 4]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Destroy (0.3ms)[0m  [1m[31mDELETE FROM "students" WHERE "students"."id" = $1[0m  [["id", 4]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFaculty Destroy (0.3ms)[0m  [1m[31mDELETE FROM "faculties" WHERE "faculties"."id" = $1[0m  [["id", 4]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "john@tamu.edu"], ["LIMIT", 1]]
+Started GET "/student/dashboard" for 127.0.0.1 at 2023-10-12 17:48:06 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StudentController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/dashboard.html.erb within layouts/application
+  Rendered student/dashboard.html.erb within layouts/application (Duration: 9.1ms | Allocations: 1131)
+  Rendered layout layouts/application.html.erb (Duration: 17.8ms | Allocations: 2410)
+Completed 200 OK in 21ms (Views: 20.2ms | ActiveRecord: 0.0ms | Allocations: 3125)
+
+
+Started GET "/student/dashboard" for 127.0.0.1 at 2023-10-12 17:48:43 -0500
+Processing by StudentController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/dashboard.html.erb within layouts/application
+  Rendered student/dashboard.html.erb within layouts/application (Duration: 70.4ms | Allocations: 15185)
+  Rendered layout layouts/application.html.erb (Duration: 70.7ms | Allocations: 15267)
+Completed 500 Internal Server Error in 74ms (ActiveRecord: 0.0ms | Allocations: 15897)
+
+
+  
+ActionView::Template::Error (undefined local variable or method `edit_committee_student_path' for #<ActionView::Base:0x000000000108d8>):
+    12: 
+    13:   <div class="container">
+    14:     <p>You have successfully logged in.</p>
+    15:     <%= link_to 'Edit Committee', edit_committee_student_path, class: 'btn' %>
+    16:   </div>
+    17: 
+    18: </body>
+  
+app/views/student/dashboard.html.erb:15
+Started GET "/student/dashboard" for 127.0.0.1 at 2023-10-12 17:55:34 -0500
+Processing by StudentController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/dashboard.html.erb within layouts/application
+  Rendered student/dashboard.html.erb within layouts/application (Duration: 1.8ms | Allocations: 993)
+  Rendered layout layouts/application.html.erb (Duration: 3.9ms | Allocations: 2284)
+Completed 200 OK in 5ms (Views: 4.7ms | ActiveRecord: 0.0ms | Allocations: 2819)
+
+
+Started GET "/student/edit_committee" for 127.0.0.1 at 2023-10-12 17:55:37 -0500
+Processing by StudentController#edit_committee as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/edit_committee.html.erb within layouts/application
+  Rendered student/edit_committee.html.erb within layouts/application (Duration: 11.9ms | Allocations: 1042)
+  Rendered layout layouts/application.html.erb (Duration: 13.8ms | Allocations: 2068)
+Completed 200 OK in 15ms (Views: 14.2ms | ActiveRecord: 0.0ms | Allocations: 2395)
+
+
+Started GET "/student/dashboard" for 127.0.0.1 at 2023-10-12 17:55:40 -0500
+Processing by StudentController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/dashboard.html.erb within layouts/application
+  Rendered student/dashboard.html.erb within layouts/application (Duration: 1.6ms | Allocations: 911)
+  Rendered layout layouts/application.html.erb (Duration: 3.3ms | Allocations: 1945)
+Completed 200 OK in 4ms (Views: 3.9ms | ActiveRecord: 0.0ms | Allocations: 2213)
+
+
+Started GET "/student/edit_committee" for 127.0.0.1 at 2023-10-12 17:55:41 -0500
+Processing by StudentController#edit_committee as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/edit_committee.html.erb within layouts/application
+  Rendered student/edit_committee.html.erb within layouts/application (Duration: 1.3ms | Allocations: 862)
+  Rendered layout layouts/application.html.erb (Duration: 3.1ms | Allocations: 1922)
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.0ms | Allocations: 2189)
+
+
+Started GET "/student/dashboard" for 127.0.0.1 at 2023-10-12 17:55:41 -0500
+Processing by StudentController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/dashboard.html.erb within layouts/application
+  Rendered student/dashboard.html.erb within layouts/application (Duration: 1.4ms | Allocations: 911)
+  Rendered layout layouts/application.html.erb (Duration: 2.9ms | Allocations: 1933)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms | Allocations: 2201)
+
+
+Started GET "/student/dashboard" for 127.0.0.1 at 2023-10-12 17:57:13 -0500
+  
+ActionController::RoutingError (No route matches [GET] "/student/dashboard"):
+  
+Started GET "/student/dashboard" for 127.0.0.1 at 2023-10-12 18:03:40 -0500
+Processing by StudentController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/dashboard.html.erb within layouts/application
+  Rendered student/dashboard.html.erb within layouts/application (Duration: 1.4ms | Allocations: 993)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 2089)
+Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.0ms | Allocations: 2623)
+
+
+Started GET "/student/edit_committee" for 127.0.0.1 at 2023-10-12 18:03:41 -0500
+Processing by StudentController#edit_committee as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/edit_committee.html.erb within layouts/application
+  Rendered student/edit_committee.html.erb within layouts/application (Duration: 1.3ms | Allocations: 873)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 1913)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms | Allocations: 2181)
+
+
+Started GET "/student/dashboard" for 127.0.0.1 at 2023-10-12 18:03:42 -0500
+Processing by StudentController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/dashboard.html.erb within layouts/application
+  Rendered student/dashboard.html.erb within layouts/application (Duration: 1.2ms | Allocations: 911)
+  Rendered layout layouts/application.html.erb (Duration: 3.0ms | Allocations: 1942)
+Completed 200 OK in 4ms (Views: 3.3ms | ActiveRecord: 0.0ms | Allocations: 2210)
+
+

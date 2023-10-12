@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'student/signup', to: 'student#new_signup'
   post 'student/signup', to: 'student#create_signup'
   get 'student/logout', to: 'student#logout', as: 'student_logout'
+  get 'student/edit_committee', to: 'student#edit_committee', as: 'edit_committee_student'
 
   get 'admin/login', to: 'admin#login'
   post 'admin/login', to: 'admin#authenticate'

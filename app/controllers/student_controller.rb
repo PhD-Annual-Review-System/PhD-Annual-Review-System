@@ -41,7 +41,10 @@ class StudentController < ApplicationController
       redirect_to student_login_path  # Redirect to the root page or login page
     end
 
-  
+    def edit_committee
+      # Logic to fetch the student's committee or initialize a new one if needed.
+    end    
+
     private
     def student_params
       params.require(:student).permit(:first_name, :last_name, :UIN, :email_id, :password, :password_confirmation)
