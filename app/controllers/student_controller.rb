@@ -46,8 +46,8 @@ class StudentController < ApplicationController
     end
 
     def edit_committee
-      # Logic to fetch the student's committee or initialize a new one if needed.
-    end
+      @committee_members = current_student.committees.includes(:faculty).order('role DESC')
+    end    
 
     def search_faculty
       @results = Faculty.where('first_name LIKE ? AND last_name LIKE ?', "%#{params[:first_name]}%", "%#{params[:last_name]}%")
@@ -66,6 +66,30 @@ class StudentController < ApplicationController
     
       redirect_to edit_committee_student_path
     end
+
+    def set_as_chair
+      member = current_student.committees.find(params[:id])
+      
+      # Reset any existing chair to a normal member
+      current_student.committees.where(role: 'Chair').update_all(role: 'Member')
+    
+      # Set the selected member as the chair
+      member.update(role: 'Chair')
+      
+      flash[:success] = "#{member.faculty.first_name} #{member.faculty.last_name} is now set as the committee chair."
+      redirect_to edit_committee_student_path
+    end
+
+    def return_to_member
+      committee = Committee.find(params[:id])
+      if committee.update(role: 'Member')
+        flash[:success] = "Role changed back to Member."
+      else
+        flash[:error] = "Failed to change the role."
+      end
+      redirect_to edit_committee_student_path
+    end    
+    
     
     private
     def student_params

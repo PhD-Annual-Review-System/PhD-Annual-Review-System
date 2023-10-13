@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get 'student/edit_committee', to: 'student#edit_committee', as: 'edit_committee_student'
   get 'student/search_faculty', to: 'student#search_faculty'
   post 'student/add_to_committee', to: 'student#add_to_committee' , as: 'student_add_to_committee'
+  post 'student/set_as_chair/:id', to: 'student#set_as_chair', as: 'set_as_chair_student'
+  post 'student/return_to_member/:id', to: 'student#return_to_member', as: 'return_to_member_student'
 
   get 'admin/login', to: 'admin#login'
   post 'admin/login', to: 'admin#authenticate'

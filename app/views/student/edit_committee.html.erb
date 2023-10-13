@@ -17,47 +17,36 @@
     <% elsif flash[:error] %>
         <p class="alert alert-danger"><%= flash[:error] %></p>
     <% end %>
-    <!-- Committee Chair Table -->
+    <!-- Committee Table -->
     <table class="committee-table">
-        <caption>Committee Chair</caption>
-        <thead>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td>johndoe@example.com</td>
-            </tr>
-        </tbody>
-    </table>
-
-    <!-- Committee Members Table -->
-    <table class="committee-table">
-        <caption>Committee Members</caption>
-        <thead>
-            <tr>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Email</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Jane</td>
-                <td>Doe</td>
-                <td>janedoe@example.com</td>
-            </tr>
-            <tr>
-                <td>Alice</td>
-                <td>Smith</td>
-                <td>alice.smith@example.com</td>
-            </tr>
-        </tbody>
+    <caption>Committee Members</caption>
+    <thead>
+        <tr>
+        <th>Role</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <% @committee_members.each do |committee| %>
+        <tr>
+            <td><%= committee.role %></td>
+            <td><%= committee.faculty.first_name %></td>
+            <td><%= committee.faculty.last_name %></td>
+            <td>
+            <!-- Add action links here, e.g., to remove a faculty member from the committee -->
+                <!-- Only display the 'Set as Chair' button if this faculty is not a chair and no chair is already set -->
+                <% unless committee.role == 'Chair' || @committee_members.any? { |c| c.role == 'Chair' } %>
+                    <%= link_to 'Set as Chair', set_as_chair_student_path(committee.id), method: :post, class: 'btn btn-primary' %>
+                <% end %>
+                <% unless committee.role != 'Chair' %>
+                    <%= link_to 'Return to Member', return_to_member_student_path(committee.id), method: :post, class: 'btn btn-secondary' if committee.role == 'Chair' %>
+                <% end %>
+            </td>
+        </tr>
+        <% end %>
+    </tbody>
     </table>
 
     <!-- Button to Add Committee Member -->
