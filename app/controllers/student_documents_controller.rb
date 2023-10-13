@@ -43,43 +43,25 @@ class StudentDocumentsController < ApplicationController
 
   # PATCH/PUT /student_documents/1 or /student_documents/1.json
   def update
-    if @student_document.save 
-      if params[:student_document][:resume_file] and params[:student_document][:report_file]
-        #set the content type of the file uploaded
-        @content_type = params[:student_document][:resume_file].content_type
-       
-        #store the resume file name in database
-        @student_document.update(resume_file: params[:student_document][:resume_file].original_filename)
-        puts "Resume updated successfully."
-        
-        #set the content type of the file uploaded
-        @content_type = params[:student_document][:report_file].content_type
-       
-        #store the resume file name in database
-        @student_document.update(report_file: params[:student_document][:report_file].original_filename)
-        puts "Resume updated successfully."
 
+    if @student_document.save 
+   
+      if params[:student_document][:resume_file]
+     
         #save the resume in s3 bucket in the name of email id. This will be file key
         @current_email = session[:email]
         @input_string_resume = @current_email
         @replacement_string = "_resume"
-        @input_string_resume.gsub!(/@tamu\.edu/, @replacement_string)
-
-        #save the resume in s3 bucket in the name of email id. This will be file key
-        @current_email = session[:email]
-        @input_string_report = @current_email
-        @replacement_string = "_resume"
-        @input_string_report.gsub!(/@tamu\.edu/, @replacement_string)
+        @input_string.gsub!(/@tamu\.edu/, @replacement_string)
+        
+        #store the resume file name in database
+        @student_document.update(resume_file: @input_string)
       
         #upload resume in s3 bucket
         s3 = Aws::S3::Resource.new(region: 'us-east-2')
         obj = s3.bucket('phd-annual-review-sys-docs')
-        File.open( params[:student_document][:resume_file].tempfile, 'rb') do |file|
-          obj.put_object(body: file,  content_type: 'application/pdf', key:@input_string_resume )
-        end
-
-        File.open( params[:student_document][:report_file].tempfile, 'rb') do |file|
-          obj.put_object(body: file,  content_type: 'application/pdf', key:@input_string_report )
+        File.open( params[:student_document][:resume_file], 'rb') do |file|
+          obj.put_object(body: file,  content_type: 'application/pdf', key:@input_string )
         end
         
         #get the url of uploaded resume from s3 bucket
@@ -105,7 +87,6 @@ class StudentDocumentsController < ApplicationController
         #render show to when resume is updloaded
         render :show
       else
-
         #flsh error when resume is not submitted
         redirect_to student_documents_path,  notice:"Error: Please select a file to upload!"
       end

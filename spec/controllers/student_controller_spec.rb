@@ -31,7 +31,7 @@ RSpec.describe StudentController, type: :controller do
 
       it 'redirects to the dashboard' do
         post :create_signup, params: { student: attributes_for(:student) }
-        expect(response).to redirect_to(student_dashboard_path)
+        expect(response).to redirect_to(student_documents_path)
       end
     end
 
@@ -53,9 +53,10 @@ RSpec.describe StudentController, type: :controller do
   let!(:student) { create(:student, first_name: 'test', last_name: 'test', UIN: 12345, email_id: 'test1@tamu.edu', password: 'password', password_confirmation: 'password') }
 
   it 'logs in a student with valid credentials' do
+    @shared_email = 'test1@tamu.edu'
     post :authenticate, params: { student: { email_id: 'test1@tamu.edu', password: 'password' } }
     expect(session[:email]).to eq(student.email_id)
-    expect(response).to redirect_to(student_dashboard_path)
+    expect(response).to redirect_to(student_documents_path)
   end
 
   it 'renders the login page with invalid credentials' do

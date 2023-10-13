@@ -9,10 +9,26 @@
 <%= form_for(@student_document, url: student_documents_path, method: :get) do |f| %>   
 
 <div>
-  <p> First name: <%=  @student_data.first_name %> </p>
-  <p> Last name: <%=  @student_data.last_name %> </p>
-  <p> Email Id: <%=  @student_document.email_id %> </p>
-  <p> UIN: <%=  @student_data.UIN %> </p>
+  <p> 
+  <%= f.label :first_name, style: "display: block" %>
+  <%= f.text_field :first_name, value:  @student_data.first_name, id: "first_name" %>
+  </p>
+  
+  <p> 
+  <%= f.label :last_name, style: "display: block" %>
+  <%= f.text_field :last_name, value: @student_data.last_name, id: "last_name" %>
+  </p>
+
+  <p> 
+  <%= f.label :UIN, style: "display: block" %>
+  <%= f.text_field :UIN, value: @student_data.UIN, id: "UIN" %>
+  </p>
+
+  <p> 
+  <%= f.label :email_id, style: "display: block" %>
+  <%= f.text_field :email_id, value: @student_data.email_id, id: "email_id" %>
+  </p>
+
  </div> 
  <% end %>
 
