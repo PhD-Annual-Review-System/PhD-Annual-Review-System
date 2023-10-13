@@ -22228,3 +22228,75 @@ Processing by StudentController#login as HTML
 Completed 200 OK in 18ms (Views: 17.3ms | ActiveRecord: 0.0ms | Allocations: 2642)
 
 
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1657303558665808095)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(1657303558665808095)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/student/login" for ::1 at 2023-10-12 22:56:01 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.8ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by StudentController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/login.html.erb within layouts/application
+  Rendered student/login.html.erb within layouts/application (Duration: 66.2ms | Allocations: 40251)
+  Rendered layout layouts/application.html.erb (Duration: 67.6ms | Allocations: 41336)
+Completed 200 OK in 74ms (Views: 69.4ms | ActiveRecord: 0.0ms | Allocations: 45331)
+
+
+Started POST "/student/login" for ::1 at 2023-10-12 22:56:08 -0500
+Processing by StudentController#authenticate as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"email_id"=>"abc1@tamu.edu", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mStudent Load (0.9ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "abc1@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:8:in `authenticate'
+Redirected to http://localhost:3000/student_documents
+Completed 302 Found in 421ms (ActiveRecord: 5.7ms | Allocations: 10644)
+
+
+Started GET "/student_documents" for ::1 at 2023-10-12 22:56:09 -0500
+Processing by StudentDocumentsController#index as HTML
+  [1m[36mStudentDocument Load (0.4ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1 LIMIT $2[0m  [["email_id", "abc1@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_documents_controller.rb:6:in `index'
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "abc1@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_documents_controller.rb:7:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering student_documents/index.html.erb within layouts/application
+  Rendered student_documents/index.html.erb within layouts/application (Duration: 6.4ms | Allocations: 6402)
+  Rendered layout layouts/application.html.erb (Duration: 7.3ms | Allocations: 7281)
+Completed 200 OK in 24ms (Views: 8.6ms | ActiveRecord: 4.6ms | Allocations: 17384)
+
+
+Started PATCH "/student_documents" for ::1 at 2023-10-12 22:56:35 -0500
+Processing by StudentDocumentsController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "student_document"=>{"phd_start_date"=>"", "milestones_passed"=>"1", "improvement_plan_present"=>"1", "improvement_plan_summary"=>"1", "gpa"=>"1.0", "support_in_last_sem"=>"1", "number_of_paper_submissions"=>"-1", "number_of_papers_published"=>"0", "resume_file"=>#<ActionDispatch::Http::UploadedFile:0x0000000105d319a8 @tempfile=#<Tempfile:/var/folders/4r/3_65nkps4wl_qpcbs29ktjwc0000gn/T/RackMultipart20231012-20435-9qw6cy.pdf>, @content_type="application/pdf", @original_filename="test_resume.pdf", @headers="Content-Disposition: form-data; name=\"student_document[resume_file]\"; filename=\"test_resume.pdf\"\r\nContent-Type: application/pdf\r\n">, "report_file"=>#<ActionDispatch::Http::UploadedFile:0x0000000105d31958 @tempfile=#<Tempfile:/var/folders/4r/3_65nkps4wl_qpcbs29ktjwc0000gn/T/RackMultipart20231012-20435-619qsd.pdf>, @content_type="application/pdf", @original_filename="Homework5.pdf", @headers="Content-Disposition: form-data; name=\"student_document[report_file]\"; filename=\"Homework5.pdf\"\r\nContent-Type: application/pdf\r\n">}, "commit"=>"Submit"}
+  [1m[36mStudentDocument Load (0.3ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1 LIMIT $2[0m  [["email_id", "abc1@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_documents_controller.rb:111:in `set_student_document'
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "abc1@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_documents_controller.rb:112:in `set_student_document'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_documents_controller.rb:77:in `update'
+  [1m[36mStudentDocument Update (1.0ms)[0m  [1m[33mUPDATE "student_documents" SET "resume_link" = $1, "updated_at" = $2 WHERE "student_documents"."id" = $3[0m  [["resume_link", "https://phd-annual-review-sys-docs.s3.us-east-2.amazonaws.com/abc1_resume?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVL7WRZU24IDKGSVK%2F20231013%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20231013T035637Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&X-Amz-Signature=3ffda784e167e8ded1543dbb773da432b9753c21ee046c71b05238225195842f"], ["updated_at", "2023-10-13 03:56:37.947471"], ["id", 9]]
+  ↳ app/controllers/student_documents_controller.rb:77:in `update'
+  [1m[36mTRANSACTION (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_documents_controller.rb:77:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_documents_controller.rb:80:in `update'
+  [1m[36mStudentDocument Update (0.4ms)[0m  [1m[33mUPDATE "student_documents" SET "updated_at" = $1, "phd_start_date" = $2 WHERE "student_documents"."id" = $3[0m  [["updated_at", "2023-10-13 03:56:37.957378"], ["phd_start_date", ""], ["id", 9]]
+  ↳ app/controllers/student_documents_controller.rb:80:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_documents_controller.rb:80:in `update'
+  Rendering layout layouts/application.html.erb
+  Rendering student_documents/show.html.erb within layouts/application
+  Rendered student_documents/show.html.erb within layouts/application (Duration: 1.8ms | Allocations: 291)
+  Rendered layout layouts/application.html.erb (Duration: 4.2ms | Allocations: 1309)
+Completed 200 OK in 2310ms (Views: 5.3ms | ActiveRecord: 4.8ms | Allocations: 148079)
+
+
+Started GET "/student/login" for ::1 at 2023-10-12 22:56:39 -0500
+Processing by StudentController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/login.html.erb within layouts/application
+  Rendered student/login.html.erb within layouts/application (Duration: 3.8ms | Allocations: 1563)
+  Rendered layout layouts/application.html.erb (Duration: 5.7ms | Allocations: 2411)
+Completed 200 OK in 7ms (Views: 6.3ms | ActiveRecord: 0.0ms | Allocations: 2662)
+
+
