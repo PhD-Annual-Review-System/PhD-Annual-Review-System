@@ -11,22 +11,22 @@
 <div>
   <p> 
   <%= f.label :first_name, style: "display: block" %>
-  <%= f.text_field :first_name, value:  @student_data.first_name, id: "first_name" %>
+  <%= f.text_field :first_name, value:  @student_data.first_name, id: "first_name", readonly: true%>
   </p>
   
   <p> 
   <%= f.label :last_name, style: "display: block" %>
-  <%= f.text_field :last_name, value: @student_data.last_name, id: "last_name" %>
+  <%= f.text_field :last_name, value: @student_data.last_name, id: "last_name", readonly: true%>
   </p>
 
   <p> 
   <%= f.label :UIN, style: "display: block" %>
-  <%= f.text_field :UIN, value: @student_data.UIN, id: "UIN" %>
+  <%= f.text_field :UIN, value: @student_data.UIN, id: "UIN", readonly: true%>
   </p>
 
   <p> 
   <%= f.label :email_id, style: "display: block" %>
-  <%= f.text_field :email_id, value: @student_data.email_id, id: "email_id" %>
+  <%= f.text_field :email_id, value: @student_data.email_id, id: "email_id", readonly: true%>
   </p>
 
  </div> 
