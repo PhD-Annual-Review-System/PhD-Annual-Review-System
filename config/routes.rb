@@ -8,6 +8,8 @@ Rails.application.routes.draw do
   post 'student/signup', to: 'student#create_signup'
   get 'student/logout', to: 'student#logout', as: 'student_logout'
   get 'student/edit_committee', to: 'student#edit_committee', as: 'edit_committee_student'
+  get 'student/search_faculty', to: 'student#search_faculty'
+  post 'student/add_to_committee', to: 'student#add_to_committee' , as: 'student_add_to_committee'
 
   get 'admin/login', to: 'admin#login'
   post 'admin/login', to: 'admin#authenticate'

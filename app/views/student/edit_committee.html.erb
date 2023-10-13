@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <%= stylesheet_link_tag 'student/studentsignup' %>
+  <%= stylesheet_link_tag 'student/editcommittee' %>
   <title>Edit Committee - PHD Annual Review Process</title>
 </head>
 <body>
@@ -12,8 +12,86 @@
   </div>
 
   <div class="container">
-    <!-- Here, you can add the form for editing the committee -->
-    <p>Committee editing form will go here.</p>
+    <% if flash[:success] %>
+        <p class="alert alert-success"><%= flash[:success] %></p>
+    <% elsif flash[:error] %>
+        <p class="alert alert-danger"><%= flash[:error] %></p>
+    <% end %>
+    <!-- Committee Chair Table -->
+    <table class="committee-table">
+        <caption>Committee Chair</caption>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>John</td>
+                <td>Doe</td>
+                <td>johndoe@example.com</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Committee Members Table -->
+    <table class="committee-table">
+        <caption>Committee Members</caption>
+        <thead>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Jane</td>
+                <td>Doe</td>
+                <td>janedoe@example.com</td>
+            </tr>
+            <tr>
+                <td>Alice</td>
+                <td>Smith</td>
+                <td>alice.smith@example.com</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Button to Add Committee Member -->
+    <button id="toggleSearchForm" class="btn btn-primary">Add a Committee Member</button>
+
+    <div id="searchForm" style="display: none;">
+        <%= form_with url: student_search_faculty_path, method: :get, local: true do |f| %>
+            <div class="form-group">
+            <%= f.label :first_name, 'First Name' %>
+            <%= f.text_field :first_name, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+            <%= f.label :last_name, 'Last Name' %>
+            <%= f.text_field :last_name, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+            <%= f.submit 'Search', class: 'btn btn-success' %>
+            </div>
+        <% end %>
+    </div>
+
   </div>
 </body>
 </html>
+
+<script>
+  document.getElementById('toggleSearchForm').addEventListener('click', function() {
+    var searchForm = document.getElementById('searchForm');
+    if (searchForm.style.display === 'none') {
+      searchForm.style.display = 'block';
+    } else {
+      searchForm.style.display = 'none';
+    }
+  });
+</script>
