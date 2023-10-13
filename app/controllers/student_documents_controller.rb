@@ -44,7 +44,7 @@ class StudentDocumentsController < ApplicationController
   # PATCH/PUT /student_documents/1 or /student_documents/1.json
   def update
     if @student_document.save 
-      if params[:student_document][:resume_file]
+      if params[:student_document][:resume_file] and params[:student_document][:report_file]
         #set the content type of the file uploaded
         @content_type = params[:student_document][:resume_file].content_type
        
@@ -52,27 +52,46 @@ class StudentDocumentsController < ApplicationController
         @student_document.update(resume_file: params[:student_document][:resume_file].original_filename)
         puts "Resume updated successfully."
         
+        #set the content type of the file uploaded
+        @content_type = params[:student_document][:report_file].content_type
+       
+        #store the resume file name in database
+        @student_document.update(report_file: params[:student_document][:report_file].original_filename)
+        puts "Resume updated successfully."
+
         #save the resume in s3 bucket in the name of email id. This will be file key
         @current_email = session[:email]
-        @input_string = @current_email
+        @input_string_resume = @current_email
         @replacement_string = "_resume"
-        @input_string.gsub!(/@tamu\.edu/, @replacement_string)
+        @input_string_resume.gsub!(/@tamu\.edu/, @replacement_string)
+
+        #save the resume in s3 bucket in the name of email id. This will be file key
+        @current_email = session[:email]
+        @input_string_report = @current_email
+        @replacement_string = "_resume"
+        @input_string_report.gsub!(/@tamu\.edu/, @replacement_string)
       
         #upload resume in s3 bucket
         s3 = Aws::S3::Resource.new(region: 'us-east-2')
         obj = s3.bucket('phd-annual-review-sys-docs')
         File.open( params[:student_document][:resume_file].tempfile, 'rb') do |file|
-          obj.put_object(body: file,  content_type: 'application/pdf', key:@input_string )
+          obj.put_object(body: file,  content_type: 'application/pdf', key:@input_string_resume )
+        end
+
+        File.open( params[:student_document][:report_file].tempfile, 'rb') do |file|
+          obj.put_object(body: file,  content_type: 'application/pdf', key:@input_string_report )
         end
         
         #get the url of uploaded resume from s3 bucket
         resp = Aws::S3::Client.new
         bucket_name = 'phd-annual-review-sys-docs'
         presigner = Aws::S3::Presigner.new(client: resp)
-        presigned_url = presigner.presigned_url(:get_object,bucket: bucket_name, key: @input_string)
+        presigned_url_resume = presigner.presigned_url(:get_object,bucket: bucket_name, key: @input_string_resume)
+        presigned_url_report = presigner.presigned_url(:get_object,bucket: bucket_name, key: @input_string_report)
        
         #update the resume_link column with link to the resume file
-        @student_document.update(resume_link: presigned_url)
+        @student_document.update(resume_link: presigned_url_resume)
+        @student_document.update(report_link: input_string_report)
         
         @student_document.update(phd_start_date: params[:student_document][:phd_start_date])
         @student_document.update(milestones_passed: params[:student_document][:milestones_passed])
