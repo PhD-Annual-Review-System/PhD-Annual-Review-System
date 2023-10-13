@@ -14,3 +14,5 @@
 
 //=link admin/adminlogin.css
 //=link admin/admindashboard.css
+
+//=link document/main.css

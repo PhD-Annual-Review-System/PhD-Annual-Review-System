@@ -20,6 +20,8 @@ Rails.application.routes.draw do
   get 'faculty/login', to: 'faculty#login'
   post 'faculty/login', to: 'faculty#authenticate'
   get 'faculty/dashboard', to: 'faculty#dashboard', as: 'faculty_dashboard'
+  get 'document/new'
+  get 'document/create'
   get 'faculty/logout', to: 'faculty#logout', as: 'faculty_logout'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

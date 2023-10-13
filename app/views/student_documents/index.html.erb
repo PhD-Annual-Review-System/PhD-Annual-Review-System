@@ -1,6 +1,10 @@
 <p style="color: green"><%= notice %></p>
+<div class="header">
+  <%= stylesheet_link_tag 'document/main.css' %>
+  <h1>Submit Documents</h1>
+</div>
 
-<h1>Student documents</h1>
+<div class="container">
 
 <%= form_for(@student_document, url: student_documents_path, method: :get) do |f| %>   
 
@@ -29,54 +33,66 @@
  <% end %>
 
  <%= form_for(@student_document, url: student_documents_path, method: :patch) do |f| %>   
-  <div>
-    <%= f.label :phd_start_date, style: "display: block" %>
-    <%= f.text_field :phd_start_date %>
-  </div>
-
-  <div>
-    <%= f.label :milestones_passed, style: "display: block" %>
-    <%= f.text_area :milestones_passed %>
-  </div>
-
-  <div>
-    <%= f.label :improvement_plan_present, style: "display: block" %>
-    <%= f.text_field :improvement_plan_present %>
-  </div>
-
-  <div>
-    <%= f.label :improvement_plan_summary, style: "display: block" %>
-    <%= f.text_area :improvement_plan_summary %>
-  </div>
-
-  <div>
-    <%= f.label :gpa, style: "display: block" %>
-    <%= f.text_field :gpa %>
-  </div>
-
-  <div>
-    <%= f.label :support_in_last_sem, style: "display: block" %>
-    <%= f.text_area :support_in_last_sem %>
-  </div>
-
-  <div>
-    <%= f.label :number_of_paper_submissions, style: "display: block" %>
-    <%= f.number_field :number_of_paper_submissions %>
-  </div>
-
-  <div>
-    <%= f.label :number_of_papers_published, style: "display: block" %>
-    <%= f.number_field :number_of_papers_published %>
-  </div>
-
-
+ <table>
+      <tr>
+        <th><%= f.label :phd_start_date %></th>
+        <td>
+          <select name="student_document[phd_start_date]" id="student_document_phd_start_date" class="form-control">
+            <option value="">Select a date</option>
+            <% current_year = Time.now.year %>
+            <% (current_year..current_year + 2).each do |year| %>
+              <optgroup label="<%= year %>">
+                <option value="Spring <%= year %>">Spring <%= year %></option>
+                <option value="Fall <%= year %>">Fall <%= year %></option>
+                <option value="Summer <%= year %>">Summer <%= year %></option>
+              </optgroup>
+            <% end %>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <th><%= f.label :milestones_passed %></th>
+        <td><%= f.text_area :milestones_passed %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :improvement_plan_present %></th>
+        <td><%= f.text_field :improvement_plan_present %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :improvement_plan_summary %></th>
+        <td><%= f.text_area :improvement_plan_summary %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :gpa %></th>
+        <td><%= f.text_field :gpa %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :support_in_last_sem %></th>
+        <td><%= f.text_area :support_in_last_sem %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :number_of_paper_submissions %></th>
+        <td><%= f.number_field :number_of_paper_submissions %></td>
+      </tr>
+      <tr>
+        <th><%= f.label :number_of_papers_published %></th>
+        <td><%= f.number_field :number_of_papers_published %></td>
+      </tr>
+    </table>
    <div class="field">
      <%= f.label :"Resume" %>
      <%= f.file_field :resume_file,  id: "resume_file" %>
    </div>
 
+   <div class="field">
+     <%= f.label :"Report" %>
+     <%= f.file_field :report_file,  id: "report_file" %>
+   </div>
+
    <div class="actions">
      <%= f.submit 'Submit', class: 'btn',id: "submit" %>
    </div>
+
+</div>
    
  <% end %>

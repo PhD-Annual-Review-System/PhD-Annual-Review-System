@@ -50,7 +50,7 @@ class StudentDocumentsController < ApplicationController
      
         #save the resume in s3 bucket in the name of email id. This will be file key
         @current_email = session[:email]
-        @input_string = @current_email
+        @input_string_resume = @current_email
         @replacement_string = "_resume"
         @input_string.gsub!(/@tamu\.edu/, @replacement_string)
         
@@ -68,10 +68,12 @@ class StudentDocumentsController < ApplicationController
         resp = Aws::S3::Client.new
         bucket_name = 'phd-annual-review-sys-docs'
         presigner = Aws::S3::Presigner.new(client: resp)
-        presigned_url = presigner.presigned_url(:get_object,bucket: bucket_name, key: @input_string)
+        presigned_url_resume = presigner.presigned_url(:get_object,bucket: bucket_name, key: @input_string_resume)
+        presigned_url_report = presigner.presigned_url(:get_object,bucket: bucket_name, key: @input_string_report)
        
         #update the resume_link column with link to the resume file
-        @student_document.update(resume_link: presigned_url)
+        @student_document.update(resume_link: presigned_url_resume)
+        @student_document.update(report_link: input_string_report)
         
         @student_document.update(phd_start_date: params[:student_document][:phd_start_date])
         @student_document.update(milestones_passed: params[:student_document][:milestones_passed])
