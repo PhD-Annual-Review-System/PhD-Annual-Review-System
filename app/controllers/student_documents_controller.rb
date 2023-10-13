@@ -51,17 +51,19 @@ class StudentDocumentsController < ApplicationController
         #save the resume in s3 bucket in the name of email id. This will be file key
         @current_email = session[:email]
         @input_string_resume = @current_email
+        @input_string_report = @current_email
         @replacement_string = "_resume"
-        @input_string.gsub!(/@tamu\.edu/, @replacement_string)
+        @input_string_resume.gsub!(/@tamu\.edu/, @replacement_string)
+        @input_string_report.gsub!(/@tamu\.edu/, '_report')
         
         #store the resume file name in database
-        @student_document.update(resume_file: @input_string)
+        @student_document.update(resume_file: @input_string_resume)
       
         #upload resume in s3 bucket
         s3 = Aws::S3::Resource.new(region: 'us-east-2')
         obj = s3.bucket('phd-annual-review-sys-docs')
         File.open( params[:student_document][:resume_file], 'rb') do |file|
-          obj.put_object(body: file,  content_type: 'application/pdf', key:@input_string )
+          obj.put_object(body: file,  content_type: 'application/pdf', key:@input_string_resume )
         end
         
         #get the url of uploaded resume from s3 bucket
@@ -73,7 +75,7 @@ class StudentDocumentsController < ApplicationController
        
         #update the resume_link column with link to the resume file
         @student_document.update(resume_link: presigned_url_resume)
-        @student_document.update(report_link: input_string_report)
+        #@student_document.update(report_link: input_string_report)
         
         @student_document.update(phd_start_date: params[:student_document][:phd_start_date])
         @student_document.update(milestones_passed: params[:student_document][:milestones_passed])
