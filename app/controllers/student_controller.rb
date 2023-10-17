@@ -31,7 +31,7 @@ class StudentController < ApplicationController
         session[:student_id] = @student.id
         session[:email] = @student.email_id
         session[:name] = @student.first_name
-        redirect_to student_documents_path
+        redirect_to student_dashboard_path
       else
         # Registration failed. Show an error message and render the signup form again.
         render :new_signup
