@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema[7.0].define(version: 2023_10_07_031831) do
+=======
+ActiveRecord::Schema[7.0].define(version: 2023_10_13_000650) do
+>>>>>>> origin/21_committee_schema
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,12 +28,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_07_031831) do
     t.string "password_digest"
   end
 
-  create_table "documents", force: :cascade do |t|
-    t.string "title"
-    t.text "description"
-    t.string "file_path"
+  create_table "committees", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.bigint "faculty_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "role", default: "Member"
+    t.index ["faculty_id"], name: "index_committees_on_faculty_id"
+    t.index ["student_id"], name: "index_committees_on_student_id"
   end
 
   create_table "faculties", force: :cascade do |t|
@@ -70,5 +76,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_07_031831) do
     t.index ["email_id"], name: "index_students_on_email_id", unique: true
   end
 
+<<<<<<< HEAD
   add_foreign_key "student_documents", "students", column: "email_id", primary_key: "email_id"
+=======
+  add_foreign_key "committees", "faculties"
+  add_foreign_key "committees", "students"
+>>>>>>> origin/21_committee_schema
 end

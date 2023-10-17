@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'student/search_faculty', media: 'all' %>
+  <title>Search Faculty - PHD Annual Review Process</title>
+</head>
+<body>
+  <div class="header">
+    <h1>Search Faculty for Committee</h1>
+  </div>
+
+  <div class="container">
+    <h2>Search Results</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Email</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @results.each do |faculty| %>
+          <tr>
+            <td><%= faculty.first_name %></td>
+            <td><%= faculty.last_name %></td>
+            <td><%= faculty.email_id %></td>
+            <td>
+              <%= link_to 'Add to Committee', student_add_to_committee_path(faculty_id: faculty.id), method: :post, class: 'btn btn-primary' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</body>
+</html>

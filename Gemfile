@@ -46,6 +46,8 @@ gem 'aws-sdk-s3'
 
 gem 'rails-controller-testing'
 
+gem 'rails-ujs'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
