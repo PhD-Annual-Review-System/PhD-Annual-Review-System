@@ -46,7 +46,7 @@ class StudentController < ApplicationController
     end
 
     def edit_committee
-      @committee_members = current_student.committees.includes(:faculty).order('role DESC')
+      @committee_members = current_student.committees.includes(:faculty).order('role ASC')
     end    
 
     def search_faculty
