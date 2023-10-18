@@ -25,7 +25,5 @@ RSpec.describe Student, type: :model do
         expect(student).not_to be_valid
         expect(student.errors[:email_id]).to include('must end with @tamu.edu')
     end
-
-
-end
+  end
 end

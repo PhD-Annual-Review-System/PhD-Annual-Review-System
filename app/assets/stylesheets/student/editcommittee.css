@@ -99,3 +99,20 @@ body {
     border-color: #f5c6cb;
     color: #721c24;
 }
+
+.search-box {
+    background-color: #f9f9f9; /* Change to your table's dark background color */
+    padding: 20px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  
+  .search-box input[type="text"] {
+    flex: 1;
+  }
+  
+  .search-box input[type="submit"] {
+    white-space: nowrap;
+  }
+  

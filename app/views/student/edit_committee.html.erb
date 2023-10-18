@@ -17,57 +17,56 @@
     <% elsif flash[:error] %>
         <p class="alert alert-danger"><%= flash[:error] %></p>
     <% end %>
-    <!-- Committee Table -->
-    <table class="committee-table">
-    <caption>Committee Members</caption>
-    <thead>
-        <tr>
-        <th>Role</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <% @committee_members.each do |committee| %>
-        <tr>
-            <td><%= committee.role %></td>
-            <td><%= committee.faculty.first_name %></td>
-            <td><%= committee.faculty.last_name %></td>
-            <td>
-            <!-- Add action links here, e.g., to remove a faculty member from the committee -->
-                <!-- Only display the 'Set as Chair' button if this faculty is not a chair and no chair is already set -->
-                <% unless committee.role == 'Chair' || @committee_members.any? { |c| c.role == 'Chair' } %>
-                    <%= link_to 'Set as Chair', set_as_chair_student_path(committee.id), method: :post, class: 'btn btn-primary' %>
-                <% end %>
-                <% unless committee.role != 'Chair' %>
-                    <%= link_to 'Return to Member', return_to_member_student_path(committee.id), method: :post, class: 'btn btn-secondary' if committee.role == 'Chair' %>
-                <% end %>
-            </td>
-        </tr>
-        <% end %>
-    </tbody>
-    </table>
+    <% if @committee_members.empty? %>
+      <p>You have not added any faculty to your committee yet.</p>
+    <% else %>
+      <!-- Committee Table -->
+      <table class="committee-table">
+      <caption>Committee Members</caption>
+      <thead>
+          <tr>
+          <th>Role</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          <% @committee_members.each do |committee| %>
+          <tr>
+              <td><%= committee.role %></td>
+              <td><%= committee.faculty.first_name %></td>
+              <td><%= committee.faculty.last_name %></td>
+              <td>
+              <!-- Add action links here, e.g., to remove a faculty member from the committee -->
+                  <!-- Only display the 'Set as Chair' button if this faculty is not a chair and no chair is already set -->
+                  <% unless committee.role == 'Chair' || @committee_members.any? { |c| c.role == 'Chair' } %>
+                      <%= link_to 'Set as Chair', set_as_chair_student_path(committee.id), method: :post, class: 'btn btn-primary' %>
+                  <% end %>
+                  <% unless committee.role != 'Chair' %>
+                      <%= link_to 'Return to Member', return_to_member_student_path(committee.id), method: :post, class: 'btn btn-secondary' if committee.role == 'Chair' %>
+                  <% end %>
+              </td>
+          </tr>
+          <% end %>
+      </tbody>
+      </table>
+    <% end %>
 
     <!-- Button to Add Committee Member -->
     <button id="toggleSearchForm" class="btn btn-primary">Add a Committee Member</button>
 
-    <div id="searchForm" style="display: none;">
-        <%= form_with url: student_search_faculty_path, method: :get, local: true do |f| %>
-            <div class="form-group">
-            <%= f.label :first_name, 'First Name' %>
-            <%= f.text_field :first_name, class: 'form-control' %>
-            </div>
+    <div id="searchForm" class="search-box" style="display: none;">
+      <h2> Search Faculty </h2>
+      <%= form_with url: search_faculty_student_path, method: :get, local: true do |f| %>
+        <%= f.label :first_name, 'First Name', class: 'sr-only' %>
+        <%= f.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
+          
+        <%= f.label :last_name, 'Last Name', class: 'sr-only' %>
+        <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>
 
-            <div class="form-group">
-            <%= f.label :last_name, 'Last Name' %>
-            <%= f.text_field :last_name, class: 'form-control' %>
-            </div>
-
-            <div class="form-group">
-            <%= f.submit 'Search', class: 'btn btn-success' %>
-            </div>
-        <% end %>
+        <%= f.submit 'Search', class: 'btn btn-success', id: "search" %>
+      <% end %>
     </div>
 
   </div>

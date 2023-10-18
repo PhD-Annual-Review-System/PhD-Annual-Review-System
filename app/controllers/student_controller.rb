@@ -46,11 +46,17 @@ class StudentController < ApplicationController
     end
 
     def edit_committee
-      @committee_members = current_student.committees.includes(:faculty).order('role DESC')
+      @committee_members = current_student.committees.includes(:faculty).order('role ASC')
     end    
 
     def search_faculty
       @results = Faculty.where('first_name LIKE ? AND last_name LIKE ?', "%#{params[:first_name]}%", "%#{params[:last_name]}%")
+
+      # Redirect to edit committee page if the search results are empty
+      if @results.empty?
+        flash[:error] = "No faculty found with name #{params[:first_name]} #{params[:last_name]}."
+        redirect_to edit_committee_student_path
+      end
     end
 
     def add_to_committee
@@ -58,17 +64,17 @@ class StudentController < ApplicationController
       existing_member = current_student.committees.find_by(faculty_id: params[:faculty_id])
       
       if existing_member
-        flash[:error] = "This faculty member is already in your committee."
+        flash[:error] = "#{params[:first_name]} #{params[:last_name]} is already in your committee."
       else
         current_student.committees.create(faculty_id: params[:faculty_id], role: 'Member')
-        flash[:success] = "Faculty member added to committee!"
+        flash[:success] = "#{params[:first_name]} #{params[:last_name]} added to committee!"
       end
     
       redirect_to edit_committee_student_path
     end
 
     def set_as_chair
-      member = current_student.committees.find(params[:id])
+      member = current_student.committees.find_by(faculty_id: params[:id])
       
       # Reset any existing chair to a normal member
       current_student.committees.where(role: 'Chair').update_all(role: 'Member')

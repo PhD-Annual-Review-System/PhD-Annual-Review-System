@@ -15,7 +15,8 @@ more_student.each do |student|
   end
 
 more_faculty = [
-  {:first_name => 'Prof', :last_name => 'Example', :email_id => 'profexample@tamu.edu', :password => '12345678'}
+  {:first_name => 'Prof', :last_name => 'Example', :email_id => 'profexample@tamu.edu', :password => '12345678'},
+  {:first_name => 'John', :last_name => 'Doe', :email_id => 'jdtest@tamu.edu', :password => '12345678'}
 ]
 
 more_faculty.each do |faculty|
