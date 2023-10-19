@@ -5,6 +5,7 @@ class Student < ApplicationRecord
     # Associations
     has_many :committees
     has_many :faculties, through: :committees
+    has_many :assessments
 
     # Validations
     validates :first_name, presence: true

@@ -26,6 +26,11 @@ Rails.application.routes.draw do
   get 'faculty/login', to: 'faculty#login'
   post 'faculty/login', to: 'faculty#authenticate'
   get 'faculty/dashboard', to: 'faculty#dashboard', as: 'faculty_dashboard'
+  get 'faculty/review_student/:id', to: 'faculty#review_student', as: 'faculty_review_student'
+  post 'faculty/save_assessment', to: 'faculty#save_assessment', as: 'faculty_save_assessment'
+  get 'faculty/view_assessment/:id', to: 'faculty#view_assessment', as: 'faculty_view_assessment'
+
+
   get 'document/new'
   get 'document/create'
   get 'faculty/logout', to: 'faculty#logout', as: 'faculty_logout'
