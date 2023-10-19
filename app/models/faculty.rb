@@ -4,6 +4,7 @@ class Faculty < ApplicationRecord
     # Associations
     has_many :committees
     has_many :students, through: :committees
+    has_many :assessments
 
     # Validations
     validates :password, length: { minimum: 8 }, allow_blank: true

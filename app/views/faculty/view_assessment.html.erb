@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <%= stylesheet_link_tag 'faculty/facultydashboard' %>
+  <title>View Assessment</title>
+</head>
+<body>
+  <div class="header">
+    <h1>View Assessment</h1>
+    <%= link_to 'Back to Dashboard', faculty_dashboard_path, class: 'dashboard-link' %>
+  </div>
+
+  <div class="container">
+    <% if flash[:error].present? %>
+      <div class="alert alert-danger" role="alert">
+        <%= flash[:error] %>
+      </div>
+    <% end %>
+
+    <h2>Assessment for <%= @student.first_name %> <%= @student.last_name %></h2>
+
+    <% if @assessment.present? %>
+      <h3>Public Comment</h3>
+      <p><%= @assessment.public_comment %></p>
+
+      <h3>Private Comment for Faculty</h3>
+      <p><%= @assessment.private_comment %></p>
+
+      <h3>Rating</h3>
+      <p><%= @assessment.rating %></p>
+
+      <h3>Eligible for Reward</h3>
+      <p><%= @assessment.eligible_for_reward ? 'Yes' : 'No' %></p>
+    <% else %>
+      <p>No assessment found for this student.</p>
+    <% end %>
+  </div>
+</body>
+</html>

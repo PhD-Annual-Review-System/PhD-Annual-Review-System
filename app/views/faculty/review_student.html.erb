@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        table, th, td {
+            border: 1px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+<h1>Submitting Review for <%= @student.first_name %> <%= @student.last_name %></h1>
+
+<% if @no_documents_message %>
+  <p><%= @no_documents_message %></p>
+<% else %>
+
+<h2>Other Fields</h2>
+  <table>
+    <tr>
+      <th>PHD Start Date</th>
+      <th>Milestones Passed</th>
+      <th>GPA</th>
+      <!-- Add more table headers for other fields -->
+    </tr>
+    <tr>
+      <td><%= @documents.first.phd_start_date %></td>
+      <td><%= @documents.first.milestones_passed %></td>
+      <td><%= @documents.first.gpa %></td>
+      <!-- Add more table cells for other fields -->
+    </tr>
+  </table>
+  <h1>Student Documents</h1>
+
+  <!-- Display the resume file if available -->
+  <% if @resume_url.present? %>
+    <iframe src="<%= @resume_url %>" width="850" height="650" style="border: 1px solid #000;"></iframe>
+  <% end %>
+
+  <!-- Add code to display other documents if needed -->
+
+<% non_empty_comments = @private_comments.reject { |assessment| assessment.private_comment.blank? || assessment.private_comment.strip.empty? } %>
+
+  <% if non_empty_comments.present? %>
+  <h2>Private Comments</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Faculty Member</th>
+        <th>Comment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% non_empty_comments.each do |assessment| %>
+        <tr>
+          <td><%= assessment.faculty.first_name %> <%= assessment.faculty.last_name %></td>
+          <td><%= assessment.private_comment %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+
+  <h3>Performance Assessment</h3>
+  <%= form_tag faculty_save_assessment_path, method: :post do %>
+  <input type="hidden" name="id" value="<%= @student.id %>">
+  <div>
+    <label for="public_comment">Public Comment:</label>
+    <textarea id="public_comment" name="assessment[public_comment]" rows="4" cols="50"></textarea>
+  </div>
+  <div>
+    <label for="private_comment">Private Comment:</label>
+    <textarea id="private_comment" name="assessment[private_comment]" rows="4" cols="50"></textarea>
+  </div>
+  <div>
+    <label for="rating">Rating:</label>
+    <select id="rating" name="assessment[rating]">
+      <option value="Satisfactory">Satisfactory</option>
+      <option value="Unsatisfactory">Unsatisfactory</option>
+      <option value="Needs Improvement">Needs Improvement</option>
+    </select>
+  </div>
+  <div>
+    <label for="eligible_for_reward">Eligible for Reward:</label>
+    <input type="checkbox" id="eligible_for_reward" name="assessment[eligible_for_reward]" value="1">
+  </div>
+  <div>
+    <input type="submit" value="Save Assessment">
+  </div>
+<% end %>
+
+
+<% end %>
+</body>
+</html>
