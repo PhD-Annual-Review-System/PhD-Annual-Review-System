@@ -4,13 +4,14 @@
   <div class="header">
     <h1>Submit Documents</h1>
     <%= link_to 'Back to Dashboard', student_dashboard_path, class: 'btn' %>
+    <%= link_to 'Logout', student_logout_path, method: :get, class: 'btn' %>
   </div>
   
 </div>
 
 <div class="container">
 
-<%= form_for(@student_document, url: student_documents_path, method: :get) do |f| %>   
+<%= form_for(@student_data, url: student_documents_path, method: :get) do |f| %>   
 
 <div>
   <table>
@@ -27,7 +28,7 @@
         <td><%= @student_data.UIN %></td>
       </tr>
       <tr>
-        <th><%= f.label :email_id %></th>
+        <th><%= f.label :email_id,  id: "email_id" %></th>
         <td><%= @student_data.email_id %></td>
       </tr>
     </table>
@@ -35,10 +36,21 @@
  </div> 
  <% end %>
 
- <%= form_for(@student_document, url: student_documents_path, method: :patch) do |f| %>   
+ <%= form_for(@student_document, url: student_documents_path, method: :patch) do |f| %> 
+  <% if @student_document.errors.any? %>
+    <div style="color: white">
+      <h2><%= pluralize(student_document.errors.count, "error") %> prohibited this student_document from being saved:</h2>
+
+      <ul>
+        <% student_document.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>  
  <table>
       <tr>
-        <th><%= f.label :phd_start_date %></th>
+        <th><%= f.label :phd_start_date , id: "phd_start_date" %></th>
         <td>
           <select name="student_document[phd_start_date]" id="student_document_phd_start_date" class="form-control">
             <option value="">Select a date</option>
@@ -52,34 +64,41 @@
             <% end %>
           </select>
         </td>
+        
       </tr>
       <tr>
-        <th><%= f.label :milestones_passed %></th>
-        <td><%= f.text_area :milestones_passed %></td>
+        <th><%= f.label :milestones_passed, id: "milestones_passed" %></th>
+        <td><%= f.text_area :milestones_passed, value: '' %></td>
       </tr>
       <tr>
-        <th><%= f.label :improvement_plan_present %></th>
-        <td><%= f.text_field :improvement_plan_present %></td>
+        <th><%= f.label :improvement_plan_present, id: "improvement_plan_present" %></th>
+        <td>
+        <select name="student_document[improvement_plan_present]" id="student_document_improvement_plan_present" class="form-control">
+            <option value="">Select a value</option>
+            <option value="Yes" %>Yes</option>
+            <option value="No" %>No</option>
+        </select>
+        </td>
       </tr>
       <tr>
-        <th><%= f.label :improvement_plan_summary %></th>
-        <td><%= f.text_area :improvement_plan_summary %></td>
+        <th><%= f.label :improvement_plan_summary , id: "improvement_plan_summary" %></th>
+        <td><%= f.text_area :improvement_plan_summary, value: '' %></td>
       </tr>
       <tr>
-        <th><%= f.label :gpa %></th>
-        <td><%= f.text_field :gpa %></td>
+        <th><%= f.label :gpa , id: "gpa" %></th>
+        <td><%= f.text_field :gpa, value: '' %></td>
       </tr>
       <tr>
-        <th><%= f.label :support_in_last_sem %></th>
-        <td><%= f.text_area :support_in_last_sem %></td>
+        <th><%= f.label :support_in_last_sem, id: "support_in_last_sem" %></th>
+        <td><%= f.text_area :support_in_last_sem, value: '' %></td>
       </tr>
       <tr>
-        <th><%= f.label :number_of_paper_submissions %></th>
-        <td><%= f.number_field :number_of_paper_submissions %></td>
+        <th><%= f.label :number_of_paper_submissions, id: "number_of_paper_submissions" %></th>
+        <td><%= f.number_field :number_of_paper_submissions, value: '' %></td>
       </tr>
       <tr>
-        <th><%= f.label :number_of_papers_published %></th>
-        <td><%= f.number_field :number_of_papers_published %></td>
+        <th><%= f.label :number_of_papers_published, id: "number_of_papers_published" %></th>
+        <td><%= f.number_field :number_of_papers_published, value: ''  %></td>
       </tr>
     </table>
    <div class="field">
@@ -97,5 +116,11 @@
    </div>
 
 </div>
+
+<% if flash[:error] %>
+  <div class="flash error">
+    <%= flash[:error] %>
+  </div>
+<% end %>
    
  <% end %>

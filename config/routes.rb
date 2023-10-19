@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'student/login', to: 'student#login'
   post 'student/login', to: 'student#authenticate'
  
-  get 'student/documents', to: 'student_documents#index'
+  get 'student_documents', to: 'student_documents#index'
   patch 'student_documents', to: 'student_documents#update'
 
   get 'student/signup', to: 'student#new_signup'
