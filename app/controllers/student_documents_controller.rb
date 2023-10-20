@@ -5,9 +5,6 @@ class StudentDocumentsController < ApplicationController
   def index
     @student_document = StudentDocument.find_or_initialize_by(email_id: session[:email]) 
     @student_data = Student.find_or_initialize_by(email_id: session[:email])
-    if !@student_document
-      flash.now[:error] =  "No student found with this email ID"
-    end
   end
 
   # GET /student_documents/1 or /student_documents/1.json
@@ -17,7 +14,7 @@ class StudentDocumentsController < ApplicationController
 
   # GET /student_documents/new
   def new
-    @student_document = StudentDocument.new
+    #@student_document = StudentDocument.new
   end
 
   # GET /student_documents/1/edit
@@ -27,17 +24,8 @@ class StudentDocumentsController < ApplicationController
   # POST /student_documents or /student_documents.json
 
   def create
-   @student_document = StudentDocument.new(student_document_params)
+   #  @student_document = StudentDocument.new(student_document_params)
     # @student_document = StudentDocument.find_or_initialize_by(email_id: session[:email]) 
-    respond_to do |format|
-      if @student_document.save
-        format.html { redirect_to student_document_url(@student_document), notice: "Student document was successfully created." }
-        format.json { render :show, status: :created, location: @student_document }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @student_document.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
 
