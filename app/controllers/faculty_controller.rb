@@ -33,7 +33,7 @@ class FacultyController < ApplicationController
         @students_pending_assessment = []
         @students_completed_assessment = []
         @students_to_review.each do |student|
-          if student.assessments.empty?
+          if student.assessments.find_by(faculty: @faculty).nil?
             @students_pending_assessment << student
           else
             @students_completed_assessment << student

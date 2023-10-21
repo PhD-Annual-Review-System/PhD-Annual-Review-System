@@ -24,7 +24,6 @@
   <p><%= @no_documents_message %></p>
 <% else %>
 
-<h2>Other Fields</h2>
   <table>
     <tr>
       <th>PHD Start Date</th>
@@ -51,7 +50,7 @@
 <% non_empty_comments = @private_comments.reject { |assessment| assessment.private_comment.blank? || assessment.private_comment.strip.empty? } %>
 
   <% if non_empty_comments.present? %>
-  <h2>Private Comments</h2>
+  <h2>Comment made by other faculty</h2>
   <table>
     <thead>
       <tr>
@@ -74,11 +73,11 @@
   <%= form_tag faculty_save_assessment_path, method: :post do %>
   <input type="hidden" name="id" value="<%= @student.id %>">
   <div>
-    <label for="public_comment">Public Comment:</label>
+    <label for="public_comment">Comment for Student:</label>
     <textarea id="public_comment" name="assessment[public_comment]" rows="4" cols="50"></textarea>
   </div>
   <div>
-    <label for="private_comment">Private Comment:</label>
+    <label for="private_comment">Comment for Faculty:</label>
     <textarea id="private_comment" name="assessment[private_comment]" rows="4" cols="50"></textarea>
   </div>
   <div>
