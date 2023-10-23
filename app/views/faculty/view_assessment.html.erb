@@ -20,14 +20,14 @@
     <h2>Assessment for <%= @student.first_name %> <%= @student.last_name %></h2>
 
     <% if @assessment.present? %>
-      <h3>Public Comment</h3>
-      <p><%= @assessment.public_comment %></p>
+      <h3>Comment for Student</h3>
+      <p><%= @assessment.public_comment.present? ? @assessment.public_comment : 'No comment made for the student' %></p>
 
-      <h3>Private Comment for Faculty</h3>
-      <p><%= @assessment.private_comment %></p>
+      <h3>Comment for Faculty</h3>
+      <p><%= @assessment.private_comment.present? ? @assessment.private_comment : 'No comment made for the faculty' %></p>
 
       <h3>Rating</h3>
-      <p><%= @assessment.rating %></p>
+      <p><%= @assessment.rating.present? ? @assessment.rating : 'No rating provided' %></p>
 
       <h3>Eligible for Reward</h3>
       <p><%= @assessment.eligible_for_reward ? 'Yes' : 'No' %></p>

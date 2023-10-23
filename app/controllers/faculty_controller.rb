@@ -54,6 +54,7 @@ class FacultyController < ApplicationController
         @no_documents_message = 'This student has not submitted any documents.'
       else
         @resume_url = @documents.first.resume_link
+        @report_url = @documents.first.report_link
         @private_comments = Assessment.where(student_id: @student.id).where.not(faculty_id: current_faculty.id)
       end
     end

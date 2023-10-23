@@ -24,25 +24,41 @@
   <p><%= @no_documents_message %></p>
 <% else %>
 
-  <table>
-    <tr>
-      <th>PHD Start Date</th>
-      <th>Milestones Passed</th>
-      <th>GPA</th>
-      <!-- Add more table headers for other fields -->
-    </tr>
-    <tr>
-      <td><%= @documents.first.phd_start_date %></td>
-      <td><%= @documents.first.milestones_passed %></td>
-      <td><%= @documents.first.gpa %></td>
-      <!-- Add more table cells for other fields -->
-    </tr>
+    <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>PHD Start Date</th>
+        <th>Milestones Passed</th>
+        <th>GPA</th>
+        <th>Improvement Plan Present</th>
+        <th>Improvement Plan Summary</th>
+        <th>Support in Last Semester</th>
+        <th>Paper Submissions</th>
+        <th>Papers Published</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><%= @documents.first.phd_start_date.present? ? @documents.first.phd_start_date : 'N/A' %></td>
+        <td><%= @documents.first.milestones_passed.present? ? @documents.first.milestones_passed : 'N/A' %></td>
+        <td><%= @documents.first.gpa.present? ? @documents.first.gpa : 'N/A' %></td>
+        <td><%= @documents.first.improvement_plan_present.present? ? @documents.first.improvement_plan_present : 'N/A' %></td>
+        <td><%= @documents.first.improvement_plan_summary.present? ? @documents.first.improvement_plan_summary : 'N/A' %></td>
+        <td><%= @documents.first.support_in_last_sem.present? ? @documents.first.support_in_last_sem : 'N/A' %></td>
+        <td><%= @documents.first.number_of_paper_submissions.present? ? @documents.first.number_of_paper_submissions : 'N/A' %></td>
+        <td><%= @documents.first.number_of_papers_published.present? ? @documents.first.number_of_papers_published : 'N/A' %></td>
+      </tr>
+    </tbody>
   </table>
   <h1>Student Documents</h1>
 
   <!-- Display the resume file if available -->
   <% if @resume_url.present? %>
     <iframe src="<%= @resume_url %>" width="850" height="650" style="border: 1px solid #000;"></iframe>
+  <% end %>
+
+  <% if @report_url.present? %>
+    <iframe src="<%= @report_url %>" width="850" height="650" style="border: 1px solid #000;"></iframe>
   <% end %>
 
   <!-- Add code to display other documents if needed -->
