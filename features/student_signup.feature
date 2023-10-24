@@ -63,4 +63,4 @@ Feature: Sign up a new user
     And I fill in "password" with "password"
     And I fill in "confirm_password" with "password"
     And I submit form
-    Then I should see "You have successfully logged in"
+    Then I should be redirected to student document path

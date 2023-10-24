@@ -1,9 +1,11 @@
 class Student < ApplicationRecord
+    has_many :student_document, foreign_key: :email_id
     has_secure_password
     
     # Associations
     has_many :committees
     has_many :faculties, through: :committees
+    has_many :assessments
 
     # Validations
     validates :first_name, presence: true

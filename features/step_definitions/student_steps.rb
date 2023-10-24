@@ -11,7 +11,7 @@ end
 
 Given("a student with the email ID {string} already exists") do |email|
     Student.create(email_id: email, password: 'password', password_confirmation: 'password', first_name: 'john', last_name: 'doe', UIN: 1234)
-  end
+end
 
 When(/^I submit form with empty name$/) do
     find("#submit").click
@@ -169,4 +169,8 @@ Given('I have a faculty member named {string} in my committee') do |string|
     faculty_first, faculty_last = string.split(' ')
     @faculty = FactoryBot.create(:faculty, first_name: faculty_first, last_name: faculty_last, email_id: 'johndoetest@tamu.edu', password: 'password')
     FactoryBot.create(:committee, student: @student, faculty: @faculty)
+end
+
+Then ('I should be redirected to student document path') do 
+    visit student_documents_path
 end
