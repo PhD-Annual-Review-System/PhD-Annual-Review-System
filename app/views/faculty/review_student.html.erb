@@ -100,16 +100,16 @@
     <label for="rating">Rating:</label>
     <select id="rating" name="assessment[rating]">
       <option value="Satisfactory">Satisfactory</option>
-      <option value="Unsatisfactory">Unsatisfactory</option>
       <option value="Needs Improvement">Needs Improvement</option>
+      <option value="Unsatisfactory">Unsatisfactory</option>
     </select>
   </div>
   <div>
-    <label for="eligible_for_reward">Eligible for Reward:</label>
-    <input type="checkbox" id="eligible_for_reward" name="assessment[eligible_for_reward]" value="1">
+    <label for="nominate_for_award">Nominate for Award:</label>
+    <input type="checkbox" id="nominate_for_award" name="assessment[eligible_for_reward]" value="1">
   </div>
   <div>
-    <input type="submit" value="Save Assessment">
+    <input type="submit" value="Save Assessment" id="save">
   </div>
 <% end %>
 

@@ -29,21 +29,21 @@ class FacultyController < ApplicationController
     def dashboard
       @faculty = current_faculty
       if @faculty
-        @students_to_review = Student.joins(:committees).where(committees: { faculty_id: @faculty.id })
+        @students_to_review = Student.includes(:committees, :assessments).where(committees: { faculty_id: @faculty.id })
         @students_pending_assessment = []
         @students_completed_assessment = []
+    
         @students_to_review.each do |student|
-          if student.assessments.find_by(faculty: @faculty).nil?
-            @students_pending_assessment << student
-          else
+          if student.assessments.find { |a| a.faculty == @faculty }
             @students_completed_assessment << student
+          else
+            @students_pending_assessment << student
           end
         end
       else
         flash[:error] = 'You must be logged in to access the dashboard.'
         redirect_to faculty_login_path
       end
-      # Your dashboard logic goes here
     end
 
     def review_student
@@ -60,10 +60,8 @@ class FacultyController < ApplicationController
     end
 
     def save_assessment
-      # Find the student by ID
       @student = Student.find(params[:id])
   
-      # Create a new assessment based on the form data
       @assessment = Assessment.find_or_initialize_by(student: @student, faculty: current_faculty)
   
       if @assessment.update(assessment_params)

@@ -14,5 +14,5 @@ class Faculty < ApplicationRecord
         if email_id.present? && !email_id.ends_with?('@tamu.edu')
           errors.add(:email_id, 'must end with @tamu.edu')
         end
-      end
+      end    
 end
