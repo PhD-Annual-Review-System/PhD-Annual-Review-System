@@ -109,35 +109,6 @@
     <h1>Performance Assessment</h1>
   </div>
   <%= form_tag faculty_save_assessment_path, method: :post do %>
-<<<<<<< Updated upstream
-  <input type="hidden" name="id" value="<%= @student.id %>">
-  <div>
-    <label for="public_comment">Comment for Student:</label>
-    <textarea id="public_comment" name="assessment[public_comment]" rows="4" cols="50"></textarea>
-  </div>
-  <div>
-    <label for="private_comment">Comment for Faculty:</label>
-    <textarea id="private_comment" name="assessment[private_comment]" rows="4" cols="50"></textarea>
-  </div>
-  <div>
-    <label for="rating">Rating:</label>
-    <select id="rating" name="assessment[rating]">
-      <option value="Satisfactory">Satisfactory</option>
-      <option value="Needs Improvement">Needs Improvement</option>
-      <option value="Unsatisfactory">Unsatisfactory</option>
-    </select>
-  </div>
-  <div>
-    <label for="nominate_for_award">Nominate for Award:</label>
-    <input type="checkbox" id="nominate_for_award" name="assessment[eligible_for_reward]" value="1">
-  </div>
-  <div>
-    <input type="submit" value="Save Assessment" id="save">
-  </div>
-<% end %>
-
-
-=======
     <table>
       <tr>
         <td class="left-align"><label for="public_comment">Comment for Student:</label></td>
@@ -162,11 +133,10 @@
         <td><input type="checkbox" id="eligible_for_reward" name="assessment[eligible_for_reward]" value="1"></td>
       </tr>
       <tr>
-        <td colspan="2" class="center-align"><input type="submit" value="Save Assessment" class="btn-save"></td>
+        <td colspan="2" class="center-align"><input type="submit" value="Save Assessment" class="btn-save" id="save"></td>
       </tr>
     </table>
   <% end %>
->>>>>>> Stashed changes
 <% end %>
 </body>
 </html>

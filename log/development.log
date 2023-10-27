@@ -48804,3 +48804,423 @@ Completed 200 OK in 62ms (Views: 20.8ms | ActiveRecord: 14.0ms | Allocations: 13
 
 
 >>>>>>> Stashed changes
+Started GET "/" for ::1 at 2023-10-27 10:48:53 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (2.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 69.8ms | Allocations: 50798)
+  Rendered layout layouts/application.html.erb (Duration: 73.0ms | Allocations: 54480)
+Completed 200 OK in 77ms (Views: 75.3ms | ActiveRecord: 0.0ms | Allocations: 56973)
+
+
+Started GET "/student/login" for ::1 at 2023-10-27 10:48:56 -0500
+Processing by StudentController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/login.html.erb within layouts/application
+  Rendered student/login.html.erb within layouts/application (Duration: 6.4ms | Allocations: 3042)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 6055)
+Completed 200 OK in 12ms (Views: 11.3ms | ActiveRecord: 0.0ms | Allocations: 6750)
+
+
+Started GET "/faculty/login" for ::1 at 2023-10-27 10:49:03 -0500
+Processing by FacultyController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering faculty/login.html.erb within layouts/application
+  Rendered faculty/login.html.erb within layouts/application (Duration: 5.0ms | Allocations: 2295)
+  Rendered layout layouts/application.html.erb (Duration: 8.7ms | Allocations: 5308)
+Completed 200 OK in 12ms (Views: 10.6ms | ActiveRecord: 0.0ms | Allocations: 5998)
+
+
+Started POST "/faculty/login" for ::1 at 2023-10-27 10:49:26 -0500
+Processing by FacultyController#authenticate as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "faculty"=>{"email_id"=>"profexample@tamu.edu", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mFaculty Load (0.9ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."email_id" = $1 LIMIT $2[0m  [["email_id", "profexample@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:7:in `authenticate'
+Redirected to http://localhost:3000/faculty/dashboard
+Completed 302 Found in 266ms (ActiveRecord: 11.3ms | Allocations: 10562)
+
+
+Started GET "/faculty/dashboard" for ::1 at 2023-10-27 10:49:26 -0500
+Processing by FacultyController#dashboard as HTML
+  [1m[36mFaculty Load (0.5ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:113:in `current_faculty'
+  [1m[35mSQL (3.0ms)[0m  [1m[34mSELECT "students"."id" AS t0_r0, "students"."first_name" AS t0_r1, "students"."last_name" AS t0_r2, "students"."UIN" AS t0_r3, "students"."email_id" AS t0_r4, "students"."password" AS t0_r5, "students"."created_at" AS t0_r6, "students"."updated_at" AS t0_r7, "students"."password_digest" AS t0_r8, "committees"."id" AS t1_r0, "committees"."student_id" AS t1_r1, "committees"."faculty_id" AS t1_r2, "committees"."created_at" AS t1_r3, "committees"."updated_at" AS t1_r4, "committees"."role" AS t1_r5, "assessments"."id" AS t2_r0, "assessments"."student_id" AS t2_r1, "assessments"."faculty_id" AS t2_r2, "assessments"."public_comment" AS t2_r3, "assessments"."rating" AS t2_r4, "assessments"."eligible_for_reward" AS t2_r5, "assessments"."private_comment" AS t2_r6, "assessments"."created_at" AS t2_r7, "assessments"."updated_at" AS t2_r8 FROM "students" LEFT OUTER JOIN "committees" ON "committees"."student_id" = "students"."id" LEFT OUTER JOIN "assessments" ON "assessments"."student_id" = "students"."id" WHERE "committees"."faculty_id" = $1[0m  [["faculty_id", 3]]
+  ↳ app/controllers/faculty_controller.rb:36:in `dashboard'
+  Rendering layout layouts/application.html.erb
+  Rendering faculty/dashboard.html.erb within layouts/application
+  Rendered faculty/dashboard.html.erb within layouts/application (Duration: 1.2ms | Allocations: 1686)
+  Rendered layout layouts/application.html.erb (Duration: 2.4ms | Allocations: 4683)
+Completed 200 OK in 31ms (Views: 2.6ms | ActiveRecord: 13.9ms | Allocations: 23062)
+
+
+Started GET "/faculty/review_student/5" for ::1 at 2023-10-27 10:49:27 -0500
+Processing by FacultyController#review_student as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:50:in `review_student'
+  [1m[36mStudentDocument Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "student_documents" WHERE "student_documents"."email_id" = $1 LIMIT $2[0m  [["email_id", "shashankjagtap@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:53:in `review_student'
+  [1m[36mStudentDocument Load (0.4ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1 ORDER BY "student_documents"."id" ASC LIMIT $2[0m  [["email_id", "shashankjagtap@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:56:in `review_student'
+  [1m[36mFaculty Load (1.9ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:113:in `current_faculty'
+  Rendering layout layouts/application.html.erb
+  Rendering faculty/review_student.html.erb within layouts/application
+  Rendered faculty/review_student.html.erb within layouts/application (Duration: 3.4ms | Allocations: 2258)
+  Rendered layout layouts/application.html.erb (Duration: 3.5ms | Allocations: 2346)
+Completed 500 Internal Server Error in 38ms (ActiveRecord: 8.3ms | Allocations: 14998)
+
+
+  
+ActionView::SyntaxErrorInTemplate (Encountered a syntax error while rendering template: check <!DOCTYPE html>
+<html>
+  <head>
+  <%= stylesheet_link_tag 'faculty/reviewstudent.css' %>
+</head>
+<body>
+  <div class="header">
+    <h1>Submitting Review for <%= @student.first_name %> <%= @student.last_name %></h1>
+  </div>
+
+<% if @no_documents_message %>
+  <p><%= @no_documents_message %></p>
+<% else %>
+    <div class="custom-table-wrapper"> 
+      <table class="table table-bordered table-striped">
+          <tbody>
+            <tr>
+              <th>PHD Start Date</th>
+              <% @documents.each do |document| %>
+                <td><%= document.phd_start_date.present? ? document.phd_start_date : 'N/A' %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th>Milestones Passed</th>
+              <% @documents.each do |document| %>
+                <td><%= document.milestones_passed.present? ? document.milestones_passed : 'N/A' %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th>GPA</th>
+              <% @documents.each do |document| %>
+                <td><%= document.gpa.present? ? document.gpa : 'N/A' %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th>Improvement Plan Present</th>
+              <% @documents.each do |document| %>
+                <td><%= @documents.first.improvement_plan_present.present? ? @documents.first.improvement_plan_present : 'N/A' %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th>Improvement Plan Summary</th>
+              <% @documents.each do |document| %>
+                <td><%= @documents.first.improvement_plan_summary.present? ? @documents.first.improvement_plan_summary : 'N/A' %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th>Support in Last Semester</th>
+              <% @documents.each do |document| %>
+                <td><%= @documents.first.support_in_last_sem.present? ? @documents.first.support_in_last_sem : 'N/A' %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th>Paper Submissions</th>
+              <% @documents.each do |document| %>
+                <td><%= @documents.first.number_of_paper_submissions.present? ? @documents.first.number_of_paper_submissions : 'N/A' %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th>Papers Published</th>
+              <% @documents.each do |document| %>
+                <td><%= @documents.first.number_of_papers_published.present? ? @documents.first.number_of_papers_published : 'N/A' %></td>
+              <% end %>
+            </tr>
+            <!-- Add similar rows for other attributes -->
+        </tbody>
+      </table>
+    </div>
+
+  <div class="heading-center-wrapper">
+    <h1>Student Documents</h1>
+  </div>
+  <div class="content-center-wrapper">
+    <!-- Display the resume file if available -->
+    <% if @resume_url.present? %>
+      <iframe src="<%= @resume_url %>" width="850" height="650" style="border: 4px solid #000; margin-right: 10px;"></iframe>
+    <% end %>
+
+    <% if @report_url.present? %>
+      <iframe src="<%= @report_url %>" width="850" height="650" style="border: 4px solid #000; margin-left: 10px;"></iframe>
+    <% end %>
+  </div>
+
+  <!-- Add code to display other documents if needed -->
+
+<% non_empty_comments = @private_comments.reject { |assessment| assessment.private_comment.blank? || assessment.private_comment.strip.empty? } %>
+
+  <% if non_empty_comments.present? %>
+  <h2>Comment made by other faculty</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Faculty Member</th>
+        <th>Comment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% non_empty_comments.each do |assessment| %>
+        <tr>
+          <td><%= assessment.faculty.first_name %> <%= assessment.faculty.last_name %></td>
+          <td><%= assessment.private_comment %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+
+  <div class="heading-center-wrapper">
+    <h1>Performance Assessment</h1>
+  </div>
+  <%= form_tag faculty_save_assessment_path, method: :post do %>
+<<<<<<< Updated upstream
+  <input type="hidden" name="id" value="<%= @student.id %>">
+  <div>
+    <label for="public_comment">Comment for Student:</label>
+    <textarea id="public_comment" name="assessment[public_comment]" rows="4" cols="50"></textarea>
+  </div>
+  <div>
+    <label for="private_comment">Comment for Faculty:</label>
+    <textarea id="private_comment" name="assessment[private_comment]" rows="4" cols="50"></textarea>
+  </div>
+  <div>
+    <label for="rating">Rating:</label>
+    <select id="rating" name="assessment[rating]">
+      <option value="Satisfactory">Satisfactory</option>
+      <option value="Needs Improvement">Needs Improvement</option>
+      <option value="Unsatisfactory">Unsatisfactory</option>
+    </select>
+  </div>
+  <div>
+    <label for="nominate_for_award">Nominate for Award:</label>
+    <input type="checkbox" id="nominate_for_award" name="assessment[eligible_for_reward]" value="1">
+  </div>
+  <div>
+    <input type="submit" value="Save Assessment" id="save">
+  </div>
+<% end %>
+
+
+=======
+    <table>
+      <tr>
+        <td class="left-align"><label for="public_comment">Comment for Student:</label></td>
+        <td><textarea id="public_comment" name="assessment[public_comment]" rows="4" cols="50"></textarea></td>
+      </tr>
+      <tr>
+        <td class="left-align"><label for="private_comment">Comment for Faculty:</label></td>
+        <td><textarea id="private_comment" name="assessment[private_comment]" rows="4" cols="50"></textarea></td>
+      </tr>
+      <tr>
+        <td class="left-align"><label for="rating">Rating:</label></td>
+        <td>
+          <select id="rating" name="assessment[rating]">
+            <option value="Satisfactory">Satisfactory</option>
+            <option value="Unsatisfactory">Unsatisfactory</option>
+            <option value="Needs Improvement">Needs Improvement</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="left-align"><label for="eligible_for_reward">Eligible for Reward:</label></td>
+        <td><input type="checkbox" id="eligible_for_reward" name="assessment[eligible_for_reward]" value="1"></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="center-align"><input type="submit" value="Save Assessment" class="btn-save"></td>
+      </tr>
+    </table>
+  <% end %>
+>>>>>>> Stashed changes
+<% end %>
+</body>
+</html>
+
+):
+1:    <!DOCTYPE html>
+2:    <html>
+3:      <head>
+4:      <%= stylesheet_link_tag 'faculty/reviewstudent.css' %>
+5:    </head>
+6:    <body>
+7:      <div class="header">
+8:        <h1>Submitting Review for <%= @student.first_name %> <%= @student.last_name %></h1>
+9:      </div>
+10:    
+11:    <% if @no_documents_message %>
+12:      <p><%= @no_documents_message %></p>
+13:    <% else %>
+14:        <div class="custom-table-wrapper"> 
+15:          <table class="table table-bordered table-striped">
+16:              <tbody>
+17:                <tr>
+18:                  <th>PHD Start Date</th>
+19:                  <% @documents.each do |document| %>
+20:                    <td><%= document.phd_start_date.present? ? document.phd_start_date : 'N/A' %></td>
+21:                  <% end %>
+22:                </tr>
+23:                <tr>
+24:                  <th>Milestones Passed</th>
+25:                  <% @documents.each do |document| %>
+26:                    <td><%= document.milestones_passed.present? ? document.milestones_passed : 'N/A' %></td>
+27:                  <% end %>
+28:                </tr>
+29:                <tr>
+30:                  <th>GPA</th>
+31:                  <% @documents.each do |document| %>
+32:                    <td><%= document.gpa.present? ? document.gpa : 'N/A' %></td>
+33:                  <% end %>
+34:                </tr>
+35:                <tr>
+36:                  <th>Improvement Plan Present</th>
+37:                  <% @documents.each do |document| %>
+38:                    <td><%= @documents.first.improvement_plan_present.present? ? @documents.first.improvement_plan_present : 'N/A' %></td>
+39:                  <% end %>
+40:                </tr>
+41:                <tr>
+42:                  <th>Improvement Plan Summary</th>
+43:                  <% @documents.each do |document| %>
+44:                    <td><%= @documents.first.improvement_plan_summary.present? ? @documents.first.improvement_plan_summary : 'N/A' %></td>
+45:                  <% end %>
+46:                </tr>
+47:                <tr>
+48:                  <th>Support in Last Semester</th>
+49:                  <% @documents.each do |document| %>
+50:                    <td><%= @documents.first.support_in_last_sem.present? ? @documents.first.support_in_last_sem : 'N/A' %></td>
+51:                  <% end %>
+52:                </tr>
+53:                <tr>
+54:                  <th>Paper Submissions</th>
+55:                  <% @documents.each do |document| %>
+56:                    <td><%= @documents.first.number_of_paper_submissions.present? ? @documents.first.number_of_paper_submissions : 'N/A' %></td>
+57:                  <% end %>
+58:                </tr>
+59:                <tr>
+60:                  <th>Papers Published</th>
+61:                  <% @documents.each do |document| %>
+62:                    <td><%= @documents.first.number_of_papers_published.present? ? @documents.first.number_of_papers_published : 'N/A' %></td>
+63:                  <% end %>
+64:                </tr>
+65:                <!-- Add similar rows for other attributes -->
+66:            </tbody>
+67:          </table>
+68:        </div>
+69:    
+70:      <div class="heading-center-wrapper">
+71:        <h1>Student Documents</h1>
+72:      </div>
+73:      <div class="content-center-wrapper">
+74:        <!-- Display the resume file if available -->
+75:        <% if @resume_url.present? %>
+76:          <iframe src="<%= @resume_url %>" width="850" height="650" style="border: 4px solid #000; margin-right: 10px;"></iframe>
+77:        <% end %>
+78:    
+79:        <% if @report_url.present? %>
+80:          <iframe src="<%= @report_url %>" width="850" height="650" style="border: 4px solid #000; margin-left: 10px;"></iframe>
+81:        <% end %>
+82:      </div>
+83:    
+84:      <!-- Add code to display other documents if needed -->
+85:    
+86:    <% non_empty_comments = @private_comments.reject { |assessment| assessment.private_comment.blank? || assessment.private_comment.strip.empty? } %>
+87:    
+88:      <% if non_empty_comments.present? %>
+89:      <h2>Comment made by other faculty</h2>
+90:      <table>
+91:        <thead>
+92:          <tr>
+93:            <th>Faculty Member</th>
+94:            <th>Comment</th>
+95:          </tr>
+96:        </thead>
+97:        <tbody>
+98:          <% non_empty_comments.each do |assessment| %>
+99:            <tr>
+100:              <td><%= assessment.faculty.first_name %> <%= assessment.faculty.last_name %></td>
+101:              <td><%= assessment.private_comment %></td>
+102:            </tr>
+103:          <% end %>
+104:        </tbody>
+105:      </table>
+106:      <% end %>
+107:    
+108:      <div class="heading-center-wrapper">
+109:        <h1>Performance Assessment</h1>
+110:      </div>
+111:      <%= form_tag faculty_save_assessment_path, method: :post do %>
+112:    <<<<<<< Updated upstream
+113:      <input type="hidden" name="id" value="<%= @student.id %>">
+114:      <div>
+115:        <label for="public_comment">Comment for Student:</label>
+116:        <textarea id="public_comment" name="assessment[public_comment]" rows="4" cols="50"></textarea>
+117:      </div>
+118:      <div>
+119:        <label for="private_comment">Comment for Faculty:</label>
+120:        <textarea id="private_comment" name="assessment[private_comment]" rows="4" cols="50"></textarea>
+121:      </div>
+122:      <div>
+123:        <label for="rating">Rating:</label>
+124:        <select id="rating" name="assessment[rating]">
+125:          <option value="Satisfactory">Satisfactory</option>
+126:          <option value="Needs Improvement">Needs Improvement</option>
+127:          <option value="Unsatisfactory">Unsatisfactory</option>
+128:        </select>
+129:      </div>
+130:      <div>
+131:        <label for="nominate_for_award">Nominate for Award:</label>
+132:        <input type="checkbox" id="nominate_for_award" name="assessment[eligible_for_reward]" value="1">
+133:      </div>
+134:      <div>
+135:        <input type="submit" value="Save Assessment" id="save">
+136:      </div>
+137:    <% end %>
+138:    
+139:    
+140:    =======
+141:        <table>
+142:          <tr>
+143:            <td class="left-align"><label for="public_comment">Comment for Student:</label></td>
+144:            <td><textarea id="public_comment" name="assessment[public_comment]" rows="4" cols="50"></textarea></td>
+145:          </tr>
+146:          <tr>
+147:            <td class="left-align"><label for="private_comment">Comment for Faculty:</label></td>
+148:            <td><textarea id="private_comment" name="assessment[private_comment]" rows="4" cols="50"></textarea></td>
+149:          </tr>
+150:          <tr>
+151:            <td class="left-align"><label for="rating">Rating:</label></td>
+152:            <td>
+153:              <select id="rating" name="assessment[rating]">
+154:                <option value="Satisfactory">Satisfactory</option>
+155:                <option value="Unsatisfactory">Unsatisfactory</option>
+156:                <option value="Needs Improvement">Needs Improvement</option>
+157:              </select>
+158:            </td>
+159:          </tr>
+160:          <tr>
+161:            <td class="left-align"><label for="eligible_for_reward">Eligible for Reward:</label></td>
+162:            <td><input type="checkbox" id="eligible_for_reward" name="assessment[eligible_for_reward]" value="1"></td>
+163:          </tr>
+164:          <tr>
+165:            <td colspan="2" class="center-align"><input type="submit" value="Save Assessment" class="btn-save"></td>
+166:          </tr>
+167:        </table>
+168:      <% end %>
+169:    >>>>>>> Stashed changes
+170:    <% end %>
+171:    </body>
+172:    </html>
+  
+app/views/faculty/review_student.html.erb:175: syntax error, unexpected `end'
+app/views/faculty/review_student.html.erb:175: syntax error, unexpected `end'
+app/views/faculty/review_student.html.erb:175: syntax error, unexpected `end'
+app/views/faculty/review_student.html.erb:175: syntax error, unexpected `end'
