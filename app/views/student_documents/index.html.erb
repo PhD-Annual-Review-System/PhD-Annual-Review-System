@@ -1,3 +1,5 @@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
 <p style="color: green"><%= notice %></p>
 <div class="header">
   <%= stylesheet_link_tag 'document/main.css' %>
@@ -66,10 +68,32 @@
         </td>
         
       </tr>
+
       <tr>
-        <th><%= f.label :milestones_passed, id: "milestones_passed" %></th>
-        <td><%= f.text_area :milestones_passed, value: '' %></td>
-      </tr>
+      <th><%= f.label :milestones_passed, id: "milestones_passed" %></th>
+      <td>
+        <input type="checkbox" name="student_document[milestones_passed][]" value="Passed Qual Exam (or exempt from Qual exam)">
+        <%= label_tag("milestone1", "Passed Qual Exam (or exempt from Qual exam)", class: "common-label-class") %>
+        <br>
+        <input type="checkbox" name="student_document[milestones_passed][]" value="Have Approved Degree Plan (including committee)">
+        <%= label_tag("milestone2", "Have Approved Degree Plan (including committee)", class: "common-label-class") %>
+        <br>
+        <input type="checkbox" name="student_document[milestones_passed][]" value="Passed Prelim Exam">
+        <%= label_tag("milestone3", "Passed Prelim Exam", class: "common-label-class") %>
+        <br>
+        <input type="checkbox" name="student_document[milestones_passed][]" value="Have Approved PhD Proposal">
+        <%= label_tag("milestone4", "Have Approved PhD Proposal", class: "common-label-class") %>
+        <br>
+        <input type="checkbox" name="student_document[milestones_passed][]" value="Defended Dissertation">
+        <%= label_tag("milestone5", "Defended Dissertation", class: "common-label-class") %>
+        <br>
+        <input type="checkbox" name="student_document[milestones_passed][]" value="Submitted Dissertation">
+        <%= label_tag("milestone6", "Submitted Dissertation", class: "common-label-class") %>
+        
+      </td>
+    </tr>
+    
+    
       <tr>
         <th><%= f.label :improvement_plan_present, id: "improvement_plan_present" %></th>
         <td>
@@ -88,11 +112,57 @@
         <th><%= f.label :gpa , id: "gpa" %></th>
         <td><%= f.text_field :gpa, value: '' %></td>
       </tr>
+
+
       <tr>
-        <th><%= f.label :support_in_last_sem, id: "support_in_last_sem" %></th>
-        <td><%= f.text_area :support_in_last_sem, value: '' %></td>
-      </tr>
-      <tr>
+      <th><%= f.label :support_in_last_sem, id: "support_in_last_sem" %></th>
+      <td>
+
+      <div>
+      <input type="checkbox" name="student_document[support_in_last_sem][]" value="Research Assistantship with Faculty Member" class="toggle-textbox">
+      <%= label_tag("support1", "Research Assistantship with Faculty Member", class: "common-label-class") %>
+      <input type="text" name="student_document[support_in_last_sem][]" placeholder="Which Faculty member" class="toggle-textbox">
+      </div>
+     
+      <div>
+      <input type="checkbox" name="student_document[support_in_last_sem][]" value="Teaching Assistantship" class="toggle-textbox">
+      <%= label_tag("support2", "Teaching Assistantship", class: "common-label-class") %>
+      <input type="text" name="student_document[support_in_last_sem][]" placeholder="Which classes/instructors" class="toggle-textbox">
+      </div>
+
+      <div>
+      <input type="checkbox" name="student_document[support_in_last_sem][]" value="Fellowship" class="toggle-textbox">
+      <%= label_tag("support3", "Fellowship", class: "common-label-class") %>
+      <input type="text" name="student_document[support_in_last_sem][]" placeholder="Which Fellowship" class="toggle-textbox">
+      </div>
+      
+      <div>
+      <input type="checkbox" name="student_document[support_in_last_sem][]" value="Job within TAMU" class="toggle-textbox">
+      <%= label_tag("support4", "Job within TAMU", class: "common-label-class") %>
+      <input type="text" name="student_document[support_in_last_sem][]" placeholder="Describe the job" class="toggle-textbox">
+      </div>
+
+      <div>
+      <input type="checkbox" name="student_document[support_in_last_sem][]" value="Job outside TAMU" class="toggle-textbox">
+      <%= label_tag("support5", "Job outside TAMU", class: "common-label-class") %>
+      <input type="text" name="student_document[support_in_last_sem][]" placeholder="Describe the job" class="toggle-textbox">
+      </div>
+
+      <div>
+      <input type="checkbox" name="student_document[support_in_last_sem][]" value="Other" class="toggle-textbox">
+      <%= label_tag("support6", "Other", class: "common-label-class") %>
+      <input type="text" name="student_document[support_in_last_sem][]" placeholder="Describe the job" class="toggle-textbox">
+      </div>
+
+      <div>
+      <input type="checkbox" name="student_document[support_in_last_sem][]" value="None">
+      <%= label_tag("support7", "None", class: "common-label-class") %>
+      </div>
+      
+      </td>
+    </tr>
+
+
         <th><%= f.label :number_of_paper_submissions, id: "number_of_paper_submissions" %></th>
         <td><%= f.number_field :number_of_paper_submissions, value: '' %></td>
       </tr>
@@ -116,6 +186,30 @@
    </div>
 
 </div>
+
+<script>
+  $(document).ready(function () {
+    // Select all checkbox inputs with the class "toggle-textbox"
+    var checkboxes = $('.toggle-textbox[type="checkbox"]');
+    // Select all text inputs with the class "toggle-textbox"
+    var textInputs = $('.toggle-textbox[type="text"]');
+
+    // Initially, hide all text inputs
+    textInputs.hide();
+
+    // Attach a change event handler to the checkboxes
+    checkboxes.on('change', function () {
+      // Get the index of the clicked checkbox
+      var index = checkboxes.index(this);
+      // Toggle the visibility of the corresponding text input
+      textInputs.eq(index).toggle(this.checked);
+    });
+
+    // Trigger the change event on page load to handle pre-checked checkboxes
+    checkboxes.trigger('change');
+  });
+</script>
+
 
 <% if flash[:error] %>
   <div class="flash error">

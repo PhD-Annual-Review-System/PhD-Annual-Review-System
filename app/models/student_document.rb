@@ -1,5 +1,7 @@
 class StudentDocument < ApplicationRecord
   belongs_to :student, optional: true
+  serialize :milestones_passed, Array
+  serialize :support_in_last_sem, Array
 
   # Validations
   validates :phd_start_date, presence: true

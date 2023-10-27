@@ -138,6 +138,14 @@ class StudentDocumentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def student_document_params
-      params.require(:student_document).permit(:resume_file, :report_file, session[:email], :phd_start_date, :milestones_passed, :improvement_plan_present, :improvement_plan_summary, :gpa, :support_in_last_sem, :number_of_paper_submissions, :number_of_papers_published)
-    end
+      params.require(:student_document).permit(
+        :resume_file, :report_file, session[:email], 
+        :phd_start_date, 
+        :improvement_plan_present, 
+        :improvement_plan_summary, :gpa,
+        :number_of_paper_submissions, :number_of_papers_published,
+        support_in_last_sem: [], 
+        milestones_passed: [] # Permit milestones_passed as an array
+      )
+    end    
 end
