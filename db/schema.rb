@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_07_031831) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_19_060555) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -22,6 +22,29 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_07_031831) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "password_digest"
+  end
+
+  create_table "assessments", force: :cascade do |t|
+    t.bigint "student_id"
+    t.bigint "faculty_id"
+    t.text "public_comment"
+    t.string "rating"
+    t.boolean "eligible_for_reward", default: false
+    t.text "private_comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["faculty_id"], name: "index_assessments_on_faculty_id"
+    t.index ["student_id"], name: "index_assessments_on_student_id"
+  end
+
+  create_table "committees", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.bigint "faculty_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "role", default: "Member"
+    t.index ["faculty_id"], name: "index_committees_on_faculty_id"
+    t.index ["student_id"], name: "index_committees_on_student_id"
   end
 
   create_table "documents", force: :cascade do |t|
@@ -56,6 +79,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_07_031831) do
     t.text "support_in_last_sem"
     t.integer "number_of_paper_submissions"
     t.integer "number_of_papers_published"
+    t.string "report_link"
+    t.binary "report_file"
   end
 
   create_table "students", force: :cascade do |t|
@@ -70,5 +95,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_07_031831) do
     t.index ["email_id"], name: "index_students_on_email_id", unique: true
   end
 
+  add_foreign_key "assessments", "faculties"
+  add_foreign_key "assessments", "students"
+  add_foreign_key "committees", "faculties"
+  add_foreign_key "committees", "students"
   add_foreign_key "student_documents", "students", column: "email_id", primary_key: "email_id"
 end

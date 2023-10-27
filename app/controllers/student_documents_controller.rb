@@ -5,9 +5,6 @@ class StudentDocumentsController < ApplicationController
   def index
     @student_document = StudentDocument.find_or_initialize_by(email_id: session[:email]) 
     @student_data = Student.find_or_initialize_by(email_id: session[:email])
-    if !@student_document
-      flash.now[:error] =  "No student found with this email ID"
-    end
   end
 
   # GET /student_documents/1 or /student_documents/1.json
@@ -17,7 +14,7 @@ class StudentDocumentsController < ApplicationController
 
   # GET /student_documents/new
   def new
-    @student_document = StudentDocument.new
+    #@student_document = StudentDocument.new
   end
 
   # GET /student_documents/1/edit
@@ -27,56 +24,81 @@ class StudentDocumentsController < ApplicationController
   # POST /student_documents or /student_documents.json
 
   def create
-   # @student_document = StudentDocument.new(student_document_params)
-    @student_document = StudentDocument.find_or_initialize_by(email_id: session[:email]) 
-    respond_to do |format|
-      if @student_document.save
-        format.html { redirect_to student_document_url(@student_document), notice: "Student document was successfully created." }
-        format.json { render :show, status: :created, location: @student_document }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @student_document.errors, status: :unprocessable_entity }
-      end
-    end
+   #  @student_document = StudentDocument.new(student_document_params)
+    # @student_document = StudentDocument.find_or_initialize_by(email_id: session[:email]) 
   end
 
 
   # PATCH/PUT /student_documents/1 or /student_documents/1.json
   def update
+    current_email = session[:email].dup
+    current_email.gsub!(/@tamu\.edu/, '')
+    flash.clear
 
-    if @student_document.save 
-   
-      if params[:student_document][:resume_file]
-     
-        #save the resume in s3 bucket in the name of email id. This will be file key
-        @current_email = session[:email]
-        @input_string_resume = @current_email
-        @input_string_report = @current_email
-        @replacement_string = "_resume"
-        @input_string_resume.gsub!(/@tamu\.edu/, @replacement_string)
-        @input_string_report.gsub!(/@tamu\.edu/, '_report')
+    # clear the session
+    @student_document.resume_file  = nil
+    @student_document.report_file  = nil
+    @student_document.milestones_passed = nil
+    @student_document.improvement_plan_present = nil
+    @student_document.improvement_plan_summary = nil
+    @student_document.gpa = nil
+    @student_document.support_in_last_sem = nil
+    @student_document.number_of_paper_submissions = nil
+    @student_document.number_of_papers_published = nil
+  
+    if @student_document.update(student_document_params)
+
+      if params[:student_document][:resume_file].present?
         
+        #save the resume in s3 bucket in the name of email id. This will be file key
+        input_string_resume = "#{current_email}_resume"
+
         #store the resume file name in database
-        @student_document.update(resume_file: @input_string_resume)
-      
+        @student_document.update(resume_file: input_string_resume)
+
         #upload resume in s3 bucket
         s3 = Aws::S3::Resource.new(region: 'us-east-2')
         obj = s3.bucket('phd-annual-review-sys-docs')
         File.open( params[:student_document][:resume_file], 'rb') do |file|
-          obj.put_object(body: file,  content_type: 'application/pdf', key:@input_string_resume )
+          obj.put_object(body: file,  content_type: 'application/pdf', key:input_string_resume )
         end
         
         #get the url of uploaded resume from s3 bucket
         resp = Aws::S3::Client.new
         bucket_name = 'phd-annual-review-sys-docs'
         presigner = Aws::S3::Presigner.new(client: resp)
-        presigned_url_resume = presigner.presigned_url(:get_object,bucket: bucket_name, key: @input_string_resume)
-        presigned_url_report = presigner.presigned_url(:get_object,bucket: bucket_name, key: @input_string_report)
-       
+        presigned_url_resume = presigner.presigned_url(:get_object,bucket: bucket_name, key: input_string_resume)
+        
         #update the resume_link column with link to the resume file
         @student_document.update(resume_link: presigned_url_resume)
-        #@student_document.update(report_link: input_string_report)
+      end
+
+      if params[:student_document][:report_file].present?
         
+        #save the report in s3 bucket in the name of email id. This will be file key
+        input_string_report = "#{current_email}_report"
+        
+        #store the report file name in database
+        @student_document.update(report_file: input_string_report)
+      
+        #upload report in s3 bucket
+        s3 = Aws::S3::Resource.new(region: 'us-east-2')
+        obj = s3.bucket('phd-annual-review-sys-docs')
+        File.open( params[:student_document][:report_file], 'rb') do |file|
+          obj.put_object(body: file,  content_type: 'application/pdf', key:input_string_report )
+        end
+
+        #get the url of uploaded report from s3 bucket
+        resp = Aws::S3::Client.new
+        bucket_name = 'phd-annual-review-sys-docs'
+        presigner = Aws::S3::Presigner.new(client: resp)
+        presigned_url_report = presigner.presigned_url(:get_object,bucket: bucket_name, key: input_string_report)
+        
+        #update the report_link column with link to the report file
+        @student_document.update(report_link: presigned_url_report)
+      end
+        
+        #update other columns
         @student_document.update(phd_start_date: params[:student_document][:phd_start_date])
         @student_document.update(milestones_passed: params[:student_document][:milestones_passed])
         @student_document.update(improvement_plan_present: params[:student_document][:improvement_plan_present])
@@ -85,14 +107,16 @@ class StudentDocumentsController < ApplicationController
         @student_document.update(support_in_last_sem: params[:student_document][:support_in_last_sem])
         @student_document.update(number_of_paper_submissions: params[:student_document][:number_of_paper_submissions])
         @student_document.update(number_of_papers_published: params[:student_document][:number_of_papers_published])
-
-        #render show to when resume is updloaded
-        render :show
-      else
-        #flsh error when resume is not submitted
-        redirect_to student_documents_path,  notice:"Error: Please select a file to upload!"
-      end
-    end
+        
+        #redirect_to student_documents_path with success message
+        flash[:notice] = "Details have been submitted."
+        redirect_to student_documents_path
+    else
+      #redirect_to student_documents_path with error message
+      flash[:notice] = "Errors while updating details."
+      flash[:error] = @student_document.errors.full_messages
+      redirect_to student_documents_path
+    end 
   end
 
   # DELETE /student_documents/1 or /student_documents/1.json
@@ -114,6 +138,6 @@ class StudentDocumentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def student_document_params
-      params.require(:student_document).permit(:resume_file, :resume_link, session[:email], :phd_start_date, :milestones_passed, :improvement_plan_present, :improvement_plan_summary, :gpa, :support_in_last_sem, :number_of_paper_submissions, :number_of_papers_published)
+      params.require(:student_document).permit(:resume_file, :report_file, session[:email], :phd_start_date, :milestones_passed, :improvement_plan_present, :improvement_plan_summary, :gpa, :support_in_last_sem, :number_of_paper_submissions, :number_of_papers_published)
     end
 end

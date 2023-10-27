@@ -1,0 +1,81 @@
+.custom-table-wrapper {
+    margin: 20px; /* Example margin */
+    padding: 10px; /* Example padding */
+    border: 1px solid #ccc; /* Example border */
+    background-color: #f5f5f5; /* Example background color */
+  }
+  
+  .custom-table-wrapper table {
+    width: 100%;
+    /* Additional table styles */
+  }
+  
+  .custom-table-wrapper th, .custom-table-wrapper td {
+    padding: 8px;
+    text-align: left;
+    border: 1px solid #ddd; /* Example cell border */
+  }
+
+  .content-center-wrapper {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+  }
+  
+  .content-center-wrapper iframe {
+    border: 1px solid #000;
+    padding: 10px; /* Add padding around iframes */
+  }
+  
+  .heading-center-wrapper {
+    text-align: center;
+    margin-bottom: 20px; /* Adjust margin as needed */
+  }
+
+  /* Style for the form table */
+table {
+    margin: 0 auto; /* Center the table horizontally */
+    width: 40%;
+  }
+  
+  /* Optional: Style for table cells (labels and inputs) */
+  table td {
+    padding: 10px; /* Add padding to table cells */
+    text-align: right; /* Align text in cells to the right */
+  }
+  
+  /* Optional: Style for labels */
+  table td label {
+    margin-right: 10px; /* Add margin to labels for spacing */
+  }
+
+  table .left-align {
+    text-align: left;
+  }
+  table .center-align {
+    text-align: center;
+  }
+  
+  .btn-save {
+    font-size: 18px;
+    width: 250px;
+    padding: 10px;
+    background-color: #500000; /* Brown color */
+    color: white; /* Text color */
+    border: none; /* Remove border */
+    cursor: pointer; /* Add pointer cursor */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+    border-radius: 8px;
+  }
+  
+  .btn-save:hover {
+    background-color: #732F2F; /* Darker brown color on hover */
+  }
+  
+  /* Optional: Style for inputs */
+  table td input,
+  table td textarea,
+  table td select {
+    width: 100%; /* Make inputs and textareas fill the entire cell */
+    box-sizing: border-box; /* Include padding and border in the width */
+  }
