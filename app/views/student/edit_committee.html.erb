@@ -41,10 +41,10 @@
               <!-- Add action links here, e.g., to remove a faculty member from the committee -->
                   <!-- Only display the 'Set as Chair' button if this faculty is not a chair and no chair is already set -->
                   <% unless committee.role == 'Chair' || @committee_members.any? { |c| c.role == 'Chair' } %>
-                      <%= link_to 'Set as Chair', set_as_chair_student_path(committee.id), method: :post, class: 'btn btn-primary' %>
+                      <%= link_to 'Set as Chair', set_as_chair_student_path(committee.faculty.id), method: :post, class: 'btn btn-primary' %>
                   <% end %>
                   <% unless committee.role != 'Chair' %>
-                      <%= link_to 'Return to Member', return_to_member_student_path(committee.id), method: :post, class: 'btn btn-secondary' if committee.role == 'Chair' %>
+                      <%= link_to 'Return to Member', return_to_member_student_path(committee.faculty.id), method: :post, class: 'btn btn-secondary' if committee.role == 'Chair' %>
                   <% end %>
               </td>
           </tr>
