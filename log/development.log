@@ -49224,3 +49224,62 @@ app/views/faculty/review_student.html.erb:175: syntax error, unexpected `end'
 app/views/faculty/review_student.html.erb:175: syntax error, unexpected `end'
 app/views/faculty/review_student.html.erb:175: syntax error, unexpected `end'
 app/views/faculty/review_student.html.erb:175: syntax error, unexpected `end'
+Started GET "/faculty/review_student/5" for ::1 at 2023-10-27 10:51:18 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by FacultyController#review_student as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mStudent Load (0.8ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:50:in `review_student'
+  [1m[36mStudentDocument Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "student_documents" WHERE "student_documents"."email_id" = $1 LIMIT $2[0m  [["email_id", "shashankjagtap@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:53:in `review_student'
+  [1m[36mStudentDocument Load (0.4ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1 ORDER BY "student_documents"."id" ASC LIMIT $2[0m  [["email_id", "shashankjagtap@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:56:in `review_student'
+  [1m[36mFaculty Load (0.5ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:113:in `current_faculty'
+  Rendering layout layouts/application.html.erb
+  Rendering faculty/review_student.html.erb within layouts/application
+  [1m[36mStudentDocument Load (0.6ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1[0m  [["email_id", "shashankjagtap@tamu.edu"]]
+  ↳ app/views/faculty/review_student.html.erb:19
+  [1m[36mAssessment Load (0.8ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."student_id" = $1 AND "assessments"."faculty_id" != $2[0m  [["student_id", 5], ["faculty_id", 3]]
+  ↳ app/views/faculty/review_student.html.erb:86:in `reject'
+  Rendered faculty/review_student.html.erb within layouts/application (Duration: 28.5ms | Allocations: 35068)
+  Rendered layout layouts/application.html.erb (Duration: 30.6ms | Allocations: 38377)
+Completed 200 OK in 72ms (Views: 30.4ms | ActiveRecord: 20.7ms | Allocations: 71490)
+
+
+Started GET "/faculty/dashboard" for ::1 at 2023-10-27 10:53:41 -0500
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by FacultyController#dashboard as HTML
+  [1m[36mFaculty Load (0.6ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:113:in `current_faculty'
+  [1m[35mSQL (1.7ms)[0m  [1m[34mSELECT "students"."id" AS t0_r0, "students"."first_name" AS t0_r1, "students"."last_name" AS t0_r2, "students"."UIN" AS t0_r3, "students"."email_id" AS t0_r4, "students"."password" AS t0_r5, "students"."created_at" AS t0_r6, "students"."updated_at" AS t0_r7, "students"."password_digest" AS t0_r8, "committees"."id" AS t1_r0, "committees"."student_id" AS t1_r1, "committees"."faculty_id" AS t1_r2, "committees"."created_at" AS t1_r3, "committees"."updated_at" AS t1_r4, "committees"."role" AS t1_r5, "assessments"."id" AS t2_r0, "assessments"."student_id" AS t2_r1, "assessments"."faculty_id" AS t2_r2, "assessments"."public_comment" AS t2_r3, "assessments"."rating" AS t2_r4, "assessments"."eligible_for_reward" AS t2_r5, "assessments"."private_comment" AS t2_r6, "assessments"."created_at" AS t2_r7, "assessments"."updated_at" AS t2_r8 FROM "students" LEFT OUTER JOIN "committees" ON "committees"."student_id" = "students"."id" LEFT OUTER JOIN "assessments" ON "assessments"."student_id" = "students"."id" WHERE "committees"."faculty_id" = $1[0m  [["faculty_id", 3]]
+  ↳ app/controllers/faculty_controller.rb:36:in `dashboard'
+  Rendering layout layouts/application.html.erb
+  Rendering faculty/dashboard.html.erb within layouts/application
+  Rendered faculty/dashboard.html.erb within layouts/application (Duration: 25.1ms | Allocations: 33107)
+  Rendered layout layouts/application.html.erb (Duration: 27.6ms | Allocations: 36456)
+Completed 200 OK in 69ms (Views: 29.1ms | ActiveRecord: 16.7ms | Allocations: 67842)
+
+
+Started GET "/faculty/review_student/5" for ::1 at 2023-10-27 10:53:44 -0500
+Processing by FacultyController#review_student as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mStudent Load (0.5ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 5], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:50:in `review_student'
+  [1m[36mStudentDocument Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "student_documents" WHERE "student_documents"."email_id" = $1 LIMIT $2[0m  [["email_id", "shashankjagtap@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:53:in `review_student'
+  [1m[36mStudentDocument Load (0.5ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1 ORDER BY "student_documents"."id" ASC LIMIT $2[0m  [["email_id", "shashankjagtap@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:56:in `review_student'
+  [1m[36mFaculty Load (0.8ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:113:in `current_faculty'
+  Rendering layout layouts/application.html.erb
+  Rendering faculty/review_student.html.erb within layouts/application
+  [1m[36mStudentDocument Load (0.5ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1[0m  [["email_id", "shashankjagtap@tamu.edu"]]
+  ↳ app/views/faculty/review_student.html.erb:19
+  [1m[36mAssessment Load (0.2ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."student_id" = $1 AND "assessments"."faculty_id" != $2[0m  [["student_id", 5], ["faculty_id", 3]]
+  ↳ app/views/faculty/review_student.html.erb:86:in `reject'
+  Rendered faculty/review_student.html.erb within layouts/application (Duration: 8.8ms | Allocations: 3674)
+  Rendered layout layouts/application.html.erb (Duration: 12.8ms | Allocations: 6671)
+Completed 200 OK in 50ms (Views: 12.7ms | ActiveRecord: 7.7ms | Allocations: 19370)
+
+
