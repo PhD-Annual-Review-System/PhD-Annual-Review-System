@@ -1,65 +1,85 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-        }
-
-        table, th, td {
-            border: 1px solid black;
-        }
-
-        th, td {
-            padding: 8px;
-            text-align: left;
-        }
-    </style>
+  <%= stylesheet_link_tag 'faculty/reviewstudent.css' %>
 </head>
 <body>
-<h1>Submitting Review for <%= @student.first_name %> <%= @student.last_name %></h1>
+  <div class="header">
+    <h1>Submitting Review for <%= @student.first_name %> <%= @student.last_name %></h1>
+  </div>
 
 <% if @no_documents_message %>
   <p><%= @no_documents_message %></p>
 <% else %>
+    <div class="custom-table-wrapper"> 
+      <table class="table table-bordered table-striped">
+          <tbody>
+            <tr>
+              <th>PHD Start Date</th>
+              <% @documents.each do |document| %>
+                <td><%= document.phd_start_date.present? ? document.phd_start_date : 'N/A' %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th>Milestones Passed</th>
+              <% @documents.each do |document| %>
+                <td><%= document.milestones_passed.present? ? document.milestones_passed : 'N/A' %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th>GPA</th>
+              <% @documents.each do |document| %>
+                <td><%= document.gpa.present? ? document.gpa : 'N/A' %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th>Improvement Plan Present</th>
+              <% @documents.each do |document| %>
+                <td><%= @documents.first.improvement_plan_present.present? ? @documents.first.improvement_plan_present : 'N/A' %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th>Improvement Plan Summary</th>
+              <% @documents.each do |document| %>
+                <td><%= @documents.first.improvement_plan_summary.present? ? @documents.first.improvement_plan_summary : 'N/A' %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th>Support in Last Semester</th>
+              <% @documents.each do |document| %>
+                <td><%= @documents.first.support_in_last_sem.present? ? @documents.first.support_in_last_sem : 'N/A' %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th>Paper Submissions</th>
+              <% @documents.each do |document| %>
+                <td><%= @documents.first.number_of_paper_submissions.present? ? @documents.first.number_of_paper_submissions : 'N/A' %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th>Papers Published</th>
+              <% @documents.each do |document| %>
+                <td><%= @documents.first.number_of_papers_published.present? ? @documents.first.number_of_papers_published : 'N/A' %></td>
+              <% end %>
+            </tr>
+            <!-- Add similar rows for other attributes -->
+        </tbody>
+      </table>
+    </div>
 
-    <table class="table table-bordered table-striped">
-    <thead>
-      <tr>
-        <th>PHD Start Date</th>
-        <th>Milestones Passed</th>
-        <th>GPA</th>
-        <th>Improvement Plan Present</th>
-        <th>Improvement Plan Summary</th>
-        <th>Support in Last Semester</th>
-        <th>Paper Submissions</th>
-        <th>Papers Published</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td><%= @documents.first.phd_start_date.present? ? @documents.first.phd_start_date : 'N/A' %></td>
-        <td><%= @documents.first.milestones_passed.present? ? @documents.first.milestones_passed : 'N/A' %></td>
-        <td><%= @documents.first.gpa.present? ? @documents.first.gpa : 'N/A' %></td>
-        <td><%= @documents.first.improvement_plan_present.present? ? @documents.first.improvement_plan_present : 'N/A' %></td>
-        <td><%= @documents.first.improvement_plan_summary.present? ? @documents.first.improvement_plan_summary : 'N/A' %></td>
-        <td><%= @documents.first.support_in_last_sem.present? ? @documents.first.support_in_last_sem : 'N/A' %></td>
-        <td><%= @documents.first.number_of_paper_submissions.present? ? @documents.first.number_of_paper_submissions : 'N/A' %></td>
-        <td><%= @documents.first.number_of_papers_published.present? ? @documents.first.number_of_papers_published : 'N/A' %></td>
-      </tr>
-    </tbody>
-  </table>
-  <h1>Student Documents</h1>
+  <div class="heading-center-wrapper">
+    <h1>Student Documents</h1>
+  </div>
+  <div class="content-center-wrapper">
+    <!-- Display the resume file if available -->
+    <% if @resume_url.present? %>
+      <iframe src="<%= @resume_url %>" width="850" height="650" style="border: 4px solid #000; margin-right: 10px;"></iframe>
+    <% end %>
 
-  <!-- Display the resume file if available -->
-  <% if @resume_url.present? %>
-    <iframe src="<%= @resume_url %>" width="850" height="650" style="border: 1px solid #000;"></iframe>
-  <% end %>
-
-  <% if @report_url.present? %>
-    <iframe src="<%= @report_url %>" width="850" height="650" style="border: 1px solid #000;"></iframe>
-  <% end %>
+    <% if @report_url.present? %>
+      <iframe src="<%= @report_url %>" width="850" height="650" style="border: 4px solid #000; margin-left: 10px;"></iframe>
+    <% end %>
+  </div>
 
   <!-- Add code to display other documents if needed -->
 
@@ -85,8 +105,11 @@
   </table>
   <% end %>
 
-  <h3>Performance Assessment</h3>
+  <div class="heading-center-wrapper">
+    <h1>Performance Assessment</h1>
+  </div>
   <%= form_tag faculty_save_assessment_path, method: :post do %>
+<<<<<<< Updated upstream
   <input type="hidden" name="id" value="<%= @student.id %>">
   <div>
     <label for="public_comment">Comment for Student:</label>
@@ -114,6 +137,36 @@
 <% end %>
 
 
+=======
+    <table>
+      <tr>
+        <td class="left-align"><label for="public_comment">Comment for Student:</label></td>
+        <td><textarea id="public_comment" name="assessment[public_comment]" rows="4" cols="50"></textarea></td>
+      </tr>
+      <tr>
+        <td class="left-align"><label for="private_comment">Comment for Faculty:</label></td>
+        <td><textarea id="private_comment" name="assessment[private_comment]" rows="4" cols="50"></textarea></td>
+      </tr>
+      <tr>
+        <td class="left-align"><label for="rating">Rating:</label></td>
+        <td>
+          <select id="rating" name="assessment[rating]">
+            <option value="Satisfactory">Satisfactory</option>
+            <option value="Unsatisfactory">Unsatisfactory</option>
+            <option value="Needs Improvement">Needs Improvement</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td class="left-align"><label for="eligible_for_reward">Eligible for Reward:</label></td>
+        <td><input type="checkbox" id="eligible_for_reward" name="assessment[eligible_for_reward]" value="1"></td>
+      </tr>
+      <tr>
+        <td colspan="2" class="center-align"><input type="submit" value="Save Assessment" class="btn-save"></td>
+      </tr>
+    </table>
+  <% end %>
+>>>>>>> Stashed changes
 <% end %>
 </body>
 </html>
