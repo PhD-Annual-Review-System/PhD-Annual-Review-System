@@ -1,0 +1,18 @@
+<p style="color: green"><%= notice %></p>
+
+<p>Student details updated successfully. </p>
+
+<div id="student_documents">
+  <p> Email Id: <%=  @student_document.email_id %> </p>
+  <p> Resume Document Name: <%=  @student_document.resume_file %> </p>
+  <p> Resume Link: 
+  <div>
+  <%= link_to "Download Resume",  @student_document.resume_link  %>
+  <%= link_to "Download Report",  @student_document.report_link  %>
+  </div>
+  </p>
+ </div> 
+
+<div>
+  <%= link_to "Back to Login", student_login_path %>
+</div>

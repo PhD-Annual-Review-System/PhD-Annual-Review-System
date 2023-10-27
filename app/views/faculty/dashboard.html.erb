@@ -11,8 +11,37 @@
   </div>
 
   <div class="container">
-    <p>You have successfully logged in.</p>
+    <% if flash[:success].present? %>
+  <div class="alert alert-success" role="alert">
+    <%= flash[:success] %>
   </div>
+<% end %>
+<h3>To-Do List (Pending Assessments)</h3>
+<% if @students_pending_assessment.empty? %>
+  <p>No students are pending for review.</p>
+<% else %>
+<ul>
+  <% @students_pending_assessment.each do |student| %>
+    <li><%= link_to "#{student.first_name} #{student.last_name}", faculty_review_student_path(student) %></li>
+  <% end %>
+</ul>
+<% end %>
+
+<h3>Done List (Completed Assessments)</h3>
+<% if @students_completed_assessment.empty? %>
+  <p>No review Completed so far.</p>
+<% else %>
+<ul>
+  <% @students_completed_assessment.each do |student| %>
+    <li>
+            <%= "#{student.first_name} #{student.last_name}" %>
+            <%= link_to "View Assessment", faculty_view_assessment_path(student), class: "btn btn-secondary" %>
+            <%= link_to "Update Response", faculty_review_student_path(student), class: "btn btn-secondary" %>
+    </li>
+  <% end %>
+</ul>
+  </div>
+  <% end %>
 
 </body>
 </html>

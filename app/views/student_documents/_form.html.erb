@@ -60,6 +60,20 @@
     <%= form.label :number_of_papers_published, style: "display: block" %>
     <%= form.number_field :number_of_papers_published %>
   </div>
+  
+  <div class="field">
+     <%= f.label :"Resume" %>
+     <%= f.file_field :resume_file,  id: "resume_file" %>
+   </div>
+
+   <div class="field">
+     <%= f.label :"Report" %>
+     <%= f.file_field :report_file,  id: "report_file" %>
+   </div>
+
+   <div class="actions">
+     <%= f.submit 'Submit', class: 'btn',id: "submit" %>
+   </div>
 
 
   <div>
