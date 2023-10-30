@@ -109,6 +109,7 @@
     <h1>Performance Assessment</h1>
   </div>
   <%= form_tag faculty_save_assessment_path, method: :post do %>
+    <%= hidden_field_tag 'id', @student.id %>
     <table>
       <tr>
         <td class="left-align"><label for="public_comment">Comment for Student:</label></td>
