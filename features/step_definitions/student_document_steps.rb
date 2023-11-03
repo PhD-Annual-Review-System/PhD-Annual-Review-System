@@ -11,6 +11,20 @@ Then("I select the PhD start date as {string}") do |start_date|
     select start_date, from: 'student_document[phd_start_date]'
 end
 
+When('I select milestones that should include the following:') do |milestones_table|
+    milestones = milestones_table.raw.flatten
+    milestones.each do |milestone|
+      find("input[type='checkbox'][value='#{milestone}']").check
+    end
+end
+
+When('I select Support in Last Sem that should include the following:') do |support_in_last_sem_table|
+    support_in_last_sems = support_in_last_sem_table.raw.flatten
+    support_in_last_sems.each do |support_in_last_sem|
+      find("input[type='checkbox'][value='#{support_in_last_sem}']").check
+    end
+end
+
 Then("I select value {string} from {string}") do |value, field_name|
     select value, from: "student_document_#{field_name.parameterize.underscore}"
 end
