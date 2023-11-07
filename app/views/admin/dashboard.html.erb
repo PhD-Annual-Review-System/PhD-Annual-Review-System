@@ -86,12 +86,12 @@
       <td>
 
       <% if student.assessments.exists?(rating: 'true') %>
-      <!-- Checkmark symbol ✓ if student's assessment rating is 'true' -->
+      
       <%= student.assessments%>
-    <% else %>
+      <% else %>
       <!-- Empty cell if the assessment rating is not 'true' -->
-      <span>&#10006;</span>
-    <% end %>      
+       <span>&#10006;</span>
+      <% end %>      
     
     </td>
 
