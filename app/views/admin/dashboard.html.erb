@@ -21,81 +21,113 @@
       <th>Committee Member 4</th>
       <th>Needs Improvement</th>
       <th>Nominated</th>
-      <th>Final Evaluation</th>
+      <th>
+        Final Evaluation
+        <span id="sort-icon" style="cursor: pointer;">&#x25B2;&#x25BC;</span>
+      </th>
     </thead>
     <tbody>
-      <% Student.all.each do |student| %>
-        <tr>
-          <td>
-            <%= student.first_name%>
-            <%= student.last_name%>
-          </td>
-          <td>
-            <% if student.student_document.exists? %>
-              <!-- Check mark symbol if student_document is present -->
-              <span>&#10004;</span>
-            <% else %>
-            <!-- Cross mark symbol ✗ if student_document is not present -->
-            <span>&#10006;</span>
-          <% end %>
-          
-          <% committee_members = student.committees %>
-            <% (1..5).each do |i| %>
-              <% if committee_members[i - 1] %>
-                <% if committee_members[i - 1].faculty.assessments.exists? %>
-                  <td><%= committee_members[i - 1].faculty.first_name %>
-                      <%= committee_members[i - 1].faculty.last_name %>
-                      <span>&#10004;</span>
-                  </td>
-
-                <% else %>
-                  <td><%= committee_members[i - 1].faculty.first_name %>
-                      <%= committee_members[i - 1].faculty.last_name %>
-                      <span>&#10006;</span>
-                  </td>
-                <% end %>
-              <% else %>
-                <td></td>
-              <% end %>
-            <% end %>
+    <% Student.all.each do |student| %>
+      <tr>
+        <td>
+          <%= student.first_name%>
+          <%= student.last_name%>
+        </td>
+        <td>
+          <% if student.student_document.exists? %>
+            <!-- Check mark symbol if student_document is present -->
+            <span>&#10004;</span>
+          <% else %>
+          <!-- Cross mark symbol ✗ if student_document is not present -->
+          <span>&#10006;</span>
+        <% end %>
         
+        <% committee_members = student.committees %>
+          <% (1..5).each do |i| %>
+            <% if committee_members[i - 1] %>
+              <% if committee_members[i - 1].faculty.assessments.exists? %>
+                <td><%= committee_members[i - 1].faculty.first_name %>
+                    <%= committee_members[i - 1].faculty.last_name %>
+                    <span>&#10004;</span>
+                </td>
 
-        <td>
-          <% if student.assessments.exists?(rating: 'Needs Improvement') %>
-            <!-- Checkmark symbol ✓ if student's assessment rating is "Needs Improvement" -->
-            <span>&#10004;</span>
-          <% else %>
-            <span>&#10006;</span>
+              <% else %>
+                <td><%= committee_members[i - 1].faculty.first_name %>
+                    <%= committee_members[i - 1].faculty.last_name %>
+                    <span>&#10006;</span>
+                </td>
+              <% end %>
+            <% else %>
+              <td></td>
+            <% end %>
           <% end %>
-        </td>
+      
 
-        <td>
-          <% if student.assessments.exists?(eligible_for_reward: true) %>
-            <!-- Checkmark symbol ✓ if student's assessment is eligible for reward -->
-            <span>&#10004;</span>
-          <% else %>
-            <!-- Empty cell if the assessment is not eligible for reward -->
-            <span>&#10006;</span>
-          <% end %>
-        </td>
+      <td>
+        <% if student.assessments.exists?(rating: 'Needs Improvement') %>
+          <!-- Checkmark symbol ✓ if student's assessment rating is "Needs Improvement" -->
+          <span>&#10004;</span>
+        <% else %>
+          <span>&#10006;</span>
+        <% end %>
+      </td>
 
-        <td>
-          <% if student.assessments.exists?(rating: 'true') %>
-            <!-- Checkmark symbol ✓ if student's assessment rating is 'true' -->
-            <span>&#10004;</span>
-          <% else %>
-            <!-- Empty cell if the assessment rating is not 'true' -->
-            <span>&#10006;</span>
-          <% end %>
-        </td>
+      <td>
+        <% if student.assessments.exists?(eligible_for_reward: true) %>
+          <!-- Checkmark symbol ✓ if student's assessment is eligible for reward -->
+          <span>&#10004;</span>
+        <% else %>
+          <!-- Empty cell if the assessment is not eligible for reward -->
+          <span>&#10006;</span>
+        <% end %>
+      </td>
 
-      <% end %>
+      <td>
+
+      <% if student.assessments.exists?(rating: 'true') %>
+      <!-- Checkmark symbol ✓ if student's assessment rating is 'true' -->
+      <%= student.assessments%>
+    <% else %>
+      <!-- Empty cell if the assessment rating is not 'true' -->
+      <span>&#10006;</span>
+    <% end %>      
+    
+    </td>
+
+    <% end %>
 </tr>
     </tbody>
+  </table>
 
+  <script>
+    const table = document.querySelector('table');
+    const sortIcon = document.getElementById('sort-icon');
+    let ascending = true;
 
+    sortIcon.addEventListener('click', () => {
+      const rows = Array.from(table.querySelectorAll('tr'));
+      rows.shift(); // Remove the header row from the sorting
 
-    </table>
+      rows.sort((a, b) => {
+        const aValue = a.lastElementChild.textContent.trim();
+        const bValue = b.lastElementChild.textContent.trim();
 
+        if (ascending) {
+          return aValue.localeCompare(bValue);
+        } else {
+          return bValue.localeCompare(aValue);
+        }
+      });
+
+      while (table.tBodies[0].firstChild) {
+        table.tBodies[0].removeChild(table.tBodies[0].firstChild);
+      }
+
+      rows.forEach(row => table.tBodies[0].appendChild(row));
+
+      ascending = !ascending;
+      sortIcon.innerHTML = ascending ? '&#x25B2;' : '&#x25BC;';
+    });
+  </script>
 </body>
 </html>
