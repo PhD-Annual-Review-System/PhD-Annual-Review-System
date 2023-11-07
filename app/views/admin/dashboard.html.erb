@@ -7,6 +7,7 @@
 <body>
   <div class="header">
     <h1>Admin Dashboard</h1>
+    <button id="export-csv-button" class="download-button">Export as CSV</button>
     <%= link_to 'Logout', admin_logout_path, method: :get, class: 'logout-button' %>
   </div>
 
@@ -129,5 +130,36 @@
       sortIcon.innerHTML = ascending ? '&#x25B2;' : '&#x25BC;';
     });
   </script>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const exportCsvButton = document.getElementById("export-csv-button");
+
+    exportCsvButton.addEventListener("click", function() {
+      const table = document.querySelector("table");
+      const rows = Array.from(table.querySelectorAll("tr"));
+
+      const csvContent = rows
+        .map(function(row) {
+          const columns = Array.from(row.querySelectorAll("th, td"));
+          return columns.map(function(column) {
+            return column.innerText;
+          }).join(",");
+        })
+        .join("\n");
+
+      const blob = new Blob([csvContent], { type: "text/csv" });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "table.csv";
+      a.click();
+    });
+  });
+</script>
+
+
+
+
 </body>
 </html>
