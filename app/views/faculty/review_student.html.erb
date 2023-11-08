@@ -23,8 +23,18 @@
             <tr>
               <th>Milestones Passed</th>
               <% @documents.each do |document| %>
-                <td><%= document.milestones_passed.present? ? document.milestones_passed : 'N/A' %></td>
-              <% end %>
+              <td>
+                <% if document.milestones_passed.present? %>
+                  <ul>
+                    <% document.milestones_passed.each do |milestone| %>
+                    <li><%= milestone %></li>
+                    <% end %>
+                  </ul>
+                <% else %>
+                  N/A
+                <% end %>
+              </td>
+            <% end %>
             </tr>
             <tr>
               <th>GPA</th>
@@ -47,7 +57,17 @@
             <tr>
               <th>Support in Last Semester</th>
               <% @documents.each do |document| %>
-                <td><%= @documents.first.support_in_last_sem.present? ? @documents.first.support_in_last_sem : 'N/A' %></td>
+              <td>
+              <ul>
+                <% document.support_in_last_sem.each_with_index do |support, index| %>
+                  <% if support != "None" %>
+                    <li><b><%= support %>:</b> <%= document.support_in_last_sem_description[index] %></li>
+                  <% else %>
+                    <li><b><%= support %></b></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </td>
               <% end %>
             </tr>
             <tr>

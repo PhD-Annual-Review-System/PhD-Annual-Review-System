@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_19_060555) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_06_075654) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -81,6 +81,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_19_060555) do
     t.integer "number_of_papers_published"
     t.string "report_link"
     t.binary "report_file"
+    t.text "support_in_last_sem_description"
   end
 
   create_table "students", force: :cascade do |t|

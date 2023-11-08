@@ -148,3 +148,24 @@ th label, td input[type="text"], td textarea {
 .common-label-class {
   display: inline-block;
 }
+
+.flash-message {
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ff0000; /* Red border */
+  color: #ff0000; /* Red text color */
+  font-family: Arial, sans-serif; /* Define your desired font-family */
+  font-size: 16px; /* Define your desired font size */
+}
+
+.flash-success {
+  background-color: #00ff00; /* Green background for success messages */
+  border-color: #009900; /* Dark green border for success messages */
+  color: #009900; /* Dark green text color for success messages */
+}
+
+.flash-error {
+  background-color: #ff9999; /* Light red background for error messages */
+  border-color: #ff0000; /* Red border for error messages */
+  color: #ff0000; /* Red text color for error messages */
+}

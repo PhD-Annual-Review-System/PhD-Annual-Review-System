@@ -1,6 +1,13 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <p style="color: green"><%= notice %></p>
+<% flash.each do |key, message| %>
+  <% unless key == 'notice' %>
+    <div class="flash-message flash-<%= key %>">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
 <div class="header">
   <%= stylesheet_link_tag 'document/main.css' %>
   <div class="header">
@@ -121,37 +128,37 @@
       <div>
       <input type="checkbox" name="student_document[support_in_last_sem][]" value="Research Assistantship with Faculty Member" class="toggle-textbox">
       <%= label_tag("support1", "Research Assistantship with Faculty Member", class: "common-label-class") %>
-      <input type="text" name="student_document[support_in_last_sem][]" placeholder="Which Faculty member" class="toggle-textbox">
+      <input type="text" name="student_document[support_in_last_sem_description][]" placeholder="Which Faculty member" class="toggle-textbox">
       </div>
      
       <div>
       <input type="checkbox" name="student_document[support_in_last_sem][]" value="Teaching Assistantship" class="toggle-textbox">
       <%= label_tag("support2", "Teaching Assistantship", class: "common-label-class") %>
-      <input type="text" name="student_document[support_in_last_sem][]" placeholder="Which classes/instructors" class="toggle-textbox">
+      <input type="text" name="student_document[support_in_last_sem_description][]" placeholder="Which classes/instructors" class="toggle-textbox">
       </div>
 
       <div>
       <input type="checkbox" name="student_document[support_in_last_sem][]" value="Fellowship" class="toggle-textbox">
       <%= label_tag("support3", "Fellowship", class: "common-label-class") %>
-      <input type="text" name="student_document[support_in_last_sem][]" placeholder="Which Fellowship" class="toggle-textbox">
+      <input type="text" name="student_document[support_in_last_sem_description][]" placeholder="Which Fellowship" class="toggle-textbox">
       </div>
       
       <div>
       <input type="checkbox" name="student_document[support_in_last_sem][]" value="Job within TAMU" class="toggle-textbox">
       <%= label_tag("support4", "Job within TAMU", class: "common-label-class") %>
-      <input type="text" name="student_document[support_in_last_sem][]" placeholder="Describe the job" class="toggle-textbox">
+      <input type="text" name="student_document[support_in_last_sem_description][]" placeholder="Describe the job" class="toggle-textbox">
       </div>
 
       <div>
       <input type="checkbox" name="student_document[support_in_last_sem][]" value="Job outside TAMU" class="toggle-textbox">
       <%= label_tag("support5", "Job outside TAMU", class: "common-label-class") %>
-      <input type="text" name="student_document[support_in_last_sem][]" placeholder="Describe the job" class="toggle-textbox">
+      <input type="text" name="student_document[support_in_last_sem_description][]" placeholder="Describe the job" class="toggle-textbox">
       </div>
 
       <div>
       <input type="checkbox" name="student_document[support_in_last_sem][]" value="Other" class="toggle-textbox">
       <%= label_tag("support6", "Other", class: "common-label-class") %>
-      <input type="text" name="student_document[support_in_last_sem][]" placeholder="Describe the job" class="toggle-textbox">
+      <input type="text" name="student_document[support_in_last_sem_description][]" placeholder="Describe the job" class="toggle-textbox">
       </div>
 
       <div>
@@ -163,11 +170,11 @@
     </tr>
 
 
-        <th><%= f.label :number_of_paper_submissions, id: "number_of_paper_submissions" %></th>
+        <th><%= f.label :number_of_paper_submissions_last_year, id: "number_of_paper_submissions" %></th>
         <td><%= f.number_field :number_of_paper_submissions, value: '' %></td>
       </tr>
       <tr>
-        <th><%= f.label :number_of_papers_published, id: "number_of_papers_published" %></th>
+        <th><%= f.label :number_of_papers_published_last_year, id: "number_of_papers_published" %></th>
         <td><%= f.number_field :number_of_papers_published, value: ''  %></td>
       </tr>
     </table>
@@ -210,11 +217,5 @@
   });
 </script>
 
-
-<% if flash[:error] %>
-  <div class="flash error">
-    <%= flash[:error] %>
-  </div>
-<% end %>
    
  <% end %>

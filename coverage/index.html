@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2023-10-26T02:39:44-05:00">2023-10-26T02:39:44-05:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2023-11-06T18:33:38-06:00">2023-11-06T18:33:38-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  97.93%
+  97.85%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.69
+         1.78
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>726</b> relevant lines,
-    <span class="green"><b>711</b> lines covered</span> and
-    <span class="red"><b>15</b> lines missed. </span>
+    <b>744</b> relevant lines,
+    <span class="green"><b>728</b> lines covered</span> and
+    <span class="red"><b>16</b> lines missed. </span>
     (<span class="green">
-  97.93%
+  97.85%
 </span>
 )
   </div>
@@ -116,12 +116,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#a43f1a9cfc1d640bd05b0c466b8183d54aad9772" class="src_link" title="app/controllers/student_documents_controller.rb">app/controllers/student_documents_controller.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">90.28 %</td>
-            <td class="cell--number">143</td>
-            <td class="cell--number">72</td>
-            <td class="cell--number">65</td>
+            <td class="green strong cell--number t-file__coverage">90.79 %</td>
+            <td class="cell--number">156</td>
+            <td class="cell--number">76</td>
+            <td class="cell--number">69</td>
             <td class="cell--number">7</td>
-            <td class="cell--number">1.13</td>
+            <td class="cell--number">1.14</td>
             
           </tr>
         
@@ -281,12 +281,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#2b53ff1842ee637480e88211c145c7b4887eaaa4" class="src_link" title="app/models/student_document.rb">app/models/student_document.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">16</td>
-            <td class="cell--number">12</td>
-            <td class="cell--number">12</td>
-            <td class="cell--number">0</td>
-            <td class="cell--number">1.00</td>
+            <td class="green strong cell--number t-file__coverage">95.83 %</td>
+            <td class="cell--number">34</td>
+            <td class="cell--number">24</td>
+            <td class="cell--number">23</td>
+            <td class="cell--number">1</td>
+            <td class="cell--number">4.13</td>
             
           </tr>
         
@@ -436,11 +436,11 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#d3f60853fccbc9d3b34f8cd8c4241577bf650233" class="src_link" title="spec/controllers/student_document_controller_spec.rb">spec/controllers/student_document_controller_spec.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">89</td>
-            <td class="cell--number">41</td>
-            <td class="cell--number">41</td>
+            <td class="cell--number">92</td>
+            <td class="cell--number">43</td>
+            <td class="cell--number">43</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">1.10</td>
+            <td class="cell--number">1.09</td>
             
           </tr>
         
@@ -3582,7 +3582,7 @@
     <h3>app/controllers/student_documents_controller.rb</h3>
     <h4>
       <span class="green">
-  90.28%
+  90.79%
 </span>
 
       lines covered
@@ -3591,8 +3591,8 @@
     
 
     <div class="t-line-summary">
-      <b>72</b> relevant lines.
-      <span class="green"><b>65</b> lines covered</span> and
+      <b>76</b> relevant lines.
+      <span class="green"><b>69</b> lines covered</span> and
       <span class="red"><b>7</b> lines missed.</span>
     </div>
 
@@ -3973,12 +3973,45 @@
 
             
 
+            <code class="ruby">    if params[:student_document][:support_in_last_sem_description].present?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="35">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      params[:student_document][:support_in_last_sem_description] = params[:student_document][:support_in_last_sem_description].reject(&amp;:empty?)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="36">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="37">
+            <span class="hits">2</span>
+            
+
+            
+
             <code class="ruby">    current_email = session[:email].dup</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="35">
+          <li class="covered" data-hits="2" data-linenumber="38">
             <span class="hits">2</span>
             
 
@@ -3989,7 +4022,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="36">
+          <li class="covered" data-hits="2" data-linenumber="39">
             <span class="hits">2</span>
             
 
@@ -4000,7 +4033,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="37">
+          <li class="never" data-hits="" data-linenumber="40">
             
             
 
@@ -4011,7 +4044,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="38">
+          <li class="never" data-hits="" data-linenumber="41">
             
             
 
@@ -4022,7 +4055,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="39">
+          <li class="covered" data-hits="2" data-linenumber="42">
             <span class="hits">2</span>
             
 
@@ -4033,7 +4066,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="40">
+          <li class="covered" data-hits="2" data-linenumber="43">
             <span class="hits">2</span>
             
 
@@ -4044,7 +4077,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="41">
+          <li class="covered" data-hits="2" data-linenumber="44">
             <span class="hits">2</span>
             
 
@@ -4055,7 +4088,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="42">
+          <li class="covered" data-hits="2" data-linenumber="45">
             <span class="hits">2</span>
             
 
@@ -4066,7 +4099,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="43">
+          <li class="covered" data-hits="2" data-linenumber="46">
             <span class="hits">2</span>
             
 
@@ -4077,7 +4110,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="44">
+          <li class="covered" data-hits="2" data-linenumber="47">
             <span class="hits">2</span>
             
 
@@ -4088,7 +4121,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="45">
+          <li class="covered" data-hits="2" data-linenumber="48">
             <span class="hits">2</span>
             
 
@@ -4099,7 +4132,18 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="46">
+          <li class="covered" data-hits="2" data-linenumber="49">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">    @student_document.support_in_last_sem_description = nil</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="50">
             <span class="hits">2</span>
             
 
@@ -4110,7 +4154,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="47">
+          <li class="covered" data-hits="2" data-linenumber="51">
             <span class="hits">2</span>
             
 
@@ -4121,7 +4165,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="48">
+          <li class="never" data-hits="" data-linenumber="52">
             
             
 
@@ -4132,7 +4176,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="49">
+          <li class="covered" data-hits="2" data-linenumber="53">
             <span class="hits">2</span>
             
 
@@ -4143,18 +4187,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="50">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="51">
+          <li class="covered" data-hits="1" data-linenumber="54">
             <span class="hits">1</span>
             
 
@@ -4165,7 +4198,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="52">
+          <li class="never" data-hits="" data-linenumber="55">
             
             
 
@@ -4176,7 +4209,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="53">
+          <li class="never" data-hits="" data-linenumber="56">
             
             
 
@@ -4187,46 +4220,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="54">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        input_string_resume = &quot;#{current_email}_resume&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="55">
-            
-            
-
-            
-
-            <code class="ruby"></code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="56">
-            
-            
-
-            
-
-            <code class="ruby">        #store the resume file name in database</code>
-          </li>
-        </div>
-      
-        <div>
           <li class="covered" data-hits="1" data-linenumber="57">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        @student_document.update(resume_file: input_string_resume)</code>
+            <code class="ruby">        input_string_resume = &quot;#{current_email}_resume&quot;</code>
           </li>
         </div>
       
@@ -4248,7 +4248,7 @@
 
             
 
-            <code class="ruby">        #upload resume in s3 bucket</code>
+            <code class="ruby">        #store the resume file name in database</code>
           </li>
         </div>
       
@@ -4259,166 +4259,12 @@
 
             
 
-            <code class="ruby">        s3 = Aws::S3::Resource.new(region: &#39;us-east-2&#39;)</code>
+            <code class="ruby">        @student_document.update(resume_file: input_string_resume)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="61">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        obj = s3.bucket(&#39;phd-annual-review-sys-docs&#39;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="62">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        File.open( params[:student_document][:resume_file], &#39;rb&#39;) do |file|</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="63">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">          obj.put_object(body: file,  content_type: &#39;application/pdf&#39;, key:input_string_resume )</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="64">
-            
-            
-
-            
-
-            <code class="ruby">        end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="65">
-            
-            
-
-            
-
-            <code class="ruby">        </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="66">
-            
-            
-
-            
-
-            <code class="ruby">        #get the url of uploaded resume from s3 bucket</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="67">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        resp = Aws::S3::Client.new</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="68">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        bucket_name = &#39;phd-annual-review-sys-docs&#39;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="69">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        presigner = Aws::S3::Presigner.new(client: resp)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="70">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        presigned_url_resume = presigner.presigned_url(:get_object,bucket: bucket_name, key: input_string_resume)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="71">
-            
-            
-
-            
-
-            <code class="ruby">        </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="72">
-            
-            
-
-            
-
-            <code class="ruby">        #update the resume_link column with link to the resume file</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="73">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        @student_document.update(resume_link: presigned_url_resume)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="74">
-            
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="75">
+          <li class="never" data-hits="" data-linenumber="61">
             
             
 
@@ -4429,18 +4275,73 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="76">
+          <li class="never" data-hits="" data-linenumber="62">
+            
+            
+
+            
+
+            <code class="ruby">        #upload resume in s3 bucket</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="63">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">      if params[:student_document][:report_file].present?</code>
+            <code class="ruby">        s3 = Aws::S3::Resource.new(region: &#39;us-east-2&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="77">
+          <li class="covered" data-hits="1" data-linenumber="64">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        obj = s3.bucket(&#39;phd-annual-review-sys-docs&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="65">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        File.open( params[:student_document][:resume_file], &#39;rb&#39;) do |file|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="66">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">          obj.put_object(body: file,  content_type: &#39;application/pdf&#39;, key:input_string_resume )</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="67">
+            
+            
+
+            
+
+            <code class="ruby">        end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="68">
             
             
 
@@ -4451,13 +4352,112 @@
         </div>
       
         <div>
+          <li class="never" data-hits="" data-linenumber="69">
+            
+            
+
+            
+
+            <code class="ruby">        #get the url of uploaded resume from s3 bucket</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="70">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        resp = Aws::S3::Client.new</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="71">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        bucket_name = &#39;phd-annual-review-sys-docs&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="72">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        presigner = Aws::S3::Presigner.new(client: resp)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="73">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        presigned_url_resume = presigner.presigned_url(:get_object,bucket: bucket_name, key: input_string_resume)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="74">
+            
+            
+
+            
+
+            <code class="ruby">        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="75">
+            
+            
+
+            
+
+            <code class="ruby">        #update the resume_link column with link to the resume file</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="76">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        @student_document.update(resume_link: presigned_url_resume)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="77">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
           <li class="never" data-hits="" data-linenumber="78">
             
             
 
             
 
-            <code class="ruby">        #save the report in s3 bucket in the name of email id. This will be file key</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -4468,7 +4468,7 @@
 
             
 
-            <code class="ruby">        input_string_report = &quot;#{current_email}_report&quot;</code>
+            <code class="ruby">      if params[:student_document][:report_file].present?</code>
           </li>
         </div>
       
@@ -4490,7 +4490,7 @@
 
             
 
-            <code class="ruby">        #store the report file name in database</code>
+            <code class="ruby">        #save the report in s3 bucket in the name of email id. This will be file key</code>
           </li>
         </div>
       
@@ -4501,7 +4501,7 @@
 
             
 
-            <code class="ruby">        @student_document.update(report_file: input_string_report)</code>
+            <code class="ruby">        input_string_report = &quot;#{current_email}_report&quot;</code>
           </li>
         </div>
       
@@ -4512,7 +4512,7 @@
 
             
 
-            <code class="ruby">      </code>
+            <code class="ruby">        </code>
           </li>
         </div>
       
@@ -4523,7 +4523,7 @@
 
             
 
-            <code class="ruby">        #upload report in s3 bucket</code>
+            <code class="ruby">        #store the report file name in database</code>
           </li>
         </div>
       
@@ -4534,29 +4534,29 @@
 
             
 
-            <code class="ruby">        s3 = Aws::S3::Resource.new(region: &#39;us-east-2&#39;)</code>
+            <code class="ruby">        @student_document.update(report_file: input_string_report)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="86">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="86">
+            
             
 
             
 
-            <code class="ruby">        obj = s3.bucket(&#39;phd-annual-review-sys-docs&#39;)</code>
+            <code class="ruby">      </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="87">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="87">
+            
             
 
             
 
-            <code class="ruby">        File.open( params[:student_document][:report_file], &#39;rb&#39;) do |file|</code>
+            <code class="ruby">        #upload report in s3 bucket</code>
           </li>
         </div>
       
@@ -4567,12 +4567,45 @@
 
             
 
+            <code class="ruby">        s3 = Aws::S3::Resource.new(region: &#39;us-east-2&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="89">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        obj = s3.bucket(&#39;phd-annual-review-sys-docs&#39;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="90">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        File.open( params[:student_document][:report_file], &#39;rb&#39;) do |file|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="91">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">          obj.put_object(body: file,  content_type: &#39;application/pdf&#39;, key:input_string_report )</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="89">
+          <li class="never" data-hits="" data-linenumber="92">
             
             
 
@@ -4583,7 +4616,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="90">
+          <li class="never" data-hits="" data-linenumber="93">
             
             
 
@@ -4594,7 +4627,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="91">
+          <li class="never" data-hits="" data-linenumber="94">
             
             
 
@@ -4605,7 +4638,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="92">
+          <li class="covered" data-hits="1" data-linenumber="95">
             <span class="hits">1</span>
             
 
@@ -4616,7 +4649,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="93">
+          <li class="covered" data-hits="1" data-linenumber="96">
             <span class="hits">1</span>
             
 
@@ -4627,7 +4660,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="94">
+          <li class="covered" data-hits="1" data-linenumber="97">
             <span class="hits">1</span>
             
 
@@ -4638,7 +4671,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="95">
+          <li class="covered" data-hits="1" data-linenumber="98">
             <span class="hits">1</span>
             
 
@@ -4649,46 +4682,13 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="96">
-            
-            
-
-            
-
-            <code class="ruby">        </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="97">
-            
-            
-
-            
-
-            <code class="ruby">        #update the report_link column with link to the report file</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="98">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        @student_document.update(report_link: presigned_url_report)</code>
-          </li>
-        </div>
-      
-        <div>
           <li class="never" data-hits="" data-linenumber="99">
             
             
 
             
 
-            <code class="ruby">      end</code>
+            <code class="ruby">        </code>
           </li>
         </div>
       
@@ -4699,232 +4699,34 @@
 
             
 
-            <code class="ruby">        </code>
+            <code class="ruby">        #update the report_link column with link to the report file</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="101">
-            
-            
-
-            
-
-            <code class="ruby">        #update other columns</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="102">
+          <li class="covered" data-hits="1" data-linenumber="101">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">        @student_document.update(phd_start_date: params[:student_document][:phd_start_date])</code>
+            <code class="ruby">        @student_document.update(report_link: presigned_url_report)</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="103">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="102">
+            
             
 
             
 
-            <code class="ruby">        @student_document.update(milestones_passed: params[:student_document][:milestones_passed])</code>
+            <code class="ruby">      end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="104">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        @student_document.update(improvement_plan_present: params[:student_document][:improvement_plan_present])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="105">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        @student_document.update(improvement_plan_summary: params[:student_document][:improvement_plan_summary])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="106">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        @student_document.update(gpa: params[:student_document][:gpa])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="107">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        @student_document.update(support_in_last_sem: params[:student_document][:support_in_last_sem])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="108">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        @student_document.update(number_of_paper_submissions: params[:student_document][:number_of_paper_submissions])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="109">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        @student_document.update(number_of_papers_published: params[:student_document][:number_of_papers_published])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="110">
-            
-            
-
-            
-
-            <code class="ruby">        </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="111">
-            
-            
-
-            
-
-            <code class="ruby">        #redirect_to student_documents_path with success message</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="112">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        flash[:notice] = &quot;Details have been submitted.&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="113">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        redirect_to student_documents_path</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="114">
-            
-            
-
-            
-
-            <code class="ruby">    else</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="115">
-            
-            
-
-            
-
-            <code class="ruby">      #redirect_to student_documents_path with error message</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="116">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      flash[:notice] = &quot;Errors while updating details.&quot;</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="117">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      flash[:error] = @student_document.errors.full_messages</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="118">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      redirect_to student_documents_path</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="119">
-            
-            
-
-            
-
-            <code class="ruby">    end </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="120">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="121">
+          <li class="never" data-hits="" data-linenumber="103">
             
             
 
@@ -4935,35 +4737,233 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="122">
+          <li class="never" data-hits="" data-linenumber="104">
             
             
 
             
 
-            <code class="ruby">  # DELETE /student_documents/1 or /student_documents/1.json</code>
+            <code class="ruby">        #update other columns</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="123">
+          <li class="covered" data-hits="1" data-linenumber="105">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">  def destroy</code>
+            <code class="ruby">        @student_document.update(phd_start_date: params[:student_document][:phd_start_date])</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="124">
+          <li class="covered" data-hits="1" data-linenumber="106">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        @student_document.update(milestones_passed: params[:student_document][:milestones_passed])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="107">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        @student_document.update(improvement_plan_present: params[:student_document][:improvement_plan_present])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="108">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        @student_document.update(improvement_plan_summary: params[:student_document][:improvement_plan_summary])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="109">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        @student_document.update(gpa: params[:student_document][:gpa])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="110">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        @student_document.update(support_in_last_sem: params[:student_document][:support_in_last_sem])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="111">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        @student_document.update(support_in_last_sem_description: params[:student_document][:support_in_last_sem_description])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="112">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        @student_document.update(number_of_paper_submissions: params[:student_document][:number_of_paper_submissions])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="113">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        @student_document.update(number_of_papers_published: params[:student_document][:number_of_papers_published])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="114">
             
             
 
             
 
-            <code class="ruby">    @student_document.destroy</code>
+            <code class="ruby">        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="115">
+            
+            
+
+            
+
+            <code class="ruby">        #redirect_to student_documents_path with success message</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="116">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        flash[:notice] = &quot;Details have been submitted.&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="117">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        redirect_to student_documents_path</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="118">
+            
+            
+
+            
+
+            <code class="ruby">    else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="119">
+            
+            
+
+            
+
+            <code class="ruby">      #redirect_to student_documents_path with error message</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="120">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      flash[:notice] = &quot;Errors while updating details.&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="121">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      flash[:error] = @student_document.errors.full_messages</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="122">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      redirect_to student_documents_path</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="123">
+            
+            
+
+            
+
+            <code class="ruby">    end </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="124">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
           </li>
         </div>
       
@@ -4979,24 +4979,24 @@
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="126">
+          <li class="never" data-hits="" data-linenumber="126">
             
             
 
             
 
-            <code class="ruby">    respond_to do |format|</code>
+            <code class="ruby">  # DELETE /student_documents/1 or /student_documents/1.json</code>
           </li>
         </div>
       
         <div>
-          <li class="missed" data-hits="0" data-linenumber="127">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="127">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">      format.html { redirect_to student_documents_url, notice: &quot;Student document was successfully destroyed.&quot; }</code>
+            
+
+            <code class="ruby">  def destroy</code>
           </li>
         </div>
       
@@ -5007,7 +5007,7 @@
 
             
 
-            <code class="ruby">      format.json { head :no_content }</code>
+            <code class="ruby">    @student_document.destroy</code>
           </li>
         </div>
       
@@ -5018,40 +5018,40 @@
 
             
 
-            <code class="ruby">    end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="130">
-            
-            
-
-            
-
-            <code class="ruby">  end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="131">
-            
-            
-
-            
-
             <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="132">
-            <span class="hits">1</span>
+          <li class="missed" data-hits="0" data-linenumber="130">
+            
             
 
             
 
-            <code class="ruby">  private</code>
+            <code class="ruby">    respond_to do |format|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="131">
+            
+            
+
+            
+
+            <code class="ruby">      format.html { redirect_to student_documents_url, notice: &quot;Student document was successfully destroyed.&quot; }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="132">
+            
+            
+
+            
+
+            <code class="ruby">      format.json { head :no_content }</code>
           </li>
         </div>
       
@@ -5062,56 +5062,23 @@
 
             
 
-            <code class="ruby">    # Use callbacks to share common setup or constraints between actions.</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="134">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">    def set_student_document</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="135">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">      @student_document = StudentDocument.find_or_initialize_by(email_id: session[:email])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="2" data-linenumber="136">
-            <span class="hits">2</span>
-            
-
-            
-
-            <code class="ruby">      @student = Student.find_or_initialize_by(email_id: session[:email])</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="137">
-            
-            
-
-            
-
             <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="138">
+          <li class="never" data-hits="" data-linenumber="134">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="135">
             
             
 
@@ -5122,40 +5089,62 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="139">
-            
-            
-
-            
-
-            <code class="ruby">    # Only allow a list of trusted parameters through.</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="140">
+          <li class="covered" data-hits="1" data-linenumber="136">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">    def student_document_params</code>
+            <code class="ruby">  private</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="2" data-linenumber="141">
+          <li class="never" data-hits="" data-linenumber="137">
+            
+            
+
+            
+
+            <code class="ruby">    # Use callbacks to share common setup or constraints between actions.</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="138">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def set_student_document</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="139">
             <span class="hits">2</span>
             
 
             
 
-            <code class="ruby">      params.require(:student_document).permit(:resume_file, :report_file, session[:email], :phd_start_date, :milestones_passed, :improvement_plan_present, :improvement_plan_summary, :gpa, :support_in_last_sem, :number_of_paper_submissions, :number_of_papers_published)</code>
+            <code class="ruby">      @student_document = StudentDocument.find_or_initialize_by(email_id: session[:email])</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="142">
+          <li class="covered" data-hits="2" data-linenumber="140">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      @student = Student.find_or_initialize_by(email_id: session[:email])</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="141">
             
             
 
@@ -5166,7 +5155,161 @@
         </div>
       
         <div>
+          <li class="never" data-hits="" data-linenumber="142">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
           <li class="never" data-hits="" data-linenumber="143">
+            
+            
+
+            
+
+            <code class="ruby">    # Only allow a list of trusted parameters through.</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="144">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    def student_document_params</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="2" data-linenumber="145">
+            <span class="hits">2</span>
+            
+
+            
+
+            <code class="ruby">      params.require(:student_document).permit(</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="146">
+            
+            
+
+            
+
+            <code class="ruby">        :resume_file, :report_file, session[:email], </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="147">
+            
+            
+
+            
+
+            <code class="ruby">        :phd_start_date, </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="148">
+            
+            
+
+            
+
+            <code class="ruby">        :improvement_plan_present, </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="149">
+            
+            
+
+            
+
+            <code class="ruby">        :improvement_plan_summary, :gpa,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="150">
+            
+            
+
+            
+
+            <code class="ruby">        :number_of_paper_submissions, :number_of_papers_published,</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="151">
+            
+            
+
+            
+
+            <code class="ruby">        support_in_last_sem: [], </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="152">
+            
+            
+
+            
+
+            <code class="ruby">        milestones_passed: [],</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="153">
+            
+            
+
+            
+
+            <code class="ruby">        support_in_last_sem_description: [] # Permit milestones_passed as an array</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="154">
+            
+            
+
+            
+
+            <code class="ruby">      )</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="155">
+            
+            
+
+            
+
+            <code class="ruby">    end    </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="156">
             
             
 
@@ -6588,7 +6731,7 @@
     <h3>app/models/student_document.rb</h3>
     <h4>
       <span class="green">
-  100.0%
+  95.83%
 </span>
 
       lines covered
@@ -6597,9 +6740,9 @@
     
 
     <div class="t-line-summary">
-      <b>12</b> relevant lines.
-      <span class="green"><b>12</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
+      <b>24</b> relevant lines.
+      <span class="green"><b>23</b> lines covered</span> and
+      <span class="red"><b>1</b> lines missed.</span>
     </div>
 
     
@@ -6632,24 +6775,24 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="3">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="3">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">  serialize :milestones_passed, Array</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="4">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="4">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">  # Validations</code>
+            
+
+            <code class="ruby">  serialize :support_in_last_sem, Array</code>
           </li>
         </div>
       
@@ -6660,29 +6803,29 @@
 
             
 
-            <code class="ruby">  validates :phd_start_date, presence: true</code>
+            <code class="ruby">  serialize :support_in_last_sem_description, Array</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="6">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="6">
+            
             
 
             
 
-            <code class="ruby">  validates :milestones_passed, presence: true</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="7">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="7">
+            
             
 
             
 
-            <code class="ruby">  validates :improvement_plan_present, presence: true</code>
+            <code class="ruby">  # Validations</code>
           </li>
         </div>
       
@@ -6693,7 +6836,7 @@
 
             
 
-            <code class="ruby">  validates :improvement_plan_summary, presence: true</code>
+            <code class="ruby">  validates :phd_start_date, presence: true</code>
           </li>
         </div>
       
@@ -6704,7 +6847,7 @@
 
             
 
-            <code class="ruby">  validates :gpa, presence: true</code>
+            <code class="ruby">  validates :milestones_passed, presence: true</code>
           </li>
         </div>
       
@@ -6715,7 +6858,7 @@
 
             
 
-            <code class="ruby">  validates :support_in_last_sem, presence: true</code>
+            <code class="ruby">  validates :improvement_plan_present, presence: true</code>
           </li>
         </div>
       
@@ -6726,7 +6869,7 @@
 
             
 
-            <code class="ruby">  validates :number_of_paper_submissions, presence: true</code>
+            <code class="ruby">  validates :improvement_plan_summary, presence: true</code>
           </li>
         </div>
       
@@ -6737,7 +6880,7 @@
 
             
 
-            <code class="ruby">  validates :number_of_papers_published, presence:true</code>
+            <code class="ruby">  validates :gpa, presence: true</code>
           </li>
         </div>
       
@@ -6748,7 +6891,7 @@
 
             
 
-            <code class="ruby">  validates :resume_file, presence:true</code>
+            <code class="ruby">  validates :support_in_last_sem, presence: true</code>
           </li>
         </div>
       
@@ -6759,12 +6902,210 @@
 
             
 
+            <code class="ruby">  validates :support_in_last_sem_description, presence: true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="15">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  validates :number_of_paper_submissions, presence: true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="16">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  validates :number_of_papers_published, presence:true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="17">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  validates :resume_file, presence:true</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="18">
+            <span class="hits">1</span>
+            
+
+            
+
             <code class="ruby">  validates :report_file, presence:true</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="15">
+          <li class="never" data-hits="" data-linenumber="19">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="20">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  validate :support_in_last_sem_descriptions_presence_if_checked</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="21">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="22">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def support_in_last_sem_descriptions_presence_if_checked</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="17" data-linenumber="23">
+            <span class="hits">17</span>
+            
+
+            
+
+            <code class="ruby">    support_in_last_sem.each do |support_option|</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="16" data-linenumber="24">
+            <span class="hits">16</span>
+            
+
+            
+
+            <code class="ruby">      if support_option != &quot;None&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="16" data-linenumber="25">
+            <span class="hits">16</span>
+            
+
+            
+
+            <code class="ruby">        index = support_in_last_sem.index(support_option)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="16" data-linenumber="26">
+            <span class="hits">16</span>
+            
+
+            
+
+            <code class="ruby">        description = support_in_last_sem_description[index]</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="16" data-linenumber="27">
+            <span class="hits">16</span>
+            
+
+            
+
+            <code class="ruby">        if description.blank?</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="28">
+            
+            
+
+            
+
+            <code class="ruby">          errors.add(:support_in_last_sem_description, &quot;can&#39;t be blank for &#39;#{support_option}&#39; support option&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="29">
+            
+            
+
+            
+
+            <code class="ruby">        end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="30">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="31">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="32">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="33">
             
             
 
@@ -6775,7 +7116,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="16">
+          <li class="never" data-hits="" data-linenumber="34">
             
             
 
@@ -13312,8 +13653,8 @@
     
 
     <div class="t-line-summary">
-      <b>41</b> relevant lines.
-      <span class="green"><b>41</b> lines covered</span> and
+      <b>43</b> relevant lines.
+      <span class="green"><b>43</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
 
@@ -13485,7 +13826,7 @@
 
             
 
-            <code class="ruby">                                                     milestones_passed: &#39;new milestone&#39;, </code>
+            <code class="ruby">                                                     milestones_passed: [&#39;new milestone&#39;], </code>
           </li>
         </div>
       
@@ -13529,7 +13870,7 @@
 
             
 
-            <code class="ruby">                                                     support_in_last_sem: &#39;value&#39;, </code>
+            <code class="ruby">                                                     support_in_last_sem: [&#39;value&#39;],</code>
           </li>
         </div>
       
@@ -13540,7 +13881,7 @@
 
             
 
-            <code class="ruby">                                                     number_of_paper_submissions: &#39;1&#39;,</code>
+            <code class="ruby">                                                     support_in_last_sem_description: [&#39;desc&#39;],</code>
           </li>
         </div>
       
@@ -13551,7 +13892,7 @@
 
             
 
-            <code class="ruby">                                                     number_of_papers_published: &#39;1&#39;, </code>
+            <code class="ruby">                                                     number_of_paper_submissions: &#39;1&#39;,</code>
           </li>
         </div>
       
@@ -13562,7 +13903,7 @@
 
             
 
-            <code class="ruby">                                                     report_link: &#39;sample.pdf&#39;, </code>
+            <code class="ruby">                                                     number_of_papers_published: &#39;1&#39;, </code>
           </li>
         </div>
       
@@ -13573,7 +13914,7 @@
 
             
 
-            <code class="ruby">                                                     report_file: &#39;newstudent1_report&#39;)}</code>
+            <code class="ruby">                                                     report_link: &#39;sample.pdf&#39;, </code>
           </li>
         </div>
       
@@ -13584,18 +13925,18 @@
 
             
 
-            <code class="ruby">      </code>
+            <code class="ruby">                                                     report_file: &#39;newstudent1_report&#39;)}</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="25">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="25">
+            
             
 
             
 
-            <code class="ruby">  describe &#39;PATCH #update&#39; do</code>
+            <code class="ruby">      </code>
           </li>
         </div>
       
@@ -13606,18 +13947,18 @@
 
             
 
-            <code class="ruby">    it &#39;update details with valid fields&#39; do</code>
+            <code class="ruby">  describe &#39;PATCH #update&#39; do</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="27">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="27">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">      </code>
+            
+
+            <code class="ruby">    it &#39;update details with valid fields&#39; do</code>
           </li>
         </div>
       
@@ -13628,18 +13969,18 @@
 
             
 
-            <code class="ruby">      # Simulate uploading a new resume file (replace with actual file upload logic)</code>
+            <code class="ruby">      </code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="29">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="29">
+            
             
 
             
 
-            <code class="ruby">      new_resume = Rails.root.join(&#39;features&#39;, &#39;upload_files&#39;, &#39;sample_resume.pdf&#39;)</code>
+            <code class="ruby">      # Simulate uploading a new resume file (replace with actual file upload logic)</code>
           </li>
         </div>
       
@@ -13650,7 +13991,7 @@
 
             
 
-            <code class="ruby">      new_report = Rails.root.join(&#39;features&#39;, &#39;upload_files&#39;, &#39;sample_resume.pdf&#39;)</code>
+            <code class="ruby">      new_resume = Rails.root.join(&#39;features&#39;, &#39;upload_files&#39;, &#39;sample_resume.pdf&#39;)</code>
           </li>
         </div>
       
@@ -13661,7 +14002,7 @@
 
             
 
-            <code class="ruby">      session[:email] = student_document.email_id</code>
+            <code class="ruby">      new_report = Rails.root.join(&#39;features&#39;, &#39;upload_files&#39;, &#39;sample_resume.pdf&#39;)</code>
           </li>
         </div>
       
@@ -13672,7 +14013,7 @@
 
             
 
-            <code class="ruby">      new_phd_start_date = &#39;Fall 2023&#39;</code>
+            <code class="ruby">      session[:email] = student_document.email_id</code>
           </li>
         </div>
       
@@ -13683,7 +14024,7 @@
 
             
 
-            <code class="ruby">      new_milestones_passed = &#39;new milestone&#39;</code>
+            <code class="ruby">      new_phd_start_date = &#39;Fall 2023&#39;</code>
           </li>
         </div>
       
@@ -13694,7 +14035,7 @@
 
             
 
-            <code class="ruby">      new_improvement_plan_present = &#39;No&#39;</code>
+            <code class="ruby">      new_milestones_passed = [&#39;new milestone&#39;]</code>
           </li>
         </div>
       
@@ -13705,7 +14046,7 @@
 
             
 
-            <code class="ruby">      new_improvement_plan_summary = &#39;NA&#39;</code>
+            <code class="ruby">      new_improvement_plan_present = &#39;No&#39;</code>
           </li>
         </div>
       
@@ -13716,7 +14057,7 @@
 
             
 
-            <code class="ruby">      new_gpa = 3.0</code>
+            <code class="ruby">      new_improvement_plan_summary = &#39;NA&#39;</code>
           </li>
         </div>
       
@@ -13727,7 +14068,7 @@
 
             
 
-            <code class="ruby">      new_support_in_last_sem = &#39;value&#39;</code>
+            <code class="ruby">      new_gpa = 3.0</code>
           </li>
         </div>
       
@@ -13738,7 +14079,7 @@
 
             
 
-            <code class="ruby">      new_number_of_paper_submissions = 1</code>
+            <code class="ruby">      new_support_in_last_sem = [&#39;value&#39;]</code>
           </li>
         </div>
       
@@ -13749,7 +14090,7 @@
 
             
 
-            <code class="ruby">      new_number_of_papers_published = 12</code>
+            <code class="ruby">      new_support_in_last_sem_description = [&#39;desc&#39;]</code>
           </li>
         </div>
       
@@ -13760,7 +14101,7 @@
 
             
 
-            <code class="ruby">      resume_file_name = student_document.email_id.dup.gsub!(/@tamu\.edu/, &#39;_resume&#39;)</code>
+            <code class="ruby">      new_number_of_paper_submissions = 1</code>
           </li>
         </div>
       
@@ -13771,18 +14112,18 @@
 
             
 
-            <code class="ruby">      report_file_name = student_document.email_id.dup.gsub!(/@tamu\.edu/, &#39;_report&#39;)</code>
+            <code class="ruby">      new_number_of_papers_published = 12</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="42">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="42">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    </code>
+            
+
+            <code class="ruby">      resume_file_name = student_document.email_id.dup.gsub!(/@tamu\.edu/, &#39;_resume&#39;)</code>
           </li>
         </div>
       
@@ -13793,18 +14134,18 @@
 
             
 
-            <code class="ruby">      patch :update, params: { id: student_document.id, student_document: { email_id: &#39;newstudent1@tamu.edu&#39;, </code>
+            <code class="ruby">      report_file_name = student_document.email_id.dup.gsub!(/@tamu\.edu/, &#39;_report&#39;)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="44">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="44">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">                                                 resume_file: new_resume, </code>
+            
+
+            <code class="ruby">      patch :update, params: { id: student_document.id, student_document: { email_id: &#39;newstudent1@tamu.edu&#39;, </code>
           </li>
         </div>
       
@@ -13815,7 +14156,7 @@
 
             
 
-            <code class="ruby">                                                 report_file: new_report,</code>
+            <code class="ruby">                                                 resume_file: new_resume, </code>
           </li>
         </div>
       
@@ -13826,7 +14167,7 @@
 
             
 
-            <code class="ruby">                                                 phd_start_date: new_phd_start_date, </code>
+            <code class="ruby">                                                 report_file: new_report,</code>
           </li>
         </div>
       
@@ -13837,7 +14178,7 @@
 
             
 
-            <code class="ruby">                                                 milestones_passed: new_milestones_passed, </code>
+            <code class="ruby">                                                 phd_start_date: new_phd_start_date, </code>
           </li>
         </div>
       
@@ -13848,7 +14189,7 @@
 
             
 
-            <code class="ruby">                                                 improvement_plan_present: new_improvement_plan_present,</code>
+            <code class="ruby">                                                 milestones_passed: new_milestones_passed, </code>
           </li>
         </div>
       
@@ -13859,7 +14200,7 @@
 
             
 
-            <code class="ruby">                                                 improvement_plan_summary: new_improvement_plan_summary, </code>
+            <code class="ruby">                                                 improvement_plan_present: new_improvement_plan_present,</code>
           </li>
         </div>
       
@@ -13870,7 +14211,7 @@
 
             
 
-            <code class="ruby">                                                 gpa: new_gpa, </code>
+            <code class="ruby">                                                 improvement_plan_summary: new_improvement_plan_summary, </code>
           </li>
         </div>
       
@@ -13881,7 +14222,7 @@
 
             
 
-            <code class="ruby">                                                 support_in_last_sem: new_support_in_last_sem,</code>
+            <code class="ruby">                                                 gpa: new_gpa, </code>
           </li>
         </div>
       
@@ -13892,7 +14233,7 @@
 
             
 
-            <code class="ruby">                                                 number_of_paper_submissions: new_number_of_paper_submissions, </code>
+            <code class="ruby">                                                 support_in_last_sem: new_support_in_last_sem,</code>
           </li>
         </div>
       
@@ -13903,7 +14244,7 @@
 
             
 
-            <code class="ruby">                                                 number_of_papers_published: new_number_of_papers_published</code>
+            <code class="ruby">                                                 support_in_last_sem_description: [&quot;desc&quot;],</code>
           </li>
         </div>
       
@@ -13914,7 +14255,7 @@
 
             
 
-            <code class="ruby">                            }}</code>
+            <code class="ruby">                                                 number_of_paper_submissions: new_number_of_paper_submissions, </code>
           </li>
         </div>
       
@@ -13925,7 +14266,7 @@
 
             
 
-            <code class="ruby"></code>
+            <code class="ruby">                                                 number_of_papers_published: new_number_of_papers_published</code>
           </li>
         </div>
       
@@ -13936,18 +14277,18 @@
 
             
 
-            <code class="ruby">      # Reload the student document from the database to get the updated record</code>
+            <code class="ruby">                            }}</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="57">
-            <span class="hits">1</span>
+          <li class="never" data-hits="" data-linenumber="57">
+            
             
 
             
 
-            <code class="ruby">      student_document.reload</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -13958,12 +14299,34 @@
 
             
 
+            <code class="ruby">      # Reload the student document from the database to get the updated record</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="59">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">      student_document.reload</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="60">
+            
+            
+
+            
+
             <code class="ruby"> </code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="59">
+          <li class="never" data-hits="" data-linenumber="61">
             
             
 
@@ -13974,7 +14337,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="60">
+          <li class="covered" data-hits="1" data-linenumber="62">
             <span class="hits">1</span>
             
 
@@ -13985,7 +14348,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="61">
+          <li class="covered" data-hits="1" data-linenumber="63">
             <span class="hits">1</span>
             
 
@@ -13996,7 +14359,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="62">
+          <li class="covered" data-hits="1" data-linenumber="64">
             <span class="hits">1</span>
             
 
@@ -14007,7 +14370,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="63">
+          <li class="covered" data-hits="1" data-linenumber="65">
             <span class="hits">1</span>
             
 
@@ -14018,7 +14381,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="64">
+          <li class="covered" data-hits="1" data-linenumber="66">
             <span class="hits">1</span>
             
 
@@ -14029,7 +14392,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="65">
+          <li class="covered" data-hits="1" data-linenumber="67">
             <span class="hits">1</span>
             
 
@@ -14040,7 +14403,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="66">
+          <li class="covered" data-hits="1" data-linenumber="68">
             <span class="hits">1</span>
             
 
@@ -14051,7 +14414,7 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="67">
+          <li class="covered" data-hits="1" data-linenumber="69">
             <span class="hits">1</span>
             
 
@@ -14062,35 +14425,13 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="68">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      expect(assigns(:student_document).number_of_paper_submissions).to eq(new_number_of_paper_submissions)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="69">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">      expect(assigns(:student_document).number_of_papers_published).to eq(new_number_of_papers_published)</code>
-          </li>
-        </div>
-      
-        <div>
           <li class="covered" data-hits="1" data-linenumber="70">
             <span class="hits">1</span>
             
 
             
 
-            <code class="ruby">      expect(flash[:notice]).to eq(&quot;Details have been submitted.&quot;)</code>
+            <code class="ruby">      expect(assigns(:student_document).support_in_last_sem_description).to eq(new_support_in_last_sem_description)</code>
           </li>
         </div>
       
@@ -14101,29 +14442,29 @@
 
             
 
-            <code class="ruby">      expect(response).to redirect_to(student_documents_path)</code>
+            <code class="ruby">      expect(assigns(:student_document).number_of_paper_submissions).to eq(new_number_of_paper_submissions)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="72">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="72">
+            <span class="hits">1</span>
             
 
-            <code class="ruby">    end</code>
+            
+
+            <code class="ruby">      expect(assigns(:student_document).number_of_papers_published).to eq(new_number_of_papers_published)</code>
           </li>
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="73">
-            
-            
-
+          <li class="covered" data-hits="1" data-linenumber="73">
+            <span class="hits">1</span>
             
 
-            <code class="ruby"></code>
+            
+
+            <code class="ruby">      expect(flash[:notice]).to eq(&quot;Details have been submitted.&quot;)</code>
           </li>
         </div>
       
@@ -14134,7 +14475,7 @@
 
             
 
-            <code class="ruby">    it &#39;update details with missing fields&#39; do</code>
+            <code class="ruby">      expect(response).to redirect_to(student_documents_path)</code>
           </li>
         </div>
       
@@ -14145,133 +14486,12 @@
 
             
 
-            <code class="ruby">        </code>
+            <code class="ruby">    end</code>
           </li>
         </div>
       
         <div>
-          <li class="covered" data-hits="1" data-linenumber="76">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        session[:email] = student_document.email_id</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="77">
-            
-            
-
-            
-
-            <code class="ruby">      </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="78">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        patch :update,params: {student_document: { email_id: &#39;newstudent1@tamu.edu&#39; }}</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="79">
-            
-            
-
-            
-
-            <code class="ruby">  </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="80">
-            
-            
-
-            
-
-            <code class="ruby">        # Reload the student document from the database to get the updated record</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="81">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        student_document.reload</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="82">
-            
-            
-
-            
-
-            <code class="ruby">        </code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="83">
-            
-            
-
-            
-
-            <code class="ruby">        # redirect</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="84">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        expect(flash[:notice]).to eq(&quot;Errors while updating details.&quot;)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="covered" data-hits="1" data-linenumber="85">
-            <span class="hits">1</span>
-            
-
-            
-
-            <code class="ruby">        expect(response).to redirect_to(student_documents_path)</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="86">
-            
-            
-
-            
-
-            <code class="ruby">      end</code>
-          </li>
-        </div>
-      
-        <div>
-          <li class="never" data-hits="" data-linenumber="87">
+          <li class="never" data-hits="" data-linenumber="76">
             
             
 
@@ -14282,7 +14502,161 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="88">
+          <li class="covered" data-hits="1" data-linenumber="77">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    it &#39;update details with missing fields&#39; do</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="78">
+            
+            
+
+            
+
+            <code class="ruby">        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="79">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        session[:email] = student_document.email_id</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="80">
+            
+            
+
+            
+
+            <code class="ruby">      </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="81">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        patch :update,params: {student_document: { email_id: &#39;newstudent1@tamu.edu&#39; }}</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="82">
+            
+            
+
+            
+
+            <code class="ruby">  </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="83">
+            
+            
+
+            
+
+            <code class="ruby">        # Reload the student document from the database to get the updated record</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="84">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        student_document.reload</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="85">
+            
+            
+
+            
+
+            <code class="ruby">        </code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="86">
+            
+            
+
+            
+
+            <code class="ruby">        # redirect</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="87">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        expect(flash[:notice]).to eq(&quot;Errors while updating details.&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="88">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">        expect(response).to redirect_to(student_documents_path)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="89">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="90">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="91">
             
             
 
@@ -14293,7 +14667,7 @@
         </div>
       
         <div>
-          <li class="never" data-hits="" data-linenumber="89">
+          <li class="never" data-hits="" data-linenumber="92">
             
             
 

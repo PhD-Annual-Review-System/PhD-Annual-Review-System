@@ -19,14 +19,7 @@ Feature: Student submits student documents
      And I select value "Yes" from "Improvement Plan Present"
      And I fill in value of "Improvement Plan Summary" with "Summary text"
      And I fill in value of "GPA" with "3.7"
-     And I select Support in Last Sem that should include the following:
-      | Research Assistantship with Faculty Member      |
-      | Teaching Assistantship                          |
-      | Fellowship                                      |
-      | Job within TAMU                                 |
-      | Job outside TAMU                                |
-      | Other                                           |
-      | None                                            |
+     Then I fill in the support descriptions
      And I fill in value of "Number of Paper Submissions" with "5"
      And I fill in value of "Number of Papers Published" with "3"
     When I click on choose file
