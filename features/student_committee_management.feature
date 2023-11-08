@@ -1,4 +1,8 @@
 Feature: Committee Management
+  As a student
+  I want to be able to manage my committee
+  So that I can add faculty members to my committee and assign a chair
+  
   @javascript
   Scenario: Student logs in and adds a faculty to the committee
     Given I am a logged-in student
