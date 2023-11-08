@@ -7,8 +7,8 @@
 <body>
   <div class="header">
     <h1>Admin Dashboard</h1>
-    <button id="export-csv-button" class="download-button">Export as CSV</button>
     <%= link_to 'Logout', admin_logout_path, method: :get, class: 'logout-button' %>
+    <button id="export-csv-button" class="button">Export as CSV</button>
   </div>
 
   <table>
@@ -44,24 +44,36 @@
         <% end %>
         
         <% committee_members = student.committees %>
-          <% (1..5).each do |i| %>
-            <% if committee_members[i - 1] %>
-              <% if committee_members[i - 1].faculty.assessments.exists? %>
-                <td><%= committee_members[i - 1].faculty.first_name %>
-                    <%= committee_members[i - 1].faculty.last_name %>
-                    <span>&#10004;</span>
+        <% (1..5).each do |i| %>
+          <% if committee_members[i - 1] %>
+            <% faculty = committee_members[i - 1].faculty %>
+            <% assessment = faculty.assessments.find_by(student: student) %>
+            <% if assessment %>
+              <td>
+                <%= committee_members[i - 1].faculty.first_name %>
+                <%= committee_members[i - 1].faculty.last_name %>
+                <span>&#10004;</span>
+              </td>
+            <% else %>
+              <% if committee_members[i - 1].role == 'Chair' %>
+                <td>
+                  <%= committee_members[i - 1].faculty.first_name %>
+                  <%= committee_members[i - 1].faculty.last_name %>
+                  <span>&#10004;</span>
                 </td>
-
               <% else %>
-                <td><%= committee_members[i - 1].faculty.first_name %>
-                    <%= committee_members[i - 1].faculty.last_name %>
-                    <span>&#10006;</span>
+                <td>
+                  <%= committee_members[i - 1].faculty.first_name %>
+                  <%= committee_members[i - 1].faculty.last_name %>
+                  <span>&#10006;</span>
                 </td>
               <% end %>
-            <% else %>
-              <td></td>
             <% end %>
+          <% else %>
+            <td></td>
           <% end %>
+        <% end %>
+
       
 
       <td>
@@ -69,29 +81,26 @@
           <!-- Checkmark symbol ✓ if student's assessment rating is "Needs Improvement" -->
           <span>&#10004;</span>
         <% else %>
-          <span>&#10006;</span>
         <% end %>
       </td>
 
       <td>
-        <% if student.assessments.exists?(eligible_for_reward: true) %>
-          <!-- Checkmark symbol ✓ if student's assessment is eligible for reward -->
-          <span>&#10004;</span>
+        <% if student.assessments.exists? %>
+          <% if student.assessments.exists?(eligible_for_reward: true) %>
+            <!-- Checkmark symbol ✓ if student's assessment is eligible for reward -->
+            <span>&#10004;</span>
+          <% else %>
+            <!-- Empty cell if the assessment is not eligible for reward -->
+            <span>&#10006;</span>
+          <% end %>
         <% else %>
-          <!-- Empty cell if the assessment is not eligible for reward -->
-          <span>&#10006;</span>
+        <!-- Empty cell if no assessments exist -->
         <% end %>
       </td>
 
       <td>
 
-      <% if student.assessments.exists?(rating: 'true') %>
-      
-      <%= student.assessments%>
-      <% else %>
-      <!-- Empty cell if the assessment rating is not 'true' -->
-       <span>&#10006;</span>
-      <% end %>      
+      <%= student.final_assessment %>    
     
     </td>
 
