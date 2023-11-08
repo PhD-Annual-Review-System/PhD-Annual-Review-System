@@ -184,20 +184,3 @@ Given('I have two faculty members who have made assessments') do
     @assessment1 = FactoryBot.create(:assessment, public_comment: 'Excellent work!', rating: 5, eligible_for_reward: true, faculty: @faculty1, student: @student)
     @assessment2 = FactoryBot.create(:assessment, public_comment: 'Needs improvement.', rating: 3, eligible_for_reward: false, faculty: @faculty2, student: @student)
 end
-  
-Then('I should see table with {string} in the {string} column') do |expected_text, column_name|
-    headers = page.find('thead').all('th').map(&:text)
-
-    # Check if the column name exists in the headers
-    unless headers.include?(column_name)
-        raise "Column '#{column_name}' not found in table headers."
-    end
-    
-    column_index = find('thead').all('th').map(&:text).index(column_name) + 1
-    
-    column_has_text = page.all('tbody tr').any? do |row|
-      row.find("td:nth-child(#{column_index})").text == expected_text
-    end
-
-    expect(column_has_text).to be true, "Expected to find text #{expected_text} in the #{column_name} column, but did not."
-end
