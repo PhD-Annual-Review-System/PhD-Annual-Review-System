@@ -28,7 +28,25 @@
 
   <div>
     <%= form.label :milestones_passed, style: "display: block" %>
-    <%= form.text_area :milestones_passed %>
+
+    <%= check_box_tag(:milestone1) %>
+    <%= label_tag(:milestone1, "Passed Qual Exam (or exempt from Qual exam)") %>
+
+    <%= check_box_tag(:milestone2) %>
+    <%= label_tag(:milestone2, "Have Approved Degree Plan (including committee)") %>
+
+    <%= check_box_tag(:milestone3) %>
+    <%= label_tag(:milestone3, "Passed Prelim Exam") %>
+
+    <%= check_box_tag(:milestone4) %>
+    <%= label_tag(:milestone4, "Have Approved PhD Proposal") %>
+
+    <%= check_box_tag(:milestone5) %>
+    <%= label_tag(:milestone5, "Defended Dissertation") %>
+
+    <%= check_box_tag(:milestone6) %>
+    <%= label_tag(:milestone6, "Submitted Dissertation") %>
+
   </div>
 
   <div>

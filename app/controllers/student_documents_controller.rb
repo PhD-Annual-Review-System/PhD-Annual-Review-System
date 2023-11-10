@@ -31,6 +31,9 @@ class StudentDocumentsController < ApplicationController
 
   # PATCH/PUT /student_documents/1 or /student_documents/1.json
   def update
+    if params[:student_document][:support_in_last_sem_description].present?
+      params[:student_document][:support_in_last_sem_description] = params[:student_document][:support_in_last_sem_description].reject(&:empty?)
+    end
     current_email = session[:email].dup
     current_email.gsub!(/@tamu\.edu/, '')
     flash.clear
@@ -43,11 +46,11 @@ class StudentDocumentsController < ApplicationController
     @student_document.improvement_plan_summary = nil
     @student_document.gpa = nil
     @student_document.support_in_last_sem = nil
+    @student_document.support_in_last_sem_description = nil
     @student_document.number_of_paper_submissions = nil
     @student_document.number_of_papers_published = nil
   
     if @student_document.update(student_document_params)
-
       if params[:student_document][:resume_file].present?
         
         #save the resume in s3 bucket in the name of email id. This will be file key
@@ -97,7 +100,7 @@ class StudentDocumentsController < ApplicationController
         #update the report_link column with link to the report file
         @student_document.update(report_link: presigned_url_report)
       end
-        
+
         #update other columns
         @student_document.update(phd_start_date: params[:student_document][:phd_start_date])
         @student_document.update(milestones_passed: params[:student_document][:milestones_passed])
@@ -105,6 +108,7 @@ class StudentDocumentsController < ApplicationController
         @student_document.update(improvement_plan_summary: params[:student_document][:improvement_plan_summary])
         @student_document.update(gpa: params[:student_document][:gpa])
         @student_document.update(support_in_last_sem: params[:student_document][:support_in_last_sem])
+        @student_document.update(support_in_last_sem_description: params[:student_document][:support_in_last_sem_description])
         @student_document.update(number_of_paper_submissions: params[:student_document][:number_of_paper_submissions])
         @student_document.update(number_of_papers_published: params[:student_document][:number_of_papers_published])
         
@@ -138,6 +142,15 @@ class StudentDocumentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def student_document_params
-      params.require(:student_document).permit(:resume_file, :report_file, session[:email], :phd_start_date, :milestones_passed, :improvement_plan_present, :improvement_plan_summary, :gpa, :support_in_last_sem, :number_of_paper_submissions, :number_of_papers_published)
-    end
+      params.require(:student_document).permit(
+        :resume_file, :report_file, session[:email], 
+        :phd_start_date, 
+        :improvement_plan_present, 
+        :improvement_plan_summary, :gpa,
+        :number_of_paper_submissions, :number_of_papers_published,
+        support_in_last_sem: [], 
+        milestones_passed: [],
+        support_in_last_sem_description: [] # Permit milestones_passed as an array
+      )
+    end    
 end

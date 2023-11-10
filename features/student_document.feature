@@ -9,11 +9,17 @@ Feature: Student submits student documents
     Then I am on the student document page page
      And I have email id populated
      And I select the PhD start date as "Fall 2023"
-     And I fill in value of "milestones_passed" with "I have completed several important milestones in my PhD."
+     And I select milestones that should include the following:
+      | Passed Qual Exam (or exempt from Qual exam)      |
+      | Have Approved Degree Plan (including committee) |
+      | Passed Prelim Exam                               |
+      | Have Approved PhD Proposal                        |
+      | Defended Dissertation                            |
+      | Submitted Dissertation                           |
      And I select value "Yes" from "Improvement Plan Present"
      And I fill in value of "Improvement Plan Summary" with "Summary text"
      And I fill in value of "GPA" with "3.7"
-     And I fill in value of "Support in Last Sem" with "Support information"
+     Then I fill in the support descriptions
      And I fill in value of "Number of Paper Submissions" with "5"
      And I fill in value of "Number of Papers Published" with "3"
     When I click on choose file
@@ -75,7 +81,6 @@ Feature: Student submits student documents
     Then I should be redirected to the student document path
     Then I am on the student document page page
      And I have email id populated
-     And I have not updated "milestones_passed"
     When I click on submit button
     Then I should see a flash notice with the text "Errors while updating details."
     Then I should be redirected to the student document path
@@ -131,7 +136,6 @@ Scenario: Submit button is clicked without Support in Last Sem specified
     Then I should be redirected to the student document path
     Then I am on the student document page page
      And I have email id populated
-     And I have not updated "Support in Last Sem"
     When I click on submit button
     Then I should see a flash notice with the text "Errors while updating details."
     Then I should be redirected to the student document path
