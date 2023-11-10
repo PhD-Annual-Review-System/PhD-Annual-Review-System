@@ -14,7 +14,7 @@
       <img src="./assets/0.12.3/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" class="hide">
-      <div class="timestamp">Generated <abbr class="timeago" title="2023-11-06T18:33:38-06:00">2023-11-06T18:33:38-06:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2023-11-10T10:51:06-06:00">2023-11-10T10:51:06-06:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -23,14 +23,14 @@
     <span class="group_name">All Files</span>
     (<span class="covered_percent">
       <span class="green">
-  97.85%
+  97.25%
 </span>
 
      </span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         1.78
+         1.81
        </span>
     </span> hits/line
     )
@@ -43,11 +43,11 @@
   </div>
 
   <div class="t-line-summary">
-    <b>744</b> relevant lines,
-    <span class="green"><b>728</b> lines covered</span> and
-    <span class="red"><b>16</b> lines missed. </span>
+    <b>764</b> relevant lines,
+    <span class="green"><b>743</b> lines covered</span> and
+    <span class="red"><b>21</b> lines missed. </span>
     (<span class="green">
-  97.85%
+  97.25%
 </span>
 )
   </div>
@@ -237,12 +237,12 @@
         
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#40c5612eac4f1218f5f1664844a9eae9a3127778" class="src_link" title="app/models/assessment.rb">app/models/assessment.rb</a></td>
-            <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">6</td>
-            <td class="cell--number">4</td>
-            <td class="cell--number">4</td>
-            <td class="cell--number">0</td>
-            <td class="cell--number">1.00</td>
+            <td class="red strong cell--number t-file__coverage">79.17 %</td>
+            <td class="cell--number">33</td>
+            <td class="cell--number">24</td>
+            <td class="cell--number">19</td>
+            <td class="cell--number">5</td>
+            <td class="cell--number">2.42</td>
             
           </tr>
         
@@ -275,7 +275,7 @@
             <td class="cell--number">18</td>
             <td class="cell--number">18</td>
             <td class="cell--number">0</td>
-            <td class="cell--number">2.94</td>
+            <td class="cell--number">3.17</td>
             
           </tr>
         
@@ -403,7 +403,7 @@
           <tr class="t-file">
             <td class="strong t-file__name"><a href="#e15402a091de3256b36a7e541dd888fca3b7c844" class="src_link" title="config/routes.rb">config/routes.rb</a></td>
             <td class="green strong cell--number t-file__coverage">100.00 %</td>
-            <td class="cell--number">41</td>
+            <td class="cell--number">42</td>
             <td class="cell--number">29</td>
             <td class="cell--number">29</td>
             <td class="cell--number">0</td>
@@ -4402,7 +4402,7 @@
 
             
 
-            <code class="ruby">        presigned_url_resume = presigner.presigned_url(:get_object,bucket: bucket_name, key: input_string_resume)</code>
+            <code class="ruby">        presigned_url_resume = presigner.presigned_url(:get_object,bucket: bucket_name, key: input_string_resume, expires_in: 604800)</code>
           </li>
         </div>
       
@@ -4677,7 +4677,7 @@
 
             
 
-            <code class="ruby">        presigned_url_report = presigner.presigned_url(:get_object,bucket: bucket_name, key: input_string_report)</code>
+            <code class="ruby">        presigned_url_report = presigner.presigned_url(:get_object,bucket: bucket_name, key: input_string_report, expires_in: 604800)</code>
           </li>
         </div>
       
@@ -5979,8 +5979,8 @@
   <div class="header">
     <h3>app/models/assessment.rb</h3>
     <h4>
-      <span class="green">
-  100.0%
+      <span class="red">
+  79.17%
 </span>
 
       lines covered
@@ -5989,9 +5989,9 @@
     
 
     <div class="t-line-summary">
-      <b>4</b> relevant lines.
-      <span class="green"><b>4</b> lines covered</span> and
-      <span class="red"><b>0</b> lines missed.</span>
+      <b>24</b> relevant lines.
+      <span class="green"><b>19</b> lines covered</span> and
+      <span class="red"><b>5</b> lines missed.</span>
     </div>
 
     
@@ -6058,6 +6058,303 @@
       
         <div>
           <li class="never" data-hits="" data-linenumber="6">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="7">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">    after_save :update_final_assessment</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="8">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="1" data-linenumber="9">
+            <span class="hits">1</span>
+            
+
+            
+
+            <code class="ruby">  def update_final_assessment</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="10">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">    student = self.student</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="11">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">    Rails.logger.debug &quot;This is a debug message&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="12">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">    Rails.logger.debug student</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="13">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">    faculty_ids = Committee.where(student_id: student.id).pluck(:faculty_id)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="14">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">    puts faculty_ids</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="15">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">    student.update(UIN: 52)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="16">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">    if faculty_ids.all? { |faculty_id| student.assessments.exists?(faculty_id: faculty_id) }</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="17">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      assessment_ratings = student.assessments.pluck(:rating)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="18">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      Rails.logger.debug &#39;assessment_ratings&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="19">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      Rails.logger.debug assessment_ratings</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="20">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      if assessment_ratings.include?(&quot;Unsatisfactory&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="21">
+            
+            
+
+            
+
+            <code class="ruby">        student.update_attribute(:final_assessment, &quot;Unsatisfactory&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="22">
+            
+            
+
+            
+
+            <code class="ruby"></code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="23">
+            
+            
+
+            
+
+            <code class="ruby">        Rails.logger.debug &#39;updated to unsatisfactory&#39;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="24">
+            
+            
+
+            
+
+            <code class="ruby">        Rails.logger.debug student.final_assessment</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="25">
+            
+            
+
+            
+
+            <code class="ruby">        Rails.logger.debug student.id</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="26">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">      elsif assessment_ratings.include?(&quot;Needs Improvement&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="missed" data-hits="0" data-linenumber="27">
+            
+            
+
+            
+
+            <code class="ruby">        student.update_attribute(:final_assessment, &quot;Needs Improvement&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="28">
+            
+            
+
+            
+
+            <code class="ruby">      else</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="covered" data-hits="4" data-linenumber="29">
+            <span class="hits">4</span>
+            
+
+            
+
+            <code class="ruby">        student.update_attribute(:final_assessment, &quot;Satisfactory&quot;)</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="30">
+            
+            
+
+            
+
+            <code class="ruby">      end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="31">
+            
+            
+
+            
+
+            <code class="ruby">    end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="32">
+            
+            
+
+            
+
+            <code class="ruby">  end</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="33">
             
             
 
@@ -6667,8 +6964,8 @@
         </div>
       
         <div>
-          <li class="covered" data-hits="33" data-linenumber="23">
-            <span class="hits">33</span>
+          <li class="covered" data-hits="37" data-linenumber="23">
+            <span class="hits">37</span>
             
 
             
@@ -9773,7 +10070,7 @@
 
             
 
-            <code class="ruby">  # Defines the root path route (&quot;/&quot;)</code>
+            <code class="ruby"></code>
           </li>
         </div>
       
@@ -9784,12 +10081,23 @@
 
             
 
-            <code class="ruby">  # root &quot;articles#index&quot;</code>
+            <code class="ruby">  # Defines the root path route (&quot;/&quot;)</code>
           </li>
         </div>
       
         <div>
           <li class="never" data-hits="" data-linenumber="41">
+            
+            
+
+            
+
+            <code class="ruby">  # root &quot;articles#index&quot;</code>
+          </li>
+        </div>
+      
+        <div>
+          <li class="never" data-hits="" data-linenumber="42">
             
             
 

@@ -21,4 +21,4 @@ Feature: Admin log in
     And I fill in "email_id" with "admin@tamu.edu"
     And I fill in "password" with "password"
     And I submit login form
-    Then I should see "You have successfully logged in."
+    Then I should see "Admin Dashboard"
