@@ -50168,3 +50168,1161 @@ Processing by FacultyController#review_student as HTML
 Completed 200 OK in 28ms (Views: 15.0ms | ActiveRecord: 2.5ms | Allocations: 10253)
 
 
+Started GET "/" for ::1 at 2023-11-06 10:45:01 -0600
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 20.2ms | Allocations: 32812)
+  Rendered layout layouts/application.html.erb (Duration: 23.3ms | Allocations: 36516)
+Completed 200 OK in 26ms (Views: 24.5ms | ActiveRecord: 0.0ms | Allocations: 39010)
+
+
+Started GET "/student/login" for ::1 at 2023-11-06 10:45:03 -0600
+Processing by StudentController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/login.html.erb within layouts/application
+  Rendered student/login.html.erb within layouts/application (Duration: 15.7ms | Allocations: 3029)
+  Rendered layout layouts/application.html.erb (Duration: 17.9ms | Allocations: 6047)
+Completed 200 OK in 20ms (Views: 19.3ms | ActiveRecord: 0.0ms | Allocations: 6743)
+
+
+Started POST "/student/login" for ::1 at 2023-11-06 10:45:29 -0600
+Processing by StudentController#authenticate as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"email_id"=>"harshsurolia@tamu.edu", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mStudent Load (2.9ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:9:in `authenticate'
+Redirected to http://localhost:3000/student/dashboard
+Completed 302 Found in 260ms (ActiveRecord: 14.5ms | Allocations: 11703)
+
+
+Started GET "/student/dashboard" for ::1 at 2023-11-06 10:45:29 -0600
+Processing by StudentController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/dashboard.html.erb within layouts/application
+  Rendered student/dashboard.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1402)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 4572)
+Completed 200 OK in 3ms (Views: 3.4ms | ActiveRecord: 0.0ms | Allocations: 4823)
+
+
+Started GET "/student_documents" for ::1 at 2023-11-06 10:45:31 -0600
+Processing by StudentDocumentsController#index as HTML
+  [1m[36mStudentDocument Load (1.0ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1 LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_documents_controller.rb:6:in `index'
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_documents_controller.rb:7:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering student_documents/index.html.erb within layouts/application
+  Rendered student_documents/index.html.erb within layouts/application (Duration: 9.7ms | Allocations: 6841)
+  Rendered layout layouts/application.html.erb (Duration: 12.8ms | Allocations: 9854)
+Completed 200 OK in 38ms (Views: 14.3ms | ActiveRecord: 7.0ms | Allocations: 22058)
+
+
+Started PATCH "/student_documents" for ::1 at 2023-11-06 10:45:59 -0600
+Processing by StudentDocumentsController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "student_document"=>{"phd_start_date"=>"Fall 2023", "milestones_passed"=>"y", "improvement_plan_present"=>"Yes", "improvement_plan_summary"=>"w", "gpa"=>"4", "support_in_last_sem"=>"y", "number_of_paper_submissions"=>"2", "number_of_papers_published"=>"2", "resume_file"=>#<ActionDispatch::Http::UploadedFile:0x00000001089647a0 @tempfile=#<Tempfile:/var/folders/1g/qlfm7z9x3l10b5z5gbxflst00000gn/T/RackMultipart20231106-22014-xyjevq.pdf>, @content_type="application/pdf", @original_filename="Class Schedule Fall 2023_onepage.pdf", @headers="Content-Disposition: form-data; name=\"student_document[resume_file]\"; filename=\"Class Schedule Fall 2023_onepage.pdf\"\r\nContent-Type: application/pdf\r\n">, "report_file"=>#<ActionDispatch::Http::UploadedFile:0x0000000108964750 @tempfile=#<Tempfile:/var/folders/1g/qlfm7z9x3l10b5z5gbxflst00000gn/T/RackMultipart20231106-22014-uyyn68.pdf>, @content_type="application/pdf", @original_filename="Class Schedule Fall 2023.pdf", @headers="Content-Disposition: form-data; name=\"student_document[report_file]\"; filename=\"Class Schedule Fall 2023.pdf\"\r\nContent-Type: application/pdf\r\n">}, "commit"=>"Submit"}
+  [1m[36mStudentDocument Load (0.8ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1 LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_documents_controller.rb:135:in `set_student_document'
+  [1m[36mStudent Load (0.5ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_documents_controller.rb:136:in `set_student_document'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_documents_controller.rb:49:in `update'
+  [1m[36mStudentDocument Create (4.5ms)[0m  [1m[32mINSERT INTO "student_documents" ("resume_file", "resume_link", "email_id", "created_at", "updated_at", "phd_start_date", "milestones_passed", "improvement_plan_present", "improvement_plan_summary", "gpa", "support_in_last_sem", "number_of_paper_submissions", "number_of_papers_published", "report_link", "report_file") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["resume_file", "<56 bytes of binary data>"], ["resume_link", nil], ["email_id", "harshsurolia@tamu.edu"], ["created_at", "2023-11-06 16:45:59.446210"], ["updated_at", "2023-11-06 16:45:59.446210"], ["phd_start_date", "Fall 2023"], ["milestones_passed", "y"], ["improvement_plan_present", "Yes"], ["improvement_plan_summary", "w"], ["gpa", 4.0], ["support_in_last_sem", "y"], ["number_of_paper_submissions", 2], ["number_of_papers_published", 2], ["report_link", nil], ["report_file", "<56 bytes of binary data>"]]
+  ↳ app/controllers/student_documents_controller.rb:49:in `update'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_documents_controller.rb:49:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_documents_controller.rb:57:in `update'
+  [1m[36mStudentDocument Update (1.4ms)[0m  [1m[33mUPDATE "student_documents" SET "resume_file" = $1, "updated_at" = $2 WHERE "student_documents"."id" = $3[0m  [["resume_file", "<19 bytes of binary data>"], ["updated_at", "2023-11-06 16:45:59.489655"], ["id", 1]]
+  ↳ app/controllers/student_documents_controller.rb:57:in `update'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_documents_controller.rb:57:in `update'
+Completed 500 Internal Server Error in 935ms (ActiveRecord: 9.3ms | Allocations: 145175)
+
+
+  
+ArgumentError (expires_in value of 630720000 exceeds one-week maximum.):
+  
+app/controllers/student_documents_controller.rb:70:in `update'
+Started PATCH "/student_documents" for ::1 at 2023-11-06 10:47:52 -0600
+Processing by StudentDocumentsController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "student_document"=>{"phd_start_date"=>"Fall 2023", "milestones_passed"=>"y", "improvement_plan_present"=>"Yes", "improvement_plan_summary"=>"w", "gpa"=>"4", "support_in_last_sem"=>"y", "number_of_paper_submissions"=>"2", "number_of_papers_published"=>"2", "resume_file"=>#<ActionDispatch::Http::UploadedFile:0x00000001095497a0 @tempfile=#<Tempfile:/var/folders/1g/qlfm7z9x3l10b5z5gbxflst00000gn/T/RackMultipart20231106-22014-52ajb2.pdf>, @content_type="application/pdf", @original_filename="Class Schedule Fall 2023_onepage.pdf", @headers="Content-Disposition: form-data; name=\"student_document[resume_file]\"; filename=\"Class Schedule Fall 2023_onepage.pdf\"\r\nContent-Type: application/pdf\r\n">, "report_file"=>#<ActionDispatch::Http::UploadedFile:0x0000000109549750 @tempfile=#<Tempfile:/var/folders/1g/qlfm7z9x3l10b5z5gbxflst00000gn/T/RackMultipart20231106-22014-poecfr.pdf>, @content_type="application/pdf", @original_filename="Class Schedule Fall 2023.pdf", @headers="Content-Disposition: form-data; name=\"student_document[report_file]\"; filename=\"Class Schedule Fall 2023.pdf\"\r\nContent-Type: application/pdf\r\n">}, "commit"=>"Submit"}
+  [1m[36mStudentDocument Load (0.2ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1 LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_documents_controller.rb:135:in `set_student_document'
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_documents_controller.rb:136:in `set_student_document'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_documents_controller.rb:49:in `update'
+  [1m[36mStudentDocument Update (0.3ms)[0m  [1m[33mUPDATE "student_documents" SET "resume_file" = $1, "updated_at" = $2, "report_file" = $3 WHERE "student_documents"."id" = $4[0m  [["resume_file", "<56 bytes of binary data>"], ["updated_at", "2023-11-06 16:47:53.156997"], ["report_file", "<56 bytes of binary data>"], ["id", 1]]
+  ↳ app/controllers/student_documents_controller.rb:49:in `update'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_documents_controller.rb:49:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_documents_controller.rb:57:in `update'
+  [1m[36mStudentDocument Update (0.1ms)[0m  [1m[33mUPDATE "student_documents" SET "resume_file" = $1, "updated_at" = $2 WHERE "student_documents"."id" = $3[0m  [["resume_file", "<19 bytes of binary data>"], ["updated_at", "2023-11-06 16:47:53.158730"], ["id", 1]]
+  ↳ app/controllers/student_documents_controller.rb:57:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_documents_controller.rb:57:in `update'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_documents_controller.rb:73:in `update'
+  [1m[36mStudentDocument Update (1.0ms)[0m  [1m[33mUPDATE "student_documents" SET "resume_link" = $1, "updated_at" = $2 WHERE "student_documents"."id" = $3[0m  [["resume_link", "https://phd-annual-review-sys-docs.s3.us-east-2.amazonaws.com/harshsurolia_resume?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVL7WRZU24IDKGSVK%2F20231106%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20231106T164754Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=18029e5c5d0292985d162bb5bfcfc14ab6b9d32802c73d309fb8d8c895654c60"], ["updated_at", "2023-11-06 16:47:54.639502"], ["id", 1]]
+  ↳ app/controllers/student_documents_controller.rb:73:in `update'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_documents_controller.rb:73:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_documents_controller.rb:82:in `update'
+  [1m[36mStudentDocument Update (0.4ms)[0m  [1m[33mUPDATE "student_documents" SET "report_file" = $1, "updated_at" = $2 WHERE "student_documents"."id" = $3[0m  [["report_file", "<19 bytes of binary data>"], ["updated_at", "2023-11-06 16:47:54.646269"], ["id", 1]]
+  ↳ app/controllers/student_documents_controller.rb:82:in `update'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_documents_controller.rb:82:in `update'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_documents_controller.rb:98:in `update'
+  [1m[36mStudentDocument Update (1.0ms)[0m  [1m[33mUPDATE "student_documents" SET "updated_at" = $1, "report_link" = $2 WHERE "student_documents"."id" = $3[0m  [["updated_at", "2023-11-06 16:47:55.240443"], ["report_link", "https://phd-annual-review-sys-docs.s3.us-east-2.amazonaws.com/harshsurolia_report?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVL7WRZU24IDKGSVK%2F20231106%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20231106T164755Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=3f0a80cb578d68d65124a78cb5c7bddbb2fec1c2d00c5e8b407811fe88834f9b"], ["id", 1]]
+  ↳ app/controllers/student_documents_controller.rb:98:in `update'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_documents_controller.rb:98:in `update'
+Redirected to http://localhost:3000/student_documents
+Completed 302 Found in 2108ms (ActiveRecord: 12.2ms | Allocations: 34308)
+
+
+Started GET "/student_documents" for ::1 at 2023-11-06 10:47:56 -0600
+Processing by StudentDocumentsController#index as HTML
+  [1m[36mStudentDocument Load (0.5ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1 LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_documents_controller.rb:6:in `index'
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_documents_controller.rb:7:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering student_documents/index.html.erb within layouts/application
+  Rendered student_documents/index.html.erb within layouts/application (Duration: 7.5ms | Allocations: 4611)
+  Rendered layout layouts/application.html.erb (Duration: 12.7ms | Allocations: 7626)
+Completed 200 OK in 21ms (Views: 14.8ms | ActiveRecord: 0.9ms | Allocations: 9683)
+
+
+Started PATCH "/student_documents" for ::1 at 2023-11-06 10:48:19 -0600
+Processing by StudentDocumentsController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "student_document"=>{"phd_start_date"=>"Spring 2023", "milestones_passed"=>"y", "improvement_plan_present"=>"Yes", "improvement_plan_summary"=>"y", "gpa"=>"4", "support_in_last_sem"=>"y", "number_of_paper_submissions"=>"2", "number_of_papers_published"=>"2", "resume_file"=>#<ActionDispatch::Http::UploadedFile:0x0000000109866cd0 @tempfile=#<Tempfile:/var/folders/1g/qlfm7z9x3l10b5z5gbxflst00000gn/T/RackMultipart20231106-22014-9qyfix.pdf>, @content_type="application/pdf", @original_filename="Class Schedule Fall 2023_onepage.pdf", @headers="Content-Disposition: form-data; name=\"student_document[resume_file]\"; filename=\"Class Schedule Fall 2023_onepage.pdf\"\r\nContent-Type: application/pdf\r\n">, "report_file"=>#<ActionDispatch::Http::UploadedFile:0x0000000109866c80 @tempfile=#<Tempfile:/var/folders/1g/qlfm7z9x3l10b5z5gbxflst00000gn/T/RackMultipart20231106-22014-ag4fg3.pdf>, @content_type="application/pdf", @original_filename="Class Schedule Fall 2023.pdf", @headers="Content-Disposition: form-data; name=\"student_document[report_file]\"; filename=\"Class Schedule Fall 2023.pdf\"\r\nContent-Type: application/pdf\r\n">}, "commit"=>"Submit"}
+  [1m[36mStudentDocument Load (0.5ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1 LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_documents_controller.rb:135:in `set_student_document'
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_documents_controller.rb:136:in `set_student_document'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_documents_controller.rb:49:in `update'
+  [1m[36mStudentDocument Update (0.7ms)[0m  [1m[33mUPDATE "student_documents" SET "resume_file" = $1, "updated_at" = $2, "phd_start_date" = $3, "improvement_plan_summary" = $4, "report_file" = $5 WHERE "student_documents"."id" = $6[0m  [["resume_file", "<56 bytes of binary data>"], ["updated_at", "2023-11-06 16:48:19.323022"], ["phd_start_date", "Spring 2023"], ["improvement_plan_summary", "y"], ["report_file", "<56 bytes of binary data>"], ["id", 1]]
+  ↳ app/controllers/student_documents_controller.rb:49:in `update'
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_documents_controller.rb:49:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_documents_controller.rb:57:in `update'
+  [1m[36mStudentDocument Update (0.3ms)[0m  [1m[33mUPDATE "student_documents" SET "resume_file" = $1, "updated_at" = $2 WHERE "student_documents"."id" = $3[0m  [["resume_file", "<19 bytes of binary data>"], ["updated_at", "2023-11-06 16:48:19.327862"], ["id", 1]]
+  ↳ app/controllers/student_documents_controller.rb:57:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_documents_controller.rb:57:in `update'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_documents_controller.rb:73:in `update'
+  [1m[36mStudentDocument Update (1.1ms)[0m  [1m[33mUPDATE "student_documents" SET "resume_link" = $1, "updated_at" = $2 WHERE "student_documents"."id" = $3[0m  [["resume_link", "https://phd-annual-review-sys-docs.s3.us-east-2.amazonaws.com/harshsurolia_resume?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVL7WRZU24IDKGSVK%2F20231106%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20231106T164820Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=5ac483fb1066783fde5f2ec48c7d4c8ffc807a87c011fc5a94a50dea587c39e6"], ["updated_at", "2023-11-06 16:48:20.236870"], ["id", 1]]
+  ↳ app/controllers/student_documents_controller.rb:73:in `update'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_documents_controller.rb:73:in `update'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_documents_controller.rb:82:in `update'
+  [1m[36mStudentDocument Update (0.6ms)[0m  [1m[33mUPDATE "student_documents" SET "report_file" = $1, "updated_at" = $2 WHERE "student_documents"."id" = $3[0m  [["report_file", "<19 bytes of binary data>"], ["updated_at", "2023-11-06 16:48:20.245174"], ["id", 1]]
+  ↳ app/controllers/student_documents_controller.rb:82:in `update'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_documents_controller.rb:82:in `update'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_documents_controller.rb:98:in `update'
+  [1m[36mStudentDocument Update (1.0ms)[0m  [1m[33mUPDATE "student_documents" SET "updated_at" = $1, "report_link" = $2 WHERE "student_documents"."id" = $3[0m  [["updated_at", "2023-11-06 16:48:20.643929"], ["report_link", "https://phd-annual-review-sys-docs.s3.us-east-2.amazonaws.com/harshsurolia_report?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVL7WRZU24IDKGSVK%2F20231106%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20231106T164820Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=5b2912942d07c782b4a538ddbec88211aac7e81175ff3381b7118bc9b6a32192"], ["id", 1]]
+  ↳ app/controllers/student_documents_controller.rb:98:in `update'
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_documents_controller.rb:98:in `update'
+Redirected to http://localhost:3000/student_documents
+Completed 302 Found in 1340ms (ActiveRecord: 9.8ms | Allocations: 23658)
+
+
+Started GET "/student_documents" for ::1 at 2023-11-06 10:48:20 -0600
+Processing by StudentDocumentsController#index as HTML
+  [1m[36mStudentDocument Load (0.7ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1 LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_documents_controller.rb:6:in `index'
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_documents_controller.rb:7:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering student_documents/index.html.erb within layouts/application
+  Rendered student_documents/index.html.erb within layouts/application (Duration: 5.5ms | Allocations: 4436)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 7436)
+Completed 200 OK in 14ms (Views: 9.7ms | ActiveRecord: 1.0ms | Allocations: 9283)
+
+
+Started GET "/student/dashboard" for ::1 at 2023-11-06 10:48:22 -0600
+Processing by StudentController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/dashboard.html.erb within layouts/application
+  Rendered student/dashboard.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1240)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 4448)
+Completed 200 OK in 9ms (Views: 8.3ms | ActiveRecord: 0.0ms | Allocations: 5012)
+
+
+Started GET "/student/edit_committee" for ::1 at 2023-11-06 10:48:25 -0600
+Processing by StudentController#edit_committee as HTML
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:106:in `current_student'
+  Rendering layout layouts/application.html.erb
+  Rendering student/edit_committee.html.erb within layouts/application
+  [1m[36mCommittee Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "committees" WHERE "committees"."student_id" = $1 LIMIT $2[0m  [["student_id", 1], ["LIMIT", 1]]
+  ↳ app/views/student/edit_committee.html.erb:20
+  Rendered student/edit_committee.html.erb within layouts/application (Duration: 5.4ms | Allocations: 4611)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | Allocations: 7607)
+Completed 200 OK in 55ms (Views: 6.6ms | ActiveRecord: 4.7ms | Allocations: 20953)
+
+
+Started GET "/student/search_faculty?first_name=&last_name=&commit=Search" for ::1 at 2023-11-06 10:48:28 -0600
+Processing by StudentController#search_faculty as HTML
+  Parameters: {"first_name"=>"", "last_name"=>"", "commit"=>"Search"}
+  [1m[36mStudent Load (0.6ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:106:in `current_student'
+  [1m[36mFaculty Exists? (2.1ms)[0m  [1m[34mSELECT 1 AS one FROM "faculties" WHERE (first_name LIKE '%%' AND last_name LIKE '%%') LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:56:in `search_faculty'
+  Rendering layout layouts/application.html.erb
+  Rendering student/search_faculty.html.erb within layouts/application
+  [1m[36mFaculty Load (0.5ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE (first_name LIKE '%%' AND last_name LIKE '%%')[0m
+  ↳ app/views/student/search_faculty.html.erb:20
+  Rendered student/search_faculty.html.erb within layouts/application (Duration: 11.4ms | Allocations: 4293)
+  Rendered layout layouts/application.html.erb (Duration: 16.5ms | Allocations: 7289)
+Completed 200 OK in 32ms (Views: 14.7ms | ActiveRecord: 7.3ms | Allocations: 11126)
+
+
+Started POST "/student/add_to_committee?faculty_id=1&first_name=Prof&last_name=Example" for ::1 at 2023-11-06 10:48:29 -0600
+Processing by StudentController#add_to_committee as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "faculty_id"=>"1", "first_name"=>"Prof", "last_name"=>"Example"}
+  [1m[36mStudent Load (0.5ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:106:in `current_student'
+  [1m[36mCommittee Load (1.0ms)[0m  [1m[34mSELECT "committees".* FROM "committees" WHERE "committees"."student_id" = $1 AND "committees"."faculty_id" = $2 LIMIT $3[0m  [["student_id", 1], ["faculty_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:64:in `add_to_committee'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_controller.rb:69:in `add_to_committee'
+  [1m[36mFaculty Load (0.3ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:69:in `add_to_committee'
+  [1m[36mCommittee Create (2.7ms)[0m  [1m[32mINSERT INTO "committees" ("student_id", "faculty_id", "created_at", "updated_at", "role") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["student_id", 1], ["faculty_id", 1], ["created_at", "2023-11-06 16:48:29.524759"], ["updated_at", "2023-11-06 16:48:29.524759"], ["role", "Member"]]
+  ↳ app/controllers/student_controller.rb:69:in `add_to_committee'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_controller.rb:69:in `add_to_committee'
+Redirected to http://localhost:3000/student/edit_committee
+Completed 302 Found in 32ms (ActiveRecord: 7.9ms | Allocations: 10632)
+
+
+Started GET "/student/edit_committee" for ::1 at 2023-11-06 10:48:29 -0600
+Processing by StudentController#edit_committee as HTML
+  [1m[36mStudent Load (0.5ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:106:in `current_student'
+  Rendering layout layouts/application.html.erb
+  Rendering student/edit_committee.html.erb within layouts/application
+  [1m[36mCommittee Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "committees" WHERE "committees"."student_id" = $1 LIMIT $2[0m  [["student_id", 1], ["LIMIT", 1]]
+  ↳ app/views/student/edit_committee.html.erb:20
+  [1m[36mCommittee Load (2.3ms)[0m  [1m[34mSELECT "committees".* FROM "committees" WHERE "committees"."student_id" = $1 ORDER BY role ASC[0m  [["student_id", 1]]
+  ↳ app/views/student/edit_committee.html.erb:35
+  [1m[36mFaculty Load (0.4ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1[0m  [["id", 1]]
+  ↳ app/views/student/edit_committee.html.erb:35
+  Rendered student/edit_committee.html.erb within layouts/application (Duration: 19.4ms | Allocations: 8262)
+  Rendered layout layouts/application.html.erb (Duration: 22.4ms | Allocations: 11258)
+Completed 200 OK in 25ms (Views: 19.3ms | ActiveRecord: 3.8ms | Allocations: 12404)
+
+
+Started GET "/student/search_faculty?first_name=&last_name=&commit=Search" for ::1 at 2023-11-06 10:48:33 -0600
+Processing by StudentController#search_faculty as HTML
+  Parameters: {"first_name"=>"", "last_name"=>"", "commit"=>"Search"}
+  [1m[36mStudent Load (0.5ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:106:in `current_student'
+  [1m[36mFaculty Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "faculties" WHERE (first_name LIKE '%%' AND last_name LIKE '%%') LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:56:in `search_faculty'
+  Rendering layout layouts/application.html.erb
+  Rendering student/search_faculty.html.erb within layouts/application
+  [1m[36mFaculty Load (0.4ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE (first_name LIKE '%%' AND last_name LIKE '%%')[0m
+  ↳ app/views/student/search_faculty.html.erb:20
+  Rendered student/search_faculty.html.erb within layouts/application (Duration: 4.8ms | Allocations: 2160)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 5156)
+Completed 200 OK in 16ms (Views: 9.5ms | ActiveRecord: 1.5ms | Allocations: 6697)
+
+
+Started POST "/student/add_to_committee?faculty_id=2&first_name=John&last_name=Doe" for ::1 at 2023-11-06 10:48:35 -0600
+Processing by StudentController#add_to_committee as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "faculty_id"=>"2", "first_name"=>"John", "last_name"=>"Doe"}
+  [1m[36mStudent Load (0.5ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:106:in `current_student'
+  [1m[36mCommittee Load (0.5ms)[0m  [1m[34mSELECT "committees".* FROM "committees" WHERE "committees"."student_id" = $1 AND "committees"."faculty_id" = $2 LIMIT $3[0m  [["student_id", 1], ["faculty_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:64:in `add_to_committee'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_controller.rb:69:in `add_to_committee'
+  [1m[36mFaculty Load (0.3ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:69:in `add_to_committee'
+  [1m[36mCommittee Create (0.6ms)[0m  [1m[32mINSERT INTO "committees" ("student_id", "faculty_id", "created_at", "updated_at", "role") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["student_id", 1], ["faculty_id", 2], ["created_at", "2023-11-06 16:48:35.409038"], ["updated_at", "2023-11-06 16:48:35.409038"], ["role", "Member"]]
+  ↳ app/controllers/student_controller.rb:69:in `add_to_committee'
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_controller.rb:69:in `add_to_committee'
+Redirected to http://localhost:3000/student/edit_committee
+Completed 302 Found in 14ms (ActiveRecord: 2.6ms | Allocations: 4982)
+
+
+Started GET "/student/edit_committee" for ::1 at 2023-11-06 10:48:35 -0600
+Processing by StudentController#edit_committee as HTML
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:106:in `current_student'
+  Rendering layout layouts/application.html.erb
+  Rendering student/edit_committee.html.erb within layouts/application
+  [1m[36mCommittee Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "committees" WHERE "committees"."student_id" = $1 LIMIT $2[0m  [["student_id", 1], ["LIMIT", 1]]
+  ↳ app/views/student/edit_committee.html.erb:20
+  [1m[36mCommittee Load (1.1ms)[0m  [1m[34mSELECT "committees".* FROM "committees" WHERE "committees"."student_id" = $1 ORDER BY role ASC[0m  [["student_id", 1]]
+  ↳ app/views/student/edit_committee.html.erb:35
+  [1m[36mFaculty Load (1.1ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" IN ($1, $2)[0m  [["id", 1], ["id", 2]]
+  ↳ app/views/student/edit_committee.html.erb:35
+  Rendered student/edit_committee.html.erb within layouts/application (Duration: 8.3ms | Allocations: 5531)
+  Rendered layout layouts/application.html.erb (Duration: 11.4ms | Allocations: 8527)
+Completed 200 OK in 15ms (Views: 8.9ms | ActiveRecord: 3.2ms | Allocations: 9667)
+
+
+Started POST "/student/set_as_chair/1" for ::1 at 2023-11-06 10:48:42 -0600
+Processing by StudentController#set_as_chair as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:106:in `current_student'
+  [1m[36mCommittee Load (0.5ms)[0m  [1m[34mSELECT "committees".* FROM "committees" WHERE "committees"."student_id" = $1 AND "committees"."faculty_id" = $2 LIMIT $3[0m  [["student_id", 1], ["faculty_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:77:in `set_as_chair'
+  [1m[36mCommittee Update All (0.5ms)[0m  [1m[33mUPDATE "committees" SET "role" = $1 WHERE "committees"."student_id" = $2 AND "committees"."role" = $3[0m  [["role", "Member"], ["student_id", 1], ["role", "Chair"]]
+  ↳ app/controllers/student_controller.rb:80:in `set_as_chair'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_controller.rb:83:in `set_as_chair'
+  [1m[36mFaculty Load (0.3ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:83:in `set_as_chair'
+  [1m[36mCommittee Update (0.9ms)[0m  [1m[33mUPDATE "committees" SET "updated_at" = $1, "role" = $2 WHERE "committees"."id" = $3[0m  [["updated_at", "2023-11-06 16:48:43.018241"], ["role", "Chair"], ["id", 1]]
+  ↳ app/controllers/student_controller.rb:83:in `set_as_chair'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_controller.rb:83:in `set_as_chair'
+Redirected to http://localhost:3000/student/edit_committee
+Completed 302 Found in 25ms (ActiveRecord: 3.0ms | Allocations: 5263)
+
+
+Started GET "/student/edit_committee" for ::1 at 2023-11-06 10:48:43 -0600
+Processing by StudentController#edit_committee as HTML
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:106:in `current_student'
+  Rendering layout layouts/application.html.erb
+  Rendering student/edit_committee.html.erb within layouts/application
+  [1m[36mCommittee Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "committees" WHERE "committees"."student_id" = $1 LIMIT $2[0m  [["student_id", 1], ["LIMIT", 1]]
+  ↳ app/views/student/edit_committee.html.erb:20
+  [1m[36mCommittee Load (0.4ms)[0m  [1m[34mSELECT "committees".* FROM "committees" WHERE "committees"."student_id" = $1 ORDER BY role ASC[0m  [["student_id", 1]]
+  ↳ app/views/student/edit_committee.html.erb:35
+  [1m[36mFaculty Load (0.4ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" IN ($1, $2)[0m  [["id", 1], ["id", 2]]
+  ↳ app/views/student/edit_committee.html.erb:35
+  Rendered student/edit_committee.html.erb within layouts/application (Duration: 6.6ms | Allocations: 5442)
+  Rendered layout layouts/application.html.erb (Duration: 9.9ms | Allocations: 8442)
+Completed 200 OK in 12ms (Views: 9.0ms | ActiveRecord: 1.4ms | Allocations: 9596)
+
+
+Started POST "/student/return_to_member/1" for ::1 at 2023-11-06 10:48:50 -0600
+Processing by StudentController#return_to_member as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mCommittee Load (0.3ms)[0m  [1m[34mSELECT "committees".* FROM "committees" WHERE "committees"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:90:in `return_to_member'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_controller.rb:91:in `return_to_member'
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:91:in `return_to_member'
+  [1m[36mFaculty Load (0.4ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:91:in `return_to_member'
+  [1m[36mCommittee Update (0.6ms)[0m  [1m[33mUPDATE "committees" SET "updated_at" = $1, "role" = $2 WHERE "committees"."id" = $3[0m  [["updated_at", "2023-11-06 16:48:50.533886"], ["role", "Member"], ["id", 1]]
+  ↳ app/controllers/student_controller.rb:91:in `return_to_member'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_controller.rb:91:in `return_to_member'
+Redirected to http://localhost:3000/student/edit_committee
+Completed 302 Found in 14ms (ActiveRecord: 2.3ms | Allocations: 6154)
+
+
+Started GET "/student/edit_committee" for ::1 at 2023-11-06 10:48:50 -0600
+Processing by StudentController#edit_committee as HTML
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:106:in `current_student'
+  Rendering layout layouts/application.html.erb
+  Rendering student/edit_committee.html.erb within layouts/application
+  [1m[36mCommittee Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "committees" WHERE "committees"."student_id" = $1 LIMIT $2[0m  [["student_id", 1], ["LIMIT", 1]]
+  ↳ app/views/student/edit_committee.html.erb:20
+  [1m[36mCommittee Load (0.6ms)[0m  [1m[34mSELECT "committees".* FROM "committees" WHERE "committees"."student_id" = $1 ORDER BY role ASC[0m  [["student_id", 1]]
+  ↳ app/views/student/edit_committee.html.erb:35
+  [1m[36mFaculty Load (0.4ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" IN ($1, $2)[0m  [["id", 1], ["id", 2]]
+  ↳ app/views/student/edit_committee.html.erb:35
+  Rendered student/edit_committee.html.erb within layouts/application (Duration: 7.2ms | Allocations: 5501)
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | Allocations: 8498)
+Completed 200 OK in 14ms (Views: 9.6ms | ActiveRecord: 2.1ms | Allocations: 9664)
+
+
+Started POST "/student/set_as_chair/1" for ::1 at 2023-11-06 10:48:53 -0600
+Processing by StudentController#set_as_chair as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1"}
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:106:in `current_student'
+  [1m[36mCommittee Load (0.4ms)[0m  [1m[34mSELECT "committees".* FROM "committees" WHERE "committees"."student_id" = $1 AND "committees"."faculty_id" = $2 LIMIT $3[0m  [["student_id", 1], ["faculty_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:77:in `set_as_chair'
+  [1m[36mCommittee Update All (0.4ms)[0m  [1m[33mUPDATE "committees" SET "role" = $1 WHERE "committees"."student_id" = $2 AND "committees"."role" = $3[0m  [["role", "Member"], ["student_id", 1], ["role", "Chair"]]
+  ↳ app/controllers/student_controller.rb:80:in `set_as_chair'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_controller.rb:83:in `set_as_chair'
+  [1m[36mFaculty Load (0.2ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:83:in `set_as_chair'
+  [1m[36mCommittee Update (0.5ms)[0m  [1m[33mUPDATE "committees" SET "updated_at" = $1, "role" = $2 WHERE "committees"."id" = $3[0m  [["updated_at", "2023-11-06 16:48:53.972225"], ["role", "Chair"], ["id", 1]]
+  ↳ app/controllers/student_controller.rb:83:in `set_as_chair'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_controller.rb:83:in `set_as_chair'
+Redirected to http://localhost:3000/student/edit_committee
+Completed 302 Found in 14ms (ActiveRecord: 2.8ms | Allocations: 5203)
+
+
+Started GET "/student/edit_committee" for ::1 at 2023-11-06 10:48:53 -0600
+Processing by StudentController#edit_committee as HTML
+  [1m[36mStudent Load (0.5ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:106:in `current_student'
+  Rendering layout layouts/application.html.erb
+  Rendering student/edit_committee.html.erb within layouts/application
+  [1m[36mCommittee Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "committees" WHERE "committees"."student_id" = $1 LIMIT $2[0m  [["student_id", 1], ["LIMIT", 1]]
+  ↳ app/views/student/edit_committee.html.erb:20
+  [1m[36mCommittee Load (0.6ms)[0m  [1m[34mSELECT "committees".* FROM "committees" WHERE "committees"."student_id" = $1 ORDER BY role ASC[0m  [["student_id", 1]]
+  ↳ app/views/student/edit_committee.html.erb:35
+  [1m[36mFaculty Load (0.5ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" IN ($1, $2)[0m  [["id", 1], ["id", 2]]
+  ↳ app/views/student/edit_committee.html.erb:35
+  Rendered student/edit_committee.html.erb within layouts/application (Duration: 8.0ms | Allocations: 5436)
+  Rendered layout layouts/application.html.erb (Duration: 11.8ms | Allocations: 8432)
+Completed 200 OK in 15ms (Views: 10.4ms | ActiveRecord: 2.3ms | Allocations: 9566)
+
+
+Started GET "/student/dashboard" for ::1 at 2023-11-06 10:48:57 -0600
+Processing by StudentController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/dashboard.html.erb within layouts/application
+  Rendered student/dashboard.html.erb within layouts/application (Duration: 3.4ms | Allocations: 1158)
+  Rendered layout layouts/application.html.erb (Duration: 8.1ms | Allocations: 4344)
+Completed 200 OK in 9ms (Views: 8.7ms | ActiveRecord: 0.0ms | Allocations: 4593)
+
+
+Started GET "/student/logout" for ::1 at 2023-11-06 10:48:59 -0600
+Processing by StudentController#logout as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://localhost:3000/student/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 330)
+
+
+Started GET "/student/login" for ::1 at 2023-11-06 10:48:59 -0600
+Processing by StudentController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/login.html.erb within layouts/application
+  Rendered student/login.html.erb within layouts/application (Duration: 2.6ms | Allocations: 1796)
+  Rendered layout layouts/application.html.erb (Duration: 5.5ms | Allocations: 4792)
+Completed 200 OK in 6ms (Views: 5.9ms | ActiveRecord: 0.0ms | Allocations: 5041)
+
+
+Started POST "/student/login" for ::1 at 2023-11-06 10:49:16 -0600
+Processing by StudentController#authenticate as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"email_id"=>"student1@tamu.edu", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mStudent Load (0.6ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "student1@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:9:in `authenticate'
+Redirected to http://localhost:3000/student/dashboard
+Completed 302 Found in 258ms (ActiveRecord: 0.6ms | Allocations: 998)
+
+
+Started GET "/student/dashboard" for ::1 at 2023-11-06 10:49:16 -0600
+Processing by StudentController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/dashboard.html.erb within layouts/application
+  Rendered student/dashboard.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1157)
+  Rendered layout layouts/application.html.erb (Duration: 3.4ms | Allocations: 4322)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.0ms | Allocations: 4571)
+
+
+Started GET "/student_documents" for ::1 at 2023-11-06 10:49:18 -0600
+Processing by StudentDocumentsController#index as HTML
+  [1m[36mStudentDocument Load (0.4ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1 LIMIT $2[0m  [["email_id", "student1@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_documents_controller.rb:6:in `index'
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "student1@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_documents_controller.rb:7:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering student_documents/index.html.erb within layouts/application
+  Rendered student_documents/index.html.erb within layouts/application (Duration: 6.6ms | Allocations: 4431)
+  Rendered layout layouts/application.html.erb (Duration: 10.7ms | Allocations: 7428)
+Completed 200 OK in 18ms (Views: 11.4ms | ActiveRecord: 0.7ms | Allocations: 9251)
+
+
+Started PATCH "/student_documents" for ::1 at 2023-11-06 10:49:37 -0600
+Processing by StudentDocumentsController#update as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "student_document"=>{"phd_start_date"=>"Fall 2023", "milestones_passed"=>"y", "improvement_plan_present"=>"Yes", "improvement_plan_summary"=>"y", "gpa"=>"4", "support_in_last_sem"=>"y", "number_of_paper_submissions"=>"4", "number_of_papers_published"=>"4", "resume_file"=>#<ActionDispatch::Http::UploadedFile:0x0000000109387278 @tempfile=#<Tempfile:/var/folders/1g/qlfm7z9x3l10b5z5gbxflst00000gn/T/RackMultipart20231106-22014-jaxbbo.pdf>, @content_type="application/pdf", @original_filename="Class Schedule Fall 2023_onepage.pdf", @headers="Content-Disposition: form-data; name=\"student_document[resume_file]\"; filename=\"Class Schedule Fall 2023_onepage.pdf\"\r\nContent-Type: application/pdf\r\n">, "report_file"=>#<ActionDispatch::Http::UploadedFile:0x0000000109387228 @tempfile=#<Tempfile:/var/folders/1g/qlfm7z9x3l10b5z5gbxflst00000gn/T/RackMultipart20231106-22014-zd1ky5.pdf>, @content_type="application/pdf", @original_filename="Class Schedule Fall 2023.pdf", @headers="Content-Disposition: form-data; name=\"student_document[report_file]\"; filename=\"Class Schedule Fall 2023.pdf\"\r\nContent-Type: application/pdf\r\n">}, "commit"=>"Submit"}
+  [1m[36mStudentDocument Load (0.4ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1 LIMIT $2[0m  [["email_id", "student1@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_documents_controller.rb:135:in `set_student_document'
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "student1@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_documents_controller.rb:136:in `set_student_document'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_documents_controller.rb:49:in `update'
+  [1m[36mStudentDocument Create (1.2ms)[0m  [1m[32mINSERT INTO "student_documents" ("resume_file", "resume_link", "email_id", "created_at", "updated_at", "phd_start_date", "milestones_passed", "improvement_plan_present", "improvement_plan_summary", "gpa", "support_in_last_sem", "number_of_paper_submissions", "number_of_papers_published", "report_link", "report_file") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14, $15) RETURNING "id"[0m  [["resume_file", "<56 bytes of binary data>"], ["resume_link", nil], ["email_id", "student1@tamu.edu"], ["created_at", "2023-11-06 16:49:37.232480"], ["updated_at", "2023-11-06 16:49:37.232480"], ["phd_start_date", "Fall 2023"], ["milestones_passed", "y"], ["improvement_plan_present", "Yes"], ["improvement_plan_summary", "y"], ["gpa", 4.0], ["support_in_last_sem", "y"], ["number_of_paper_submissions", 4], ["number_of_papers_published", 4], ["report_link", nil], ["report_file", "<56 bytes of binary data>"]]
+  ↳ app/controllers/student_documents_controller.rb:49:in `update'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_documents_controller.rb:49:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_documents_controller.rb:57:in `update'
+  [1m[36mStudentDocument Update (0.5ms)[0m  [1m[33mUPDATE "student_documents" SET "resume_file" = $1, "updated_at" = $2 WHERE "student_documents"."id" = $3[0m  [["resume_file", "<15 bytes of binary data>"], ["updated_at", "2023-11-06 16:49:37.237448"], ["id", 2]]
+  ↳ app/controllers/student_documents_controller.rb:57:in `update'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_documents_controller.rb:57:in `update'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_documents_controller.rb:73:in `update'
+  [1m[36mStudentDocument Update (0.7ms)[0m  [1m[33mUPDATE "student_documents" SET "resume_link" = $1, "updated_at" = $2 WHERE "student_documents"."id" = $3[0m  [["resume_link", "https://phd-annual-review-sys-docs.s3.us-east-2.amazonaws.com/student1_resume?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVL7WRZU24IDKGSVK%2F20231106%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20231106T164938Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=18fa617e2cd31986d99df4e71cbea14d3e0d40005cab5c65872abd46b9a2a224"], ["updated_at", "2023-11-06 16:49:38.156227"], ["id", 2]]
+  ↳ app/controllers/student_documents_controller.rb:73:in `update'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_documents_controller.rb:73:in `update'
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_documents_controller.rb:82:in `update'
+  [1m[36mStudentDocument Update (0.4ms)[0m  [1m[33mUPDATE "student_documents" SET "updated_at" = $1, "report_file" = $2 WHERE "student_documents"."id" = $3[0m  [["updated_at", "2023-11-06 16:49:38.161406"], ["report_file", "<15 bytes of binary data>"], ["id", 2]]
+  ↳ app/controllers/student_documents_controller.rb:82:in `update'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_documents_controller.rb:82:in `update'
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_documents_controller.rb:98:in `update'
+  [1m[36mStudentDocument Update (1.0ms)[0m  [1m[33mUPDATE "student_documents" SET "updated_at" = $1, "report_link" = $2 WHERE "student_documents"."id" = $3[0m  [["updated_at", "2023-11-06 16:49:38.563235"], ["report_link", "https://phd-annual-review-sys-docs.s3.us-east-2.amazonaws.com/student1_report?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVL7WRZU24IDKGSVK%2F20231106%2Fus-east-2%2Fs3%2Faws4_request&X-Amz-Date=20231106T164938Z&X-Amz-Expires=604800&X-Amz-SignedHeaders=host&X-Amz-Signature=3b6395e9d4885c3cedc4c5928954e57ee7624289588b810313255ed95eab05dc"], ["id", 2]]
+  ↳ app/controllers/student_documents_controller.rb:98:in `update'
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_documents_controller.rb:98:in `update'
+Redirected to http://localhost:3000/student_documents
+Completed 302 Found in 1349ms (ActiveRecord: 8.0ms | Allocations: 23758)
+
+
+Started GET "/student_documents" for ::1 at 2023-11-06 10:49:38 -0600
+Processing by StudentDocumentsController#index as HTML
+  [1m[36mStudentDocument Load (0.3ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1 LIMIT $2[0m  [["email_id", "student1@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_documents_controller.rb:6:in `index'
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "student1@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_documents_controller.rb:7:in `index'
+  Rendering layout layouts/application.html.erb
+  Rendering student_documents/index.html.erb within layouts/application
+  Rendered student_documents/index.html.erb within layouts/application (Duration: 11.7ms | Allocations: 4434)
+  Rendered layout layouts/application.html.erb (Duration: 16.5ms | Allocations: 7436)
+Completed 200 OK in 22ms (Views: 17.0ms | ActiveRecord: 0.5ms | Allocations: 9258)
+
+
+Started GET "/student/dashboard" for ::1 at 2023-11-06 10:49:41 -0600
+Processing by StudentController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/dashboard.html.erb within layouts/application
+  Rendered student/dashboard.html.erb within layouts/application (Duration: 2.2ms | Allocations: 1158)
+  Rendered layout layouts/application.html.erb (Duration: 6.8ms | Allocations: 4335)
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.0ms | Allocations: 4585)
+
+
+Started GET "/student/edit_committee" for ::1 at 2023-11-06 10:49:42 -0600
+Processing by StudentController#edit_committee as HTML
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:106:in `current_student'
+  Rendering layout layouts/application.html.erb
+  Rendering student/edit_committee.html.erb within layouts/application
+  [1m[36mCommittee Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "committees" WHERE "committees"."student_id" = $1 LIMIT $2[0m  [["student_id", 2], ["LIMIT", 1]]
+  ↳ app/views/student/edit_committee.html.erb:20
+  Rendered student/edit_committee.html.erb within layouts/application (Duration: 6.6ms | Allocations: 3751)
+  Rendered layout layouts/application.html.erb (Duration: 10.6ms | Allocations: 6749)
+Completed 200 OK in 15ms (Views: 10.6ms | ActiveRecord: 1.0ms | Allocations: 7866)
+
+
+Started GET "/student/search_faculty?first_name=&last_name=&commit=Search" for ::1 at 2023-11-06 10:49:44 -0600
+Processing by StudentController#search_faculty as HTML
+  Parameters: {"first_name"=>"", "last_name"=>"", "commit"=>"Search"}
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:106:in `current_student'
+  [1m[36mFaculty Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "faculties" WHERE (first_name LIKE '%%' AND last_name LIKE '%%') LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:56:in `search_faculty'
+  Rendering layout layouts/application.html.erb
+  Rendering student/search_faculty.html.erb within layouts/application
+  [1m[36mFaculty Load (0.5ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE (first_name LIKE '%%' AND last_name LIKE '%%')[0m
+  ↳ app/views/student/search_faculty.html.erb:20
+  Rendered student/search_faculty.html.erb within layouts/application (Duration: 5.6ms | Allocations: 2162)
+  Rendered layout layouts/application.html.erb (Duration: 9.5ms | Allocations: 5158)
+Completed 200 OK in 15ms (Views: 9.6ms | ActiveRecord: 1.4ms | Allocations: 6709)
+
+
+Started POST "/student/add_to_committee?faculty_id=1&first_name=Prof&last_name=Example" for ::1 at 2023-11-06 10:49:46 -0600
+Processing by StudentController#add_to_committee as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "faculty_id"=>"1", "first_name"=>"Prof", "last_name"=>"Example"}
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:106:in `current_student'
+  [1m[36mCommittee Load (0.5ms)[0m  [1m[34mSELECT "committees".* FROM "committees" WHERE "committees"."student_id" = $1 AND "committees"."faculty_id" = $2 LIMIT $3[0m  [["student_id", 2], ["faculty_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:64:in `add_to_committee'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_controller.rb:69:in `add_to_committee'
+  [1m[36mFaculty Load (0.3ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:69:in `add_to_committee'
+  [1m[36mCommittee Create (0.7ms)[0m  [1m[32mINSERT INTO "committees" ("student_id", "faculty_id", "created_at", "updated_at", "role") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["student_id", 2], ["faculty_id", 1], ["created_at", "2023-11-06 16:49:46.023968"], ["updated_at", "2023-11-06 16:49:46.023968"], ["role", "Member"]]
+  ↳ app/controllers/student_controller.rb:69:in `add_to_committee'
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_controller.rb:69:in `add_to_committee'
+Redirected to http://localhost:3000/student/edit_committee
+Completed 302 Found in 14ms (ActiveRecord: 2.8ms | Allocations: 4991)
+
+
+Started GET "/student/edit_committee" for ::1 at 2023-11-06 10:49:46 -0600
+Processing by StudentController#edit_committee as HTML
+  [1m[36mStudent Load (0.5ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:106:in `current_student'
+  Rendering layout layouts/application.html.erb
+  Rendering student/edit_committee.html.erb within layouts/application
+  [1m[36mCommittee Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "committees" WHERE "committees"."student_id" = $1 LIMIT $2[0m  [["student_id", 2], ["LIMIT", 1]]
+  ↳ app/views/student/edit_committee.html.erb:20
+  [1m[36mCommittee Load (0.6ms)[0m  [1m[34mSELECT "committees".* FROM "committees" WHERE "committees"."student_id" = $1 ORDER BY role ASC[0m  [["student_id", 2]]
+  ↳ app/views/student/edit_committee.html.erb:35
+  [1m[36mFaculty Load (0.3ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1[0m  [["id", 1]]
+  ↳ app/views/student/edit_committee.html.erb:35
+  Rendered student/edit_committee.html.erb within layouts/application (Duration: 7.3ms | Allocations: 5377)
+  Rendered layout layouts/application.html.erb (Duration: 10.8ms | Allocations: 8373)
+Completed 200 OK in 14ms (Views: 9.5ms | ActiveRecord: 2.1ms | Allocations: 9517)
+
+
+Started GET "/student/search_faculty?first_name=&last_name=&commit=Search" for ::1 at 2023-11-06 10:49:49 -0600
+Processing by StudentController#search_faculty as HTML
+  Parameters: {"first_name"=>"", "last_name"=>"", "commit"=>"Search"}
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:106:in `current_student'
+  [1m[36mFaculty Exists? (0.3ms)[0m  [1m[34mSELECT 1 AS one FROM "faculties" WHERE (first_name LIKE '%%' AND last_name LIKE '%%') LIMIT $1[0m  [["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:56:in `search_faculty'
+  Rendering layout layouts/application.html.erb
+  Rendering student/search_faculty.html.erb within layouts/application
+  [1m[36mFaculty Load (0.4ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE (first_name LIKE '%%' AND last_name LIKE '%%')[0m
+  ↳ app/views/student/search_faculty.html.erb:20
+  Rendered student/search_faculty.html.erb within layouts/application (Duration: 4.8ms | Allocations: 2160)
+  Rendered layout layouts/application.html.erb (Duration: 8.8ms | Allocations: 5156)
+Completed 200 OK in 14ms (Views: 9.1ms | ActiveRecord: 1.0ms | Allocations: 6700)
+
+
+Started POST "/student/add_to_committee?faculty_id=2&first_name=John&last_name=Doe" for ::1 at 2023-11-06 10:49:50 -0600
+Processing by StudentController#add_to_committee as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "faculty_id"=>"2", "first_name"=>"John", "last_name"=>"Doe"}
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:106:in `current_student'
+  [1m[36mCommittee Load (0.5ms)[0m  [1m[34mSELECT "committees".* FROM "committees" WHERE "committees"."student_id" = $1 AND "committees"."faculty_id" = $2 LIMIT $3[0m  [["student_id", 2], ["faculty_id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:64:in `add_to_committee'
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/student_controller.rb:69:in `add_to_committee'
+  [1m[36mFaculty Load (0.2ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:69:in `add_to_committee'
+  [1m[36mCommittee Create (0.7ms)[0m  [1m[32mINSERT INTO "committees" ("student_id", "faculty_id", "created_at", "updated_at", "role") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["student_id", 2], ["faculty_id", 2], ["created_at", "2023-11-06 16:49:50.092189"], ["updated_at", "2023-11-06 16:49:50.092189"], ["role", "Member"]]
+  ↳ app/controllers/student_controller.rb:69:in `add_to_committee'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/student_controller.rb:69:in `add_to_committee'
+Redirected to http://localhost:3000/student/edit_committee
+Completed 302 Found in 16ms (ActiveRecord: 2.4ms | Allocations: 4982)
+
+
+Started GET "/student/edit_committee" for ::1 at 2023-11-06 10:49:50 -0600
+Processing by StudentController#edit_committee as HTML
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:106:in `current_student'
+  Rendering layout layouts/application.html.erb
+  Rendering student/edit_committee.html.erb within layouts/application
+  [1m[36mCommittee Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "committees" WHERE "committees"."student_id" = $1 LIMIT $2[0m  [["student_id", 2], ["LIMIT", 1]]
+  ↳ app/views/student/edit_committee.html.erb:20
+  [1m[36mCommittee Load (0.5ms)[0m  [1m[34mSELECT "committees".* FROM "committees" WHERE "committees"."student_id" = $1 ORDER BY role ASC[0m  [["student_id", 2]]
+  ↳ app/views/student/edit_committee.html.erb:35
+  [1m[36mFaculty Load (0.4ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" IN ($1, $2)[0m  [["id", 1], ["id", 2]]
+  ↳ app/views/student/edit_committee.html.erb:35
+  Rendered student/edit_committee.html.erb within layouts/application (Duration: 6.5ms | Allocations: 5501)
+  Rendered layout layouts/application.html.erb (Duration: 10.0ms | Allocations: 8497)
+Completed 200 OK in 14ms (Views: 9.1ms | ActiveRecord: 1.8ms | Allocations: 9649)
+
+
+Started GET "/student/dashboard" for ::1 at 2023-11-06 10:49:51 -0600
+Processing by StudentController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/dashboard.html.erb within layouts/application
+  Rendered student/dashboard.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1157)
+  Rendered layout layouts/application.html.erb (Duration: 7.7ms | Allocations: 4340)
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.0ms | Allocations: 4589)
+
+
+Started GET "/student/logout" for ::1 at 2023-11-06 10:49:52 -0600
+Processing by StudentController#logout as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://localhost:3000/student/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 364)
+
+
+Started GET "/student/login" for ::1 at 2023-11-06 10:49:52 -0600
+Processing by StudentController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/login.html.erb within layouts/application
+  Rendered student/login.html.erb within layouts/application (Duration: 2.9ms | Allocations: 1771)
+  Rendered layout layouts/application.html.erb (Duration: 5.8ms | Allocations: 4767)
+Completed 200 OK in 6ms (Views: 6.1ms | ActiveRecord: 0.0ms | Allocations: 5015)
+
+
+Started GET "/student/login" for ::1 at 2023-11-06 10:49:56 -0600
+Processing by StudentController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/login.html.erb within layouts/application
+  Rendered student/login.html.erb within layouts/application (Duration: 4.2ms | Allocations: 1772)
+  Rendered layout layouts/application.html.erb (Duration: 7.9ms | Allocations: 4768)
+Completed 200 OK in 9ms (Views: 8.4ms | ActiveRecord: 0.0ms | Allocations: 5016)
+
+
+Started GET "/" for ::1 at 2023-11-06 10:49:58 -0600
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1346)
+  Rendered layout layouts/application.html.erb (Duration: 4.5ms | Allocations: 4559)
+Completed 200 OK in 6ms (Views: 5.4ms | ActiveRecord: 0.0ms | Allocations: 5070)
+
+
+Started GET "/faculty/login" for ::1 at 2023-11-06 10:49:58 -0600
+Processing by FacultyController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering faculty/login.html.erb within layouts/application
+  Rendered faculty/login.html.erb within layouts/application (Duration: 3.4ms | Allocations: 2323)
+  Rendered layout layouts/application.html.erb (Duration: 6.2ms | Allocations: 5335)
+Completed 200 OK in 9ms (Views: 7.7ms | ActiveRecord: 0.0ms | Allocations: 6023)
+
+
+Started GET "/faculty/login" for ::1 at 2023-11-06 10:50:00 -0600
+Processing by FacultyController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering faculty/login.html.erb within layouts/application
+  Rendered faculty/login.html.erb within layouts/application (Duration: 8.0ms | Allocations: 1757)
+  Rendered layout layouts/application.html.erb (Duration: 12.5ms | Allocations: 4758)
+Completed 200 OK in 14ms (Views: 13.0ms | ActiveRecord: 0.0ms | Allocations: 5007)
+
+
+Started POST "/faculty/login" for ::1 at 2023-11-06 10:50:13 -0600
+Processing by FacultyController#authenticate as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "faculty"=>{"email_id"=>"profexample@tamu.edu", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mFaculty Load (0.6ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."email_id" = $1 LIMIT $2[0m  [["email_id", "profexample@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:7:in `authenticate'
+Redirected to http://localhost:3000/faculty/dashboard
+Completed 302 Found in 257ms (ActiveRecord: 0.6ms | Allocations: 1025)
+
+
+Started GET "/faculty/dashboard" for ::1 at 2023-11-06 10:50:13 -0600
+Processing by FacultyController#dashboard as HTML
+  [1m[36mFaculty Load (0.2ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:113:in `current_faculty'
+  [1m[35mSQL (2.9ms)[0m  [1m[34mSELECT "students"."id" AS t0_r0, "students"."first_name" AS t0_r1, "students"."last_name" AS t0_r2, "students"."UIN" AS t0_r3, "students"."email_id" AS t0_r4, "students"."password" AS t0_r5, "students"."created_at" AS t0_r6, "students"."updated_at" AS t0_r7, "students"."password_digest" AS t0_r8, "committees"."id" AS t1_r0, "committees"."student_id" AS t1_r1, "committees"."faculty_id" AS t1_r2, "committees"."created_at" AS t1_r3, "committees"."updated_at" AS t1_r4, "committees"."role" AS t1_r5, "assessments"."id" AS t2_r0, "assessments"."student_id" AS t2_r1, "assessments"."faculty_id" AS t2_r2, "assessments"."public_comment" AS t2_r3, "assessments"."rating" AS t2_r4, "assessments"."eligible_for_reward" AS t2_r5, "assessments"."private_comment" AS t2_r6, "assessments"."created_at" AS t2_r7, "assessments"."updated_at" AS t2_r8 FROM "students" LEFT OUTER JOIN "committees" ON "committees"."student_id" = "students"."id" LEFT OUTER JOIN "assessments" ON "assessments"."student_id" = "students"."id" WHERE "committees"."faculty_id" = $1[0m  [["faculty_id", 1]]
+  ↳ app/controllers/faculty_controller.rb:36:in `dashboard'
+  Rendering layout layouts/application.html.erb
+  Rendering faculty/dashboard.html.erb within layouts/application
+  Rendered faculty/dashboard.html.erb within layouts/application (Duration: 1.6ms | Allocations: 1678)
+  Rendered layout layouts/application.html.erb (Duration: 3.2ms | Allocations: 4678)
+Completed 200 OK in 25ms (Views: 3.3ms | ActiveRecord: 8.4ms | Allocations: 12294)
+
+
+Started GET "/faculty/review_student/1" for ::1 at 2023-11-06 10:50:18 -0600
+Processing by FacultyController#review_student as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.5ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:50:in `review_student'
+  [1m[36mStudentDocument Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "student_documents" WHERE "student_documents"."email_id" = $1 LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:53:in `review_student'
+  [1m[36mStudentDocument Load (0.3ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1 ORDER BY "student_documents"."id" ASC LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:56:in `review_student'
+  [1m[36mFaculty Load (0.1ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:113:in `current_faculty'
+  Rendering layout layouts/application.html.erb
+  Rendering faculty/review_student.html.erb within layouts/application
+  [1m[36mStudentDocument Load (0.3ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1[0m  [["email_id", "harshsurolia@tamu.edu"]]
+  ↳ app/views/faculty/review_student.html.erb:19
+  [1m[36mAssessment Load (0.4ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."student_id" = $1 AND "assessments"."faculty_id" != $2[0m  [["student_id", 1], ["faculty_id", 1]]
+  ↳ app/views/faculty/review_student.html.erb:86:in `reject'
+  Rendered faculty/review_student.html.erb within layouts/application (Duration: 7.5ms | Allocations: 3674)
+  Rendered layout layouts/application.html.erb (Duration: 11.1ms | Allocations: 6670)
+Completed 200 OK in 20ms (Views: 10.9ms | ActiveRecord: 2.4ms | Allocations: 9709)
+
+
+Started GET "/faculty/review_student/2" for ::1 at 2023-11-06 10:50:28 -0600
+Processing by FacultyController#review_student as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:50:in `review_student'
+  [1m[36mStudentDocument Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "student_documents" WHERE "student_documents"."email_id" = $1 LIMIT $2[0m  [["email_id", "student1@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:53:in `review_student'
+  [1m[36mStudentDocument Load (0.4ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1 ORDER BY "student_documents"."id" ASC LIMIT $2[0m  [["email_id", "student1@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:56:in `review_student'
+  [1m[36mFaculty Load (0.2ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:113:in `current_faculty'
+  Rendering layout layouts/application.html.erb
+  Rendering faculty/review_student.html.erb within layouts/application
+  [1m[36mStudentDocument Load (0.4ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1[0m  [["email_id", "student1@tamu.edu"]]
+  ↳ app/views/faculty/review_student.html.erb:19
+  [1m[36mAssessment Load (0.4ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."student_id" = $1 AND "assessments"."faculty_id" != $2[0m  [["student_id", 2], ["faculty_id", 1]]
+  ↳ app/views/faculty/review_student.html.erb:86:in `reject'
+  Rendered faculty/review_student.html.erb within layouts/application (Duration: 4.6ms | Allocations: 2504)
+  Rendered layout layouts/application.html.erb (Duration: 8.0ms | Allocations: 5500)
+Completed 200 OK in 15ms (Views: 7.7ms | ActiveRecord: 2.5ms | Allocations: 8280)
+
+
+Started GET "/faculty/review_student/1" for ::1 at 2023-11-06 10:50:37 -0600
+Processing by FacultyController#review_student as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:50:in `review_student'
+  [1m[36mStudentDocument Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "student_documents" WHERE "student_documents"."email_id" = $1 LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:53:in `review_student'
+  [1m[36mStudentDocument Load (0.3ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1 ORDER BY "student_documents"."id" ASC LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:56:in `review_student'
+  [1m[36mFaculty Load (0.2ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:113:in `current_faculty'
+  Rendering layout layouts/application.html.erb
+  Rendering faculty/review_student.html.erb within layouts/application
+  [1m[36mStudentDocument Load (0.5ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1[0m  [["email_id", "harshsurolia@tamu.edu"]]
+  ↳ app/views/faculty/review_student.html.erb:19
+  [1m[36mAssessment Load (0.4ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."student_id" = $1 AND "assessments"."faculty_id" != $2[0m  [["student_id", 1], ["faculty_id", 1]]
+  ↳ app/views/faculty/review_student.html.erb:86:in `reject'
+  Rendered faculty/review_student.html.erb within layouts/application (Duration: 5.6ms | Allocations: 2504)
+  Rendered layout layouts/application.html.erb (Duration: 9.3ms | Allocations: 5500)
+Completed 200 OK in 18ms (Views: 9.0ms | ActiveRecord: 2.1ms | Allocations: 8274)
+
+
+Started POST "/faculty/save_assessment" for ::1 at 2023-11-06 10:50:46 -0600
+Processing by FacultyController#save_assessment as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"1", "assessment"=>{"public_comment"=>"n", "private_comment"=>"n", "rating"=>"Satisfactory", "eligible_for_reward"=>"1"}}
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:63:in `save_assessment'
+  [1m[36mFaculty Load (0.2ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:113:in `current_faculty'
+  [1m[36mAssessment Load (0.5ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."student_id" = $1 AND "assessments"."faculty_id" = $2 LIMIT $3[0m  [["student_id", 1], ["faculty_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:65:in `save_assessment'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/faculty_controller.rb:67:in `save_assessment'
+  [1m[36mAssessment Create (3.5ms)[0m  [1m[32mINSERT INTO "assessments" ("student_id", "faculty_id", "public_comment", "rating", "eligible_for_reward", "private_comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["student_id", 1], ["faculty_id", 1], ["public_comment", "n"], ["rating", "Satisfactory"], ["eligible_for_reward", true], ["private_comment", "n"], ["created_at", "2023-11-06 16:50:46.651062"], ["updated_at", "2023-11-06 16:50:46.651062"]]
+  ↳ app/controllers/faculty_controller.rb:67:in `save_assessment'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/faculty_controller.rb:67:in `save_assessment'
+Redirected to http://localhost:3000/faculty/dashboard
+Completed 302 Found in 23ms (ActiveRecord: 5.0ms | Allocations: 8766)
+
+
+Started GET "/faculty/dashboard" for ::1 at 2023-11-06 10:50:46 -0600
+Processing by FacultyController#dashboard as HTML
+  [1m[36mFaculty Load (0.3ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:113:in `current_faculty'
+  [1m[35mSQL (1.5ms)[0m  [1m[34mSELECT "students"."id" AS t0_r0, "students"."first_name" AS t0_r1, "students"."last_name" AS t0_r2, "students"."UIN" AS t0_r3, "students"."email_id" AS t0_r4, "students"."password" AS t0_r5, "students"."created_at" AS t0_r6, "students"."updated_at" AS t0_r7, "students"."password_digest" AS t0_r8, "committees"."id" AS t1_r0, "committees"."student_id" AS t1_r1, "committees"."faculty_id" AS t1_r2, "committees"."created_at" AS t1_r3, "committees"."updated_at" AS t1_r4, "committees"."role" AS t1_r5, "assessments"."id" AS t2_r0, "assessments"."student_id" AS t2_r1, "assessments"."faculty_id" AS t2_r2, "assessments"."public_comment" AS t2_r3, "assessments"."rating" AS t2_r4, "assessments"."eligible_for_reward" AS t2_r5, "assessments"."private_comment" AS t2_r6, "assessments"."created_at" AS t2_r7, "assessments"."updated_at" AS t2_r8 FROM "students" LEFT OUTER JOIN "committees" ON "committees"."student_id" = "students"."id" LEFT OUTER JOIN "assessments" ON "assessments"."student_id" = "students"."id" WHERE "committees"."faculty_id" = $1[0m  [["faculty_id", 1]]
+  ↳ app/controllers/faculty_controller.rb:36:in `dashboard'
+  [1m[36mCACHE Faculty Load (0.0ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:37:in `block (2 levels) in dashboard'
+  Rendering layout layouts/application.html.erb
+  Rendering faculty/dashboard.html.erb within layouts/application
+  Rendered faculty/dashboard.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1213)
+  Rendered layout layouts/application.html.erb (Duration: 5.0ms | Allocations: 4209)
+Completed 200 OK in 13ms (Views: 5.4ms | ActiveRecord: 1.8ms | Allocations: 7740)
+
+
+Started GET "/faculty/review_student/2" for ::1 at 2023-11-06 10:50:50 -0600
+Processing by FacultyController#review_student as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mStudent Load (0.3ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:50:in `review_student'
+  [1m[36mStudentDocument Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "student_documents" WHERE "student_documents"."email_id" = $1 LIMIT $2[0m  [["email_id", "student1@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:53:in `review_student'
+  [1m[36mStudentDocument Load (0.3ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1 ORDER BY "student_documents"."id" ASC LIMIT $2[0m  [["email_id", "student1@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:56:in `review_student'
+  [1m[36mFaculty Load (0.2ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:113:in `current_faculty'
+  Rendering layout layouts/application.html.erb
+  Rendering faculty/review_student.html.erb within layouts/application
+  [1m[36mStudentDocument Load (0.3ms)[0m  [1m[34mSELECT "student_documents".* FROM "student_documents" WHERE "student_documents"."email_id" = $1[0m  [["email_id", "student1@tamu.edu"]]
+  ↳ app/views/faculty/review_student.html.erb:19
+  [1m[36mAssessment Load (0.3ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."student_id" = $1 AND "assessments"."faculty_id" != $2[0m  [["student_id", 2], ["faculty_id", 1]]
+  ↳ app/views/faculty/review_student.html.erb:86:in `reject'
+  Rendered faculty/review_student.html.erb within layouts/application (Duration: 5.2ms | Allocations: 2504)
+  Rendered layout layouts/application.html.erb (Duration: 10.4ms | Allocations: 5500)
+Completed 200 OK in 20ms (Views: 10.7ms | ActiveRecord: 1.9ms | Allocations: 8280)
+
+
+Started POST "/faculty/save_assessment" for ::1 at 2023-11-06 10:50:57 -0600
+Processing by FacultyController#save_assessment as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "id"=>"2", "assessment"=>{"public_comment"=>"t", "private_comment"=>"t", "rating"=>"Needs Improvement", "eligible_for_reward"=>"1"}}
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:63:in `save_assessment'
+  [1m[36mFaculty Load (0.3ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:113:in `current_faculty'
+  [1m[36mAssessment Load (0.5ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."student_id" = $1 AND "assessments"."faculty_id" = $2 LIMIT $3[0m  [["student_id", 2], ["faculty_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:65:in `save_assessment'
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/faculty_controller.rb:67:in `save_assessment'
+  [1m[36mAssessment Create (0.7ms)[0m  [1m[32mINSERT INTO "assessments" ("student_id", "faculty_id", "public_comment", "rating", "eligible_for_reward", "private_comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["student_id", 2], ["faculty_id", 1], ["public_comment", "t"], ["rating", "Needs Improvement"], ["eligible_for_reward", true], ["private_comment", "t"], ["created_at", "2023-11-06 16:50:57.996442"], ["updated_at", "2023-11-06 16:50:57.996442"]]
+  ↳ app/controllers/faculty_controller.rb:67:in `save_assessment'
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/faculty_controller.rb:67:in `save_assessment'
+Redirected to http://localhost:3000/faculty/dashboard
+Completed 302 Found in 13ms (ActiveRecord: 2.4ms | Allocations: 4180)
+
+
+Started GET "/faculty/dashboard" for ::1 at 2023-11-06 10:50:58 -0600
+Processing by FacultyController#dashboard as HTML
+  [1m[36mFaculty Load (0.3ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:113:in `current_faculty'
+  [1m[35mSQL (1.0ms)[0m  [1m[34mSELECT "students"."id" AS t0_r0, "students"."first_name" AS t0_r1, "students"."last_name" AS t0_r2, "students"."UIN" AS t0_r3, "students"."email_id" AS t0_r4, "students"."password" AS t0_r5, "students"."created_at" AS t0_r6, "students"."updated_at" AS t0_r7, "students"."password_digest" AS t0_r8, "committees"."id" AS t1_r0, "committees"."student_id" AS t1_r1, "committees"."faculty_id" AS t1_r2, "committees"."created_at" AS t1_r3, "committees"."updated_at" AS t1_r4, "committees"."role" AS t1_r5, "assessments"."id" AS t2_r0, "assessments"."student_id" AS t2_r1, "assessments"."faculty_id" AS t2_r2, "assessments"."public_comment" AS t2_r3, "assessments"."rating" AS t2_r4, "assessments"."eligible_for_reward" AS t2_r5, "assessments"."private_comment" AS t2_r6, "assessments"."created_at" AS t2_r7, "assessments"."updated_at" AS t2_r8 FROM "students" LEFT OUTER JOIN "committees" ON "committees"."student_id" = "students"."id" LEFT OUTER JOIN "assessments" ON "assessments"."student_id" = "students"."id" WHERE "committees"."faculty_id" = $1[0m  [["faculty_id", 1]]
+  ↳ app/controllers/faculty_controller.rb:36:in `dashboard'
+  [1m[36mCACHE Faculty Load (0.0ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:37:in `block (2 levels) in dashboard'
+  [1m[36mCACHE Faculty Load (0.0ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:37:in `block (2 levels) in dashboard'
+  Rendering layout layouts/application.html.erb
+  Rendering faculty/dashboard.html.erb within layouts/application
+  Rendered faculty/dashboard.html.erb within layouts/application (Duration: 1.9ms | Allocations: 1265)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 4261)
+Completed 200 OK in 13ms (Views: 5.7ms | ActiveRecord: 1.3ms | Allocations: 7683)
+
+
+Started GET "/faculty/view_assessment/1" for ::1 at 2023-11-06 10:51:00 -0600
+Processing by FacultyController#view_assessment as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:78:in `view_assessment'
+  [1m[36mFaculty Load (0.2ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:113:in `current_faculty'
+  [1m[36mAssessment Load (0.4ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."student_id" = $1 AND "assessments"."faculty_id" = $2 LIMIT $3[0m  [["student_id", 1], ["faculty_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:81:in `view_assessment'
+  Rendering layout layouts/application.html.erb
+  Rendering faculty/view_assessment.html.erb within layouts/application
+  Rendered faculty/view_assessment.html.erb within layouts/application (Duration: 3.6ms | Allocations: 1465)
+  Rendered layout layouts/application.html.erb (Duration: 15.4ms | Allocations: 4466)
+Completed 200 OK in 24ms (Views: 16.1ms | ActiveRecord: 1.0ms | Allocations: 7479)
+
+
+Started GET "/faculty/view_assessment/1" for ::1 at 2023-11-06 10:51:10 -0600
+Processing by FacultyController#view_assessment as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.4ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:78:in `view_assessment'
+  [1m[36mFaculty Load (0.4ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:113:in `current_faculty'
+  [1m[36mAssessment Load (0.4ms)[0m  [1m[34mSELECT "assessments".* FROM "assessments" WHERE "assessments"."student_id" = $1 AND "assessments"."faculty_id" = $2 LIMIT $3[0m  [["student_id", 1], ["faculty_id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/faculty_controller.rb:81:in `view_assessment'
+  Rendering layout layouts/application.html.erb
+  Rendering faculty/view_assessment.html.erb within layouts/application
+  Rendered faculty/view_assessment.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1079)
+  Rendered layout layouts/application.html.erb (Duration: 8.4ms | Allocations: 4075)
+Completed 200 OK in 17ms (Views: 9.1ms | ActiveRecord: 1.1ms | Allocations: 6094)
+
+
+Started GET "/faculty/logout" for ::1 at 2023-11-06 10:51:15 -0600
+Processing by FacultyController#logout as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://localhost:3000/faculty/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 325)
+
+
+Started GET "/faculty/login" for ::1 at 2023-11-06 10:51:15 -0600
+Processing by FacultyController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering faculty/login.html.erb within layouts/application
+  Rendered faculty/login.html.erb within layouts/application (Duration: 3.7ms | Allocations: 1743)
+  Rendered layout layouts/application.html.erb (Duration: 7.1ms | Allocations: 4744)
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.0ms | Allocations: 4992)
+
+
+Started GET "/faculty/dashboard" for ::1 at 2023-11-06 10:51:24 -0600
+Processing by FacultyController#dashboard as HTML
+Redirected to http://localhost:3000/faculty/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 355)
+
+
+Started GET "/faculty/login" for ::1 at 2023-11-06 10:51:24 -0600
+Processing by FacultyController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering faculty/login.html.erb within layouts/application
+  Rendered faculty/login.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1773)
+  Rendered layout layouts/application.html.erb (Duration: 7.0ms | Allocations: 4769)
+Completed 200 OK in 8ms (Views: 7.4ms | ActiveRecord: 0.0ms | Allocations: 5017)
+
+
+Started GET "/faculty/dashboard" for ::1 at 2023-11-06 10:51:25 -0600
+Processing by FacultyController#dashboard as HTML
+Redirected to http://localhost:3000/faculty/login
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 341)
+
+
+Started GET "/faculty/login" for ::1 at 2023-11-06 10:51:25 -0600
+Processing by FacultyController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering faculty/login.html.erb within layouts/application
+  Rendered faculty/login.html.erb within layouts/application (Duration: 1.8ms | Allocations: 1757)
+  Rendered layout layouts/application.html.erb (Duration: 3.8ms | Allocations: 4753)
+Completed 200 OK in 4ms (Views: 4.1ms | ActiveRecord: 0.0ms | Allocations: 5002)
+
+
+Started GET "/" for ::1 at 2023-11-06 10:51:27 -0600
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 2.5ms | Allocations: 1268)
+  Rendered layout layouts/application.html.erb (Duration: 7.0ms | Allocations: 4437)
+Completed 200 OK in 8ms (Views: 7.5ms | ActiveRecord: 0.0ms | Allocations: 4687)
+
+
+Started GET "/faculty/logout" for ::1 at 2023-11-06 10:51:29 -0600
+Processing by FacultyController#logout as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]"}
+Redirected to http://localhost:3000/faculty/login
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 295)
+
+
+Started GET "/faculty/login" for ::1 at 2023-11-06 10:51:29 -0600
+Processing by FacultyController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering faculty/login.html.erb within layouts/application
+  Rendered faculty/login.html.erb within layouts/application (Duration: 2.3ms | Allocations: 1763)
+  Rendered layout layouts/application.html.erb (Duration: 5.3ms | Allocations: 4759)
+Completed 200 OK in 6ms (Views: 5.7ms | ActiveRecord: 0.0ms | Allocations: 5007)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.8ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (80.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "phd_review_app_development"[0m
+  [1m[35m (16.6ms)[0m  [1m[35mDROP DATABASE IF EXISTS "phd_review_app_test"[0m
+  [1m[35m (47.4ms)[0m  [1m[35mCREATE DATABASE "phd_review_app_development" ENCODING = 'unicode'[0m
+  [1m[35m (39.3ms)[0m  [1m[35mCREATE DATABASE "phd_review_app_test" ENCODING = 'unicode'[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1657303558665808095)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateStudents (20230925170052)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.5ms)[0m  [1m[35mCREATE TABLE "students" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "UIN" integer, "email_id" character varying, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230925170052"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFaculties (20230925170109)
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.0ms)[0m  [1m[35mCREATE TABLE "faculties" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email_id" character varying, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230925170109"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAdmins (20230925170115)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE TABLE "admins" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email_id" character varying, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230925170115"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDocument (20230926224234)
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.1ms)[0m  [1m[35mCREATE TABLE "documents" ("id" bigserial primary key, "title" character varying, "description" text, "file_path" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230926224234"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddPasswordDigestToStudent (20230927180318)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.6ms)[0m  [1m[35mALTER TABLE "students" ADD "password_digest" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230927180318"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddPasswordDigestToAdmin (20230927203950)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "admins" ADD "password_digest" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230927203950"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddPasswordDigestToFaculty (20230927204000)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "faculties" ADD "password_digest" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230927204000"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUniquenessToStudents (20231005203422)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_students_on_email_id" ON "students" ("email_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231005203422"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateStudentDocuments (20231005203534)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE TABLE "student_documents" ("id" bigserial primary key, "resume_file" bytea, "resume_link" character varying, "email_id" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.3ms)[0m  [1m[35mALTER TABLE "student_documents" ADD CONSTRAINT "fk_rails_331782a730"
+FOREIGN KEY ("email_id")
+  REFERENCES "students" ("email_id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231005203534"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnsToStudentDocument (20231007031831)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "student_documents" ADD "phd_start_date" character varying[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "student_documents" ADD "milestones_passed" text[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "student_documents" ADD "improvement_plan_present" character varying[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "student_documents" ADD "improvement_plan_summary" text[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "student_documents" ADD "gpa" float[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "student_documents" ADD "support_in_last_sem" text[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "student_documents" ADD "number_of_paper_submissions" integer[0m
+  [1m[35m (0.5ms)[0m  [1m[35mALTER TABLE "student_documents" ADD "number_of_papers_published" integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231007031831"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCommittees (20231012194211)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (4.2ms)[0m  [1m[35mCREATE TABLE "committees" ("id" bigserial primary key, "student_id" bigint NOT NULL, "faculty_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_44963250fe"
+FOREIGN KEY ("student_id")
+  REFERENCES "students" ("id")
+, CONSTRAINT "fk_rails_413bdec049"
+FOREIGN KEY ("faculty_id")
+  REFERENCES "faculties" ("id")
+)[0m
+  [1m[35m (1.3ms)[0m  [1m[35mCREATE INDEX "index_committees_on_student_id" ON "committees" ("student_id")[0m
+  [1m[35m (1.0ms)[0m  [1m[35mCREATE INDEX "index_committees_on_faculty_id" ON "committees" ("faculty_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231012194211"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddRoleToCommittees (20231013000650)
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "committees" ADD "role" character varying DEFAULT 'Member'[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231013000650"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddReportlinkToStudentDocuments (20231018234054)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mALTER TABLE "student_documents" ADD "report_link" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231018234054"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddReportfileToStudentDocuments (20231019004620)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "student_documents" ADD "report_file" bytea[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231019004620"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAssessments (20231019060555)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (3.9ms)[0m  [1m[35mCREATE TABLE "assessments" ("id" bigserial primary key, "student_id" bigint, "faculty_id" bigint, "public_comment" text, "rating" character varying, "eligible_for_reward" boolean DEFAULT FALSE, "private_comment" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_8cc1118a64"
+FOREIGN KEY ("student_id")
+  REFERENCES "students" ("id")
+, CONSTRAINT "fk_rails_2b984400f3"
+FOREIGN KEY ("faculty_id")
+  REFERENCES "faculties" ("id")
+)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE INDEX "index_assessments_on_student_id" ON "assessments" ("student_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE INDEX "index_assessments_on_faculty_id" ON "assessments" ("faculty_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231019060555"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-11-06 16:53:25.484915"], ["updated_at", "2023-11-06 16:53:25.484915"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(1657303558665808095)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Exists? (1.8ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
+  [1m[36mStudent Create (1.2ms)[0m  [1m[32mINSERT INTO "students" ("first_name", "last_name", "UIN", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Harsh"], ["last_name", "Surolia"], ["UIN", 2609], ["email_id", "harshsurolia@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-11-06 16:53:31.658356"], ["updated_at", "2023-11-06 16:53:31.658356"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "student1@tamu.edu"], ["LIMIT", 1]]
+  [1m[36mStudent Create (0.3ms)[0m  [1m[32mINSERT INTO "students" ("first_name", "last_name", "UIN", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Stduent1"], ["last_name", "Test"], ["UIN", 12345], ["email_id", "student1@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-11-06 16:53:31.882615"], ["updated_at", "2023-11-06 16:53:31.882615"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "student2@tamu.edu"], ["LIMIT", 1]]
+  [1m[36mStudent Create (0.5ms)[0m  [1m[32mINSERT INTO "students" ("first_name", "last_name", "UIN", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Student2"], ["last_name", "Test"], ["UIN", 123456], ["email_id", "student2@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-11-06 16:53:32.106184"], ["updated_at", "2023-11-06 16:53:32.106184"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "student3@tamu.edu"], ["LIMIT", 1]]
+  [1m[36mStudent Create (0.5ms)[0m  [1m[32mINSERT INTO "students" ("first_name", "last_name", "UIN", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Student3"], ["last_name", "Test"], ["UIN", 1234567], ["email_id", "student3@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-11-06 16:53:32.329233"], ["updated_at", "2023-11-06 16:53:32.329233"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFaculty Create (1.7ms)[0m  [1m[32mINSERT INTO "faculties" ("first_name", "last_name", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Prof"], ["last_name", "Example"], ["email_id", "profexample@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-11-06 16:53:32.558441"], ["updated_at", "2023-11-06 16:53:32.558441"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFaculty Create (0.8ms)[0m  [1m[32mINSERT INTO "faculties" ("first_name", "last_name", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "John"], ["last_name", "Doe"], ["email_id", "jdtest@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-11-06 16:53:32.782112"], ["updated_at", "2023-11-06 16:53:32.782112"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFaculty Create (0.7ms)[0m  [1m[32mINSERT INTO "faculties" ("first_name", "last_name", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Prof1"], ["last_name", "Test"], ["email_id", "Prof1@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-11-06 16:53:33.004718"], ["updated_at", "2023-11-06 16:53:33.004718"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFaculty Create (0.6ms)[0m  [1m[32mINSERT INTO "faculties" ("first_name", "last_name", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Prof2"], ["last_name", "Test"], ["email_id", "Prof2@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-11-06 16:53:33.226676"], ["updated_at", "2023-11-06 16:53:33.226676"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAdmin Create (1.6ms)[0m  [1m[32mINSERT INTO "admins" ("first_name", "last_name", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Admin"], ["last_name", "Example"], ["email_id", "adminexample@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-11-06 16:53:33.455383"], ["updated_at", "2023-11-06 16:53:33.455383"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.7ms)[0m  [1m[35mCOMMIT[0m

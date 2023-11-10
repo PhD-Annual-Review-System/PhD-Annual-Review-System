@@ -67,7 +67,7 @@ class StudentDocumentsController < ApplicationController
         resp = Aws::S3::Client.new
         bucket_name = 'phd-annual-review-sys-docs'
         presigner = Aws::S3::Presigner.new(client: resp)
-        presigned_url_resume = presigner.presigned_url(:get_object,bucket: bucket_name, key: input_string_resume)
+        presigned_url_resume = presigner.presigned_url(:get_object,bucket: bucket_name, key: input_string_resume, expires_in: 604800)
         
         #update the resume_link column with link to the resume file
         @student_document.update(resume_link: presigned_url_resume)
@@ -92,7 +92,7 @@ class StudentDocumentsController < ApplicationController
         resp = Aws::S3::Client.new
         bucket_name = 'phd-annual-review-sys-docs'
         presigner = Aws::S3::Presigner.new(client: resp)
-        presigned_url_report = presigner.presigned_url(:get_object,bucket: bucket_name, key: input_string_report)
+        presigned_url_report = presigner.presigned_url(:get_object,bucket: bucket_name, key: input_string_report, expires_in: 604800)
         
         #update the report_link column with link to the report file
         @student_document.update(report_link: presigned_url_report)
