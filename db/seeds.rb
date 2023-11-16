@@ -37,7 +37,7 @@ more_admin.each do |admin|
   end
 
 # Committee and assessment entries for dev testing
-student = Student.ssecond
+student = Student.second
 first_faculty = Faculty.first
 second_faculty = Faculty.second
 

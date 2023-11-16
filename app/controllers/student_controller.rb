@@ -96,9 +96,16 @@ class StudentController < ApplicationController
       redirect_to edit_committee_student_path
     end
 
+    # def view_assessments
+    #   @assessments = current_student.assessments.select(:public_comment, :rating, :eligible_for_reward)
+    # end
+
     def view_assessments
-      @assessments = current_student.assessments.select(:public_comment, :rating, :eligible_for_reward)
+      @assessments = current_student.assessments
+                       .select(:public_comment, :rating, :eligible_for_reward, :faculty_id)
+                       .includes(:faculty)
     end
+    
     
     private
     def student_params

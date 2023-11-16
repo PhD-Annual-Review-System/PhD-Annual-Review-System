@@ -21,6 +21,7 @@
                 <table class="assessments-table">
                     <thead>
                         <tr>
+                            <th>Faculty Name</th>
                             <th>Rating</th>
                             <th>Eligible for Reward</th>
                             <th>Comment</th>
@@ -29,6 +30,7 @@
                     <tbody>
                         <% @assessments.each do |assessment| %>
                             <tr>
+                                <td><%= assessment.faculty.first_name %> <%= assessment.faculty.last_name %></td>
                                 <td><%= assessment.rating %></td>
                                 <td><%= assessment.eligible_for_reward ? 'Yes' : 'No' %></td>
                                 <td><%= assessment.public_comment %></td>

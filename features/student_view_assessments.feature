@@ -8,9 +8,11 @@ Feature: View Assessments
     And I have two faculty members who have made assessments
     When I click the "View Assessments" link
     Then I should be on the "View Assessments" page
+    And I should see "Prof1 Test1"
     And I should see "Excellent work!"
     And I should see "5"
     And I should see "Yes"
+    And I should see "Prof2 Test2"
     And I should see "Needs improvement."
     And I should see "3"
     And I should see "No"

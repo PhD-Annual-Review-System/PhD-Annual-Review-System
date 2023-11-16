@@ -225,16 +225,17 @@ RSpec.describe StudentController, type: :controller do
 
   describe 'GET #view_assessments' do
     let(:student) { create(:student, email_id: 'student@tamu.edu', password: 'password', password_confirmation: 'password') }
+    let(:faculty1) { create(:faculty, first_name: 'Prof1', last_name: 'Test1') }
+    let(:faculty2) { create(:faculty, first_name: 'Prof2', last_name: 'Test2') }
     let!(:assessments) do
       [
-        create(:assessment, student: student, public_comment: 'Great Job!', rating: 5, eligible_for_reward: true),
-        create(:assessment, student: student, public_comment: 'Needs Improvement', rating: 3, eligible_for_reward: false)
+        create(:assessment, student: student, faculty: faculty1, public_comment: 'Great Job!', rating: 5, eligible_for_reward: true),
+        create(:assessment, student: student, faculty: faculty2, public_comment: 'Needs Improvement', rating: 3, eligible_for_reward: false)
       ]
     end
 
-    let!(:assessments) { create_list(:assessment, 2, student: student) }
-    puts Assessment.all.to_a # This should print out the created assessments
-
+    # let!(:assessments) { create_list(:assessment, 2, student: student) }
+    # puts Assessment.all.to_a # This should print out the created assessments
 
     before do
       session[:student_id] = student.id
@@ -248,10 +249,12 @@ RSpec.describe StudentController, type: :controller do
     it 'only includes the specified attributes for each assessment' do
       assigned_assessments = assigns(:assessments)
       assessments.each_with_index do |assessment, index|
+        expect(assigned_assessments[index].faculty.first_name).to eq(assessment.faculty.first_name)
+        expect(assigned_assessments[index].faculty.last_name).to eq(assessment.faculty.last_name)
         expect(assigned_assessments[index].public_comment).to eq(assessment.public_comment)
         expect(assigned_assessments[index].rating).to eq(assessment.rating)
         expect(assigned_assessments[index].eligible_for_reward).to eq(assessment.eligible_for_reward)
-        expect(assigned_assessments[index].attributes.keys).to contain_exactly('public_comment', 'rating', 'eligible_for_reward', 'id')  # Including 'id' since it's likely fetched by default
+        expect(assigned_assessments[index].attributes.keys).to contain_exactly('public_comment', 'rating', 'eligible_for_reward', 'id', 'faculty_id')
       end
     end
   end

@@ -51328,3 +51328,297 @@ Processing by StudentController#dashboard as HTML
 Completed 200 OK in 27ms (Views: 26.6ms | ActiveRecord: 0.2ms | Allocations: 4963)
 
 
+Started GET "/" for 127.0.0.1 at 2023-11-16 11:40:47 -0600
+  [1m[36mActiveRecord::SchemaMigration Pluck (20.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 494.0ms | Allocations: 58548)
+  Rendered layout layouts/application.html.erb (Duration: 508.3ms | Allocations: 61784)
+Completed 200 OK in 558ms (Views: 537.3ms | ActiveRecord: 0.0ms | Allocations: 64480)
+
+
+Started GET "/student/login" for 127.0.0.1 at 2023-11-16 11:40:54 -0600
+Processing by StudentController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/login.html.erb within layouts/application
+  Rendered student/login.html.erb within layouts/application (Duration: 52.4ms | Allocations: 3010)
+  Rendered layout layouts/application.html.erb (Duration: 58.4ms | Allocations: 5699)
+Completed 200 OK in 62ms (Views: 61.2ms | ActiveRecord: 0.0ms | Allocations: 6413)
+
+
+Started POST "/student/login" for 127.0.0.1 at 2023-11-16 11:41:06 -0600
+Processing by StudentController#authenticate as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"email_id"=>"harshsurolia@tamu.edu", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mStudent Load (22.4ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:9:in `authenticate'
+Redirected to http://127.0.0.1:3000/student/dashboard
+Completed 302 Found in 287ms (ActiveRecord: 85.1ms | Allocations: 11910)
+
+
+Started GET "/student/dashboard" for 127.0.0.1 at 2023-11-16 11:41:06 -0600
+Processing by StudentController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/dashboard.html.erb within layouts/application
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:116:in `current_student'
+  Rendered student/dashboard.html.erb within layouts/application (Duration: 16.3ms | Allocations: 2780)
+  Rendered layout layouts/application.html.erb (Duration: 22.2ms | Allocations: 5453)
+Completed 200 OK in 23ms (Views: 22.4ms | ActiveRecord: 0.2ms | Allocations: 5723)
+
+
+Started GET "/student/assessments/1" for 127.0.0.1 at 2023-11-16 11:41:45 -0600
+Processing by StudentController#view_assessments as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:116:in `current_student'
+  Rendering layout layouts/application.html.erb
+  Rendering student/view_assessments.html.erb within layouts/application
+  [1m[36mAssessment Load (39.7ms)[0m  [1m[34mSELECT "assessments"."public_comment", "assessments"."rating", "assessments"."eligible_for_reward", "assessments"."faculty_id" FROM "assessments" WHERE "assessments"."student_id" = $1[0m  [["student_id", 1]]
+  ↳ app/views/student/view_assessments.html.erb:19
+  [1m[36mFaculty Load (17.8ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" IN ($1, $2)[0m  [["id", 1], ["id", 2]]
+  ↳ app/views/student/view_assessments.html.erb:19
+  Rendered student/view_assessments.html.erb within layouts/application (Duration: 160.1ms | Allocations: 13036)
+  Rendered layout layouts/application.html.erb (Duration: 165.8ms | Allocations: 15708)
+Completed 200 OK in 321ms (Views: 106.3ms | ActiveRecord: 61.3ms | Allocations: 32177)
+
+
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (18.7ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.1ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::InternalMetadata Pluck (0.1ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (302.8ms)[0m  [1m[35mDROP DATABASE IF EXISTS "phd_review_app_development"[0m
+  [1m[35m (199.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "phd_review_app_test"[0m
+  [1m[35m (2454.8ms)[0m  [1m[35mCREATE DATABASE "phd_review_app_development" ENCODING = 'unicode'[0m
+  [1m[35m (264.3ms)[0m  [1m[35mCREATE DATABASE "phd_review_app_test" ENCODING = 'unicode'[0m
+  [1m[35m (42.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  [1m[35m (48.5ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(1657303558665808095)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateStudents (20230925170052)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (43.9ms)[0m  [1m[35mCREATE TABLE "students" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "UIN" integer, "email_id" character varying, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.5ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230925170052"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateFaculties (20230925170109)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (45.5ms)[0m  [1m[35mCREATE TABLE "faculties" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email_id" character varying, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230925170109"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAdmins (20230925170115)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (50.0ms)[0m  [1m[35mCREATE TABLE "admins" ("id" bigserial primary key, "first_name" character varying, "last_name" character varying, "email_id" character varying, "password" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230925170115"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateDocument (20230926224234)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (39.5ms)[0m  [1m[35mCREATE TABLE "documents" ("id" bigserial primary key, "title" character varying, "description" text, "file_path" character varying, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230926224234"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddPasswordDigestToStudent (20230927180318)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "students" ADD "password_digest" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230927180318"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddPasswordDigestToAdmin (20230927203950)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "admins" ADD "password_digest" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230927203950"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddPasswordDigestToFaculty (20230927204000)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "faculties" ADD "password_digest" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20230927204000"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddUniquenessToStudents (20231005203422)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (24.0ms)[0m  [1m[35mCREATE UNIQUE INDEX "index_students_on_email_id" ON "students" ("email_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231005203422"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateStudentDocuments (20231005203534)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (48.4ms)[0m  [1m[35mCREATE TABLE "student_documents" ("id" bigserial primary key, "resume_file" bytea, "resume_link" character varying, "email_id" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (2.1ms)[0m  [1m[35mALTER TABLE "student_documents" ADD CONSTRAINT "fk_rails_331782a730"
+FOREIGN KEY ("email_id")
+  REFERENCES "students" ("email_id")
+[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231005203534"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddColumnsToStudentDocument (20231007031831)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.3ms)[0m  [1m[35mALTER TABLE "student_documents" ADD "phd_start_date" character varying[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "student_documents" ADD "milestones_passed" text[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "student_documents" ADD "improvement_plan_present" character varying[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "student_documents" ADD "improvement_plan_summary" text[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "student_documents" ADD "gpa" float[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "student_documents" ADD "support_in_last_sem" text[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "student_documents" ADD "number_of_paper_submissions" integer[0m
+  [1m[35m (0.1ms)[0m  [1m[35mALTER TABLE "student_documents" ADD "number_of_papers_published" integer[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231007031831"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateCommittees (20231012194211)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (24.0ms)[0m  [1m[35mCREATE TABLE "committees" ("id" bigserial primary key, "student_id" bigint NOT NULL, "faculty_id" bigint NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_44963250fe"
+FOREIGN KEY ("student_id")
+  REFERENCES "students" ("id")
+, CONSTRAINT "fk_rails_413bdec049"
+FOREIGN KEY ("faculty_id")
+  REFERENCES "faculties" ("id")
+)[0m
+  [1m[35m (20.6ms)[0m  [1m[35mCREATE INDEX "index_committees_on_student_id" ON "committees" ("student_id")[0m
+  [1m[35m (21.6ms)[0m  [1m[35mCREATE INDEX "index_committees_on_faculty_id" ON "committees" ("faculty_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231012194211"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddRoleToCommittees (20231013000650)
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (25.0ms)[0m  [1m[35mALTER TABLE "committees" ADD "role" character varying DEFAULT 'Member'[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231013000650"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddReportlinkToStudentDocuments (20231018234054)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "student_documents" ADD "report_link" character varying[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.2ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231018234054"]]
+  [1m[36mTRANSACTION (0.4ms)[0m  [1m[35mCOMMIT[0m
+Migrating to AddReportfileToStudentDocuments (20231019004620)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[35mALTER TABLE "student_documents" ADD "report_file" bytea[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231019004620"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+Migrating to CreateAssessments (20231019060555)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (41.9ms)[0m  [1m[35mCREATE TABLE "assessments" ("id" bigserial primary key, "student_id" bigint, "faculty_id" bigint, "public_comment" text, "rating" character varying, "eligible_for_reward" boolean DEFAULT FALSE, "private_comment" text, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL, CONSTRAINT "fk_rails_8cc1118a64"
+FOREIGN KEY ("student_id")
+  REFERENCES "students" ("id")
+, CONSTRAINT "fk_rails_2b984400f3"
+FOREIGN KEY ("faculty_id")
+  REFERENCES "faculties" ("id")
+)[0m
+  [1m[35m (22.6ms)[0m  [1m[35mCREATE INDEX "index_assessments_on_student_id" ON "assessments" ("student_id")[0m
+  [1m[35m (30.8ms)[0m  [1m[35mCREATE INDEX "index_assessments_on_faculty_id" ON "assessments" ("faculty_id")[0m
+  [1m[36mActiveRecord::SchemaMigration Create (0.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20231019060555"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.5ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2023-11-16 17:59:34.354654"], ["updated_at", "2023-11-16 17:59:34.354654"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(1657303558665808095)[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.5ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "harshsurolia@tamu.edu"], ["LIMIT", 1]]
+  [1m[36mStudent Create (0.5ms)[0m  [1m[32mINSERT INTO "students" ("first_name", "last_name", "UIN", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Harsh"], ["last_name", "Surolia"], ["UIN", 2609], ["email_id", "harshsurolia@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-11-16 17:59:49.549149"], ["updated_at", "2023-11-16 17:59:49.549149"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "student1@tamu.edu"], ["LIMIT", 1]]
+  [1m[36mStudent Create (0.1ms)[0m  [1m[32mINSERT INTO "students" ("first_name", "last_name", "UIN", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Stduent1"], ["last_name", "Test"], ["UIN", 12345], ["email_id", "student1@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-11-16 17:59:49.690891"], ["updated_at", "2023-11-16 17:59:49.690891"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "student2@tamu.edu"], ["LIMIT", 1]]
+  [1m[36mStudent Create (0.1ms)[0m  [1m[32mINSERT INTO "students" ("first_name", "last_name", "UIN", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Student2"], ["last_name", "Test"], ["UIN", 123456], ["email_id", "student2@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-11-16 17:59:49.827925"], ["updated_at", "2023-11-16 17:59:49.827925"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Exists? (0.2ms)[0m  [1m[34mSELECT 1 AS one FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "student3@tamu.edu"], ["LIMIT", 1]]
+  [1m[36mStudent Create (0.2ms)[0m  [1m[32mINSERT INTO "students" ("first_name", "last_name", "UIN", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["first_name", "Student3"], ["last_name", "Test"], ["UIN", 1234567], ["email_id", "student3@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-11-16 17:59:49.964606"], ["updated_at", "2023-11-16 17:59:49.964606"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFaculty Create (0.9ms)[0m  [1m[32mINSERT INTO "faculties" ("first_name", "last_name", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Prof"], ["last_name", "Example"], ["email_id", "profexample@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-11-16 17:59:50.109542"], ["updated_at", "2023-11-16 17:59:50.109542"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFaculty Create (0.2ms)[0m  [1m[32mINSERT INTO "faculties" ("first_name", "last_name", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "John"], ["last_name", "Doe"], ["email_id", "jdtest@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-11-16 17:59:50.246463"], ["updated_at", "2023-11-16 17:59:50.246463"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFaculty Create (0.2ms)[0m  [1m[32mINSERT INTO "faculties" ("first_name", "last_name", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Prof1"], ["last_name", "Test"], ["email_id", "Prof1@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-11-16 17:59:50.381845"], ["updated_at", "2023-11-16 17:59:50.381845"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mFaculty Create (0.2ms)[0m  [1m[32mINSERT INTO "faculties" ("first_name", "last_name", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Prof2"], ["last_name", "Test"], ["email_id", "Prof2@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-11-16 17:59:50.516914"], ["updated_at", "2023-11-16 17:59:50.516914"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mAdmin Create (0.8ms)[0m  [1m[32mINSERT INTO "admins" ("first_name", "last_name", "email_id", "password", "created_at", "updated_at", "password_digest") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Admin"], ["last_name", "Example"], ["email_id", "adminexample@tamu.edu"], ["password", "[FILTERED]"], ["created_at", "2023-11-16 17:59:50.659597"], ["updated_at", "2023-11-16 17:59:50.659597"], ["password_digest", "[FILTERED]"]]
+  [1m[36mTRANSACTION (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" ORDER BY "students"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mFaculty Load (0.1ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" ORDER BY "faculties"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mFaculty Load (0.1ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" ORDER BY "faculties"."id" ASC LIMIT $1 OFFSET $2[0m  [["LIMIT", 1], ["OFFSET", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCommittee Create (1.0ms)[0m  [1m[32mINSERT INTO "committees" ("student_id", "faculty_id", "created_at", "updated_at", "role") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["student_id", 2], ["faculty_id", 1], ["created_at", "2023-11-16 17:59:50.689670"], ["updated_at", "2023-11-16 17:59:50.689670"], ["role", "Member"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mCommittee Create (0.2ms)[0m  [1m[32mINSERT INTO "committees" ("student_id", "faculty_id", "created_at", "updated_at", "role") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["student_id", 2], ["faculty_id", 2], ["created_at", "2023-11-16 17:59:50.692472"], ["updated_at", "2023-11-16 17:59:50.692472"], ["role", "Member"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mFaculty Load (0.1ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mAssessment Create (1.0ms)[0m  [1m[32mINSERT INTO "assessments" ("student_id", "faculty_id", "public_comment", "rating", "eligible_for_reward", "private_comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["student_id", 2], ["faculty_id", 1], ["public_comment", "Outstanding presentation skills."], ["rating", "Excellent"], ["eligible_for_reward", true], ["private_comment", "Top of the class, highly recommend for rewards."], ["created_at", "2023-11-16 17:59:50.711387"], ["updated_at", "2023-11-16 17:59:50.711387"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mStudent Load (0.1ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mFaculty Load (0.1ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[36mAssessment Create (0.2ms)[0m  [1m[32mINSERT INTO "assessments" ("student_id", "faculty_id", "public_comment", "rating", "eligible_for_reward", "private_comment", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["student_id", 2], ["faculty_id", 2], ["public_comment", "Well-structured thesis, but needs more detailed analysis."], ["rating", "Good"], ["eligible_for_reward", false], ["private_comment", "With further development, could be a strong candidate for next year."], ["created_at", "2023-11-16 17:59:50.715213"], ["updated_at", "2023-11-16 17:59:50.715213"]]
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[35mCOMMIT[0m
+Started GET "/" for 127.0.0.1 at 2023-11-16 12:00:18 -0600
+  [1m[36mActiveRecord::SchemaMigration Pluck (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by HomeController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering home/index.html.erb within layouts/application
+  Rendered home/index.html.erb within layouts/application (Duration: 311.3ms | Allocations: 35726)
+  Rendered layout layouts/application.html.erb (Duration: 336.3ms | Allocations: 39140)
+Completed 200 OK in 364ms (Views: 351.0ms | ActiveRecord: 0.0ms | Allocations: 41836)
+
+
+Started GET "/student/login" for 127.0.0.1 at 2023-11-16 12:00:20 -0600
+Processing by StudentController#login as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/login.html.erb within layouts/application
+  Rendered student/login.html.erb within layouts/application (Duration: 53.9ms | Allocations: 3023)
+  Rendered layout layouts/application.html.erb (Duration: 58.6ms | Allocations: 5712)
+Completed 200 OK in 62ms (Views: 61.2ms | ActiveRecord: 0.0ms | Allocations: 6426)
+
+
+Started POST "/student/login" for 127.0.0.1 at 2023-11-16 12:00:24 -0600
+Processing by StudentController#authenticate as HTML
+  Parameters: {"authenticity_token"=>"[FILTERED]", "student"=>{"email_id"=>"student1@tamu.edu", "password"=>"[FILTERED]"}, "commit"=>"Log In"}
+  [1m[36mStudent Load (1.2ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."email_id" = $1 LIMIT $2[0m  [["email_id", "student1@tamu.edu"], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:9:in `authenticate'
+Redirected to http://127.0.0.1:3000/student/dashboard
+Completed 302 Found in 168ms (ActiveRecord: 4.2ms | Allocations: 11934)
+
+
+Started GET "/student/dashboard" for 127.0.0.1 at 2023-11-16 12:00:24 -0600
+Processing by StudentController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/dashboard.html.erb within layouts/application
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:116:in `current_student'
+  Rendered student/dashboard.html.erb within layouts/application (Duration: 22.7ms | Allocations: 2798)
+  Rendered layout layouts/application.html.erb (Duration: 28.2ms | Allocations: 5471)
+Completed 200 OK in 29ms (Views: 28.5ms | ActiveRecord: 0.2ms | Allocations: 5741)
+
+
+Started GET "/student/assessments/2" for 127.0.0.1 at 2023-11-16 12:00:26 -0600
+Processing by StudentController#view_assessments as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:116:in `current_student'
+  Rendering layout layouts/application.html.erb
+  Rendering student/view_assessments.html.erb within layouts/application
+  [1m[36mAssessment Load (1.0ms)[0m  [1m[34mSELECT "assessments"."public_comment", "assessments"."rating", "assessments"."eligible_for_reward", "assessments"."faculty_id" FROM "assessments" WHERE "assessments"."student_id" = $1[0m  [["student_id", 2]]
+  ↳ app/views/student/view_assessments.html.erb:19
+  [1m[36mFaculty Load (0.7ms)[0m  [1m[34mSELECT "faculties".* FROM "faculties" WHERE "faculties"."id" IN ($1, $2)[0m  [["id", 1], ["id", 2]]
+  ↳ app/views/student/view_assessments.html.erb:19
+  Rendered student/view_assessments.html.erb within layouts/application (Duration: 61.1ms | Allocations: 13053)
+  Rendered layout layouts/application.html.erb (Duration: 66.2ms | Allocations: 15726)
+Completed 200 OK in 93ms (Views: 62.8ms | ActiveRecord: 5.1ms | Allocations: 20905)
+
+
+Started GET "/student/dashboard" for 127.0.0.1 at 2023-11-16 12:00:29 -0600
+Processing by StudentController#dashboard as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering student/dashboard.html.erb within layouts/application
+  [1m[36mStudent Load (0.2ms)[0m  [1m[34mSELECT "students".* FROM "students" WHERE "students"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/student_controller.rb:116:in `current_student'
+  Rendered student/dashboard.html.erb within layouts/application (Duration: 3.1ms | Allocations: 1774)
+  Rendered layout layouts/application.html.erb (Duration: 8.5ms | Allocations: 4446)
+Completed 200 OK in 10ms (Views: 9.1ms | ActiveRecord: 0.2ms | Allocations: 4714)
+
+
