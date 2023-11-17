@@ -1,5 +1,5 @@
 class StudentController < ApplicationController
-    before_action :ensure_logged_in, only: [:edit_committee, :search_faculty, :add_to_committee]
+    before_action :ensure_logged_in, only: [:edit_committee, :search_faculty, :add_to_committee, :view_assessments]
 
     def login
     end
@@ -94,7 +94,17 @@ class StudentController < ApplicationController
         flash[:error] = "Failed to change the role."
       end
       redirect_to edit_committee_student_path
-    end    
+    end
+
+    # def view_assessments
+    #   @assessments = current_student.assessments.select(:public_comment, :rating, :eligible_for_reward)
+    # end
+
+    def view_assessments
+      @assessments = current_student.assessments
+                       .select(:public_comment, :rating, :eligible_for_reward, :faculty_id)
+                       .includes(:faculty)
+    end
     
     
     private

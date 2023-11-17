@@ -1,0 +1,49 @@
+<!-- app/views/student/view_assessments.html.erb -->
+<!DOCTYPE html>
+<html>
+<head>
+  <%= stylesheet_link_tag 'student/viewassessments' %>
+  <title>View Assessments - PHD Annual Review Process</title>
+</head>
+
+<body>
+    <div class="header">
+      <h1>View Assessments</h1>
+      <%= link_to 'Back to Dashboard', student_dashboard_path, class: 'btn' %>
+    </div>
+
+    <div class="container">
+        <% if flash[:notice] %>
+            <div class="alert alert-info"><%= flash[:notice] %></div>
+        <% end %>
+        <% if @assessments.present? %>
+            <div class="table-container">
+                <table class="assessments-table">
+                    <thead>
+                        <tr>
+                            <th>Faculty Name</th>
+                            <th>Rating</th>
+                            <th>Eligible for Reward</th>
+                            <th>Comment</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <% @assessments.each do |assessment| %>
+                            <tr>
+                                <td><%= assessment.faculty.first_name %> <%= assessment.faculty.last_name %></td>
+                                <td><%= assessment.rating %></td>
+                                <td><%= assessment.eligible_for_reward ? 'Yes' : 'No' %></td>
+                                <td><%= assessment.public_comment %></td>
+                            </tr>
+                        <% end %>
+                    </tbody>
+                </table>
+            </div>
+            <% else %>
+                <div class="no-assessments">
+                    <p>There are currently no assessments ready for your review.</p>
+            </div>
+        <% end %>
+    </div>
+</body>
+</html>

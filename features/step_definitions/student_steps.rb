@@ -87,6 +87,8 @@ Then('I should be on the {string} page') do |page_name|
         edit_committee_student_path
     when 'Search Results'
         search_faculty_student_path
+    when 'View Assessments'
+        student_view_assessments_path(@student)
     end
     expect(current_path).to eq(expected_path)
 end
@@ -173,4 +175,12 @@ end
 
 Then ('I should be redirected to student document path') do 
     visit student_documents_path
+end
+
+Given('I have two faculty members who have made assessments') do
+    @faculty1 = FactoryBot.create(:faculty, first_name: 'Prof1', last_name: 'Test1')
+    @faculty2 = FactoryBot.create(:faculty, first_name: 'Prof2', last_name: 'Test2')
+
+    @assessment1 = FactoryBot.create(:assessment, public_comment: 'Excellent work!', rating: 5, eligible_for_reward: true, faculty: @faculty1, student: @student)
+    @assessment2 = FactoryBot.create(:assessment, public_comment: 'Needs improvement.', rating: 3, eligible_for_reward: false, faculty: @faculty2, student: @student)
 end

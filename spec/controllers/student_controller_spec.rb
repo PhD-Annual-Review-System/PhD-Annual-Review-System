@@ -97,7 +97,7 @@ RSpec.describe StudentController, type: :controller do
     
     before do
       student = create(:student, email_id: 'edit_committee_test@tamu.edu', password: 'password', password_confirmation: 'password')
-      create(:committee, student: student, faculty: faculty)  # Create the committee after setting the session student
+      create(:committee, student: student, faculty: faculty) 
       session[:student_id] = student.id
       get :edit_committee
     end
@@ -132,8 +132,6 @@ RSpec.describe StudentController, type: :controller do
 
       expect(flash[:error]).to eq('  is already in your committee.')
     end
-
-    # Additional tests for other behaviors can be added here.
   end
 
   describe 'GET #search_faculty' do
@@ -155,7 +153,6 @@ RSpec.describe StudentController, type: :controller do
     end
 
     it 'redirects to edit_committee_student_path when no faculties match the query' do
-      # Let's make a request with names that do not match any existing faculty
       get :search_faculty, params: { first_name: 'NonExistentFirst', last_name: 'NonExistentLast' }
       
       # Expectations
@@ -211,7 +208,7 @@ RSpec.describe StudentController, type: :controller do
     end
 
     it 'changes a chair back to a member' do
-      post :return_to_member, params: { id: committee1.id }  # Change this line
+      post :return_to_member, params: { id: committee1.id } 
 
       committee1.reload
       expect(committee1.role).to eq('Member')
@@ -219,10 +216,46 @@ RSpec.describe StudentController, type: :controller do
     end
 
     it 'sets an error flash message when the role update fails' do
-      allow_any_instance_of(Committee).to receive(:update).and_return(false)  # This line makes the update fail
+      allow_any_instance_of(Committee).to receive(:update).and_return(false)
       post :return_to_member, params: { id: committee1.id }
     
       expect(flash[:error]).to eq("Failed to change the role.")
+    end
+  end
+
+  describe 'GET #view_assessments' do
+    let(:student) { create(:student, email_id: 'student@tamu.edu', password: 'password', password_confirmation: 'password') }
+    let(:faculty1) { create(:faculty, first_name: 'Prof1', last_name: 'Test1') }
+    let(:faculty2) { create(:faculty, first_name: 'Prof2', last_name: 'Test2') }
+    let!(:assessments) do
+      [
+        create(:assessment, student: student, faculty: faculty1, public_comment: 'Great Job!', rating: 5, eligible_for_reward: true),
+        create(:assessment, student: student, faculty: faculty2, public_comment: 'Needs Improvement', rating: 3, eligible_for_reward: false)
+      ]
+    end
+
+    # let!(:assessments) { create_list(:assessment, 2, student: student) }
+    # puts Assessment.all.to_a # This should print out the created assessments
+
+    before do
+      session[:student_id] = student.id
+      get :view_assessments, params: { id: student.id }
+    end
+
+    it 'returns a successful response' do
+      expect(response).to be_successful
+    end
+
+    it 'only includes the specified attributes for each assessment' do
+      assigned_assessments = assigns(:assessments)
+      assessments.each_with_index do |assessment, index|
+        expect(assigned_assessments[index].faculty.first_name).to eq(assessment.faculty.first_name)
+        expect(assigned_assessments[index].faculty.last_name).to eq(assessment.faculty.last_name)
+        expect(assigned_assessments[index].public_comment).to eq(assessment.public_comment)
+        expect(assigned_assessments[index].rating).to eq(assessment.rating)
+        expect(assigned_assessments[index].eligible_for_reward).to eq(assessment.eligible_for_reward)
+        expect(assigned_assessments[index].attributes.keys).to contain_exactly('public_comment', 'rating', 'eligible_for_reward', 'id', 'faculty_id')
+      end
     end
   end
 end

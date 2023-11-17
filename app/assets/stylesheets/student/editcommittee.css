@@ -43,8 +43,8 @@ body {
 
 .committee-table {
     width: 100%;
-    border-collapse: separate;  /* Important for spacing around the table */
-    border-spacing: 0;          /* Important for spacing around the table */
+    border-collapse: separate; 
+    border-spacing: 0;
     margin-bottom: 20px;
 }
 
@@ -58,16 +58,15 @@ body {
     background-color: #f9f9f9;
     border-top: 1px solid #eaeaea;
     border-bottom: 2px solid #eaeaea;
-    border-left: 1px solid #eaeaea;  /* Added left border for the headers */
+    border-left: 1px solid #eaeaea;
 }
 
 .committee-table td {
     padding: 12px 8px;
     border-top: 1px solid #eaeaea;
-    border-left: 1px solid #eaeaea;  /* Added left border for the data cells */
+    border-left: 1px solid #eaeaea;
 }
 
-/* Added the right border to the last header and data cells */
 .committee-table th:last-child,
 .committee-table td:last-child {
     border-right: 1px solid #eaeaea;
@@ -101,7 +100,7 @@ body {
 }
 
 .search-box {
-    background-color: #f9f9f9; /* Change to your table's dark background color */
+    background-color: #f9f9f9;
     padding: 20px;
     display: flex;
     gap: 10px;

@@ -14,6 +14,7 @@
     <p>You have successfully logged in.</p>
     <%= link_to 'Edit Committee', edit_committee_student_path, class: 'button' %>
     <%= link_to 'Submit Documents', student_documents_path, class: 'button' %>
+    <%= link_to 'View Assessments', student_view_assessments_path(current_student), class: 'button' %>
   </div>
 
 </body>

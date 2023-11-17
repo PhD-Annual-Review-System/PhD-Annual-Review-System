@@ -36,3 +36,33 @@ more_admin.each do |admin|
     Admin.create!(admin)
   end
 
+# Committee and assessment entries for dev testing
+student = Student.second
+first_faculty = Faculty.first
+second_faculty = Faculty.second
+
+Committee.create!(student: student, faculty: first_faculty, role: 'Member')
+Committee.create!(student: student, faculty: second_faculty, role: 'Member')
+
+assessments = [
+  {
+    student_id: student.id,
+    faculty_id: first_faculty.id,
+    public_comment: "Outstanding presentation skills.",
+    rating: "Excellent",
+    eligible_for_reward: true,
+    private_comment: "Top of the class, highly recommend for rewards."
+  },
+  {
+    student_id: student.id,
+    faculty_id: second_faculty.id,
+    public_comment: "Well-structured thesis, but needs more detailed analysis.",
+    rating: "Good",
+    eligible_for_reward: false,
+    private_comment: "With further development, could be a strong candidate for next year."
+  }
+]
+
+assessments.each do |assessment|
+  Assessment.create!(assessment)
+end
