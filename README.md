@@ -1,24 +1,37 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This README provides the necessary steps to set up, run, and deploy the PhD Annual Review System application, as well as to test the app.
 
-Steps to setup and run the code locally
+## Steps to setup and run the code locally
 
-1) Clone the repo in your local
-2) cd PhD-Annual-Review-System
-3) run bundle install
-4) run rails db:migrate
-5) run rails db:seed
-6) run rails s (to run the code locally)
-7) run cucumber (to run cucumber test cases)
-8) run rspec (to run rspec test cases)
+1. Clone the repo to your local machine using `git clone -b main <repo url>`.
+2. Navigate to the `PhD-Annual-Review-System` directory.
+3. Run `bundle install`.
+4. Run `rails db:migrate`.
+5. Run `rails db:seed`.
+6. Run `rails s` to run the code locally.
+7. Run `bundle exec cucumber` to execute cucumber test cases.
+8. Run `bundle exec rspec` to run rspec test cases.
 
+## Steps to deploy the code on Heroku
 
-Steps to deploy the code on heroku
+1. Log in to Heroku:
+    - Run `heroku login` and enter your credentials.
+2. Create a new app on Heroku (if not already created):
+    - Run `heroku create phd-review-app` to create a new app on Heroku.
+3. Link the app to your local git repository:
+    - Run `git remote add heroku <git url to Heroku app>`. To find the `<git url to Heroku app>`, go to the Heroku webpage, select your app, go to settings, and copy the "Heroku git URL".
+4. Push the changes to the Heroku main branch to deploy the code:
+    - Run `git push heroku main`.
+5. Create all the tables in the database:
+    - Run `heroku run rails db:migrate`.
+6. Add dummy values to the table:
+    - Run `heroku run rails db:seed`.
+7. Access the deployed app at the provided URL. To find the URL, go to the Heroku webpage, select your app, click on `Open app` in top right.
 
-1) run git push herko main (This command will push all the changes to heroku main branch and this will deploy the code as well)
-2) goto https://phd-review-app-0416787b021c.herokuapp.com/
+## Steps to test the app
 
-
-
+1. Use the provided dummy users in the database for testing:
+    - Student: emailId: harshsurolia@tamu.edu, password: 12345678.
+    - Faculty: emailId: profexample@tamu.edu, password: 12345678.
+    - Admin: emailId: adminexample@tamu.edu, password: 12345678.
