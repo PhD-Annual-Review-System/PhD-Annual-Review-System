@@ -11,6 +11,26 @@ Then("I select the PhD start date as {string}") do |start_date|
     select start_date, from: 'student_document[phd_start_date]'
 end
 
+When('I select milestones that should include the following:') do |milestones_table|
+    milestones = milestones_table.raw.flatten
+    milestones.each do |milestone|
+      find("input[type='checkbox'][value='#{milestone}']").check
+    end
+end
+
+Then("I fill in the support descriptions") do
+    support_values = ["Research Assistantship with Faculty Member", "Teaching Assistantship", "Fellowship", "Job within TAMU", "Job outside TAMU", "Other"]
+    descriptions = ["Description 1", "Description 2", "Description 3", "Description 4", "Description 5", "Description 6"]
+  
+    support_values.each_with_index do |value, index|
+      checkboxes = all("input[type='checkbox'][value='#{value}']")
+      checkboxes.first.set(true) # Ensure we select the first matching checkbox
+  
+      description_inputs = all("input[type='text'][name='student_document[support_in_last_sem_description][]']")
+      description_inputs[index].set(descriptions[index])
+    end
+  end
+
 Then("I select value {string} from {string}") do |value, field_name|
     select value, from: "student_document_#{field_name.parameterize.underscore}"
 end

@@ -79,3 +79,11 @@ table {
     width: 100%; /* Make inputs and textareas fill the entire cell */
     box-sizing: border-box; /* Include padding and border in the width */
   }
+
+  .support-list {
+    margin-top: 10px;
+  }
+
+  .support-item {
+    margin-bottom: 10px;
+  }

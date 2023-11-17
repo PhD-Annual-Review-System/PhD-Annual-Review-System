@@ -12,11 +12,12 @@ RSpec.describe StudentDocumentsController, type: :controller do
                                                      resume_file: 'newstudent1_resume', 
                                                      resume_link: 'sample.pdf', 
                                                      phd_start_date: 'Fall 2023', 
-                                                     milestones_passed: 'new milestone', 
+                                                     milestones_passed: ['new milestone'], 
                                                      improvement_plan_present: 'No', 
                                                      improvement_plan_summary: 'NA', 
                                                      gpa: '3', 
-                                                     support_in_last_sem: 'value', 
+                                                     support_in_last_sem: ['value'],
+                                                     support_in_last_sem_description: ['desc'],
                                                      number_of_paper_submissions: '1',
                                                      number_of_papers_published: '1', 
                                                      report_link: 'sample.pdf', 
@@ -30,16 +31,16 @@ RSpec.describe StudentDocumentsController, type: :controller do
       new_report = Rails.root.join('features', 'upload_files', 'sample_resume.pdf')
       session[:email] = student_document.email_id
       new_phd_start_date = 'Fall 2023'
-      new_milestones_passed = 'new milestone'
+      new_milestones_passed = ['new milestone']
       new_improvement_plan_present = 'No'
       new_improvement_plan_summary = 'NA'
       new_gpa = 3.0
-      new_support_in_last_sem = 'value'
+      new_support_in_last_sem = ['value']
+      new_support_in_last_sem_description = ['desc']
       new_number_of_paper_submissions = 1
       new_number_of_papers_published = 12
       resume_file_name = student_document.email_id.dup.gsub!(/@tamu\.edu/, '_resume')
       report_file_name = student_document.email_id.dup.gsub!(/@tamu\.edu/, '_report')
-    
       patch :update, params: { id: student_document.id, student_document: { email_id: 'newstudent1@tamu.edu', 
                                                  resume_file: new_resume, 
                                                  report_file: new_report,
@@ -49,6 +50,7 @@ RSpec.describe StudentDocumentsController, type: :controller do
                                                  improvement_plan_summary: new_improvement_plan_summary, 
                                                  gpa: new_gpa, 
                                                  support_in_last_sem: new_support_in_last_sem,
+                                                 support_in_last_sem_description: ["desc"],
                                                  number_of_paper_submissions: new_number_of_paper_submissions, 
                                                  number_of_papers_published: new_number_of_papers_published
                             }}
@@ -65,6 +67,7 @@ RSpec.describe StudentDocumentsController, type: :controller do
       expect(assigns(:student_document).improvement_plan_summary).to eq(new_improvement_plan_summary)
       expect(assigns(:student_document).gpa).to eq(new_gpa)
       expect(assigns(:student_document).support_in_last_sem).to eq(new_support_in_last_sem)
+      expect(assigns(:student_document).support_in_last_sem_description).to eq(new_support_in_last_sem_description)
       expect(assigns(:student_document).number_of_paper_submissions).to eq(new_number_of_paper_submissions)
       expect(assigns(:student_document).number_of_papers_published).to eq(new_number_of_papers_published)
       expect(flash[:notice]).to eq("Details have been submitted.")

@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "E:/GitHub/PhD-Annual-Review-System/config/environment.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/config/environment.rb": {
         "lines": [
           null,
           1,
@@ -10,7 +10,7 @@
           1
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/config/application.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/config/application.rb": {
         "lines": [
           1,
           null,
@@ -36,7 +36,7 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/config/boot.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/config/boot.rb": {
         "lines": [
           1,
           null,
@@ -44,7 +44,7 @@
           1
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/config/environments/test.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/config/environments/test.rb": {
         "lines": [
           1,
           null,
@@ -112,7 +112,7 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/config/initializers/assets.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/config/initializers/assets.rb": {
         "lines": [
           null,
           null,
@@ -128,7 +128,7 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/config/initializers/aws.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/config/initializers/aws.rb": {
         "lines": [
           1,
           null,
@@ -136,7 +136,7 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/config/initializers/content_security_policy.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/config/initializers/content_security_policy.rb": {
         "lines": [
           null,
           null,
@@ -147,38 +147,6 @@
           null,
           null,
           null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "E:/GitHub/PhD-Annual-Review-System/config/initializers/filter_parameter_logging.rb": {
-        "lines": [
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          null,
-          null
-        ]
-      },
-      "E:/GitHub/PhD-Annual-Review-System/config/initializers/inflections.rb": {
-        "lines": [
           null,
           null,
           null,
@@ -197,7 +165,39 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/config/initializers/permissions_policy.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/config/initializers/filter_parameter_logging.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          null,
+          null
+        ]
+      },
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/config/initializers/inflections.rb": {
+        "lines": [
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/config/initializers/permissions_policy.rb": {
         "lines": [
           null,
           null,
@@ -212,7 +212,7 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/test/factories/student_documents.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/test/factories/student_documents.rb": {
         "lines": [
           1,
           1,
@@ -223,7 +223,7 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/spec/factories/admin.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/spec/factories/admin.rb": {
         "lines": [
           1,
           1,
@@ -237,7 +237,7 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/spec/factories/assessments.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/spec/factories/assessments.rb": {
         "lines": [
           null,
           null,
@@ -253,7 +253,7 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/spec/factories/committees.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/spec/factories/committees.rb": {
         "lines": [
           1,
           1,
@@ -264,7 +264,7 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/spec/factories/faculty.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/spec/factories/faculty.rb": {
         "lines": [
           1,
           1,
@@ -278,7 +278,7 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/spec/factories/students.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/spec/factories/students.rb": {
         "lines": [
           1,
           1,
@@ -293,7 +293,7 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/config/routes.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/config/routes.rb": {
         "lines": [
           1,
           1,
@@ -336,58 +336,59 @@
           null,
           null,
           null,
+          null,
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/app/helpers/admin_helper.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/app/helpers/admin_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/app/helpers/application_helper.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/app/helpers/application_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/app/helpers/document_helper.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/app/helpers/document_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/app/helpers/faculty_helper.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/app/helpers/faculty_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/app/helpers/home_helper.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/app/helpers/home_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/app/helpers/student_helper.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/app/helpers/student_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/app/helpers/student_documents_helper.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/app/helpers/student_documents_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/app/helpers/welcome_helper.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/app/helpers/welcome_helper.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/app/controllers/admin_controller.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/app/controllers/admin_controller.rb": {
         "lines": [
           1,
           1,
@@ -415,13 +416,13 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/app/controllers/application_controller.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/app/controllers/application_controller.rb": {
         "lines": [
           1,
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/spec/controllers/faculty_controller_spec.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/spec/controllers/faculty_controller_spec.rb": {
         "lines": [
           null,
           1,
@@ -540,7 +541,7 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/app/controllers/faculty_controller.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/app/controllers/faculty_controller.rb": {
         "lines": [
           1,
           1,
@@ -663,7 +664,7 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/spec/controllers/student_controller_spec.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/spec/controllers/student_controller_spec.rb": {
         "lines": [
           null,
           1,
@@ -928,7 +929,7 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/app/controllers/student_controller.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/app/controllers/student_controller.rb": {
         "lines": [
           1,
           1,
@@ -1059,7 +1060,7 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/spec/controllers/student_document_controller_spec.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/spec/controllers/student_document_controller_spec.rb": {
         "lines": [
           1,
           null,
@@ -1085,14 +1086,11 @@
           null,
           null,
           null,
+          null,
           1,
           1,
           null,
           null,
-          1,
-          1,
-          1,
-          1,
           1,
           1,
           1,
@@ -1102,7 +1100,11 @@
           1,
           1,
           1,
-          null,
+          1,
+          1,
+          1,
+          1,
+          1,
           1,
           null,
           null,
@@ -1117,9 +1119,11 @@
           null,
           null,
           null,
+          null,
           1,
           null,
           null,
+          1,
           1,
           1,
           1,
@@ -1152,7 +1156,7 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/app/controllers/student_documents_controller.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/app/controllers/student_documents_controller.rb": {
         "lines": [
           1,
           1,
@@ -1188,22 +1192,25 @@
           null,
           1,
           2,
-          2,
-          2,
+          1,
           null,
-          null,
-          2,
-          2,
-          2,
-          2,
-          2,
-          2,
           2,
           2,
           2,
           null,
+          null,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
+          2,
           2,
           null,
+          2,
           1,
           null,
           null,
@@ -1255,6 +1262,7 @@
           null,
           null,
           null,
+          1,
           1,
           1,
           1,
@@ -1295,11 +1303,20 @@
           null,
           1,
           2,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
+          null,
           null,
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/spec/models/admin_spec.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/spec/models/admin_spec.rb": {
         "lines": [
           null,
           null,
@@ -1353,7 +1370,7 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/app/models/admin.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/app/models/admin.rb": {
         "lines": [
           1,
           1,
@@ -1369,14 +1386,14 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/app/models/application_record.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/app/models/application_record.rb": {
         "lines": [
           1,
           1,
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/spec/models/committee_spec.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/spec/models/committee_spec.rb": {
         "lines": [
           null,
           1,
@@ -1410,7 +1427,7 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/app/models/committee.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/app/models/committee.rb": {
         "lines": [
           1,
           1,
@@ -1420,7 +1437,7 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/spec/models/faculty_spec.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/spec/models/faculty_spec.rb": {
         "lines": [
           null,
           null,
@@ -1474,7 +1491,7 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/app/models/faculty.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/app/models/faculty.rb": {
         "lines": [
           1,
           1,
@@ -1496,7 +1513,7 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/spec/models/student_spec.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/spec/models/student_spec.rb": {
         "lines": [
           1,
           null,
@@ -1529,7 +1546,7 @@
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/app/models/student.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/app/models/student.rb": {
         "lines": [
           1,
           1,
@@ -1553,27 +1570,57 @@
           1,
           null,
           1,
-          35,
+          43,
           4,
           null,
           null,
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/app/models/assessment.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/app/models/assessment.rb": {
         "lines": [
           1,
           1,
           1,
           null,
           1,
+          null,
+          1,
+          null,
+          1,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          8,
+          0,
+          null,
+          0,
+          0,
+          0,
+          8,
+          0,
+          null,
+          8,
+          null,
+          null,
+          null,
           null
         ]
       },
-      "E:/GitHub/PhD-Annual-Review-System/app/models/student_document.rb": {
+      "/Users/harshvardhansurolia/Desktop/SE/PhD-Annual-Review-System/app/models/student_document.rb": {
         "lines": [
           1,
           1,
+          1,
+          1,
+          1,
           null,
           null,
           1,
@@ -1586,11 +1633,26 @@
           1,
           1,
           1,
+          1,
+          null,
+          1,
+          null,
+          1,
+          17,
+          16,
+          16,
+          16,
+          16,
+          0,
+          null,
+          null,
+          null,
+          null,
           null,
           null
         ]
       }
     },
-    "timestamp": 1700157305
+    "timestamp": 1700239243
   }
 }
