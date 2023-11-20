@@ -54,6 +54,25 @@ Given("a faculty with the email ID {string} already exists") do |email|
     @student = Student.create(email_id: 'test@tamu.edu', password: 'password', password_confirmation: 'password', first_name: 'Test', last_name: 'Student', UIN: 1234)
   end
   
+  Given('the student has uploaded documents') do
+    @student_document = StudentDocument.create(
+    email_id: @student.email_id,
+    resume_file: Rack::Test::UploadedFile.new(File.open(Rails.root.join('features', 'upload_files', 'sample_resume.pdf'))), 
+    resume_link: 'sample.pdf', 
+    phd_start_date: 'Fall 2023', 
+    milestones_passed: ['new milestone'], 
+    improvement_plan_present: 'No', 
+    improvement_plan_summary: 'NA', 
+    gpa: '3', 
+    support_in_last_sem: ['value'],
+    support_in_last_sem_description: ['desc'],
+    number_of_paper_submissions: '1',
+    number_of_papers_published: '1', 
+    report_link: 'sample.pdf', 
+    report_file: Rack::Test::UploadedFile.new(File.open(Rails.root.join('features', 'upload_files', 'sample_resume.pdf')))
+  )
+  end
+
   Given('the student is assigned to the faculty') do
     faculty = @faculty
     student = @student
