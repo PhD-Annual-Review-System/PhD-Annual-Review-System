@@ -1,6 +1,14 @@
 # README
 
-This README provides the necessary steps to set up, run, and deploy the PhD Annual Review System application, as well as to test the app.
+This README provides the necessary steps to set up, run, and deploy the PhD Annual Review System application, as well as to test the app. Ensure that PostgreSQL is installed locally to create the database. If not, follow the instructions at [Heroku Postgres Local Setup](https://devcenter.heroku.com/articles/local-setup-heroku-postgres).
+
+## Ruby and Rails Versions
+
+The project is compatible with the following versions of Ruby and Rails:
+
+- Ruby version: 3.2.2 or newer (for Rails 7.0.Z)
+
+The gemfile has ruby 3.2.2 and rails 7.0.8.
 
 ## Steps to setup and run the code locally
 
@@ -27,7 +35,7 @@ This README provides the necessary steps to set up, run, and deploy the PhD Annu
     - Run `heroku run rails db:migrate`.
 6. Add dummy values to the table:
     - Run `heroku run rails db:seed`.
-7. Access the deployed app at the provided URL. To find the URL, go to the Heroku webpage, select your app, click on `Open app` in top right.
+7. Access the deployed app at the provided URL. To find the URL, go to the Heroku webpage, select your app, and click on `Open app` in the top right.
 
 ## Steps to test the app
 
