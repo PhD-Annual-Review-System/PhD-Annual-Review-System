@@ -29,11 +29,12 @@ Install Heroku CLI following the [Heroku CLI Installation Guide](https://devcent
 1. Clone the repo to your local machine using `git clone -b main <repo url>`.
 2. Navigate to the `PhD-Annual-Review-System` directory.
 3. Run `bundle install`. This will install rails and all the other dependencies
-4. Run `rails db:migrate`.
-5. Run `rails db:seed`.
-6. Run `rails s` to run the code locally.
-7. Run `bundle exec cucumber` to execute cucumber test cases.
-8. Run `bundle exec rspec` to run rspec test cases.
+4. Run `rails db:create`.
+5. Run `rails db:migrate`.
+6. Run `rails db:seed`.
+7. Run `rails s` to run the code locally.
+8. Run `bundle exec cucumber` to execute cucumber test cases.
+9. Run `bundle exec rspec` to run rspec test cases.
 
 ## Steps to deploy the code on Heroku. Make sure you are in the project directory
 
