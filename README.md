@@ -10,6 +10,8 @@ The project is compatible with the following versions of Ruby and Rails:
 
 The gemfile has ruby 3.2.2 and rails 7.0.8.
 
+Install Heroku CLI following the [Heroku CLI Installation Guide](https://devcenter.heroku.com/articles/heroku-cli) .
+
 ## Steps to setup and run the code locally
 
 1. Clone the repo to your local machine using `git clone -b main <repo url>`.
