@@ -258,4 +258,67 @@ RSpec.describe StudentController, type: :controller do
       end
     end
   end
+
+  describe 'PATCH #update_password' do
+  let(:student) { create(:student, password: 'password') }
+
+  context 'when logged in' do
+    before { allow(controller).to receive(:current_student).and_return(student) }
+
+    context 'with valid params' do
+      let(:valid_params) do
+        {
+          current_password: 'password',
+          password: 'new_password',
+          password_confirmation: 'new_password'
+        }
+      end
+
+      it 'updates the password and redirects to the dashboard' do
+        patch :update_password, params: { student: valid_params }
+        expect(response).to redirect_to(student_dashboard_path)
+        expect(flash[:success]).to be_present
+      end
+    end
+
+    context 'with invalid current password' do
+      let(:invalid_params) do
+        {
+          current_password: 'wrong_password',
+          password: 'new_password',
+          password_confirmation: 'new_password'
+        }
+      end
+
+      it 'renders the change_password template with an error flash message' do
+        patch :update_password, params: { student: invalid_params }
+        expect(response).to render_template(:change_password)
+        expect(flash[:error]).to be_present
+      end
+    end
+
+    context 'with other update failures' do
+      let(:error_params) do
+        {
+          current_password: 'password',
+          password: 'new_password',
+          password_confirmation: 'different_password'
+        }
+      end
+
+      it 'renders the change_password template with an error flash message' do
+        patch :update_password, params: { student: error_params }
+        expect(response).to render_template(:change_password)
+        expect(flash[:error]).to be_present
+      end
+    end
+  end
+
+  context 'when not logged in' do
+    it 'redirects to the login page' do
+      patch :update_password
+      expect(response).to redirect_to(student_login_path)
+    end
+  end
+ end 
 end

@@ -12,6 +12,8 @@
 //= link student/editcommittee.css
 //= link student/search_faculty.css
 //= link student/viewassessments.css
+//= link student/changepassword.css
+
 
 //=link faculty/facultylogin.css
 //=link faculty/facultydashboard.css

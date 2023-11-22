@@ -1,5 +1,5 @@
 class StudentController < ApplicationController
-    before_action :ensure_logged_in, only: [:edit_committee, :search_faculty, :add_to_committee, :view_assessments]
+    before_action :ensure_logged_in, only: [:edit_committee, :search_faculty, :add_to_committee, :view_assessments, :change_password, :update_password]
 
     def login
     end
@@ -105,7 +105,26 @@ class StudentController < ApplicationController
                        .select(:public_comment, :rating, :eligible_for_reward, :faculty_id)
                        .includes(:faculty)
     end
+
+    def change_password
+    end
     
+    def update_password
+      @student = current_student
+    
+      if @student&.authenticate(password_params[:current_password])
+        if @student.update(password_params.except(:current_password))
+          flash[:success] = "Password updated successfully."
+          redirect_to student_dashboard_path
+        else
+          flash[:error] = "Failed to update password."
+          render :change_password
+        end
+      else
+        flash[:error] = "Invalid current password."
+        render :change_password
+      end
+    end
     
     private
     def student_params
@@ -122,6 +141,10 @@ class StudentController < ApplicationController
         redirect_to student_login_path
       end
     end
+
+    def password_params
+      params.require(:student).permit(:current_password, :password, :password_confirmation)
+    end    
 
     helper_method :current_student
 end

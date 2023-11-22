@@ -11,10 +11,15 @@
   </div>
 
   <div class="container">
-    <p>You have successfully logged in.</p>
+    <% flash.each do |key, message| %>
+      <div class="flash-<%= key %>">
+        <%= message %>
+      </div>
+    <% end %>
     <%= link_to 'Edit Committee', edit_committee_student_path, class: 'button' %>
     <%= link_to 'Submit Documents', student_documents_path, class: 'button' %>
     <%= link_to 'View Assessments', student_view_assessments_path(current_student), class: 'button' %>
+    <%= link_to 'Change Password', change_password_student_path, class: 'button' %>
   </div>
 
 </body>

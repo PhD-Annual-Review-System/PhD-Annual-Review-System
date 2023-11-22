@@ -31,8 +31,11 @@ class StudentDocumentsController < ApplicationController
 
   # PATCH/PUT /student_documents/1 or /student_documents/1.json
   def update
-    if params[:student_document][:support_in_last_sem_description].present?
+    if params[:student_document][:support_in_last_sem_description].present? && !params[:student_document][:support_in_last_sem_description] == "None"
       params[:student_document][:support_in_last_sem_description] = params[:student_document][:support_in_last_sem_description].reject(&:empty?)
+    end
+    if params[:student_document][:support_in_last_sem_description].present? && params[:student_document][:support_in_last_sem_description] == "None"
+      params[:student_document][:support_in_last_sem_description] = [""]
     end
     current_email = session[:email].dup
     current_email.gsub!(/@tamu\.edu/, '')
