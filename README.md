@@ -62,7 +62,7 @@ Install Heroku CLI following the [Heroku CLI Installation Guide](https://devcent
 1. Log in to Heroku:
     - Run `heroku login` and enter your credentials.
 2. Create a new app on Heroku (if not already created):
-    - Run `heroku create phd-review-app` to create a new app on Heroku.
+    - Run `heroku create <app-name>` to create a new app on Heroku.
 3. Link the app to your local git repository:
     - Run `git remote add heroku <git url to Heroku app>`. To find the `<git url to Heroku app>`, go to the Heroku webpage, select your app, go to settings, and copy the "Heroku git URL".
 4. Provision a Heroku Postgres database:
