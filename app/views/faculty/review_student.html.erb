@@ -6,6 +6,7 @@
 <body>
   <div class="header">
     <h1>Submitting Review for <%= @student.first_name %> <%= @student.last_name %></h1>
+    <%= link_to 'Back to Dashboard', faculty_dashboard_path, class: 'dashboard-btn' %>
   </div>
 
 <% if @no_documents_message %>

@@ -81,7 +81,7 @@ Given("a faculty with the email ID {string} already exists") do |email|
   
   When('the faculty selects to review {string}') do |string|
     student = @student
-    visit faculty_review_student_path(id: student.id, bucket: 'some_bucket')
+    visit faculty_review_student_path(student)
   end
   
   Then('they should see the student\'s documents') do

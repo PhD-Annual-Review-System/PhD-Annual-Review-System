@@ -149,7 +149,6 @@ class StudentController < ApplicationController
         object_key = uri.path[1..-1] # Remove the leading '/'
         @report_url = presigner.presigned_url(:get_object,bucket: bucket_name, key: object_key, expires_in: 604800)
        
-        @private_comments = Assessment.where(student_id: @student.id).where.not(faculty_id: current_faculty.id)
       end
     end
     
