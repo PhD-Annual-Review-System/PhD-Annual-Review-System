@@ -133,8 +133,23 @@ class StudentController < ApplicationController
       if @documents.empty?
         @no_documents_message = 'This student has not submitted any documents.'
       else
-        @resume_url = @documents.first.resume_link
-        @report_url = @documents.first.report_link
+        # Parse the S3 URI to extract bucket name and object key
+        uri = URI.parse(@documents.first.resume_link)
+        bucket_name = uri.host
+        object_key = uri.path[1..-1] # Remove the leading '/'
+
+        # Generate a presigned URL that expires in 1 week
+        resp = Aws::S3::Client.new
+        presigner = Aws::S3::Presigner.new(client: resp)
+        @resume_url = presigner.presigned_url(:get_object,bucket: bucket_name, key: object_key, expires_in: 604800)
+        
+        # Parse the S3 URI to extract bucket name and object key
+        uri = URI.parse(@documents.first.report_link)
+        bucket_name = uri.host
+        object_key = uri.path[1..-1] # Remove the leading '/'
+        @report_url = presigner.presigned_url(:get_object,bucket: bucket_name, key: object_key, expires_in: 604800)
+       
+        @private_comments = Assessment.where(student_id: @student.id).where.not(faculty_id: current_faculty.id)
       end
     end
     

@@ -2,6 +2,27 @@
 
 This README provides the necessary steps to set up, run, and deploy the PhD Annual Review System application, as well as to test the app. Ensure that PostgreSQL is installed locally to create the database. If not, follow the instructions at [Heroku Postgres Local Setup](https://devcenter.heroku.com/articles/local-setup-heroku-postgres).
 
+## Team Contact Information
+
+**Product Owner:** Neha Joshi  
+- Email: nehayj100@tamu.edu
+
+**Scrum Master:** Prachi Surbhi  
+- Email: psurbhi@tamu.edu
+
+**Team Members:**
+1. William Harper
+   - Email: wdharper@tamu.edu
+
+2. Shashank Jagtap
+   - Email: shashankjagtap@tamu.edu
+
+3. Shwetima Sakshi
+   - Email: shwetimasakshi@tamu.edu
+
+4. Harshvardhan Surolia
+   - Email: harshsurolia2609@tamu.edu
+
 ## Ruby and Rails Versions
 
 The project is compatible with the following versions of Ruby and Rails:

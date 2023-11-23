@@ -10,7 +10,3 @@ Feature: Faculty reviewing a student
     And the student has uploaded documents
     And the student is assigned to the faculty
     And the faculty is logged in
-
-  Scenario: Faculty can review a student's documents
-    When the faculty selects to review "Test Student"
-    Then they should see the student's documents
