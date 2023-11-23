@@ -314,11 +314,11 @@ RSpec.describe StudentController, type: :controller do
     end
   end
 
-  context 'when not logged in' do
-    it 'redirects to the login page' do
-      patch :update_password
-      expect(response).to redirect_to(student_login_path)
-    end
-  end
- end 
+    context 'when not logged in' do
+      it 'redirects to the login page' do
+        patch :update_password
+        expect(response).to redirect_to(student_login_path)
+      end
+      end
+  end 
 end

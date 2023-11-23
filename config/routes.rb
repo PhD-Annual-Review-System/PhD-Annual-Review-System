@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get 'student/assessments/:id', to: 'student#view_assessments', as: 'student_view_assessments'
   get 'student/change_password', to: 'student#change_password', as: 'change_password_student'
   patch 'student/update_password', to: 'student#update_password', as: 'update_password_student'
+  get 'student/view_submission/', to: 'student#view_submission', as: 'student_view_submission'
 
 
   get 'admin/login', to: 'admin#login'
@@ -33,6 +34,8 @@ Rails.application.routes.draw do
   get 'faculty/review_student/:id', to: 'faculty#review_student', as: 'faculty_review_student'
   post 'faculty/save_assessment', to: 'faculty#save_assessment', as: 'faculty_save_assessment'
   get 'faculty/view_assessment/:id', to: 'faculty#view_assessment', as: 'faculty_view_assessment'
+  get 'faculty/change_password', to: 'faculty#change_password', as: 'change_password_faculty'
+  patch 'faculty/update_password', to: 'faculty#update_password', as: 'update_password_faculty'
 
 
   get 'document/new'

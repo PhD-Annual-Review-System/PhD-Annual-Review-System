@@ -8,7 +8,7 @@ class StudentDocument < ApplicationRecord
   validates :phd_start_date, presence: true
   validates :milestones_passed, presence: true
   validates :improvement_plan_present, presence: true
-  validates :improvement_plan_summary, presence: true
+  validates :improvement_plan_summary, presence: true, if: :improvement_plan_present_yes?
   validates :gpa, presence: true
   validates :support_in_last_sem, presence: true
   validates :support_in_last_sem_description, presence: true
@@ -29,6 +29,21 @@ class StudentDocument < ApplicationRecord
         end
       end
     end
+
+    if improvement_plan_present_yes? && improvement_plan_summary.blank?
+      errors.add(:improvement_plan_summary, "can't be blank if improvement plan is present")
+    elsif improvement_plan_present_no?
+      self.improvement_plan_summary = nil
+    end
   end
   
+  private
+
+  def improvement_plan_present_yes?
+    improvement_plan_present == 'Yes'
+  end
+
+  def improvement_plan_present_no?
+    improvement_plan_present == 'No'
+  end
 end

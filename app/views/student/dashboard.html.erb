@@ -8,6 +8,7 @@
   <div class="header">
     <h1>Student Dashboard</h1>
     <%= link_to 'Logout', student_logout_path, method: :get, class: 'logout-button' %>
+    <%= link_to 'Change Password', change_password_student_path, method: :get, class: 'logout-button' %>
   </div>
 
   <div class="container">
@@ -19,7 +20,7 @@
     <%= link_to 'Edit Committee', edit_committee_student_path, class: 'button' %>
     <%= link_to 'Submit Documents', student_documents_path, class: 'button' %>
     <%= link_to 'View Assessments', student_view_assessments_path(current_student), class: 'button' %>
-    <%= link_to 'Change Password', change_password_student_path, class: 'button' %>
+    <%= link_to 'View Submissions', student_view_submission_path, class: 'button' %>
   </div>
 
 </body>

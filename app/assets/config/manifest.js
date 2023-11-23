@@ -13,11 +13,13 @@
 //= link student/search_faculty.css
 //= link student/viewassessments.css
 //= link student/changepassword.css
+//= link student/viewsubmission.css
 
 
 //=link faculty/facultylogin.css
 //=link faculty/facultydashboard.css
 //=link faculty/reviewstudent.css
+//= link faculty/changepassword.css
 
 //=link admin/adminlogin.css
 //=link admin/admindashboard.css

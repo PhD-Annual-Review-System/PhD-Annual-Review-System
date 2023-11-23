@@ -125,6 +125,18 @@ class StudentController < ApplicationController
         render :change_password
       end
     end
+
+    def view_submission
+      @student = current_student
+      @documents = StudentDocument.where(email_id: @student.email_id)
+  
+      if @documents.empty?
+        @no_documents_message = 'This student has not submitted any documents.'
+      else
+        @resume_url = @documents.first.resume_link
+        @report_url = @documents.first.report_link
+      end
+    end
     
     private
     def student_params

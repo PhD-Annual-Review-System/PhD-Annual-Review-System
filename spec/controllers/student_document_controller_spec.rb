@@ -33,7 +33,7 @@ RSpec.describe StudentDocumentsController, type: :controller do
       new_phd_start_date = 'Fall 2023'
       new_milestones_passed = ['new milestone']
       new_improvement_plan_present = 'No'
-      new_improvement_plan_summary = 'NA'
+      new_improvement_plan_summary = nil
       new_gpa = 3.0
       new_support_in_last_sem = ['value']
       new_support_in_last_sem_description = ['desc']
