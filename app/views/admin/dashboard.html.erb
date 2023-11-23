@@ -35,7 +35,7 @@
           <%= student.last_name%>
         </td>
         <td>
-          <% if student.student_document.exists? %>
+          <% if StudentDocument.find_by(email_id: student.email_id) %>
             <!-- Check mark symbol if student_document is present -->
             <span>&#10004;</span>
           <% else %>

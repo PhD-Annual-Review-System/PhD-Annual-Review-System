@@ -66,14 +66,10 @@ class StudentDocumentsController < ApplicationController
           obj.put_object(body: file,  content_type: 'application/pdf', key:input_string_resume )
         end
         
-        #get the url of uploaded resume from s3 bucket
-        resp = Aws::S3::Client.new
-        bucket_name = 'phd-annual-review-sys-docs'
-        presigner = Aws::S3::Presigner.new(client: resp)
-        presigned_url_resume = presigner.presigned_url(:get_object,bucket: bucket_name, key: input_string_resume, expires_in: 604800)
-        
+        #get the uri of uploaded resume from s3 bucket
+        resume_uri = 's3://'+ 'phd-annual-review-sys-docs/' + input_string_resume
         #update the resume_link column with link to the resume file
-        @student_document.update(resume_link: presigned_url_resume)
+        @student_document.update(resume_link: resume_uri)
       end
 
       if params[:student_document][:report_file].present?
@@ -91,14 +87,9 @@ class StudentDocumentsController < ApplicationController
           obj.put_object(body: file,  content_type: 'application/pdf', key:input_string_report )
         end
 
-        #get the url of uploaded report from s3 bucket
-        resp = Aws::S3::Client.new
-        bucket_name = 'phd-annual-review-sys-docs'
-        presigner = Aws::S3::Presigner.new(client: resp)
-        presigned_url_report = presigner.presigned_url(:get_object,bucket: bucket_name, key: input_string_report, expires_in: 604800)
-        
+        report_uri = 's3://'+ 'phd-annual-review-sys-docs/' + input_string_report
         #update the report_link column with link to the report file
-        @student_document.update(report_link: presigned_url_report)
+        @student_document.update(report_link: report_uri)
       end
 
         #update other columns
