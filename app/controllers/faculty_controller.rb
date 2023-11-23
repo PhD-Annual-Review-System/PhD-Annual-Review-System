@@ -100,6 +100,26 @@ class FacultyController < ApplicationController
       end
     end
 
+    def change_password
+    end
+    
+    def update_password
+      @faculty = current_faculty
+    
+      if @faculty&.authenticate(password_params[:current_password])
+        if @faculty.update(password_params.except(:current_password))
+          flash[:success] = "Password updated successfully."
+          redirect_to faculty_dashboard_path
+        else
+          flash[:error] = "Failed to update password."
+          render :change_password
+        end
+      else
+        flash[:error] = "Invalid current password."
+        render :change_password
+      end
+    end
+
 
     private
 
@@ -130,4 +150,8 @@ class FacultyController < ApplicationController
   def assessment_params
     params.require(:assessment).permit(:public_comment, :rating, :eligible_for_reward, :private_comment)
   end
+
+  def password_params
+    params.require(:faculty).permit(:current_password, :password, :password_confirmation)
+  end 
 end

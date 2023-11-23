@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <%= stylesheet_link_tag 'student/viewsubmission.css' %>
+</head>
+<body>
+  <div class="header">
+    <h1>View Submission</h1>
+      <%= link_to 'Back to Dashboard', student_dashboard_path, class: 'logout-button' %>
+  </div>
+
+<% if @no_documents_message %>
+  <div class="no-assessments">
+                    <p>No sumission made yet.</p>
+            </div>
+<% else %>
+    <div class="custom-table-wrapper"> 
+      <table class="table table-bordered table-striped">
+          <tbody>
+            <tr>
+              <th>PHD Start Date</th>
+              <% @documents.each do |document| %>
+                <td><%= document.phd_start_date.present? ? document.phd_start_date : 'N/A' %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th>Milestones Passed</th>
+              <% @documents.each do |document| %>
+              <td>
+                <% if document.milestones_passed.present? %>
+                  <ul>
+                    <% document.milestones_passed.each do |milestone| %>
+                    <li><%= milestone %></li>
+                    <% end %>
+                  </ul>
+                <% else %>
+                  N/A
+                <% end %>
+              </td>
+            <% end %>
+            </tr>
+            <tr>
+              <th>GPA</th>
+              <% @documents.each do |document| %>
+                <td><%= document.gpa.present? ? document.gpa : 'N/A' %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th>Improvement Plan Present</th>
+              <% @documents.each do |document| %>
+                <td><%= @documents.first.improvement_plan_present.present? ? @documents.first.improvement_plan_present : 'N/A' %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th>Improvement Plan Summary</th>
+              <% @documents.each do |document| %>
+                <td><%= @documents.first.improvement_plan_summary.present? ? @documents.first.improvement_plan_summary : 'N/A' %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th>Support in Last Semester</th>
+              <% @documents.each do |document| %>
+              <td>
+              <ul>
+                <% document.support_in_last_sem.each_with_index do |support, index| %>
+                  <% if support != "None" %>
+                    <li><b><%= support %>:</b> <%= document.support_in_last_sem_description[index] %></li>
+                  <% else %>
+                    <li><b><%= support %></b></li>
+                  <% end %>
+                <% end %>
+              </ul>
+            </td>
+              <% end %>
+            </tr>
+            <tr>
+              <th>Paper Submissions</th>
+              <% @documents.each do |document| %>
+                <td><%= @documents.first.number_of_paper_submissions.present? ? @documents.first.number_of_paper_submissions : 'N/A' %></td>
+              <% end %>
+            </tr>
+            <tr>
+              <th>Papers Published</th>
+              <% @documents.each do |document| %>
+                <td><%= @documents.first.number_of_papers_published.present? ? @documents.first.number_of_papers_published : 'N/A' %></td>
+              <% end %>
+            </tr>
+            <!-- Add similar rows for other attributes -->
+        </tbody>
+      </table>
+    </div>
+
+  <div class="heading-center-wrapper">
+    <h1>Student Documents</h1>
+  </div>
+  <div class="content-center-wrapper">
+    <!-- Display the resume file if available -->
+    <% if @resume_url.present? %>
+      <iframe src="<%= @resume_url %>" width="850" height="650" style="border: 4px solid #000; margin-right: 10px;"></iframe>
+    <% end %>
+
+    <% if @report_url.present? %>
+      <iframe src="<%= @report_url %>" width="850" height="650" style="border: 4px solid #000; margin-left: 10px;"></iframe>
+    <% end %>
+  </div>
+
+  <!-- Add code to display other documents if needed -->
+<% end %>
+</body>
+</html>
