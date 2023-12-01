@@ -16,16 +16,14 @@ class Assessment < ApplicationRecord
     if faculty_ids.all? { |faculty_id| student.assessments.exists?(faculty_id: faculty_id) }
       assessment_ratings = student.assessments.pluck(:rating)
       student_awards = student.assessments.pluck(:eligible_for_reward)
-      total_years = calculate_total_years(student.phd_start_date)
-      
-      completed_milestones = student.student_documents.map(&:milestones_passed).flatten.compact.uniq
+  
+      phd_start_date = student_documents.phd_start_date
+  
+      # The rest of your assessment logic using phd_start_date goes here
+      current_year = Date.today.year
+      phd_start_year = phd_start_date.year
+      total_years = current_year - phd_start_year
 
-      # improvement needed if either is true:
-        # A) They get an NI or a U from any of their committee
-
-        # B) They are in their fourth year and have not completed their prelim and proposal
-
-        # C) They are in their fifth or later year and have not defended their dissertation
 
       final_assessment = if assessment_ratings.include?("Unsatisfactory") || assessment_ratings.include?("Needs Improvement")
                            "Needs Faculty Review"
@@ -40,7 +38,7 @@ class Assessment < ApplicationRecord
                          end
       
       # Update the student's final assessment
-      student.update(final_assessment: final_assessment)  
+      student.update_attribute(:final_assessment, final_assessment)
     end
   end
 end
