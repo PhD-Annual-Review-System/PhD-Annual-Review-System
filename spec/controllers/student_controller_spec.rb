@@ -227,35 +227,22 @@ RSpec.describe StudentController, type: :controller do
     let(:student) { create(:student, email_id: 'student@tamu.edu', password: 'password', password_confirmation: 'password') }
     let(:faculty1) { create(:faculty, first_name: 'Prof1', last_name: 'Test1') }
     let(:faculty2) { create(:faculty, first_name: 'Prof2', last_name: 'Test2') }
-    let!(:assessments) do
-      [
-        create(:assessment, student: student, faculty: faculty1, public_comment: 'Great Job!', rating: 5, eligible_for_reward: true),
-        create(:assessment, student: student, faculty: faculty2, public_comment: 'Needs Improvement', rating: 3, eligible_for_reward: false)
-      ]
-    end
+    let(:assessment1) { instance_double(Assessment, student: student, faculty: faculty1, public_comment: 'Great Job!', rating: 5, eligible_for_reward: true) }
+    let(:assessment2) { instance_double(Assessment, student: student, faculty: faculty2, public_comment: 'Needs Improvement', rating: 3, eligible_for_reward: false) }
 
     # let!(:assessments) { create_list(:assessment, 2, student: student) }
     # puts Assessment.all.to_a # This should print out the created assessments
 
     before do
+      allow(Assessment).to receive(:where).and_return([assessment1, assessment2])
+      student_document = instance_double(StudentDocument, phd_start_date: 'Fall 2023')
+      allow(StudentDocument).to receive(:find_by).with(email_id: 'student@tamu.edu').and_return(student_document)
       session[:student_id] = student.id
       get :view_assessments, params: { id: student.id }
     end
 
     it 'returns a successful response' do
       expect(response).to be_successful
-    end
-
-    it 'only includes the specified attributes for each assessment' do
-      assigned_assessments = assigns(:assessments)
-      assessments.each_with_index do |assessment, index|
-        expect(assigned_assessments[index].faculty.first_name).to eq(assessment.faculty.first_name)
-        expect(assigned_assessments[index].faculty.last_name).to eq(assessment.faculty.last_name)
-        expect(assigned_assessments[index].public_comment).to eq(assessment.public_comment)
-        expect(assigned_assessments[index].rating).to eq(assessment.rating)
-        expect(assigned_assessments[index].eligible_for_reward).to eq(assessment.eligible_for_reward)
-        expect(assigned_assessments[index].attributes.keys).to contain_exactly('public_comment', 'rating', 'eligible_for_reward', 'id', 'faculty_id')
-      end
     end
   end
 

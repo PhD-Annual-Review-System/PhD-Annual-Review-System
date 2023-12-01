@@ -99,7 +99,7 @@
       </td>
 
       <td>
-
+        
       <%= student.final_assessment %>    
     
     </td>
@@ -142,29 +142,33 @@
 
   <script>
   document.addEventListener("DOMContentLoaded", function() {
-    const exportCsvButton = document.getElementById("export-csv-button");
+  const exportCsvButton = document.getElementById("export-csv-button");
 
-    exportCsvButton.addEventListener("click", function() {
-      const table = document.querySelector("table");
-      const rows = Array.from(table.querySelectorAll("tr"));
+  exportCsvButton.addEventListener("click", function() {
+    const table = document.querySelector("table");
+    const rows = Array.from(table.querySelectorAll("tr"));
 
-      const csvContent = rows
-        .map(function(row) {
-          const columns = Array.from(row.querySelectorAll("th, td"));
-          return columns.map(function(column) {
-            return column.innerText;
-          }).join(",");
-        })
-        .join("\n");
+    const csvContent = rows
+      .map(function(row) {
+        const columns = Array.from(row.querySelectorAll("th, td"));
+        return columns
+          .map(function(column) {
+            // Convert tick mark to 1 and cross to 0
+            const cellValue = column.innerText.trim();
+            return cellValue === "✔" ? 1 : cellValue === "✖" ? 0 : cellValue;
+          })
+          .join(",");
+      })
+      .join("\n");
 
-      const blob = new Blob([csvContent], { type: "text/csv" });
-      const url = URL.createObjectURL(blob);
-      const a = document.createElement("a");
-      a.href = url;
-      a.download = "table.csv";
-      a.click();
-    });
+    const blob = new Blob([csvContent], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "table.csv";
+    a.click();
   });
+});
 </script>
 
 

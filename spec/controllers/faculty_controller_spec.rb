@@ -62,6 +62,8 @@ describe 'GET #dashboard' do
     it 'saves a new assessment' do
       faculty = create(:faculty)
       student = create(:student)
+      student_document = instance_double(StudentDocument, phd_start_date: 'Fall 2023')
+      allow(StudentDocument).to receive(:find_by).with(email_id: student.email_id).and_return(student_document)
       session[:faculty_id] = faculty.id
       assessment_params = { public_comment: 'Good work', rating: 'Satisfactory' }
       post :save_assessment, params: { id: student.id, assessment: assessment_params }
@@ -72,6 +74,8 @@ describe 'GET #dashboard' do
     it 'updates an existing assessment' do
       faculty = create(:faculty)
       student = create(:student)
+      student_document = instance_double(StudentDocument, phd_start_date: 'Fall 2023')
+      allow(StudentDocument).to receive(:find_by).with(email_id: student.email_id).and_return(student_document)
       create(:assessment, student: student, faculty: faculty)
       session[:faculty_id] = faculty.id
       assessment_params = { public_comment: 'Updated comment', rating: 'Satisfactory' }
@@ -95,6 +99,8 @@ describe 'GET #dashboard' do
     it 'renders the view_assessment page' do
       faculty = create(:faculty)
       student = create(:student)
+      student_document = instance_double(StudentDocument, phd_start_date: 'Fall 2023')
+      allow(StudentDocument).to receive(:find_by).with(email_id: student.email_id).and_return(student_document)
       create(:assessment, student: student, faculty: faculty)
       session[:faculty_id] = faculty.id
       get :view_assessment, params: { id: student.id }

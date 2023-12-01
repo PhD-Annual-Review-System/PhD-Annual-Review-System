@@ -48,6 +48,8 @@ gem 'rails-controller-testing'
 
 gem 'rails-ujs'
 
+gem 'csv'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
