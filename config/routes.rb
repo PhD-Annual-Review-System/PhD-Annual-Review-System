@@ -32,7 +32,12 @@ Rails.application.routes.draw do
   post 'faculty/login', to: 'faculty#authenticate'
   get 'faculty/dashboard', to: 'faculty#dashboard', as: 'faculty_dashboard'
   get 'faculty/review_student/:id', to: 'faculty#review_student', as: 'faculty_review_student'
+
+  #post 'faculty/save_assessment', to: 'faculty#save_assessment', as: 'faculty_save_assessment'
   post 'faculty/save_assessment', to: 'faculty#save_assessment', as: 'faculty_save_assessment'
+  get 'faculty/save_assessment', to: 'faculty#save_assessment' # Optional: Only if you need a GET request here
+
+
   get 'faculty/view_assessment/:id', to: 'faculty#view_assessment', as: 'faculty_view_assessment'
   get 'faculty/change_password', to: 'faculty#change_password', as: 'change_password_faculty'
   patch 'faculty/update_password', to: 'faculty#update_password', as: 'update_password_faculty'
