@@ -73,7 +73,10 @@ Install Heroku CLI following the [Heroku CLI Installation Guide](https://devcent
     - Run `heroku run rails db:migrate`.
 7. Add dummy values to the table:
     - Run `heroku run rails db:seed`.
-8. Access the deployed app at the provided URL. To find the URL, go to the Heroku webpage, select your app, and click on `Open app` in the top right.
+8. We have a rake task to populate database using csv file:
+    - Run `heroku run rake db:populate`.
+    - Make sure the csv files are added to the resources folder in the application and the application is pushed to Heroku with the csv files
+9. Access the deployed app at the provided URL. To find the URL, go to the Heroku webpage, select your app, and click on `Open app` in the top right.
 
 ## Steps to test the app
 
@@ -108,3 +111,5 @@ heroku addons:create heroku-postgresql:mini
 git push heroku main
 heroku run rails db:migrate
 heroku run rails db:seed
+
+
