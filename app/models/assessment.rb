@@ -16,12 +16,13 @@ class Assessment < ApplicationRecord
     if faculty_ids.all? { |faculty_id| student.assessments.exists?(faculty_id: faculty_id) }
       assessment_ratings = student.assessments.pluck(:rating)
       student_awards = student.assessments.pluck(:eligible_for_reward)
+      student_documents = StudentDocument.find_by(email_id: student.email_id)
   
       phd_start_date = student_documents.phd_start_date
   
       # The rest of your assessment logic using phd_start_date goes here
       current_year = Date.today.year
-      phd_start_year = phd_start_date.year
+      phd_start_year = year = phd_start_date.match(/\d{4}/).to_s.to_i
       total_years = current_year - phd_start_year
 
 
