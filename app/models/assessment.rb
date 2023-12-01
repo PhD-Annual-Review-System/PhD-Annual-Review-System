@@ -20,6 +20,13 @@ class Assessment < ApplicationRecord
       
       completed_milestones = student.student_documents.map(&:milestones_passed).flatten.compact.uniq
 
+      # improvement needed if either is true:
+        # A) They get an NI or a U from any of their committee
+
+        # B) They are in their fourth year and have not completed their prelim and proposal
+
+        # C) They are in their fifth or later year and have not defended their dissertation
+
       final_assessment = if assessment_ratings.include?("Unsatisfactory") || assessment_ratings.include?("Needs Improvement")
                            "Needs Faculty Review"
                          elsif total_years >= 4 && (!(completed_milestones.include?("Passed Prelim Exam") && completed_milestones.include?("Have Approved PhD Proposal")))
